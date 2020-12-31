@@ -18,4 +18,6 @@ Overall deadline - 25 Nov'2021
 
 All the collaborators must add the reference links and their ideas in Readme.
 
-
+### Reference links :
+[Home page illustration](https://dribbble.com/shots/14802362-Corporate-Website-for-ERP-Software-company)</br>
+[About us page](https://dribbble.com/shots/14841010-2020-Retrospective-Web-Design-Development)
