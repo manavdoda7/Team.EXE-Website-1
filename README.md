@@ -16,6 +16,6 @@ Overall deadline - 25 Nov'2021
 
 
 
-All the collaborators must add the reference links and their idea in Readme.
+All the collaborators must add the reference links and their ideas in Readme.
 
 
