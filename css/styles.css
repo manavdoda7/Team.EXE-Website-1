@@ -85,13 +85,13 @@ overflow-x: hidden;
     height: 100%;
 }
 .navbar{
-    background-color: #caf0f8;
+    background-color: #fff;
     position: absolute;
     width: 100%;
 }
 
 .logo{
-    width: 200px;
+    width: 100px;
 }
 
 @keyframes main-top-anim {
