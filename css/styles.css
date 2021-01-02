@@ -85,18 +85,38 @@ overflow-x: hidden;
     height: 100%;
 }
 .navbar{
-background-color: #fff;
+    background-color: #caf0f8;
+    position: absolute;
+    width: 100%;
 }
 
 .logo{
     width: 200px;
 }
 
-.link{
-    color: #012a4a;
+@keyframes main-top-anim {
+    from {height: 100%;}
+    to {height: 50%;}
 }
 
+@keyframes main-bottom-anim {
+    from {height: 0;}
+    to {height: 50%;}
+}
 
+.main-top {
+    background-color: #fff;
+    height: 50%;
+    animation-name: main-top-anim;
+    animation-duration: 1s;
+}
+
+.main-bottom {
+    background-color: #000;
+    height: 50%;
+    animation-name: main-bottom-anim;
+    animation-duration: 1s;
+}
 
 
 /* Upcoming Events Section */
