@@ -85,12 +85,18 @@ overflow-x: hidden;
     height: 100%;
 }
 .navbar{
-background-color: #caf0f8;
+background-color: #fff;
 }
 
 .logo{
     width: 200px;
 }
+
+.link{
+    color: #012a4a;
+}
+
+
 
 
 /* Upcoming Events Section */
