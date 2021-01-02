@@ -21,25 +21,25 @@ font-weight-medium: 500;
 font-weight-semi-bold: 600;
 font-weight-bold: 700; */
 
-/* //headings 
+/* //headings
 h1{
-  font-size:50px; 
+  font-size:50px;
   font-weight: $font-weight-semi-bold;
 }
 
 h2{
-  font-size:36px; 
+  font-size:36px;
   font-weight: $font-weight-semi-bold;
 }
 
 h3{
-  font-size: 18px; 
+  font-size: 18px;
   font-weight: $font-weight-medium;
 }
 
 // text style
 .text{
-  font-size:16px; 
+  font-size:16px;
   font-weight: $font-weight-regular;
   line-height:26px;
   color:$text-color;
@@ -50,7 +50,7 @@ h3{
 box-sizing:border-box;
 font-family: 'Poppins', sans-serif !important;
 }
-  
+
 body{
 margin:0;
 overflow-x: hidden;
@@ -61,9 +61,9 @@ overflow-x: hidden;
 
 @media only screen and (max-width:640px){
   .grid-container{
-    padding:0 15px; 
+    padding:0 15px;
   }
-  
+
   h1{
     font-size:36px;
   }
@@ -83,6 +83,42 @@ overflow-x: hidden;
 
 
 /* Upcoming Events Section */
+
+.container .card .face.face1{
+  position: relative;
+  display: flex;
+  z-index: 1;
+  transition: .7s;
+  transform: translateY(100px);
+}
+
+.container .card:hover .face.face1{
+  transform: translateY(0px);
+}
+
+.container .card .face.face2{
+  position: relative;
+  display: flex;
+  padding: 20px;
+  transition: .8s;
+  transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2{
+  transform: translateY(0px);
+}
+
+/*
+.container .card .face.face2::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: aqua;
+} */
 
 
 /* Previous Conducted Events */
