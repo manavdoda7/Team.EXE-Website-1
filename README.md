@@ -6,6 +6,7 @@
 3. Members
 4. Paradox
 5. Activities
+
 Task | Deadline | Status
 ------------ | ------------- | ----------
 Home page of Website | 5-Jan-2021 | Ongoing
