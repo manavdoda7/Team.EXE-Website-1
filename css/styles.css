@@ -96,24 +96,24 @@ overflow-x: hidden;
 
 @keyframes main-top-anim {
     from {height: 100%;}
-    to {height: 50%;}
+    to {height: 40%;}
 }
 
 @keyframes main-bottom-anim {
     from {height: 0;}
-    to {height: 50%;}
+    to {height: 60%;}
 }
 
 .main-top {
     background-color: #fff;
-    height: 50%;
+    height: 40%;
     animation-name: main-top-anim;
     animation-duration: 1s;
 }
 
 .main-bottom {
     background-color: #000;
-    height: 50%;
+    height: 60%;
     animation-name: main-bottom-anim;
     animation-duration: 1s;
 }
