@@ -80,8 +80,16 @@ overflow-x: hidden;
 
 
 /* Main Section */
-#upcoming-events-section {
-    background-color: #8f2;
+
+.main{
+    height: 100%;
+}
+.navbar{
+background-color: #caf0f8;
+}
+
+.logo{
+    width: 200px;
 }
 
 @keyframes main-top-anim {
@@ -95,6 +103,8 @@ overflow-x: hidden;
     animation-name: main-top-anim;
     animation-duration: 1s;
 }
+
+
 
 /* Upcoming Events Section */
 
