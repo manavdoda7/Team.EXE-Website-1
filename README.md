@@ -5,6 +5,7 @@
 2. About us
 3. Members
 4. Paradox
+5. Activities
 
 Task | Deadline | Status
 ------------ | ------------- | ----------
