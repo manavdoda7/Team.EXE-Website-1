@@ -92,6 +92,19 @@ background-color: #caf0f8;
     width: 200px;
 }
 
+@keyframes main-top-anim {
+    from {height: 100%; background-color: #000;}
+    to {height: 50%; background-color: #222;}
+}
+
+.main-top {
+    background-color: #222;
+    height: 50%;
+    animation-name: main-top-anim;
+    animation-duration: 1s;
+}
+
+
 
 /* Upcoming Events Section */
 
