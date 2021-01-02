@@ -1,4 +1,82 @@
 /* Common (Navbar and footer) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+/* // Theme colors
+dark-green-bg: #081c15;
+light-green-font-color: #b7e4c7;
+h1-color-white: #faf9f9;
+navy-blue-color: #012a4a;
+card-bg-very-light-blue: #caf0f8;
+card-light-blue: #ade8f4;
+
+
+// text colors
+title-color: #333333;
+text-color: #6E6D7A;
+
+// font-weights
+font-weight-regular: 400;
+font-weight-medium: 500;
+font-weight-semi-bold: 600;
+font-weight-bold: 700; */
+
+/* //headings 
+h1{
+  font-size:50px; 
+  font-weight: $font-weight-semi-bold;
+}
+
+h2{
+  font-size:36px; 
+  font-weight: $font-weight-semi-bold;
+}
+
+h3{
+  font-size: 18px; 
+  font-weight: $font-weight-medium;
+}
+
+// text style
+.text{
+  font-size:16px; 
+  font-weight: $font-weight-regular;
+  line-height:26px;
+  color:$text-color;
+} */
+
+
+*{
+box-sizing:border-box;
+font-family: 'Poppins', sans-serif !important;
+}
+  
+body{
+margin:0;
+overflow-x: hidden;
+}
+
+
+/* // for small sized devices - mobile phones */
+
+@media only screen and (max-width:640px){
+  .grid-container{
+    padding:0 15px; 
+  }
+  
+  h1{
+    font-size:36px;
+  }
+
+  h2{
+    font-size:24px;
+  }
+
+  .text{
+    font-size: 14.5px;
+    line-height:22px;
+  }
+}
 
 
 /* Main Section */
