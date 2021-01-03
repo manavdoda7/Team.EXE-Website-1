@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 
-/* 
 
-// font-weights
+
+/* // font-weights
 font-weight-regular: 400;
 font-weight-medium: 500;
 font-weight-semi-bold: 600;
-font-weight-bold: 700; */ */
+font-weight-bold: 700; 
 
-/* //headings
+//headings
 h1{
   font-size:50px;
   font-weight: $font-weight-semi-bold;
@@ -24,7 +24,7 @@ h2{
 h3{
   font-size: 18px;
   font-weight: $font-weight-medium;
-}
+} */
 
 
 
@@ -38,14 +38,14 @@ overflow-x: hidden;
 font-family: 'Ubuntu', sans-serif !important;
 }
 
-a {
+/* a {
     color: inherit;
-}
+} */
 
-a:hover {
+/* a:hover {
     text-decoration: none;
     color: inherit;
-}
+}  */
 
 
 /* // for small sized devices - mobile phones */
