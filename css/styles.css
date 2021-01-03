@@ -202,6 +202,7 @@ h1 {
 
 .main-description-text {
     margin-bottom: 100px;
+    animation: move-down-anim 2s;
 }
 
 .down-arrow {
@@ -211,7 +212,16 @@ h1 {
     top: 5px;
 }
 
+@keyframes move-down-anim {
+    0% {opacity: 0;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
 
+#move-down {
+    animation: move-down-anim 2.5s;
+
+}
 
 /* Upcoming Events Section */
 
