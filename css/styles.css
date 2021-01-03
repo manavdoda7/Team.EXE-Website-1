@@ -175,6 +175,11 @@ h1 {
     font-weight: 500;
     position: relative;
     top: 5px;
+    color :#f5f6fa;
+}
+
+.down-text{
+    color : #f5f6fa;
 }
 
 @keyframes move-down-anim {
@@ -197,6 +202,13 @@ h1 {
 
 #test-card .face.face1 img {
   width: 100%;
+}
+
+.upcoming-heading{
+    color: #7ed6df;
+    font-size: 36px;
+    font-weight: 600 !important;
+    text-align: center;  
 }
 
 
@@ -249,7 +261,7 @@ h1 {
     font-weight: 600 !important;
     padding-top: 2%;
     text-align: left;
-    color: #0c2461;
+    color: #7ed6df;
     margin-bottom: 30px;
 }
 
@@ -260,7 +272,7 @@ h1 {
 
 .text{
     font-size: 16px;
-    color: #333333;
+    color: #dcdde1;
     font-weight: 100;
 }
 
