@@ -2,10 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 
-
-/* // text colors
-title-color: #333333;
-text-color: #6E6D7A;
+/* 
 
 // font-weights
 font-weight-regular: 400;
@@ -28,14 +25,7 @@ h3{
   font-size: 18px; 
   font-weight: $font-weight-medium;
 }
-
-// text style
-.text{
-  font-size:16px; 
-  font-weight: $font-weight-regular;
-  line-height:26px;
-  color:$text-color;
-} */
+ */
 
 
 *{
@@ -196,6 +186,7 @@ h1 {
 
 .main-description {
     position: absolute;
+    bottom: 150px;
     bottom: 20px;
     
 }
@@ -220,7 +211,6 @@ h1 {
 
 #move-down {
     animation: move-down-anim 2.5s;
-
 }
 
 /* Upcoming Events Section */
@@ -229,39 +219,30 @@ h1 {
 /* Previous Conducted Events */
 
 .section-3{
-    height: 200%;
-    background: hsla(186, 33%, 94%, 1);
-
-background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EBF4F5", endColorstr="#B5C6E0", GradientType=1 );
+    height: 100%;
+    padding-bottom: 20%;
 }
 
 h3{
-    font-size: 36px;
-    font-weight: 600;
+    font-size: 46px;
+    font-weight: 600 !important;
     padding-top: 2%;
     text-align: center;
-    color: #012a4a;
+    color: #0c2461;
 }
 
 .content{
-    margin-top: 30%;
-    
-    background-color: #012a4a;
-    border-radius: 60px 20px 60px 20px;
-
-    box-shadow: 0 4px 8px 0 #5151f6, 0 6px 20px 0 #5151f6;
-
+    margin-top: 15%;
+}
+.carousel{
+    margin-bottom: 30%;
+    /* position: absolute;
+    top: 0; */
 }
 
 .text{
-    font-size: 14px;
+    font-size: 16px;
     padding: 20px;
-    color: #fff;
+    color: #000;
     font-weight: 100;
 }
