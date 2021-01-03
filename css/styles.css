@@ -8,7 +8,7 @@
 font-weight-regular: 400;
 font-weight-medium: 500;
 font-weight-semi-bold: 600;
-font-weight-bold: 700; 
+font-weight-bold: 700;
 
 //headings
 h1{
@@ -160,7 +160,7 @@ h1 {
     position: absolute;
     bottom: 150px;
     bottom: 20px;
-    
+
 }
 
 .main-description-text {
@@ -195,59 +195,57 @@ h1 {
 
 /* Upcoming Events Section */
 
-#test-card {
-  overflow: hidden;
-  border: none;
-}
-
-
-#test-card .face.face1 img {
-  width: 100%;
-}
-
 .upcoming-heading{
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
-    text-align: center;  
+    text-align: center;
 }
 
-
+.event-card {
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
+}
 
 
 .container .card .face.face1{
   position: relative;
   display: flex;
   z-index: 1;
-  transition: .9s;
-  transform: translateY(0px);
+  transition: 1.4s;
+  transform: all;
 }
 
+
 .container .card:hover .face.face1{
-  transform: translateY(-400px);
+  transform: translateY(-900px);
+  opacity: 0;
 }
 
 .container .card .face.face2{
   position: relative;
   display: flex;
   padding: 20px;
-  transition: .8s;
+  transition: 1s;
   transform: translateY(150px);
 }
 
 .container .card:hover .face.face2{
-  transform: translateY(-150px);
-  display: relative;
+  transform: translateY(-260px);
 }
 
-.container .card a {
-  text-decoration: none;
-  color: black !important;
+.card-title{
+  color: #F64D4D;
+  font-size: 25px !important;
+  font-weight: 600;
 }
 
-.container .card a:hover, .container .card a:focus, .container .card a:visited {
-  text-decoration: none;
+.card-text{
+  color: #dcdde1;
+  font-size: 18px !important;
 }
+
 
 
 /* Previous Conducted Events */
