@@ -38,8 +38,40 @@ overflow-x: hidden;
 font-family: 'Ubuntu', sans-serif !important;
 }
 
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 /* // for small sized devices - mobile phones */
+
+@media only screen and (max-width:640px){
+  .grid-container{
+    padding:0 15px; 
+  }
+  
+  h1{
+    font-size:60px !important;
+  }
+
+  h2{
+    font-size:36px !important;
+  }
+
+  .text{
+    font-size: 14.5px;
+    line-height:22px;
+  }
+  p{
+      font-size: 14.5px;
+      line-height: 22px;
+  }
+}
 
 @media only screen and (max-width:640px){
     h1 {
@@ -155,6 +187,30 @@ h1 {
 .main-description {
     position: absolute;
     bottom: 150px;
+    bottom: 20px;
+    
+}
+
+.main-description-text {
+    margin-bottom: 100px;
+    animation: move-down-anim 2s;
+}
+
+.down-arrow {
+    font-size: 36px;
+    font-weight: 500;
+    position: relative;
+    top: 5px;
+}
+
+@keyframes move-down-anim {
+    0% {opacity: 0;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+#move-down {
+    animation: move-down-anim 2.5s;
 }
 
 /* Upcoming Events Section */
