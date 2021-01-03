@@ -11,6 +11,8 @@ $(document).ready(function() {
 
     $('.upcoming-event-card').hover(function() {
         $('.card-front').css('margin-top', '-300px')
+    }, function() {
+        $('.card-front').css('margin-top', '20px')
     })
 })
 

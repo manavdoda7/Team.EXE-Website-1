@@ -216,6 +216,7 @@ h1 {
 .card-front {
     height: 100%;
     margin: 20px;
+    transition: margin 1s;
 }
 
 /* .card-front:hover {
