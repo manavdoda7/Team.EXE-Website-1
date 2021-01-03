@@ -56,6 +56,15 @@ margin:0;
 overflow-x: hidden;
 }
 
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 /* // for small sized devices - mobile phones */
 
@@ -75,6 +84,10 @@ overflow-x: hidden;
   .text{
     font-size: 14.5px;
     line-height:22px;
+  }
+  p{
+      font-size: 14.5px;
+      line-height: 22px;
   }
 }
 
@@ -195,9 +208,22 @@ h1 {
 .main-description {
     color: floralwhite;
     position: absolute;
-    bottom: 100px;
+    bottom: 20px;
     
 }
+
+.main-description-text {
+    margin-bottom: 100px;
+}
+
+.down-arrow {
+    font-size: 36px;
+    font-weight: 500;
+    position: relative;
+    top: 5px;
+}
+
+
 
 /* Upcoming Events Section */
 
