@@ -118,7 +118,7 @@ h1 {
 }
 
 .logo{
-    width: 200px;
+    width: 100px;
 }
 
 @keyframes main-top-anim {
@@ -204,3 +204,40 @@ h1 {
 
 /* Previous Conducted Events */
 
+.section-3{
+    height: 200%;
+    background: hsla(186, 33%, 94%, 1);
+
+background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EBF4F5", endColorstr="#B5C6E0", GradientType=1 );
+}
+
+h3{
+    font-size: 36px;
+    font-weight: 600;
+    padding-top: 2%;
+    text-align: center;
+    color: #012a4a;
+}
+
+.content{
+    margin-top: 30%;
+    
+    background-color: #012a4a;
+    border-radius: 60px 20px 60px 20px;
+    
+    box-shadow: 0 4px 8px 0 #5151f6, 0 6px 20px 0 #5151f6;
+
+}
+
+.text{
+    font-size: 14px;
+    padding: 20px;
+    color: #fff;
+    font-weight: 100;
+}
