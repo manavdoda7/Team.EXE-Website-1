@@ -190,6 +190,7 @@ h1 {
 
 #move-down {
     animation: move-down-anim 2.5s;
+    text-decoration: none;
 }
 
 /* Upcoming Events Section */
