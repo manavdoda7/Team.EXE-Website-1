@@ -1,17 +1,9 @@
 /* Common (Navbar and footer) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 
-/* // Theme colors
-dark-green-bg: #081c15;
-light-green-font-color: #b7e4c7;
-h1-color-white: #faf9f9;
-navy-blue-color: #012a4a;
-card-bg-very-light-blue: #caf0f8;
-card-light-blue: #ade8f4;
 
-
-// text colors
+/* // text colors
 title-color: #333333;
 text-color: #6E6D7A;
 
@@ -19,7 +11,7 @@ text-color: #6E6D7A;
 font-weight-regular: 400;
 font-weight-medium: 500;
 font-weight-semi-bold: 600;
-font-weight-bold: 700; */
+font-weight-bold: 700; */ */
 
 /* //headings 
 h1{
@@ -48,35 +40,16 @@ h3{
 
 *{
 box-sizing:border-box;
-font-family: 'Poppins', sans-serif !important;
 }
   
 body{
 margin:0;
 overflow-x: hidden;
+font-family: 'Ubuntu', sans-serif !important;
 }
 
 
 /* // for small sized devices - mobile phones */
-
-@media only screen and (max-width:640px){
-  .grid-container{
-    padding:0 15px; 
-  }
-  
-  h1{
-    font-size:60px !important;
-  }
-
-  h2{
-    font-size:36px !important;
-  }
-
-  .text{
-    font-size: 14.5px;
-    line-height:22px;
-  }
-}
 
 @media only screen and (max-width:640px){
     h1 {
@@ -86,14 +59,9 @@ overflow-x: hidden;
 
 /* Main Section */
 
-/* @media only screen and (max-width: 768px) {
-    h1 {
-      background-color: lightblue;
-    }
-  } */
-
 .main{
     height: 100%;
+    background-color: hsl(204 100% 5%);
 }
 
 @keyframes navbar-anim {
@@ -102,12 +70,10 @@ overflow-x: hidden;
 }
 
 .navbar{
-    /* background-color: #caf0f8; */
-    background-color: #fff !important;
+    background-color:hsl(204 100% 5%) !important;
     position: absolute;
     width: 100%;
     z-index: 100;
-    /* animation: navbar-anim 2s linear; */
     animation-name: navbar-anim;
     animation-duration: 1.5s;
 }
@@ -115,6 +81,11 @@ overflow-x: hidden;
 h1 {
     font-size: 80px;
     font-weight: 600;
+}
+
+.main-subtext{
+    font-size: 16px;
+    color: #0a3d62;
 }
 
 .logo{
@@ -132,7 +103,7 @@ h1 {
 }
 
 .main-top {
-    background-color: #fff;
+    background-color: hsl(204 100% 5%);
     height: 40%;
     animation-name: main-top-anim;
     animation-duration: 1.5s;
@@ -141,7 +112,7 @@ h1 {
 }
 
 .main-bottom {
-    background-color: hsl(204 100% 5%);
+    background-color: #38ada9;
     height: 60%;
     animation-name: main-bottom-anim;
     animation-duration: 1.5s;
@@ -155,7 +126,7 @@ h1 {
 }
 
 .heading-main-top {
-    color : hsl(204 100% 5%);
+    color : #38ada9;
     bottom: 0;
     position: absolute;
 }
@@ -167,7 +138,7 @@ h1 {
 }
 
 .heading-main-top-hider {
-    background-color: #fff;
+    background-color: hsl(204 100% 5%);
     height: 100px;
     width: 100%;
     bottom: 100px;
@@ -179,12 +150,11 @@ h1 {
 
 @keyframes heading-main-bottom-anim {
     0% {top: -500px;}
-    /* 50% {top: -100px;} */
     100% {top: 0px;}
 }
 
 .heading-light {
-    color: #fff;
+    color: hsl(204 100% 5%);
     top: 0px;
     position: absolute;
     z-index: 1;
@@ -193,10 +163,8 @@ h1 {
 }
 
 .main-description {
-    color: floralwhite;
     position: absolute;
-    bottom: 100px;
-    
+    bottom: 200px;
 }
 
 /* Upcoming Events Section */
@@ -230,7 +198,7 @@ h3{
     
     background-color: #012a4a;
     border-radius: 60px 20px 60px 20px;
-    
+
     box-shadow: 0 4px 8px 0 #5151f6, 0 6px 20px 0 #5151f6;
 
 }
