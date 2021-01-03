@@ -51,29 +51,6 @@ font-family: 'Ubuntu', sans-serif !important;
 /* // for small sized devices - mobile phones */
 
 @media only screen and (max-width:640px){
-  .grid-container{
-    padding:0 15px;
-  }
-
-  h1{
-    font-size:60px !important;
-  }
-
-  h2{
-    font-size:36px !important;
-  }
-
-  .text{
-    font-size: 14.5px;
-    line-height:22px;
-  }
-  p{
-      font-size: 14.5px;
-      line-height: 22px;
-  }
-}
-
-@media only screen and (max-width:640px){
     h1 {
         font-size: 48px !important;
     }
@@ -143,7 +120,7 @@ h1 {
 }
 
 .heading-main-top {
-    color : #38ada9;
+    color : #ff4d4d;
     bottom: 0;
     position: absolute;
 }
@@ -171,7 +148,7 @@ h1 {
 }
 
 .heading-light {
-    color: hsl(204 100% 5%);
+    color: #ffaf40;
     top: 0px;
     position: absolute;
     z-index: 1;
@@ -190,7 +167,7 @@ h1 {
     margin-bottom: 100px;
     animation: move-down-anim 2s;
     font-size: 16px;
-    color: #7c98ac;
+    color: #dcdde1;
 }
 
 .down-arrow {
@@ -259,33 +236,12 @@ h1 {
   text-decoration: none;
 }
 
-/*
-.container .card .face.face2::after{
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 4px;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: aqua;
-} */
-
 
 /* Previous Conducted Events */
 
 .section-3{
     height: 100%;
     padding-top: 5%;
-    background: hsla(186, 33%, 94%, 1);
-
-    background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-    background: -moz-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-    background: -webkit-linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);
-
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#EBF4F5", endColorstr="#B5C6E0", GradientType=1 );
 }
 
 .event-heading{
