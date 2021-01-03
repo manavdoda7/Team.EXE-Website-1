@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+    <canvas id="canvas"></canvas>
     <div id="fullpage">
 
         <!-- Main Section -->
@@ -65,7 +65,7 @@
                         <div class="main-description">
                             <div class="row">
                                 <div class="col-12 col-md-6">
-                                    <p class="main-description-text main-subtext">
+                                    <p class="main-description-text">
                                         We are departmental team of Computer Science & Engineering Department for Techfest NIMBUS.
                                         We are passionate about technology & our curiousity drives us towards the development of new things and taking new projects
                                     </p>
@@ -229,36 +229,36 @@
     <script>
         new fullpage('#fullpage', {
             //options here
-            autoScrolling:false,
+            autoScrolling:true,
             scrollHorizontally: true
         });
 
-        var slideIndex = 1;
-        showSlides(slideIndex);
+        // var slideIndex = 1;
+        // showSlides(slideIndex);
 
-        function plusSlides(n) {
-        showSlides(slideIndex += n);
-        }
+        // function plusSlides(n) {
+        // showSlides(slideIndex += n);
+        // }
 
-        function currentSlide(n) {
-        showSlides(slideIndex = n);
-        }
+        // function currentSlide(n) {
+        // showSlides(slideIndex = n);
+        // }
 
-        function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-        if (n > slides.length) {slideIndex = 1}    
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";  
-        dots[slideIndex-1].className += " active";
-        }
+        // function showSlides(n) {
+        // var i;
+        // var slides = document.getElementsByClassName("mySlides");
+        // var dots = document.getElementsByClassName("dot");
+        // if (n > slides.length) {slideIndex = 1}    
+        // if (n < 1) {slideIndex = slides.length}
+        // for (i = 0; i < slides.length; i++) {
+        //     slides[i].style.display = "none";  
+        // }
+        // for (i = 0; i < dots.length; i++) {
+        //     dots[i].className = dots[i].className.replace(" active", "");
+        // }
+        // slides[slideIndex-1].style.display = "block";  
+        // dots[slideIndex-1].className += " active";
+        // }
 
         
     </script>
