@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home-Page</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body>
-    
+
     <div id="fullpage">
+
         <!-- Main Section -->
         <div id="main-section" class="section">
 
@@ -85,10 +87,86 @@
             <!-- <div class="floating-up"></div> -->
            
         </div>
+
         <!-- Upcoming events section -->
         <div id="upcoming-events-section" class="section">
             <h1>Upcoming Events</h1>
+
+            <div class="container">
+
+                <!-- Row Start -->
+                <div class="row">
+
+                    <div class="col-lg-4">
+                        <div class="card mt-4" id="test-card">
+
+                            <div class=" face face1">
+                                <div class="content">
+                                    <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                                </div>
+                            </div>
+
+                            <div class="face face2">
+                                <div class="content">
+                                    <h5 class="card-title"> Event Name </h5>
+
+                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                                    <a href="" class="btn btn-primary">Know More</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card mt-4" id="test-card">
+
+                            <div class=" face face1">
+                                <div class="content">
+                                    <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                                </div>
+                            </div>
+
+                            <a href="">
+                            <div class="face face2">
+                                <div class="content">
+                                    <h5 class="card-title"> Event Name </h5>
+
+                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <a href="">
+                            <div class="card mt-4">
+                                <div class="content">
+                                    <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                                    <h5 class="card-title">
+                                        Event Name
+                                    </h5>
+                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- Row End -->
+
+
+            </div>
+
+
+
+
+
         </div>
+
         <!-- Previously conducted -->
         <div id="previous-events-section" class="section">
             <div class="section-3">
@@ -151,7 +229,7 @@
     <script>
         new fullpage('#fullpage', {
             //options here
-            autoScrolling:true,
+            autoScrolling:false,
             scrollHorizontally: true
         });
 

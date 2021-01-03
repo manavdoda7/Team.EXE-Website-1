@@ -10,28 +10,28 @@ font-weight-medium: 500;
 font-weight-semi-bold: 600;
 font-weight-bold: 700; */ */
 
-/* //headings 
+/* //headings
 h1{
-  font-size:50px; 
+  font-size:50px;
   font-weight: $font-weight-semi-bold;
 }
 
 h2{
-  font-size:36px; 
+  font-size:36px;
   font-weight: $font-weight-semi-bold;
 }
 
 h3{
-  font-size: 18px; 
+  font-size: 18px;
   font-weight: $font-weight-medium;
 }
- */
+
 
 
 *{
 box-sizing:border-box;
 }
-  
+
 body{
 margin:0;
 overflow-x: hidden;
@@ -52,9 +52,9 @@ a:hover {
 
 @media only screen and (max-width:640px){
   .grid-container{
-    padding:0 15px; 
+    padding:0 15px;
   }
-  
+
   h1{
     font-size:60px !important;
   }
@@ -214,6 +214,65 @@ h1 {
 }
 
 /* Upcoming Events Section */
+
+#test-card {
+  overflow: hidden;
+  border: none;
+}
+
+
+#test-card .face.face1 img {
+  width: 100%;
+}
+
+
+
+
+.container .card .face.face1{
+  position: relative;
+  display: flex;
+  z-index: 1;
+  transition: .9s;
+  transform: translateY(0px);
+}
+
+.container .card:hover .face.face1{
+  transform: translateY(-400px);
+}
+
+.container .card .face.face2{
+  position: relative;
+  display: flex;
+  padding: 20px;
+  transition: .8s;
+  transform: translateY(150px);
+}
+
+.container .card:hover .face.face2{
+  transform: translateY(-150px);
+  display: relative;
+}
+
+.container .card a {
+  text-decoration: none;
+  color: black !important;
+}
+
+.container .card a:hover, .container .card a:focus, .container .card a:visited {
+  text-decoration: none;
+}
+
+/*
+.container .card .face.face2::after{
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: aqua;
+} */
 
 
 /* Previous Conducted Events */
