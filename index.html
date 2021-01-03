@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body>
 
     <div id="fullpage">
@@ -31,17 +32,25 @@
                 <div class="row">
 
                     <div class="col-lg-4">
-                        <a href="">
-                            <div class="card mt-4">
+                        <div class="card mt-4" id="test-card">
+
+                            <div class=" face face1">
                                 <div class="content">
                                     <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
-                                    <h5 class="card-title">
-                                        Event Name
-                                    </h5>
-                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
                                 </div>
                             </div>
-                        </a>
+
+                            <div class="face face2">
+                                <div class="content">
+                                    <h5 class="card-title"> Event Name </h5>
+
+                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                                    <a href="" class="btn btn-primary">Know More</a>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-lg-4">
@@ -53,14 +62,16 @@
                                 </div>
                             </div>
 
+                            <a href="">
                             <div class="face face2">
                                 <div class="content">
-                                    <h5 class=""> Event Name </h5>
+                                    <h5 class="card-title"> Event Name </h5>
 
-                                    <p class=""> <Span>Event Date: </Span> Test-date </p>
+                                    <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
 
                                 </div>
                             </div>
+                            </a>
                         </div>
                     </div>
 
@@ -107,7 +118,7 @@
     <script>
         new fullpage('#fullpage', {
             //options here
-            autoScrolling:true,
+            autoScrolling:false,
             scrollHorizontally: true
         });
     </script>

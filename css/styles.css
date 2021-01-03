@@ -84,16 +84,29 @@ overflow-x: hidden;
 
 /* Upcoming Events Section */
 
+#test-card {
+  overflow: hidden;
+  border: none;
+}
+
+
+#test-card .face.face1 img {
+  width: 100%;
+}
+
+
+
+
 .container .card .face.face1{
   position: relative;
   display: flex;
   z-index: 1;
-  transition: .7s;
-  transform: translateY(100px);
+  transition: .9s;
+  transform: translateY(0px);
 }
 
 .container .card:hover .face.face1{
-  transform: translateY(0px);
+  transform: translateY(-400px);
 }
 
 .container .card .face.face2{
@@ -101,11 +114,21 @@ overflow-x: hidden;
   display: flex;
   padding: 20px;
   transition: .8s;
-  transform: translateY(-100px);
+  transform: translateY(150px);
 }
 
 .container .card:hover .face.face2{
-  transform: translateY(0px);
+  transform: translateY(-150px);
+  display: relative;
+}
+
+.container .card a {
+  text-decoration: none;
+  color: black !important;
+}
+
+.container .card a:hover, .container .card a:focus, .container .card a:visited {
+  text-decoration: none;
 }
 
 /*
