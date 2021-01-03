@@ -8,6 +8,10 @@ $(document).ready(function() {
     // setTimeout(function() {
     //     $('#move-down').fadeIn();
     // }, 1500)
+
+    $('.upcoming-event-card').hover(function() {
+        $('.card-front').css('margin-top', '-300px')
+    })
 })
 
 // document.onreadystatechange = function () {
