@@ -321,7 +321,7 @@ html{
           padding: 0;
           height: 100%;
           overflow: hidden;
-          cursor: none;
+          /* cursor: none; */
   }
   #canvas{
           background-color: #2c343f;
