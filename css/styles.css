@@ -290,7 +290,7 @@ html{
 
   .random{
     /* background: white; */
-    width: 400px;
+    width: 450px;
     /* height: 300px; */
     position: absolute;
     top: 25%;
@@ -372,4 +372,48 @@ html{
 
 @media (max-width: 900px){
 
+}
+
+
+.dynamic-text{
+    animation: pulse 15s infinite;
+}
+
+@keyframes pulse {
+	0% {
+	color: transparent;
+	}
+	1% {
+		color: transparent;
+	}
+	3% {
+		color: white;
+	}
+	75% {
+		color: white;
+	}
+	79% {
+		color: transparent;
+	}
+	80% {
+		color: white;
+    }
+    99% {
+		color: white;
+	}
+	100% {
+		color: transparent;
+	}
+}
+
+.dynamic-text:after {
+	content: "";
+	animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  0% { content:"Heyy!!!"; }
+  40% { content:"What was your first program?"; }
+  70% { content:"Mine was..."; }
+  100% { content:"Hello World..."; }
 }
