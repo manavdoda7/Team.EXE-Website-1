@@ -1,6 +1,29 @@
 console.log("Hello")
 
+var firebaseConfig = {
+    apiKey: "AIzaSyA5xtXY6mp2D8JSCDIKNtws10H6PZUfMeo",
+    authDomain: "team-exe-website-1d1a2.firebaseapp.com",
+    projectId: "team-exe-website-1d1a2",
+    storageBucket: "team-exe-website-1d1a2.appspot.com",
+    messagingSenderId: "156178981830",
+    appId: "1:156178981830:web:74027e78a7382d226f48c7",
+    measurementId: "G-W8W635B5T5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore();
+
+getFromFirebaseAndRender()
+
+var prevEventsTextsIndex = 0
+var prevEventsTexts = []
+
 $(document).ready(function() {
+
+    $('#prev-events-carousel').carousel('pause')
+
+
     $("#move-down").click(function() {
         fullpage_api.moveTo(2);
     })
@@ -14,7 +37,36 @@ $(document).ready(function() {
     }, function() {
         $('.card-front').css('margin-top', '20px')
     })
+
+    setInterval(function() {
+        prevEventsTextsIndex = (prevEventsTextsIndex + 1) % prevEventsTexts.length
+        $('#prev-events-carousel').carousel('next')
+        $('#prev-events-text, #show-more-text').fadeOut(300, 'swing', () => {
+            $('#prev-events-text').text(prevEventsTexts[prevEventsTextsIndex])
+            $('#prev-events-text, #show-more-text').fadeIn(300)
+
+        })
+    }, 3000)
 })
+
+function getFromFirebaseAndRender() {
+    let carouselCode = ''
+    let i = 0
+    db.collection("previously_conducted_events").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            let data = doc.data()
+            carouselCode += '<div class="carousel-item'
+            if(i === 0){
+                carouselCode += ' active'
+            }
+            carouselCode += `"><img src="${data.image}" class=" car-img d-block w-100" alt="..."></div>`
+            prevEventsTexts.push(data.text)
+            i++
+        });
+        $('.carousel-inner').html(carouselCode)
+    });
+
+}
 
 // document.onreadystatechange = function () {
 //     var state = document.readyState
