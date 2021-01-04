@@ -315,7 +315,17 @@ html{
       opacity: 0;  
     }
 
-      6%{
+    6%{
+        opacity: 1;
+    }
+
+    86%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 0;
+    }
+    95%{
         opacity: 1;
     }
     100%{
