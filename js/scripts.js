@@ -61,7 +61,7 @@ function drawLight() {
 }
 
 function Box() {
-    this.half_size = Math.floor((Math.random() * 5) + 1);
+    this.half_size = Math.floor((Math.random() * 3) + 1);
     this.x = Math.floor((Math.random() * c.width) + 1);
     this.y = Math.floor((Math.random() * c.height) + 1);
     this.r = Math.random() * Math.PI;
@@ -98,7 +98,7 @@ function Box() {
         };
     }
     this.rotate = function() {
-        var speed = (30 - this.half_size) / 20;
+        var speed = (20 - this.half_size) / 20;
         this.r += speed * 0.002;
         this.x += speed;
         this.y += speed;

@@ -54,6 +54,12 @@ font-family: 'Ubuntu', sans-serif !important;
     h1 {
         font-size: 48px !important;
     }
+    .main-description-text{
+        font-size: 15px;
+    }
+    .main-top{
+        height: 35% !important;
+    }
 }
 
 /* Main Section */
@@ -121,6 +127,7 @@ h1 {
 
 .heading-main-top {
     color : #ffffff;
+    font-size: 75px;
     text-shadow: 0 0 12px #0082af;
     bottom: 0;
     position: absolute;
@@ -150,6 +157,7 @@ h1 {
 
 .heading-light {
     color: #7ed6df;
+    font-size: 70px;
     top: 0px;
     text-shadow : 0 0 10px #000;
     position: absolute;
@@ -279,3 +287,79 @@ html{
           height: 100%;
           position: fixed;
   }
+
+  .random{
+    /* background: white; */
+    width: 400px;
+    /* height: 300px; */
+    position: absolute;
+    top: 25%;
+    /* right: 0; */
+    z-index: 10000000;
+    /* transform: rotate3d(.5,-.866,0,15deg) rotate(4deg); */
+    /* display: flex; */
+    animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
+}
+
+@keyframes abc{
+    from{
+        right: -500px;
+    }
+    to{
+        right: 0;
+    }
+}
+
+@keyframes flicker{
+    0%{
+      opacity: 0;  
+    }
+
+      6%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+.prompt , .compiled , .output{
+    color: white;
+    background-color: #214261;
+    /* right: -500px; */
+    display: block;
+    /* display: none; */
+    /* padding: 5px; */
+}
+
+
+
+.code{
+    color: white;
+    background-color: #082e52;
+}
+
+.compiled div{
+  background-color: #082e52;
+  padding: 5px;
+}
+
+.output div{
+  background-color: #082e52;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 1050px) {
+  .random {
+    display: none;
+  }
+  .res-class{
+    flex: 0 0 75% !important;
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 900px){
+
+}
