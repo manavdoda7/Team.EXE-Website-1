@@ -119,7 +119,7 @@ function Box() {
     this.r = Math.random() * Math.PI;
     this.shadow_length = 0;
     this.color = colors[Math.floor((Math.random() * colors.length))];
-  
+
     this.getDots = function() {
 
         var full = (Math.PI * 2) / 4;
@@ -237,7 +237,7 @@ window.onresize = resize;
 
 function collisionDetection(b){
 	for (var i = boxes.length - 1; i >= 0; i--) {
-		if(i != b){	
+		if(i != b){
 			var dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
 			var dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
 			var d = Math.sqrt(dx * dx + dy * dy);
@@ -248,3 +248,42 @@ function collisionDetection(b){
 		}
 	}
 }
+
+
+// For the animation
+
+
+
+async function getQuotes() {
+
+    let url = 'https://raw.githubusercontent.com/skolakoda/programming-quotes-api/master/backup/quotes.json';
+
+    let response = await fetch(url);
+    let json = await response.json();
+
+    // console.log(json);
+
+    json = json[Math.floor(Math.random() * (json.length + 1))];
+
+    let quote =  {
+        text: json["en"] + "\n",
+        author: json["author"]
+    };
+
+    console.log(quote);
+
+    let quote_fills = document.querySelectorAll(".dynamic-quote");
+    let author_fills = document.querySelectorAll(".dynamic-author");
+
+    quote_fills.forEach(quotes_fill => {
+        quotes_fill.innerHTML = quote.text;
+    });
+
+    author_fills.forEach(author_fill => {
+        author_fill.innerHTML = quote.author;
+    });
+}
+
+getQuotes();
+
+setInterval(getQuotes, 66000);
