@@ -8,7 +8,7 @@
 font-weight-regular: 400;
 font-weight-medium: 500;
 font-weight-semi-bold: 600;
-font-weight-bold: 700; 
+font-weight-bold: 700;
 
 //headings
 h1{
@@ -170,7 +170,7 @@ h1 {
     position: absolute;
     bottom: 150px;
     bottom: 20px;
-    
+
 }
 
 .main-description-text {
@@ -209,7 +209,7 @@ h1 {
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
-    text-align: center;  
+    text-align: center;
 }
 
 .upcoming-event-card {
@@ -271,7 +271,7 @@ h1 {
 /* Bakcground */
 html{
     height: 100%;
-    
+
   }
   body{
           margin: 0;
@@ -290,13 +290,13 @@ html{
 
   .random{
     /* background: white; */
-    width: 450px;
+    width: 500px;
     /* height: 300px; */
     position: absolute;
     top: 25%;
     /* right: 0; */
     z-index: 10000000;
-    /* transform: rotate3d(.5,-.866,0,15deg) rotate(4deg); */
+    /* transform: rotate3d(.5,-.866,0,15deg) rotate(0deg); */
     /* display: flex; */
     animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
 }
@@ -312,7 +312,7 @@ html{
 
 @keyframes flicker{
     0%{
-      opacity: 0;  
+      opacity: 0;
     }
 
     6%{
@@ -348,6 +348,7 @@ html{
 .code{
     color: white;
     background-color: #082e52;
+    padding-left: 40px;
 }
 
 .compiled div{
@@ -379,6 +380,14 @@ html{
     animation: pulse 15s infinite;
 }
 
+.dynamic-quote{
+    animation: pulse 15s infinite;
+}
+
+.dynamic-author{
+    animation: pulse 15s infinite;
+}
+
 @keyframes pulse {
 	0% {
 	color: transparent;
@@ -406,7 +415,7 @@ html{
 	}
 }
 
-.dynamic-text:after {
+/* .dynamic-text:after {
 	content: "";
 	animation: spin 15s linear infinite;
 }
@@ -416,4 +425,4 @@ html{
   40% { content:"What was your first program?"; }
   70% { content:"Mine was..."; }
   100% { content:"Hello World..."; }
-}
+} */
