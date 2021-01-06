@@ -212,29 +212,51 @@ h1 {
     text-align: center;
 }
 
-.upcoming-event-card {
-    height: 300px;
-    background-color: #00000088;
-    color: #f5f6fa;
-    /* padding: 20px; */
-    /* min-height: 300px; */
-    overflow: hidden;
+.event-card {
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
 }
 
-.card-front {
-    height: 100%;
-    margin: 20px;
-    transition: margin 1s;
+
+.container .card .face.face1{
+  position: relative;
+  display: flex;
+  z-index: 1;
+  transition: 1.4s;
+  transform: all;
 }
 
-/* .card-front:hover {
-    margin-top: -300px;
-} */
 
-.card-back {
-    height: 100%;
-    margin: 20px;
+.container .card:hover .face.face1{
+  transform: translateY(-900px);
+  opacity: 0;
 }
+
+.container .card .face.face2{
+  position: relative;
+  display: flex;
+  padding: 20px;
+  transition: 1s;
+  transform: translateY(150px);
+}
+
+.container .card:hover .face.face2{
+  transform: translateY(-260px);
+}
+
+.card-title{
+  color: #F64D4D;
+  font-size: 25px !important;
+  font-weight: 600;
+}
+
+.card-text{
+  color: #dcdde1;
+  font-size: 18px !important;
+
+}
+
 
 
 /* Previous Conducted Events */
