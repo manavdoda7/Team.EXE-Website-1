@@ -1,6 +1,29 @@
 console.log("Hello")
 
+var firebaseConfig = {
+    apiKey: "AIzaSyA5xtXY6mp2D8JSCDIKNtws10H6PZUfMeo",
+    authDomain: "team-exe-website-1d1a2.firebaseapp.com",
+    projectId: "team-exe-website-1d1a2",
+    storageBucket: "team-exe-website-1d1a2.appspot.com",
+    messagingSenderId: "156178981830",
+    appId: "1:156178981830:web:74027e78a7382d226f48c7",
+    measurementId: "G-W8W635B5T5"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore();
+
+getFromFirebaseAndRender()
+
+var prevEventsTextsIndex = 0
+var prevEventsTexts = []
+
 $(document).ready(function() {
+
+    $('#prev-events-carousel').carousel('pause')
+
+
     $("#move-down").click(function() {
         fullpage_api.moveTo(2);
     })
@@ -8,7 +31,42 @@ $(document).ready(function() {
     // setTimeout(function() {
     //     $('#move-down').fadeIn();
     // }, 1500)
+
+    $('.upcoming-event-card').hover(function() {
+        $('.card-front').css('margin-top', '-300px')
+    }, function() {
+        $('.card-front').css('margin-top', '20px')
+    })
+
+    setInterval(function() {
+        prevEventsTextsIndex = (prevEventsTextsIndex + 1) % prevEventsTexts.length
+        $('#prev-events-carousel').carousel('next')
+        $('#prev-events-text, #show-more-text').fadeOut(300, 'swing', () => {
+            $('#prev-events-text').text(prevEventsTexts[prevEventsTextsIndex])
+            $('#prev-events-text, #show-more-text').fadeIn(300)
+
+        })
+    }, 3000)
 })
+
+function getFromFirebaseAndRender() {
+    let carouselCode = ''
+    let i = 0
+    db.collection("previously_conducted_events").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            let data = doc.data()
+            carouselCode += '<div class="carousel-item'
+            if(i === 0){
+                carouselCode += ' active'
+            }
+            carouselCode += `"><img src="${data.image}" class=" car-img d-block w-100" alt="..."></div>`
+            prevEventsTexts.push(data.text)
+            i++
+        });
+        $('.carousel-inner').html(carouselCode)
+    });
+
+}
 
 // document.onreadystatechange = function () {
 //     var state = document.readyState
@@ -34,34 +92,34 @@ var light = {
     y: 200
 }
 
-var colors = ["#f5c156", "#e6616b", "#5cd3ad"];
+var colors = ["#fff"];
 
 function drawLight() {
     ctx.beginPath();
     ctx.arc(light.x, light.y, 1000, 0, 2 * Math.PI);
     var gradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 1000);
-    gradient.addColorStop(0, "#3b4654");
-    gradient.addColorStop(1, "#2c343f");
+    // gradient.addColorStop(0, "#3b4654");
+    // gradient.addColorStop(1, "#2c343f");
     ctx.fillStyle = gradient;
     ctx.fill();
 
     ctx.beginPath();
     ctx.arc(light.x, light.y, 20, 0, 2 * Math.PI);
     gradient = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 5);
-    gradient.addColorStop(0, "#fff");
-    gradient.addColorStop(1, "#3b4654");
+    // gradient.addColorStop(0, "#fff");
+    // gradient.addColorStop(1, "#3b4654");
     ctx.fillStyle = gradient;
     ctx.fill();
 }
 
 function Box() {
-    this.half_size = Math.floor((Math.random() * 50) + 1);
+    this.half_size = Math.floor((Math.random() * 3) + 1);
     this.x = Math.floor((Math.random() * c.width) + 1);
     this.y = Math.floor((Math.random() * c.height) + 1);
     this.r = Math.random() * Math.PI;
-    this.shadow_length = 2000;
+    this.shadow_length = 0;
     this.color = colors[Math.floor((Math.random() * colors.length))];
-  
+
     this.getDots = function() {
 
         var full = (Math.PI * 2) / 4;
@@ -92,7 +150,7 @@ function Box() {
         };
     }
     this.rotate = function() {
-        var speed = (60 - this.half_size) / 20;
+        var speed = (20 - this.half_size) / 20;
         this.r += speed * 0.002;
         this.x += speed;
         this.y += speed;
@@ -166,7 +224,7 @@ function draw() {
 resize();
 draw();
 
-while (boxes.length < 14) {
+while (boxes.length < 40) {
     boxes.push(new Box());
 }
 
@@ -179,7 +237,7 @@ window.onresize = resize;
 
 function collisionDetection(b){
 	for (var i = boxes.length - 1; i >= 0; i--) {
-		if(i != b){	
+		if(i != b){
 			var dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
 			var dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
 			var d = Math.sqrt(dx * dx + dy * dy);
@@ -190,3 +248,42 @@ function collisionDetection(b){
 		}
 	}
 }
+
+
+// For the animation
+
+
+
+async function getQuotes() {
+
+    let url = 'https://raw.githubusercontent.com/skolakoda/programming-quotes-api/master/backup/quotes.json';
+
+    let response = await fetch(url);
+    let json = await response.json();
+
+    // console.log(json);
+
+    json = json[Math.floor(Math.random() * (json.length + 1))];
+
+    let quote =  {
+        text: json["en"] + "\n",
+        author: json["author"]
+    };
+
+    console.log(quote);
+
+    let quote_fills = document.querySelectorAll(".dynamic-quote");
+    let author_fills = document.querySelectorAll(".dynamic-author");
+
+    quote_fills.forEach(quotes_fill => {
+        quotes_fill.innerHTML = quote.text;
+    });
+
+    author_fills.forEach(author_fill => {
+        author_fill.innerHTML = quote.author;
+    });
+}
+
+getQuotes();
+
+setInterval(getQuotes, 66000);

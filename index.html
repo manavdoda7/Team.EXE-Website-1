@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home-Page</title>
+    <title>Team .EXE</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
@@ -53,6 +55,48 @@
                     </div>
                 </nav>
 
+                <div class="random">
+                    <div class="prompt">
+                        Code
+                        <!-- <pre class="code">
+    #include < iostream >
+
+    int main() {
+        std::cout << "<span class="dynamic-text"></span>";
+        return 0;
+    }
+                        </pre> -->
+
+                        <p class="code">
+    #include < iostream > <br> <br>
+
+    int main() { <br>
+        &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287 std::cout <<
+            "<span class="dynamic-quote"></span> \n \t\t &#8287&#8287 -<span class="dynamic-author"></span>"; <br>
+        &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287 return 0; <br>
+    }
+                        </pre>
+                    </div>
+                    <!-- <div class="compiled">
+                        Terminal
+                        <div style="background-color: #082e52;">
+
+                    </div>
+                    </div> -->
+                    <div class="output">
+                        Terminal
+                        <div style="background-color: #082e52;">
+                            Compiled Successfully <i style="color: rgb(2, 179, 2);" class="far fa-check-circle"></i><br>
+                            <hr>
+                            <span class="dynamic-quote"></span><br>
+                            &#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287&#8287 -<span class="dynamic-author"></span><br>
+                            <br>
+                            Process exited after 1.1 seconds with return value 0
+
+                        </div>
+                    </div>
+                </div>
+
                 <div class="main-top">
                     <div class="container container-height-full">
                         <div class="heading-main-top-hider"></div>
@@ -64,7 +108,7 @@
                         <h1 class="heading-light">Executing Ideas</h1>
                         <div class="main-description">
                             <div class="row">
-                                <div class="col-12 col-md-6">
+                                <div class="col-12 col-md-6 res-class">
                                     <p class="main-description-text">
                                         We are departmental team of Computer Science & Engineering Department for Techfest NIMBUS.
                                         We are passionate about technology & our curiousity drives us towards the development of new things and taking new projects
@@ -95,8 +139,6 @@
             <h1 class="upcoming-heading">Upcoming Events</h1>
 
             <div class="container">
-
-                <!-- Row Start -->
                 <div class="row">
 
                     <div class="col-lg-4">
@@ -185,20 +227,21 @@
                             <div class="content">
                                 <h4 class="event-heading">Previously conducted events</h4>
 
-                                <p class="text">We are Team.EXE, We are the departmental team representing the
+                                <p id="prev-events-text" class="text">We are Team.EXE, We are the departmental team representing the
                                      Computer Science and Engineering Department at the Annual Technical
                                      Extravaganza of NIT Hamirpur, Nimbus. Each year we strive to raise the
                                       bar for technical advancement and showcasing the best of Computer Science
                                       and Software Development for anyone to see.
                                 </p>
 
-                                <a href="#" class="show-more-text" style='color: #ffaf40;'><b>Show more</b></a>
-                                <span style='font-size:30px; margin-left:10px; color: #ffaf40;'>&#8594;</span>
+                                <a id="show-more-text" href="#" class="show-more-text" style='color: #ffaf40;'><b>Show more</b>
+                                    <span style='font-size:30px; margin-left:10px; color: #ffaf40;'>&#8594;</span>
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-5 offset-md-1">
                             <div class="carouel">
-                                <div id="carouselExampleFade" class=" carousel slide" data-ride="carousel">
+                                <div id="prev-events-carousel" class=" carousel slide" data-ride="carousel">
                                     <div class="carousel-inner" style=" width:100%; height: 500px !important;">
                                         <div class="carousel-item active">
                                             <img src="images/home_2.jpg" class=" car-img d-block w-100" alt="...">
@@ -210,11 +253,11 @@
                                             <img src="images/about_1.jpg" class=" car-img d-block w-100" alt="...">
                                         </div>
                                     </div>
-                                    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                    <a class="carousel-control-prev" href="#prev-events-carousel" role="button" data-slide="prev">
                                       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                       <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                    <a class="carousel-control-next" href="#prev-events-carousel" role="button" data-slide="next">
                                       <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                       <span class="sr-only">Next</span>
                                     </a>
@@ -232,6 +275,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js" integrity="sha512-pYyQWhzi2lV+RM4GmaUA56VPL48oLVvsHmP9tuQ8MaZMDHomVEDjXXnfSVKXayy+wLclKPte0KbsuVoFImtE7w==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/easings.min.js" integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w==" crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+
     <script src="js/fullpage.js"></script>
     <script src="js/scripts.js"></script>
 
@@ -241,34 +291,6 @@
             autoScrolling:true,
             scrollHorizontally: true
         });
-
-        // var slideIndex = 1;
-        // showSlides(slideIndex);
-
-        // function plusSlides(n) {
-        // showSlides(slideIndex += n);
-        // }
-
-        // function currentSlide(n) {
-        // showSlides(slideIndex = n);
-        // }
-
-        // function showSlides(n) {
-        // var i;
-        // var slides = document.getElementsByClassName("mySlides");
-        // var dots = document.getElementsByClassName("dot");
-        // if (n > slides.length) {slideIndex = 1}
-        // if (n < 1) {slideIndex = slides.length}
-        // for (i = 0; i < slides.length; i++) {
-        //     slides[i].style.display = "none";
-        // }
-        // for (i = 0; i < dots.length; i++) {
-        //     dots[i].className = dots[i].className.replace(" active", "");
-        // }
-        // slides[slideIndex-1].style.display = "block";
-        // dots[slideIndex-1].className += " active";
-        // }
-
 
     </script>
 </body>
