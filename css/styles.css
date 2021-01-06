@@ -8,7 +8,7 @@
 font-weight-regular: 400;
 font-weight-medium: 500;
 font-weight-semi-bold: 600;
-font-weight-bold: 700; 
+font-weight-bold: 700;
 
 //headings
 h1{
@@ -170,7 +170,7 @@ h1 {
     position: absolute;
     bottom: 150px;
     bottom: 20px;
-    
+
 }
 
 .main-description-text {
@@ -209,32 +209,54 @@ h1 {
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
-    text-align: center;  
+    text-align: center;
 }
 
-.upcoming-event-card {
-    height: 300px;
-    background-color: #00000088;
-    color: #f5f6fa;
-    /* padding: 20px; */
-    /* min-height: 300px; */
-    overflow: hidden;
+.event-card {
+  overflow: hidden;
+  border: none;
+  background-color: transparent;
 }
 
-.card-front {
-    height: 100%;
-    margin: 20px;
-    transition: margin 1s;
+
+.container .card .face.face1{
+  position: relative;
+  display: flex;
+  z-index: 1;
+  transition: 1.4s;
+  transform: all;
 }
 
-/* .card-front:hover {
-    margin-top: -300px;
-} */
 
-.card-back {
-    height: 100%;
-    margin: 20px;
+.container .card:hover .face.face1{
+  transform: translateY(-900px);
+  opacity: 0;
 }
+
+.container .card .face.face2{
+  position: relative;
+  display: flex;
+  padding: 20px;
+  transition: 1s;
+  transform: translateY(150px);
+}
+
+.container .card:hover .face.face2{
+  transform: translateY(-260px);
+}
+
+.card-title{
+  color: #F64D4D;
+  font-size: 25px !important;
+  font-weight: 600;
+}
+
+.card-text{
+  color: #dcdde1;
+  font-size: 18px !important;
+
+}
+
 
 
 /* Previous Conducted Events */
@@ -271,7 +293,7 @@ h1 {
 /* Bakcground */
 html{
     height: 100%;
-    
+
   }
   body{
           margin: 0;
@@ -290,13 +312,13 @@ html{
 
   .random{
     /* background: white; */
-    width: 400px;
+    width: 500px;
     /* height: 300px; */
     position: absolute;
     top: 25%;
     /* right: 0; */
     z-index: 10000000;
-    /* transform: rotate3d(.5,-.866,0,15deg) rotate(4deg); */
+    /* transform: rotate3d(.5,-.866,0,15deg) rotate(0deg); */
     /* display: flex; */
     animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
 }
@@ -312,10 +334,20 @@ html{
 
 @keyframes flicker{
     0%{
-      opacity: 0;  
+      opacity: 0;
     }
 
-      6%{
+    6%{
+        opacity: 1;
+    }
+
+    86%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 0;
+    }
+    95%{
         opacity: 1;
     }
     100%{
@@ -338,6 +370,7 @@ html{
 .code{
     color: white;
     background-color: #082e52;
+    padding-left: 40px;
 }
 
 .compiled div{
@@ -363,3 +396,55 @@ html{
 @media (max-width: 900px){
 
 }
+
+
+.dynamic-text{
+    animation: pulse 15s infinite;
+}
+
+.dynamic-quote{
+    animation: pulse 15s infinite;
+}
+
+.dynamic-author{
+    animation: pulse 15s infinite;
+}
+
+@keyframes pulse {
+	0% {
+	color: transparent;
+	}
+	1% {
+		color: transparent;
+	}
+	3% {
+		color: white;
+	}
+	75% {
+		color: white;
+	}
+	79% {
+		color: transparent;
+	}
+	80% {
+		color: white;
+    }
+    99% {
+		color: white;
+	}
+	100% {
+		color: transparent;
+	}
+}
+
+/* .dynamic-text:after {
+	content: "";
+	animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  0% { content:"Heyy!!!"; }
+  40% { content:"What was your first program?"; }
+  70% { content:"Mine was..."; }
+  100% { content:"Hello World..."; }
+} */
