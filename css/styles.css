@@ -62,6 +62,12 @@ font-family: 'Ubuntu', sans-serif !important;
     }
 }
 
+.fp-responsive .fp-section,
+.fp-responsive .fp-slide,
+.fp-responsive .fp-tableCell{
+    height: auto !important;
+}
+
 /* Main Section */
 
 .main{
@@ -257,6 +263,10 @@ h1 {
 
 }
 
+.card-content {
+    width: 100%;
+}
+
 
 
 /* Previous Conducted Events */
@@ -277,7 +287,7 @@ h1 {
 
 .content{
     margin-top: 10%;
-    width: 500px;
+    /* width: 500px; */
 }
 
 .text{
