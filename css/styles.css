@@ -447,7 +447,7 @@ html{
 	}
 }
 
-/* .dynamic-text:after {
+.dynamic-text:after {
 	content: "";
 	animation: spin 15s linear infinite;
 }
@@ -457,4 +457,4 @@ html{
   40% { content:"What was your first program?"; }
   70% { content:"Mine was..."; }
   100% { content:"Hello World..."; }
-} */
+}
