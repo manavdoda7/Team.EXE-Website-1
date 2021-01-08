@@ -367,8 +367,8 @@ html{
 
 
 .prompt , .compiled , .output{
-    color: #999999;
-    background-color: #1f1f1f;
+    color: white;
+    background-color: #214261;
     /* right: -500px; */
     display: block;
     /* display: none; */
@@ -379,7 +379,7 @@ html{
 
 .code{
     color: white;
-    background-color: #141414;
+    background-color: #082e52;
     /* padding-left: 40px; */
 }
 
@@ -416,7 +416,7 @@ html{
 } */
 
 .output-code{
-    padding-top: 5%;
+    /* padding-top: 5%; */
     padding-bottom: 5%;
 }
 
