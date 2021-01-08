@@ -284,6 +284,6 @@ async function getQuotes() {
     });
 }
 
-getQuotes();
+// getQuotes();
 
-setInterval(getQuotes, 66000);
+// setInterval(getQuotes, 66000);
