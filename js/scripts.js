@@ -66,7 +66,20 @@ function getFromFirebaseAndRender() {
         $('.carousel-inner').html(carouselCode)
     });
 
+
+    // db.collection("previously_conducted_events").get().then((querySnapshot) => {
+    //     querySnapshot.forEach((doc) => {
+    //         let data = doc.data()
+            
+    //     });
+    // });
+
 }
+
+$.when($.ready)
+.then(function(){
+    
+})
 
 // document.onreadystatechange = function () {
 //     var state = document.readyState
