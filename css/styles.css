@@ -279,7 +279,7 @@ h1 {
 .event-heading{
     font-size: 36px;
     font-weight: 600 !important;
-    padding-top: 2%;
+    padding-top: 10%;
     text-align: left;
     color: #7ed6df;
     margin-bottom: 30px;
@@ -367,8 +367,8 @@ html{
 
 
 .prompt , .compiled , .output{
-    color: white;
-    background-color: #214261;
+    color: #999999;
+    background-color: #1f1f1f;
     /* right: -500px; */
     display: block;
     /* display: none; */
@@ -379,19 +379,19 @@ html{
 
 .code{
     color: white;
-    background-color: #082e52;
-    padding-left: 40px;
+    background-color: #141414;
+    /* padding-left: 40px; */
 }
 
-.compiled div{
-  background-color: #082e52;
+/* .compiled div{
+  background-color: #1f1f1f;
   padding: 5px;
 }
 
 .output div{
-  background-color: #082e52;
+  background-color: #4285F4;
   padding: 5px;
-}
+} */
 
 @media only screen and (max-width: 1050px) {
   .random {
@@ -411,14 +411,22 @@ html{
 .dynamic-text{
     animation: pulse 15s infinite;
 }
+/* .input{
+    color: #D7BA7D;
+} */
 
-.dynamic-quote{
+.output-code{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+/* .dynamic-quote{
     animation: pulse 15s infinite;
 }
 
 .dynamic-author{
     animation: pulse 15s infinite;
-}
+} */
 
 @keyframes pulse {
 	0% {
@@ -449,7 +457,8 @@ html{
 
 .dynamic-text:after {
 	content: "";
-	animation: spin 15s linear infinite;
+    animation: spin 15s linear infinite;
+    color: #D7BA7D;
 }
 
 @keyframes spin {
