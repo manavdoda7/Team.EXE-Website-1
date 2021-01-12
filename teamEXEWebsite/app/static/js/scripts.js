@@ -1,23 +1,6 @@
-console.log("Hello")
-
-var firebaseConfig = {
-    apiKey: "AIzaSyA5xtXY6mp2D8JSCDIKNtws10H6PZUfMeo",
-    authDomain: "team-exe-website-1d1a2.firebaseapp.com",
-    projectId: "team-exe-website-1d1a2",
-    storageBucket: "team-exe-website-1d1a2.appspot.com",
-    messagingSenderId: "156178981830",
-    appId: "1:156178981830:web:74027e78a7382d226f48c7",
-    measurementId: "G-W8W635B5T5"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-var db = firebase.firestore();
-
-getFromFirebaseAndRender()
 
 var prevEventsTextsIndex = 0
-var prevEventsTexts = []
+// var prevEventsTexts = []     moved to index.html
 
 $(document).ready(function() {
 
@@ -48,33 +31,6 @@ $(document).ready(function() {
         })
     }, 3000)
 })
-
-function getFromFirebaseAndRender() {
-    let carouselCode = ''
-    let i = 0
-    db.collection("previously_conducted_events").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            let data = doc.data()
-            carouselCode += '<div class="carousel-item'
-            if(i === 0){
-                carouselCode += ' active'
-            }
-            carouselCode += `"><img src="${data.image}" class=" car-img d-block w-100" alt="..."></div>`
-            prevEventsTexts.push(data.text)
-            i++
-        });
-        $('.carousel-inner').html(carouselCode)
-    });
-
-
-    // db.collection("previously_conducted_events").get().then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //         let data = doc.data()
-            
-    //     });
-    // });
-
-}
 
 $.when($.ready)
 .then(function(){
