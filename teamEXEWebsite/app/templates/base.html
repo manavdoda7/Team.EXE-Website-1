@@ -25,33 +25,34 @@
     <div id="fullpage">
         <div id="main-section" class="section">
             <div class="main">
+                <!-- Navbar -->
                 <nav class="navbar navbar-expand-lg navbar-dark">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="{% static 'images/logo.png' %}" class="logo"/></a>
+                    <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" class="logo"/></a>
 
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                        <a class="nav-link link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                        <li class="nav-item nav-item-home">
+                        <a class="nav-link link" href="/">Home</a>
                         </li>
 
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <li class="nav-item nav-item-aboutus">
+                        <a class="nav-link" href="/aboutus">About Us</a>
                         </li>
 
-                        <li class="nav-item">
-                        <a class="nav-link" href="#">Members</a>
+                        <li class="nav-item nav-item-members">
+                        <a class="nav-link" href="/members">Members</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Paradox</a>
+                        <li class="nav-item nav-item-paradox">
+                            <a class="nav-link" href="https://play.google.com/store/apps/details?id=com.exe.paradoxplay">Paradox</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Activities</a>
+                        <li class="nav-item nav-item-activities">
+                            <a class="nav-link" href="/activities">Activities</a>
                         </li>
                     </ul>
                     </div>
@@ -81,7 +82,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/easings.min.js" integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w==" crossorigin="anonymous"></script>
 
     <script src="{% static 'js/fullpage.js' %}"></script>
-    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
 
     <script>
         new fullpage('#fullpage', {

@@ -26,12 +26,6 @@ body{
     h1 {
         font-size: 48px !important;
     }
-    .main-description-text{
-        font-size: 15px;
-    }
-    .main-top{
-        height: 35% !important;
-    }
 }
 
 /* Main Section */

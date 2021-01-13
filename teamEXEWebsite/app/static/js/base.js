@@ -1,6 +1,5 @@
 
 $(document).ready(function() {
-
     $("#move-down").click(function() {
         fullpage_api.moveTo(2);
     })
