@@ -1,0 +1,35 @@
+<!-- Inheriting from base.html template -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_block %}
+    <!-- Add title tag and css specific to this page here -->
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}">
+    <title>About Us - Team .EXE</title>
+{% endblock %}
+
+{% block main_section %}
+    <!-- Content of the First section -->
+
+{% endblock %}
+
+{% block other_sections %}
+    <!-- All other sections are here -->
+
+    <!-- 2nd Section -->
+    <div class="section">
+        <h1>Team .EXE Description and Group Photo here</h1>
+    </div>
+
+    <!-- 3rd Section -->
+    <div class="section">
+        <h1> Contact Form here</h1>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <!-- Add all javascript code specific to this page here -->
+    <script src="{% static 'js/aboutus.js' %}"></script>
+
+{% endblock %}

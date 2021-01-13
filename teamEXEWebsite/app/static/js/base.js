@@ -1,80 +1,10 @@
-console.log("Hello")
-
-var firebaseConfig = {
-    apiKey: "AIzaSyA5xtXY6mp2D8JSCDIKNtws10H6PZUfMeo",
-    authDomain: "team-exe-website-1d1a2.firebaseapp.com",
-    projectId: "team-exe-website-1d1a2",
-    storageBucket: "team-exe-website-1d1a2.appspot.com",
-    messagingSenderId: "156178981830",
-    appId: "1:156178981830:web:74027e78a7382d226f48c7",
-    measurementId: "G-W8W635B5T5"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-var db = firebase.firestore();
-
-getFromFirebaseAndRender()
-
-var prevEventsTextsIndex = 0
-var prevEventsTexts = []
 
 $(document).ready(function() {
-
-    $('#prev-events-carousel').carousel('pause')
-
-
     $("#move-down").click(function() {
         fullpage_api.moveTo(2);
     })
-    // $('#move-down').css('opacity','0')
-    // setTimeout(function() {
-    //     $('#move-down').fadeIn();
-    // }, 1500)
 
-    $('.upcoming-event-card').hover(function() {
-        $('.card-front').css('margin-top', '-300px')
-    }, function() {
-        $('.card-front').css('margin-top', '20px')
-    })
-
-    setInterval(function() {
-        prevEventsTextsIndex = (prevEventsTextsIndex + 1) % prevEventsTexts.length
-        $('#prev-events-carousel').carousel('next')
-        $('#prev-events-text, #show-more-text').fadeOut(300, 'swing', () => {
-            $('#prev-events-text').text(prevEventsTexts[prevEventsTextsIndex])
-            $('#prev-events-text, #show-more-text').fadeIn(300)
-
-        })
-    }, 3000)
 })
-
-function getFromFirebaseAndRender() {
-    let carouselCode = ''
-    let i = 0
-    db.collection("previously_conducted_events").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            let data = doc.data()
-            carouselCode += '<div class="carousel-item'
-            if(i === 0){
-                carouselCode += ' active'
-            }
-            carouselCode += `"><img src="${data.image}" class=" car-img d-block w-100" alt="..."></div>`
-            prevEventsTexts.push(data.text)
-            i++
-        });
-        $('.carousel-inner').html(carouselCode)
-    });
-
-
-    // db.collection("previously_conducted_events").get().then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //         let data = doc.data()
-            
-    //     });
-    // });
-
-}
 
 $.when($.ready)
 .then(function(){
@@ -90,6 +20,9 @@ $.when($.ready)
 //           document.getElementById("loading").classList.remove("fadeOut");
 //           document.getElementById("loading").style.display = "none";
 //   }}
+
+
+// Background Animation
 
 var c = document.getElementById("canvas");
 var ctx = c.getContext("2d");
@@ -263,40 +196,5 @@ function collisionDetection(b){
 }
 
 
-// For the animation
+// Background animation ends
 
-
-
-async function getQuotes() {
-
-    let url = 'https://raw.githubusercontent.com/skolakoda/programming-quotes-api/master/backup/quotes.json';
-
-    let response = await fetch(url);
-    let json = await response.json();
-
-    // console.log(json);
-
-    json = json[Math.floor(Math.random() * (json.length + 1))];
-
-    let quote =  {
-        text: json["en"] + "\n",
-        author: json["author"]
-    };
-
-    console.log(quote);
-
-    let quote_fills = document.querySelectorAll(".dynamic-quote");
-    let author_fills = document.querySelectorAll(".dynamic-author");
-
-    quote_fills.forEach(quotes_fill => {
-        quotes_fill.innerHTML = quote.text;
-    });
-
-    author_fills.forEach(author_fill => {
-        author_fill.innerHTML = quote.author;
-    });
-}
-
-// getQuotes();
-
-// setInterval(getQuotes, 66000);

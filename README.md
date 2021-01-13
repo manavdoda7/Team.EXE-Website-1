@@ -16,7 +16,19 @@ About us page  | 15-Jan-2021 | Ongoing
 
 Overall deadline - 25 Jan'2021
 
+### Run The Project
 
+    pip install pipenv      (pip3 in linux)
+    pipenv install --system
+    cd teamEXEWebsite
+    python manage.py runserver      (python3 in linux)
+
+### Notes
+> HTML files are present in teamEXEWebsite/app/templates/
+
+> CSS, JS files and Images are present in teamEXEWebsite/app/static/
+
+> IMPORTANT: Changes made to CSS and JS may not be reflected on reload due to caching. Use ctrl + shift + R to clear browser cache and reload.
 
 All the collaborators must add the reference links and their ideas in Readme.
 

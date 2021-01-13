@@ -1,59 +1,4 @@
-/* Common (Navbar and footer) */
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
-
-
-
-
-/* // font-weights
-font-weight-regular: 400;
-font-weight-medium: 500;
-font-weight-semi-bold: 600;
-font-weight-bold: 700;
-
-//headings
-h1{
-  font-size:50px;
-  font-weight: $font-weight-semi-bold;
-}
-
-h2{
-  font-size:36px;
-  font-weight: $font-weight-semi-bold;
-}
-
-h3{
-  font-size: 18px;
-  font-weight: $font-weight-medium;
-} */
-
-
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-overflow-x: hidden;
-font-family: 'Ubuntu', sans-serif !important;
-}
-
-/* a {
-    color: inherit;
-} */
-
-/* a:hover {
-    text-decoration: none;
-    color: inherit;
-}  */
-
-
-/* // for small sized devices - mobile phones */
-
 @media only screen and (max-width:640px){
-    h1 {
-        font-size: 48px !important;
-    }
     .main-description-text{
         font-size: 15px;
     }
@@ -62,41 +7,7 @@ font-family: 'Ubuntu', sans-serif !important;
     }
 }
 
-/* .fp-responsive .fp-section,
-.fp-responsive .fp-slide,
-.fp-responsive .fp-tableCell{
-    height: auto !important;
-} */
-
 /* Main Section */
-
-.main{
-    height: 100%;
-    /* background-color: hsl(204 100% 5%); */
-}
-
-@keyframes navbar-anim {
-    from {top: -200px;}
-    to {top: 0;}
-}
-
-.navbar{
-    /* background-color:hsl(204 100% 5%) !important; */
-    position: absolute;
-    width: 100%;
-    z-index: 100;
-    animation-name: navbar-anim;
-    animation-duration: 1.5s;
-}
-
-h1 {
-    font-size: 80px;
-    font-weight: 600;
-}
-
-.logo{
-    width: 100px;
-}
 
 @keyframes main-top-anim {
     from {height: 100%;}
@@ -301,26 +212,8 @@ h1 {
 }
 
 /* Bakcground */
-html{
-    height: 100%;
 
-  }
-  body{
-          margin: 0;
-          padding: 0;
-          height: 100%;
-          overflow: hidden;
-          background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-          /* cursor: none; */
-  }
-  #canvas{
-          background-color: transparent;
-          width: 100%;
-          height: 100%;
-          position: fixed;
-  }
-
-  .random{
+.random{
     /* background: white; */
     width: 450px;
     /* height: 300px; */

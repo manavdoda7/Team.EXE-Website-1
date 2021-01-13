@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block head_block %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div id="fullpage">
+        <div id="main-section" class="section">
+            <div class="main">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" class="logo"/></a>
+
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item nav-item-home">
+                        <a class="nav-link link" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item nav-item-aboutus">
+                        <a class="nav-link" href="/aboutus">About Us</a>
+                        </li>
+
+                        <li class="nav-item nav-item-members">
+                        <a class="nav-link" href="/members">Members</a>
+                        </li>
+
+                        <li class="nav-item nav-item-paradox">
+                            <a class="nav-link" href="https://play.google.com/store/apps/details?id=com.exe.paradoxplay">Paradox</a>
+                        </li>
+
+                        <li class="nav-item nav-item-activities">
+                            <a class="nav-link" href="/activities">Activities</a>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+
+                {% block main_section %}
+
+                {% endblock %}
+
+            </div>
+        </div>
+
+        {% block other_sections %}
+
+        {% endblock %}
+
+        <div id="footer" class="section fp-auto-height">
+            <h1>Footer</h1>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js" integrity="sha512-pYyQWhzi2lV+RM4GmaUA56VPL48oLVvsHmP9tuQ8MaZMDHomVEDjXXnfSVKXayy+wLclKPte0KbsuVoFImtE7w==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/easings.min.js" integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w==" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/fullpage.js' %}"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+
+    <script>
+        new fullpage('#fullpage', {
+            //options here
+            autoScrolling:true,
+            scrollOverflow: true
+        });
+
+    </script>
+
+    {% block scripts %}
+
+    {% endblock %}
+
+</body>
+</html>
