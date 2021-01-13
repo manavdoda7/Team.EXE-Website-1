@@ -14,3 +14,12 @@ def index(request):
 
 def base(request):
     return render(request, 'base.html')
+
+def aboutus(request):
+    return render(request, 'aboutus.html')
+
+def members(request):
+    return render(request, 'members.html')
+
+def activities(request):
+    return render(request, 'activities.html')
