@@ -14,16 +14,6 @@ h1 {
     color: #7ed6df;
 }
 
-/* a {
-    color: inherit;
-} */
-
-/* a:hover {
-    text-decoration: none;
-    color: inherit;
-}  */
-
-
 /* // for small sized devices - mobile phones */
 
 @media only screen and (max-width:640px){
