@@ -166,35 +166,49 @@ span{
     margin-bottom: 3%;
 }
 
+
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
 .form {
+    margin: 40px auto 0 auto;
+    min-width: 95%;
     display: flex;
-    color: #2844e4;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-between;
-    align-self: center;
+    align-content: center;
+    justify-content: center;
+    color: #0c5ea1;
+}
+
+@media screen and (min-width: 600px) {
+    .form {
+        min-width: 500px;
+    }
 }
 
 .form-group {
-    max-width: 300px;
+    max-width: 500px;
+    width: 95%;
     position: relative;
     height: 50px;
     margin: auto;
     overflow: hidden;
     margin-top: 20px;
     margin-bottom: 20px;
-
 }
 
 .message-box {
-    height: 100px;
-    /* min-width: 400px; */
+    height: 200px;
+    width: 95%;
     max-width: 500px;
     position: relative;
     margin: auto;
+    margin-bottom: 3%;
+    margin-top: 3%;
     overflow: hidden;
-
 }
 
 .form-group input {
@@ -204,7 +218,7 @@ span{
     color: #ffffff;
     padding-top: 20px;
     outline: none;
-    background: #182538c2;
+    background: #4e75af21;
     opacity: 0.5;
 }
 
@@ -214,9 +228,9 @@ span{
     border: none;
     color: #ffffff;
     outline: none;
-    background: #182538c2;
+    background: #4e75af21;
     opacity: 0.5;
-    padding-top: 5%;
+    padding-top: 6%;
     overflow: auto;
 }
 
@@ -238,7 +252,6 @@ span{
     width: 100%;
     pointer-events: none;
     border-bottom: 1px solid #85abe4;
-
 }
 
 .message-box label {
@@ -280,7 +293,7 @@ span{
 .content-group{
     position: absolute;
     bottom: 0px;
-    font-size: 25px;
+    font-size: 1.5rem;
     left: 0%;
     transition: all 0.3s ease-in-out;
 }
@@ -288,7 +301,7 @@ span{
 .content-message{
     position: absolute;
     bottom: 10px;
-    font-size: 25px;
+    font-size: 2rem;
     left: 0%;
     transition: all 0.3s ease-in-out;
 }
@@ -300,6 +313,11 @@ span{
     color: #51a1e2;
 }
 
+.form-group input:focus + .lable-group::after,
+.form-group input:valid + .lable-group::after {
+    transform: translateX(0%);
+}
+
 .mail.has-invalid input:invalid + .lable-group .content-group{
     transform: translateY(-100%);
     font-size: 18px;
@@ -309,15 +327,9 @@ span{
 
 .message-box textarea:focus ~ label .content-message,
 .message-box.has-value textarea ~ label .content-message{
-    transform: translateY(-250%);
+    transform: translateY(-600%);
     font-size: 18px;
     color: #51a1e2;
-}
-
-
-.form-group input:focus + .lable-group::after,
-.form-group input:valid + .lable-group::after {
-    transform: translateX(0%);
 }
 
 .message-box textarea:focus ~ .lable-group::after,
@@ -327,10 +339,21 @@ span{
 
 
 .form-submit{
-    margin-top: 30px;
-    margin-bottom: 30px;
-
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    height: 50px;
+    margin: auto;
 }
+
+.submit-button {
+    float: right;
+    background-color: transparent;
+    border-radius: 0%;
+    color: #99bae4;
+}
+
+
 /*Responsiveness*/
 /* Section 2   */
 @media only screen and (max-width:1300px){
