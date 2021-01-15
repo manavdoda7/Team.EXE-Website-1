@@ -23,6 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'bd9bumz4u9ftw7-_d7zv8mtuq2-tlh4(t7y5e7r-m3ux09lk#'
+if hasattr(config, 'SECRET_KEY'):
+    SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,10 +90,10 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-if hasattr(config, 'DATABASE_URL'):
-    DATABASE_URL = config.DATABASE_URL
-    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
+# import dj_database_url
+# if hasattr(config, 'DATABASE_URL'):
+#     DATABASE_URL = config.DATABASE_URL
+#     DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
 
 
 # Password validation
