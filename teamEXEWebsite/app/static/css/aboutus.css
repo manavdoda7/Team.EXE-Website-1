@@ -79,19 +79,34 @@
 .item_title{
     height: 30vh;
 }
-
-.upper{
+span{
+    z-index: 101;
+}
+#upper{
     background-color: #000;
     font-size: 50px;
     color: #fff;
     height: 30vh;
+    width: 100%;
     margin: auto;
     text-align: center;
     padding-top: 10vh;
     transition: 1s;
     border-bottom: 5px #fff solid;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
-.upper:hover{
+#wow{
+    z-index: 100;
+    height: 30vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#wow:hover + #upper{
+    transition: 1s;
     height: 10vh;
     font-size: 40px;
     padding: 1rem;
@@ -136,12 +151,224 @@
 .section2-img{
     width: 30%;
     height: 50vh;
-    margin-top: 4%;
+    margin-top: 1%;
     margin-left: 10%;
     border-radius: 25px;
 }
 
+
+/* ####################### */
+/* Section 3 */
+
+.form-heading {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 3%;
+}
+
+.form {
+    display: flex;
+    color: #2844e4;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-between;
+    align-self: center;
+}
+
+.form-group {
+    max-width: 300px;
+    position: relative;
+    height: 50px;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.message-box {
+    height: 100px;
+    /* min-width: 400px; */
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+
+}
+
+.form-group input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: #ffffff;
+    padding-top: 20px;
+    outline: none;
+    background: #182538c2;
+    opacity: 0.5;
+}
+
+.message-box textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    background: #182538c2;
+    opacity: 0.5;
+    padding-top: 5%;
+    overflow: auto;
+}
+
+
+.form-group input:focus{
+    opacity: 0.7;
+}
+
+.message-box textarea:focus{
+    opacity: 0.7;
+}
+
+.form-group label {
+    margin: 0;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #85abe4;
+
+}
+
+.message-box label {
+    margin: 0%;
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid #85abe4;
+    pointer-events: none;
+    font-size: 30px;
+}
+
+.form-group label::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #51a1e2;
+    left: 0;
+    bottom: -2px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+}
+
+.message-box label::after{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #51a1e2;
+    left: 0;
+    bottom: -2px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in;
+}
+
+.content-group{
+    position: absolute;
+    bottom: 0px;
+    font-size: 25px;
+    left: 0%;
+    transition: all 0.3s ease-in-out;
+}
+
+.content-message{
+    position: absolute;
+    bottom: 10px;
+    font-size: 25px;
+    left: 0%;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-group input:focus + .lable-group .content-group,
+.form-group input:valid + .lable-group .content-group{
+    transform: translateY(-100%);
+    font-size: 18px;
+    color: #51a1e2;
+}
+
+.mail.has-invalid input:invalid + .lable-group .content-group{
+    transform: translateY(-100%);
+    font-size: 18px;
+    color: #e91717;
+}
+
+
+.message-box textarea:focus ~ label .content-message,
+.message-box.has-value textarea ~ label .content-message{
+    transform: translateY(-250%);
+    font-size: 18px;
+    color: #51a1e2;
+}
+
+
+.form-group input:focus + .lable-group::after,
+.form-group input:valid + .lable-group::after {
+    transform: translateX(0%);
+}
+
+.message-box textarea:focus ~ .lable-group::after,
+.message-box.has-value textarea ~ .lable-group::after {
+    transform: translateX(0%);
+}
+
+
+.form-submit{
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+}
 /*Responsiveness*/
+/* Section 2   */
+@media only screen and (max-width:1300px){
+    #upper{
+        font-size: 30px;
+    }
+    #wow:hover + #upper{
+        transition: 1s;
+        height: unset;
+        font-size: 20px;
+        padding: 0.5rem;
+        text-align: left;
+        color: #7ed6df;
+    }
+    .info{
+        font-size: 15px;
+        margin-top: 30%;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .section1{
+        padding-top: 20%;
+    }
+    .heading-top{
+        font-size: 30px;
+    }
+    .section2-img{
+        margin-left: 15%;
+        width: 70%;
+        margin-top: 0;
+    }
+    .p2{
+        width: 80%;
+        margin-left: 10%;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+}
 @media only screen and (max-width:640px){
     .section1{
         padding-top: 20%;

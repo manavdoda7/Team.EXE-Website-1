@@ -15,7 +15,7 @@
         <h1 class="heading-top">Team .EXE</h1>
         <p class="p1">
             We are departmental team of Computer Science & Engineering Department for Techfest NIMBUS. <br>
-            We are passionate about technology & our curiousity drives us towards the development of new things and taking new projects. 
+            We are passionate about technology & our curiousity drives us towards the development of new things and taking new projects.
         </p>
     </div>
     <!--Cards Section-->
@@ -23,8 +23,9 @@
         <h1 class="heading-top slide-bottom">More About Us</h1>
         <div class="container-fluid">
             <div class="row row1">
-                <div class="block about-feature-1" data-wow-duration="500ms" data-wow-delay=".3s">
-                    <div class="upper">Our Vision & Mission</div>
+                <div class="block about-feature-1">
+                    <div id="wow"></div>
+                    <div id="upper">Our Vision & Mission</div>
                     <div class="info">
                         <ul>
                             <li>Professional as well as Personal growth.</li>
@@ -33,8 +34,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="block about-feature-2 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".5s">
-                    <div class="upper">What You Get</div>
+                <div class="block about-feature-2">
+                    <div id="wow"></div>
+                    <div id="upper"><span>What You Get</span></div>
                     <div class="info">
                         <ul>
                         <li>Experience of working on Creative Projects.</li>
@@ -42,8 +44,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="block about-feature-3 wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".7s">
-                    <div class="upper">Our Ethics</div>
+                <div class="block about-feature-3">
+                    <div id="wow"></div>
+                    <div id="upper">Our Ethics</div>
                     <div class="info">
                         <ul>
                             <li>We are Passionate</li>
@@ -68,22 +71,22 @@
             <div class="row">
                 <img src="../static/images/home_2.jpg" class="section2-img" alt="">
                 <p class="p2">
-                    Not always you can see past the veil of refined outputs. 
+                    Not always you can see past the veil of refined outputs.
                     Sometimes everything has to be put in a package and delivered as the ultimate result. We do that. <br>
-                    <span class="we-are">We are Team.EXE,</span> We are the departmental team representing the Computer Science and Engineering Department 
-                    at the Annual Technical Extravaganza of NIT Hamirpur, Nimbus. Each year we strive to raise the bar for technical 
-                    advancement and showcasing the best of Computer Science and Software Development for anyone to see. When it 
-                    comes to projects, we take up projects that are helpful to the students and thus result in a smooth life for 
-                    the students in the college; and we finish them using a corporate protocol of deadlines and online version control. 
-                    Not only this, we organize many events on the actual three days of Nimbus, which are aimed to provide a fun-filled but 
-                    still quite informative experience of what Computer Science has to offer. These events range from an online 
-                    competitive coding competition to an offline debugging race, and a gaming competition too. The members of the team 
-                    work equally hard to be able to brandish the projects as something they’ve contributed to as well as to be a source 
-                    of unforgettable memories on the Nimbus through the onsite events. The team also gives any of the students that 
-                    want to display any or all of their projects an opportunity to present their ideas and applications through 
-                    the portal of Team .EXE, along with any guidance if required. Also, we aim to provide the freshers an outlook 
-                    onto the world of programming and conduct many pre-nimbus workshops and classes for the first year, most recurrently 
-                    Linux installation and command line. 
+                    <span class="we-are">We are Team.EXE,</span> We are the departmental team representing the Computer Science and Engineering Department
+                    at the Annual Technical Extravaganza of NIT Hamirpur, Nimbus. Each year we strive to raise the bar for technical
+                    advancement and showcasing the best of Computer Science and Software Development for anyone to see. When it
+                    comes to projects, we take up projects that are helpful to the students and thus result in a smooth life for
+                    the students in the college; and we finish them using a corporate protocol of deadlines and online version control.
+                    Not only this, we organize many events on the actual three days of Nimbus, which are aimed to provide a fun-filled but
+                    still quite informative experience of what Computer Science has to offer. These events range from an online
+                    competitive coding competition to an offline debugging race, and a gaming competition too. The members of the team
+                    work equally hard to be able to brandish the projects as something they’ve contributed to as well as to be a source
+                    of unforgettable memories on the Nimbus through the onsite events. The team also gives any of the students that
+                    want to display any or all of their projects an opportunity to present their ideas and applications through
+                    the portal of Team .EXE, along with any guidance if required. Also, we aim to provide the freshers an outlook
+                    onto the world of programming and conduct many pre-nimbus workshops and classes for the first year, most recurrently
+                    Linux installation and command line.
                 </p>
             </div>
         </div>
@@ -91,7 +94,46 @@
 
     <!-- 3rd Section -->
     <div class="section">
-        <h1> Contact Form here</h1>
+        <h1 class="form-heading">Feel Free To contact Us</h1>
+
+
+        <form action="https://formspree.io/f/mzbkywdk" method="post">
+            <div class="form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" name="Name" autocomplete="off" required>
+                                <label for="Name" class="lable-group">
+                                    <span class="content-group">Name</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group mail">
+                                <input type="email" name="E-mail" autocomplete="off" required>
+                                <label for="E-mail" class="lable-group">
+                                    <span class="content-group">E-mail</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-box">
+                        <textarea name="Message" type="text"></textarea>
+                        <label for="Message" class="lable-group">
+                            <span class="content-message">Message</span>
+                        </label>
+                    </div>
+                </div>
+
+                <input type="submit" value="Submit" class="form-submit btn btn-primary btn-lg">
+
+            </div>
+        </form>
+
+
     </div>
 
 {% endblock %}
