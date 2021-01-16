@@ -32,6 +32,10 @@
     }
 }
 
+/* body{
+    background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important;
+} */
+
 /*CSS*/
 /*Section1*/
 .rel_block{
@@ -39,6 +43,9 @@
     position: relative;
 }
 
+.section-3{
+    background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important
+}
 
 .section1{
     animation: 1s ease-out 0s 1 slideInFromTop;
@@ -51,7 +58,9 @@
 .mottos{
     position: absolute;
     bottom: 0;
+    padding: 0 5%;
     width: 100%;
+    max-width: 1300;
 }
 
 .heading-top{
@@ -67,7 +76,7 @@
 
 .block{
     width: 32%;
-    height: 30vh;
+    height: 27vh;
     background-color: #000;
     opacity: 0.8;
     color: #7ed6df;
@@ -99,7 +108,7 @@ span{
     background-color: #000;
     font-size: 40px;
     color: #fff;
-    height: 30vh;
+    height: 27vh;
     width: 100%;
     margin: auto;
     text-align: center;
@@ -112,7 +121,7 @@ span{
 }
 #wow{
     z-index: 100;
-    height: 30vh;
+    height: 27vh;
     width: 100%;
     position: absolute;
     top: 0;
