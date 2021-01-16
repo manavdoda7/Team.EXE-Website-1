@@ -34,22 +34,35 @@
 
 /*CSS*/
 /*Section1*/
+.rel_block{
+    height: 100vh;
+    position: relative;
+}
+
+
 .section1{
     animation: 1s ease-out 0s 1 slideInFromTop;
-    padding-top: 8%;
+    padding-top: 11%;
     color: #fff;
     text-align: center;
     font-size: 20px;
 }
 
 .mottos{
-    margin-top: 6%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .heading-top{
     display: block;
     text-align: center;
     margin-bottom: 2%;
+    font-size: 3.5vw;
+}
+
+.p1{
+    font-size: 18px;
 }
 
 .block{
@@ -84,7 +97,7 @@ span{
 }
 #upper{
     background-color: #000;
-    font-size: 50px;
+    font-size: 40px;
     color: #fff;
     height: 30vh;
     width: 100%;
@@ -364,13 +377,13 @@ span{
     width: 80%;
     margin: auto;
     color: #ffffffa3;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
 }
 
 form {
     margin: 40px auto 0 auto;
-    max-width: 900px;
+    max-width: 500px;
 }
 
 input[type=text],
@@ -385,7 +398,7 @@ textarea {
       font-size: 12pt;
       /* margin-bottom: 3px; */
       outline: none;
-      padding: 10px 15px;
+      padding: 7px 15px;
       width: 100%;
       border: .1px solid #ffffffa3;
   }
@@ -401,9 +414,10 @@ textarea {
     margin: 5px 0 0 0;
     outline: 0;
     padding: 10px 30px;
+    border: 1px solid white;
   }
 .button:hover {
-    background: #04c2c9;
+    background: #00767a;
   }
 #success {
     height: 0;
@@ -448,15 +462,15 @@ textarea {
     }
     .info{
         font-size: 15px;
-        margin-top: 30%;
+        /* margin-top: 30%; */
         margin-left: 0;
         padding-left: 0;
     }
-    .section1{
+    /* .section1{
         padding-top: 20%;
-    }
+    } */
     .heading-top{
-        font-size: 30px;
+        font-size: 40px;
     }
     .section2-img{
         margin-left: 15%;
@@ -492,4 +506,10 @@ textarea {
         font-size: 15px;
         margin-top: 5px;
     }
+}
+
+@media screen and (max-width: 600px){
+form {
+    min-width: 95%;
+}
 }
