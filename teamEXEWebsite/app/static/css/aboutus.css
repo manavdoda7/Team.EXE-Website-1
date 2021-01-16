@@ -46,7 +46,6 @@
   /* .section-3{
       background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important
   } */
-  
   .section1{
       animation: 1s ease-out 0s 1 slideInFromTop;
       padding-top: 12%;
@@ -57,17 +56,17 @@
   
   .mottos{
       position: absolute;
-      bottom: 0;
+      /* bottom: 0; */
       padding: 0 5%;
       width: 100%;
       max-width: 1300;
   }
 
-  .align-bottom{
+  /* .align-bottom{
       bottom: 0;
       
   }
-  
+   */
   .heading-top{
       display: block;
       text-align: center;
@@ -189,7 +188,9 @@
   .we-are{
       font-weight: 1200;
   }
-  
+  .sec2heading{
+    padding-top: 5%;
+  }
   .section2-img{
       /*width: 30%;
       height: 50vh;
@@ -197,7 +198,21 @@
       margin-left: 10%;*/
       border-radius: 25px;
   }
-  
+  .carouselContent{
+      padding-top: 0%;
+      margin-top: 0%;
+      position: absolute;
+      top: 0;
+  }
+  .carousel-control-next{
+      padding-left: 10%;
+  }
+  .carousel-control-prev{
+      padding-right: 10%;
+  }
+  .rel{
+      position: relative;
+  }
   
   /* ####################### */
   /* Section 3 */
@@ -526,8 +541,7 @@
           margin-top: 20%;
       }
       .section2-img{
-          margin-left: 10%;
-          width: 80%;
+          visibility: hidden;
       }
       .p2{
           width: 80%;
