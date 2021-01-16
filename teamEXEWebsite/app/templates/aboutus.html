@@ -94,9 +94,16 @@
 
     <!-- 3rd Section -->
     <div class="section">
-        <h1 class="form-heading">Feel Free To contact Us</h1>
+        <div class="container">
+            <h1 class="form-heading">Feel Free To contact Us</h1>
 
-        <div class="container flex">
+            <div class="invitation">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non molestias corporis totam consectetur sapiente ipsa
+                mollitia quasi, beatae eius pariatur, culpa officiis vitae animi exercitationem. Id ut tempora nemo quam?
+            </div>
+        </div>
+
+        <!-- <div class="container flex">
             <form action="https://formspree.io/f/mzbkywdk" method="post">
                 <div class="form">
                     <div class="form-group">
@@ -125,8 +132,25 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div> -->
 
+
+
+        <div class="container">
+
+            <form data-animation="pop-in" data-delay=".5s" method="POST" name=”EmailForm” id="contact-form">
+                <input placeholder="Name" type="text" name="name" id='name_inp' required />
+                <input placeholder="Enter email" type="email" name="email" required />
+                <textarea placeholder="Your Message" type="text" name="message"></textarea>
+                <div id="success">
+                    <div>
+                        Your message was sent successfully. Thanks!😄
+                        <span id="close" class="mdi mdi-close"></span>
+                    </div>
+                </div>
+                <input class="button" type="submit" id="submit" value="SUBMIT" />
+            </form>
+        </div>
     </div>
 
 {% endblock %}
