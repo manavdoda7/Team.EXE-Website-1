@@ -204,10 +204,10 @@ return <code style="color:#b8e994 ;">0</code>;
     <script src="{% static 'js/index.js' %}"></script>
 
     <script>
-    var prevEventsTexts = []
-        {% for event in previousEvents %}
-            prevEventsTexts.push("{{event.text}}")
-        {% endfor %}
+        var prevEventsTexts = []
+            {% for event in previousEvents %}
+                prevEventsTexts.push("{{event.text}}")
+            {% endfor %}
     </script>
 
 {% endblock %}
