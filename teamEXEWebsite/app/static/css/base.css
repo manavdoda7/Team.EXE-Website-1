@@ -59,6 +59,11 @@ h1 {
 
 .logo{
     width: 150px;
+    transition: .2s;
+}
+
+.logo:hover{
+    filter: drop-shadow(1px 1px 28px rgb(134, 207, 255));
 }
 
 @keyframes main-top-anim {
