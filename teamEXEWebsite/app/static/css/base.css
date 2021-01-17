@@ -31,7 +31,6 @@ body{
     border-radius: 10px;
 }
 
-
 /* body::-webkit-scrollbar {
     display: none;
 } */
@@ -218,6 +217,7 @@ body{
     height: 100%;
     overflow: hidden;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background-attachment: fixed;
 }
 #canvas{
     background-color: transparent;
