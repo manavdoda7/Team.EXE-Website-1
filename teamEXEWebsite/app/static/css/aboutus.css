@@ -66,6 +66,24 @@
     max-width: 1300;
   }
 
+  .mottos1{
+    position: absolute;
+    bottom: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1300;
+    height: 33vh;
+    display: none;
+  }
+
+  .mottos1 .p-4{
+      padding-top: 0 !important;
+  }
+
+  .p-4{
+    padding-top: 0 !important;
+  }
+
   /* .align-bottom{
       bottom: 0;
       
@@ -206,21 +224,24 @@
   }
   .img-positioning{
       text-align: center;
-      padding-left: 10%;
+      /* padding-left: 10%; */
   }
   .section2-img{
-      width: 80%;
+      width: 75%;
       /* height: 50vh;
       margin-top: 1%;
       margin-left: 10%; */
       border-radius: 25px;
   }
-  .carousel-inner{
+  .carousel-inner1{
       padding-top: 0%;
       margin-top: 0%;
       position: absolute;
       top: 10%;
   }
+  .carousel-inner1{
+    top: 0%;
+}
   .carousel-text{
     font-size: 18px;
     line-height: 2rem;
@@ -542,6 +563,15 @@
           text-align: left;
           color: #7ed6df;
       }
+
+      .section2{
+          padding: 0 1%;
+      }
+
+      .fp-tableCell{
+          height: unset !important;
+      }
+
       .info{
           font-size: 15px;
           /* margin-top: 30%; */
@@ -552,7 +582,7 @@
           padding-top: 20%;
       } */
       .heading-top{
-          font-size: 40px;
+          font-size: 33px;
       }
       /* .section2-img{
           margin-left: 15%;
@@ -568,11 +598,11 @@
   }
   @media only screen and (max-width:640px){
       .section1{
-          padding-top: 20%;
+          padding-top: 40%;
       }
       .block{
           width: 100%;
-          margin: 3%;
+          /* margin: 3%; */
       }
       .info{
           font-size: 15px;
@@ -587,12 +617,28 @@
           font-size: 15px;
           margin-top: 5px;
       }
+      .p1{
+          font-size: 15px;
+      }
+      .p1 br {
+        display: none;
+    }
   }
 
   @media only screen and (max-width:768px){
     /* .section2-img{
         visibility: hidden;
     }  */
+
+    .container{
+        width: 100%;
+    }
+
+    .invitation{
+        font-size: 15px;
+        width: 100%;
+    }
+
     .carousel-control-next-icon{
         /* padding-left: 10%; */
         position: absolute;
@@ -603,21 +649,20 @@
         position: absolute;
         top: 10%;
     }
-    .carousel-inner{
+    /* .carousel-inner{
         position: absolute;
         top: 0%;
-    }
+    } */
     .carousel-text{
 
         font-size: unset;
         line-height: 1.5rem;
     }
-    .rel_block{
-        height: unset;
-    }
     .mottos{
-        position: relative;
-        bottom: unset;
+        display: none;
+    }
+    .mottos1{
+        display: block;
     }
     .block{
         margin-bottom: 5rem;

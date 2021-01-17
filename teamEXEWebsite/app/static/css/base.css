@@ -27,8 +27,11 @@ h1 {
 /* // for small sized devices - mobile phones */
 
 @media only screen and (max-width:640px){
-    h1 {
+    .heading-main-top , .heading-light {
         font-size: 48px !important;
+    }
+    .logo{
+        width: 120px !important;
     }
 }
 
