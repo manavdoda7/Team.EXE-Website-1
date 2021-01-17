@@ -47,6 +47,7 @@
     background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important
 } */
 
+
 .section1{
     animation: 1s ease-out 0s 1 slideInFromTop;
     padding-top: 12%;
