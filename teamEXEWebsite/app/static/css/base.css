@@ -4,11 +4,36 @@
     box-sizing:border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body{
     margin:0;
     overflow-x: hidden;
     font-family: 'Ubuntu', sans-serif !important;
 }
+
+::-webkit-scrollbar{
+    height: 4px;
+    width: 4px;
+    background: rgb(0, 0, 0);
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient( rgb(9, 86, 131),rgb(95, 196, 255) );
+    /* background-color: #ffffffcb; */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+/* body::-webkit-scrollbar {
+    display: none;
+} */
 
 h1 {
     color: #7ed6df;
@@ -28,10 +53,13 @@ h1 {
 
 @media only screen and (max-width:640px){
     .heading-main-top , .heading-light {
-        font-size: 48px !important;
+        font-size: 11.5vw !important;
     }
     .logo{
         width: 120px !important;
+    }
+    .navbar{
+        background-color:hsl(204 100% 5%) !important;
     }
 }
 
@@ -47,7 +75,6 @@ h1 {
 }
 
 .navbar{
-    /* background-color:hsl(204 100% 5%) !important; */
     position: absolute;
     width: 100%;
     z-index: 100;
@@ -192,6 +219,7 @@ body{
     height: 100%;
     overflow: hidden;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    background-attachment: fixed;
 }
 #canvas{
     background-color: transparent;
