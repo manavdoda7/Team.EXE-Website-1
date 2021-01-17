@@ -38,10 +38,10 @@
   
   /*CSS*/
   /*Section1*/
-  /* .rel_block{
+  .rel_block{
       height: 100vh;
       position: relative;
-  } */
+  }
   
   /* .section-3{
       background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important
@@ -53,13 +53,17 @@
       text-align: center;
       font-size: 20px;
   }
+
+  .heading2{
+      margin-top: 5%;
+  }
   
   .mottos{
-      /* position: absolute; */
-      /* bottom: 0; */
-      padding: 0 5%;
-      width: 100%;
-      max-width: 1300;
+    position: absolute;
+    bottom: 0;
+    padding: 0 5%;
+    width: 100%;
+    max-width: 1300;
   }
 
   /* .align-bottom{
@@ -187,6 +191,10 @@
       font-size: 15px;
   }
   
+  .no-padding{
+      padding-left: 0;
+      padding-right: 0;
+  }
   .col-12{
       text-align: justify;
   }
@@ -210,27 +218,34 @@
       padding-top: 0%;
       margin-top: 0%;
       position: absolute;
-      top: 20%;
+      top: 10%;
   }
+  .carousel-text{
+    font-size: 18px;
+    line-height: 2rem;
+  }
+
   .carousel-control-next{
-      padding-left: 12%;
+      padding-left: 18%;
       /* position: absolute;
       top: 0; */
+      visibility: hidden;
   }
   .carousel-control-prev{
-      padding-right: 12%;
+      padding-right: 18%;
       /* position: absolute;
       top: 0; */
+      visibility: hidden;
   }
   .carousel-control-next-icon{
     /* padding-left: 10%; */
     position: absolute;
-    top: 30%;
+    top: 25%;
 }
 .carousel-control-prev-icon{
     /* padding-right: 10%; */
     position: absolute;
-    top: 30%;
+    top: 25%;
 }
   .rel{
       position: relative;
@@ -590,6 +605,20 @@
     .carousel-inner{
         position: absolute;
         top: 0%;
+        font-size: unset;
+    }
+    .rel_block{
+        height: unset;
+    }
+    .mottos{
+        position: relative;
+        bottom: unset;
+    }
+    .block{
+        margin-bottom: 5rem;
+    }
+    .carousel{
+        margin-top: 5%;
     }
   }
   
