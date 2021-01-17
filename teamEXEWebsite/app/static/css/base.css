@@ -203,4 +203,40 @@ body{
 /* Footer */
 #footer {
     background-color: #00000088;
+    height: 50px;
+}
+.footer-p{
+    color: #ffffff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 25px;
+    font-size: 25px;
+    margin-left: 25px;
+    margin-bottom: 0;
+}
+.media-links{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+.fa{
+    color: #fff;
+    /* font-size: 30px !important; */
+}
+
+
+
+/*Navbar color on dropdown*/
+@media only screen and (max-width:991px){
+    .navbar-nav{
+        background-color: #000;
+        opacity: 0.9;
+        padding-left: 10px;
+        width: 120px;
+        float: left;
+    }
 }
