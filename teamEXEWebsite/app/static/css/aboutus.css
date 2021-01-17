@@ -208,6 +208,11 @@
       padding-right: 5%;
       font-size: 15px;
   }
+
+    .row{
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+    }
   
   .no-padding{
       padding-left: 0;
