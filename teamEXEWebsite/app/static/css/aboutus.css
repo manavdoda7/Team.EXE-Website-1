@@ -587,7 +587,7 @@
           padding-top: 20%;
       } */
       .heading-top{
-          padding-top: 25px;
+          
           font-size: 33px;
       }
       /* .section2-img{
@@ -605,6 +605,9 @@
   @media only screen and (max-width:640px){
       .section1{
           padding-top: 40%;
+      }
+      .heading-top{
+        padding-top: 25px;
       }
       .block{
           width: 100%;
