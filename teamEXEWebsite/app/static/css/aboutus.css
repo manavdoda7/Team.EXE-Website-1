@@ -605,7 +605,11 @@
     .carousel-inner{
         position: absolute;
         top: 0%;
+    }
+    .carousel-text{
+
         font-size: unset;
+        line-height: 1.5rem;
     }
     .rel_block{
         height: unset;
