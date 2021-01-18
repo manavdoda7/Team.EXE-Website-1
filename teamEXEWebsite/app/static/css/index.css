@@ -121,20 +121,11 @@
 }
 
 /* Upcoming Events Section */
-@keyframes slideInFromTop {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-}
 .upcoming-heading{
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
     text-align: center;
-    animation: 1s ease-out 0s 1 slideInFromTop;
 }
 
 .event-card {
