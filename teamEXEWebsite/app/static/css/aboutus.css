@@ -36,6 +36,10 @@
       background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important;
   } */
   
+  ul{
+      padding-left: 10px;
+  }
+
   /*CSS*/
   /*Section1*/
   .rel_block{
@@ -43,9 +47,10 @@
       position: relative;
   }
   
-  /* .section-3{
-      background: radial-gradient(ellipse at bottom, #000000 0%, #20243a 100%) !important
-  } */
+  .section-3{
+      padding-top: 40px;
+    padding-bottom: 80px;
+  }
   .section1{
       animation: 1s ease-out 0s 1 slideInFromTop;
       padding-top: 12%;
@@ -117,7 +122,7 @@
       list-style-type: none;
       top: 0;
       left: 0;
-      margin-top: 17%;
+      margin-top: 10vh;
       font-size: 20px;
       height: 100%;
   }
@@ -128,6 +133,12 @@
   .item_title{
       height: 27vh;
   }
+
+  .mottos1 #upper{
+      font-size: 25px;
+      height: 8vh;
+  }
+
   #upper{
       background-color: #000;
       font-size: 40px;
@@ -248,7 +259,7 @@
     top: 0%;
 }
   .carousel-text{
-    font-size: 18px;
+    font-size: 16px;
     line-height: 2rem;
   }
 
@@ -279,7 +290,6 @@
 }
   .rel{
       position: relative;
-      margin-top: 4%;
   }
   
   /* ####################### */
@@ -639,9 +649,9 @@
   } */
 
   @media only screen and (max-width:768px){
-    /* .section2-img{
-        visibility: hidden;
-    }  */
+    .section2-img{
+        width: 90%;
+    } 
 
     .section1{
         padding-top: 20%;
@@ -677,6 +687,10 @@
         /* transform: translateX(-50%); */
         color: #7ed6df;
         /* transition: "text-align" 1s linear; */
+    }
+
+    .p-4{
+        padding: 0 !important;
     }
 
     .container{
