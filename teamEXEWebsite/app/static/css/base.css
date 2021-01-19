@@ -79,7 +79,7 @@ h1 {
     /* opacity: 0.5; */
     color: #ffffff;
 }
-  
+
 .dropdown>.dropdown-toggle:active {
 /*Without this, clicking will make it sticky*/
     pointer-events: none;
@@ -98,9 +98,12 @@ h1 {
 }
 
 .team-btn{
-    color: #636e72;
-    font-weight: 600;
+    color: #ffffff80;
+    /* font-weight: 600; */
     font-size: 16px;
+    font-family: 'Ubuntu', sans-serif !important;
+    padding: 8px;
+    padding-bottom: 0px;
 }
 
 .team-btn:hover, .team-btn:active, .team-btn:focus{
@@ -347,11 +350,11 @@ footer {
     transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
     width: 55px;
   }
-  
+
   footer .icon-wrap i{
     color: white;
   }
-  
+
   footer .icon-wrap .mdi {
     color: #fff;
     line-height: 55px;
@@ -366,9 +369,9 @@ footer {
   footer .icon-wrap .icon:hover {
     box-shadow: 0 0 0 3px rgba(4, 94, 201, 0.1);
     transform: scale(0.9);
-      
+
   }
-  
+
   footer .icon-wrap .icon1:hover{
     background-color: #0e76a8;
   }
@@ -384,13 +387,13 @@ footer {
   footer .icon-wrap .icon4:hover{
     background-color: #be3a2c;
   }
-  
+
   footer .icon-wrap .icon6:hover{
     background-color: red;
   }
 
 
-  
+
   footer .icon-wrap .icon:hover .mdi {
     color: #fff;
   }
@@ -420,7 +423,20 @@ footer {
         background-color: #000;
         opacity: 0.9;
         padding-left: 10px;
-        width: 120px;
+        width: 150px;
         float: left;
+    }
+
+    .team-btn{
+        padding: 8px 0px;
+    }
+
+    .dropdown:hover>.dropdown-toggle{
+        padding-bottom: 0%;
+    }
+
+    .dropdown:hover>.dropdown-menu{
+        padding: 0;
+        background-color: transparent;
     }
 }
