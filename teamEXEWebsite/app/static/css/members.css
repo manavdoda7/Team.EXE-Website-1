@@ -19,21 +19,105 @@
     margin-bottom: 8%;
 }
 
-.member-image{
-    border-radius: 50%;
-}
-
 .member-name{
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 400;
     color: #ffffff;
-    margin-top: 30px;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .member-position{
-    font-size: 26px;
-    font-weight: 600;
-    color: #0082af;
+    font-size: 20px;
+    /* font-weight: 600; */
+    color: #1abc9c;
+}
+
+.member-image{
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.img-container{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.member-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(11, 13, 19, 0.76) , rgba(0, 0, 0, 0.616));
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.member-overlay:hover{
+    opacity: 1;
+}
+
+.tagline{
+    font-size: 13px;
+    position: absolute;
+    top: 35%;
+    color: #7ed6df;
+    text-shadow : 0 0 10px #000;
+}
+
+.social-links{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 58%;
+    left: 25%;
+}
+
+.coordinator_section .social-links{
+    position: absolute;
+    top: 65%;
+    left: 31%;
+}
+
+.icon{
+    color: #ffffff;
+    font-size: 20pt;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.icon:hover {
+    box-shadow: 0 0 0 3px rgba(4, 94, 201, 0.1);
+    transform: scale(0.9);
+}
+
+.icon1{
+    margin-right: 10%;
+}
+
+.mdi{
+    position: relative;
+    top: 10%;
+}
+
+.icon1:hover{
+    background-color: #0e76a8;
+}
+
+.icon2:hover{
+    background-color: #2ecc71;
+    outline: 0;
+}
+
+.coordinator_section .img-container{
+    width: 250px;
+    height: 250px;
 }
 
 .executive_section{

@@ -1,5 +1,22 @@
 <div class="member-card">
-    <img class="member-image" src="{{member.imageURL}}">
+    <div class="img-container mx-auto">
+        <img class="member-image img-fluid" src="{{member.imageURL}}">
+        <div class="member-overlay mx-auto">
+            <p class="tagline">{{member.tagline}}</p>
+            <div class="social-links">
+                <a href="{{member.linkedin}}">
+                    <div class="flex icon icon1" id="icon-1">
+                      <i class="mdi mdi-linkedin"></i>
+                    </div>
+                </a>
+                <a href="{{member.github}}">
+                    <div class="flex icon icon2" id="icon-2">
+                        <i class="mdi mdi-github"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <p class="member-name">{{member.name}}</p>
     <p class="member-position">{{member.position}}</p>
 </div>
