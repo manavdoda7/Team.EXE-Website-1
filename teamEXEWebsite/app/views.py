@@ -21,5 +21,8 @@ def aboutus(request):
 def members(request):
     return render(request, 'members.html')
 
+def alumni(request):
+    return render(request, 'alumni.html')    
+
 def activities(request):
     return render(request, 'activities.html')

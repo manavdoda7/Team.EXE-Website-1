@@ -76,12 +76,25 @@ h1 {
 .dropdown:hover>.dropdown-menu {
     display: block;
     background-color: #00000088;
+    /* opacity: 0.5; */
     color: #ffffff;
 }
   
 .dropdown>.dropdown-toggle:active {
 /*Without this, clicking will make it sticky*/
     pointer-events: none;
+}
+
+.dropdown-item{
+    background-color: transparent;
+    color: #fff;
+    opacity: 0.3;
+}
+
+.dropdown-item:hover{
+    background-color: transparent;
+    color: #fff;
+    opacity: 1;
 }
 
 .team-btn{
