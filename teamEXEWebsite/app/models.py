@@ -11,10 +11,10 @@ class PreviousEvent(models.Model):
         return self.title
 
 positions = (
-    ('Co', 'Coordinator'),
-    ('Ex', 'Executive Member'),
-    ('Al', 'Alumnus'),
-    ('Vo', 'Volunteer')
+    ('Coordinator', 'Coordinator'),
+    ('Executive Member', 'Executive Member'),
+    ('Alumnus', 'Alumnus'),
+    ('Volunteer', 'Volunteer')
 )
 
 class Member(models.Model):

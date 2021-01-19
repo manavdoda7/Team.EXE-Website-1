@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import PreviousEvent
+from .models import PreviousEvent, Member
 
 # Create your views here.
 
@@ -19,10 +19,17 @@ def aboutus(request):
     return render(request, 'aboutus.html')
 
 def members(request):
-    return render(request, 'members.html')
+    context = {
+        'coordinators' : Member.objects.filter(position='Coordinator'),
+        'executiveMembers' : Member.objects.filter(position='Executive Member')
+    }
+    return render(request, 'members.html', context)
 
 def alumni(request):
-    return render(request, 'alumni.html')    
+    context = {
+        'alumni' : Member.object.filter(position='Alumnus')
+    }
+    return render(request, 'alumni.html', context)
 
 def activities(request):
     return render(request, 'activities.html')
