@@ -1,9 +1,9 @@
-.members{
-    margin-top: 100px;
+.container{
+    padding-top: 100px;
 }
 
 .heading{
-    font-size: 40px;
+    font-size: 50px;
     color: #7ed6df;
-
+    text-align: center;
 }
