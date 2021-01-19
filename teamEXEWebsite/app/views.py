@@ -27,7 +27,7 @@ def members(request):
 
 def alumni(request):
     context = {
-        'alumni' : Member.object.filter(position='Alumnus')
+        'alumni' : Member.objects.filter(position='Alumnus')
     }
     return render(request, 'alumni.html', context)
 
