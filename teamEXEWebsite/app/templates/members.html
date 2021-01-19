@@ -12,7 +12,49 @@
 <div class="container">
     <div class="members">
         <div class="row">
-            <h2 class="heading mx-auto">Coordinators</h2>
+            <div class="col-12 mx-auto">
+                <h2 class="heading mx-auto">Coordinators</h2>
+            </div>
+        </div>
+        <div class="coordinator_section">
+            <div class="row">
+                <div class="col-md-2"></div>
+                {% for member in coordinators %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                {% for member in coordinators %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mx-auto">
+                <h2 class="heading mx-auto">Executive Members</h2>
+            </div>
+        </div>
+        <div class="executive_section">
+            <div class="row">
+                {% for member in executiveMembers %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                {% for member in executiveMembers %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                {% for member in executiveMembers %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
