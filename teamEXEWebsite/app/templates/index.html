@@ -48,7 +48,7 @@ return <code style="color:#b8e994 ;">0</code>;
                 <div class="row">
                     <div class="col-12 col-md-6 res-class">
                         <p class="main-description-text">
-                            We are departmental team of Computer Science & Engineering Department for Techfest NIMBUS.
+                            We are the departmental team of Computer Science & Engineering Department for Techfest NIMBUS.
                             We are passionate about technology & our curiousity drives us towards the development of new things and taking new projects
                         </p>
                     </div>
@@ -76,29 +76,102 @@ return <code style="color:#b8e994 ;">0</code>;
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-4">
-                    <div class="card mt-4 event-card">
-
-                        <div class=" face face1">
-                            <div class="card-content">
-                                <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
-                            </div>
+                <div class="col-lg-4 mt-4 event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
                         </div>
+                    </div>
 
-                        <div class="face face2">
-                            <div class="card-content">
-                                <h4 class="card-title"> Event Name </h4>
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name </h4>
 
-                                <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
 
-                                <a href="" class="btn btn-light btn-sm">Know More</a>
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
 
-                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-4 mt-4 event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
+                        </div>
+                    </div>
+
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name </h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-4 event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
+                        </div>
+                    </div>
+
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name </h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-lg-4 card mt-4 event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                        </div>
+                    </div>
+
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name </h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 card mt-4 event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                        </div>
+                    </div>
+
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name </h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- <div class="col-lg-4">
                     <div class="card mt-4 event-card">
 
                         <div class=" face face1">
@@ -140,7 +213,7 @@ return <code style="color:#b8e994 ;">0</code>;
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
 
@@ -180,7 +253,7 @@ return <code style="color:#b8e994 ;">0</code>;
                             <div id="prev-events-carousel" class=" carousel slide" data-ride="carousel">
                                 <div class="carousel-inner" style=" width:100%; height: 500px !important;">
                                     {% for event in previousEvents %}
-                                    <div class="carousel-item 
+                                    <div class="carousel-item
                                         {% if forloop.counter == 1 %}
                                         active
                                         {% endif %}
@@ -204,10 +277,10 @@ return <code style="color:#b8e994 ;">0</code>;
     <script src="{% static 'js/index.js' %}"></script>
 
     <script>
-    var prevEventsTexts = []
-        {% for event in previousEvents %}
-            prevEventsTexts.push("{{event.text}}")
-        {% endfor %}
+        var prevEventsTexts = []
+            {% for event in previousEvents %}
+                prevEventsTexts.push("{{event.text}}")
+            {% endfor %}
     </script>
 
 {% endblock %}
