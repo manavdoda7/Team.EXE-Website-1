@@ -9,14 +9,34 @@
 {% endblock %}
 
 {% block main_section %}
-    <div class="container">
-        <div class="members">
-            <div class="row">
+<div class="container">
+    <div class="members">
+        <div class="row">
+            <div class="col-12 mx-auto">
                 <h2 class="heading mx-auto">Alumni</h2>
             </div>
         </div>
+        <div class="alumni_section">
+            <div class="row">
+                {% for member in alumni %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                {% for member in alumni %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+                {% for member in alumni %}
+                    <div class="col-md-4 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-
+</div>
 {% endblock %}
 
 {% block scripts %}
