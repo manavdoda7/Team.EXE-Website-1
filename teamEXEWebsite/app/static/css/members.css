@@ -34,8 +34,8 @@
 }
 
 .member-image{
-    overflow: hidden;
-    border-radius: 50%;
+    /* overflow: hidden; */
+    /* border-radius: 50%; */
 }
 
 .img-container{
@@ -43,28 +43,31 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    transition: .5s all;
+    overflow: hidden;
 }
 
 .member-overlay{
     position: absolute;
-    top: 0;
+    top: -230px;
     left: 0;
     height: 100%;
     width: 100%;
     background: linear-gradient(rgba(11, 13, 19, 0.76) , rgba(0, 0, 0, 0.616));
-    border-radius: 50%;
+    /* border-radius: 50%; */
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.5s;
+    outline: 1.5px solid white;
+    outline-offset: 15px;
 }
 
-.member-overlay:hover{
-    opacity: 1;
-}
+
 
 .tagline{
+    padding: 0 10px ;
     font-size: 13px;
     position: absolute;
-    top: 35%;
+    top: 30%;
     color: #7ed6df;
     text-shadow : 0 0 10px #000;
 }
@@ -111,16 +114,27 @@
 }
 
 .icon2:hover{
-    background-color: #2ecc71;
+    background-color: #2a2e2b;
+    box-shadow: 0 0 0 3px rgba(2, 44, 95, 0.1);
     outline: 0;
 }
 
 .coordinator_section .img-container{
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 230px;
 }
 
 .executive_section{
     margin-top: 10%;
     margin-bottom: 20%;
+}
+
+.img-container:hover{
+    border-radius: 0;
+}
+
+.img-container:hover  .member-overlay{
+    opacity: 1;
+    top: 0;
+    outline-offset: -10px;
 }
