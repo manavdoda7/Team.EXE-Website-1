@@ -3,9 +3,9 @@
 {% load static %}
 
 {% block head_block %}
-    <!-- Add title tag and css specific to this page here -->
-    <link rel="stylesheet" href="{% static 'css/members.css' %}">
-    <title>Members - Team .EXE</title>
+<!-- Add title tag and css specific to this page here -->
+<link rel="stylesheet" href="{% static 'css/members.css' %}">
+<title>Members - Team .EXE</title>
 {% endblock %}
 
 {% block main_section %}
@@ -20,14 +20,14 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 {% for member in coordinators %}
-                    <div class="col-md-4 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-4 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
                 {% for member in coordinators %}
-                    <div class="col-md-4 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-4 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
                 <div class="col-md-2"></div>
             </div>
@@ -40,36 +40,36 @@
         <div class="executive_section">
             <div class="row">
                 {% for member in executiveMembers %}
-                    <div class="col-md-3 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-3 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
                 {% for member in executiveMembers %}
-                    <div class="col-md-3 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-3 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
                 {% for member in executiveMembers %}
-                    <div class="col-md-3 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-3 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
                 {% for member in executiveMembers %}
-                    <div class="col-md-3 text-center">
-                        {% include 'member_card.html' %}
-                    </div>
+                <div class="col-md-3 text-center">
+                    {% include 'member_card.html' %}
+                </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 </div>
 
-   
+
 
 {% endblock %}
 
 {% block scripts %}
-    <!-- Add all javascript code specific to this page here -->
-    <script src="{% static 'js/members.js' %}"></script>
+<!-- Add all javascript code specific to this page here -->
+<script src="{% static 'js/members.js' %}"></script>
 
 {% endblock %}

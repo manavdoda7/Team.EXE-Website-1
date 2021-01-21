@@ -1,15 +1,15 @@
 
-$(document).ready(function() {
-    $("#move-down").click(function() {
+$(document).ready(function () {
+    $("#move-down").click(function () {
         fullpage_api.moveTo(2);
     })
 
 })
 
 $.when($.ready)
-.then(function(){
-    
-})
+    .then(function () {
+
+    })
 
 // document.onreadystatechange = function () {
 //     var state = document.readyState
@@ -66,7 +66,7 @@ function Box() {
     this.shadow_length = 0;
     this.color = colors[Math.floor((Math.random() * colors.length))];
 
-    this.getDots = function() {
+    this.getDots = function () {
 
         var full = (Math.PI * 2) / 4;
 
@@ -95,13 +95,13 @@ function Box() {
             p4: p4
         };
     }
-    this.rotate = function() {
+    this.rotate = function () {
         var speed = (20 - this.half_size) / 20;
         this.r += speed * 0.002;
         this.x += speed;
         this.y += speed;
     }
-    this.draw = function() {
+    this.draw = function () {
         var dots = this.getDots();
         ctx.beginPath();
         ctx.moveTo(dots.p1.x, dots.p1.y);
@@ -119,7 +119,7 @@ function Box() {
             this.x -= c.width + 100;
         }
     }
-    this.drawShadow = function() {
+    this.drawShadow = function () {
         var dots = this.getDots();
         var angles = [];
         var points = [];
@@ -181,18 +181,18 @@ window.onresize = resize;
 // }
 
 
-function collisionDetection(b){
-	for (var i = boxes.length - 1; i >= 0; i--) {
-		if(i != b){
-			var dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
-			var dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
-			var d = Math.sqrt(dx * dx + dy * dy);
-			if (d < boxes[b].half_size + boxes[i].half_size) {
-			    boxes[b].half_size = boxes[b].half_size > 1 ? boxes[b].half_size-=1 : 1;
-			    boxes[i].half_size = boxes[i].half_size > 1 ? boxes[i].half_size-=1 : 1;
-			}
-		}
-	}
+function collisionDetection(b) {
+    for (var i = boxes.length - 1; i >= 0; i--) {
+        if (i != b) {
+            var dx = (boxes[b].x + boxes[b].half_size) - (boxes[i].x + boxes[i].half_size);
+            var dy = (boxes[b].y + boxes[b].half_size) - (boxes[i].y + boxes[i].half_size);
+            var d = Math.sqrt(dx * dx + dy * dy);
+            if (d < boxes[b].half_size + boxes[i].half_size) {
+                boxes[b].half_size = boxes[b].half_size > 1 ? boxes[b].half_size -= 1 : 1;
+                boxes[i].half_size = boxes[i].half_size > 1 ? boxes[i].half_size -= 1 : 1;
+            }
+        }
+    }
 }
 
 

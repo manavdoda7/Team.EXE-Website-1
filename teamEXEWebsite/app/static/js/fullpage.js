@@ -8,91 +8,91 @@
  *
  * Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
  */
-(function( root, window, document, factory, undefined) {
-    if( typeof define === 'function' && define.amd ) {
+(function (root, window, document, factory, undefined) {
+    if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define( function() {
+        define(function () {
             root.fullpage = factory(window, document);
             return root.fullpage;
-        } );
-    } else if( typeof exports === 'object' ) {
+        });
+    } else if (typeof exports === 'object') {
         // Node. Does not work with strict CommonJS.
         module.exports = factory(window, document);
     } else {
         // Browser globals.
         window.fullpage = factory(window, document);
     }
-}(this, window, document, function(window, document){
+}(this, window, document, function (window, document) {
     'use strict';
 
     // keeping central set of classnames and selectors
-    var WRAPPER =               'fullpage-wrapper';
-    var WRAPPER_SEL =           '.' + WRAPPER;
+    var WRAPPER = 'fullpage-wrapper';
+    var WRAPPER_SEL = '.' + WRAPPER;
 
     // slimscroll
-    var SCROLLABLE =            'fp-scrollable';
-    var SCROLLABLE_SEL =        '.' + SCROLLABLE;
+    var SCROLLABLE = 'fp-scrollable';
+    var SCROLLABLE_SEL = '.' + SCROLLABLE;
 
     // util
-    var RESPONSIVE =            'fp-responsive';
-    var NO_TRANSITION =         'fp-notransition';
-    var DESTROYED =             'fp-destroyed';
-    var ENABLED =               'fp-enabled';
-    var VIEWING_PREFIX =        'fp-viewing';
-    var ACTIVE =                'active';
-    var ACTIVE_SEL =            '.' + ACTIVE;
-    var COMPLETELY =            'fp-completely';
-    var COMPLETELY_SEL =        '.' + COMPLETELY;
+    var RESPONSIVE = 'fp-responsive';
+    var NO_TRANSITION = 'fp-notransition';
+    var DESTROYED = 'fp-destroyed';
+    var ENABLED = 'fp-enabled';
+    var VIEWING_PREFIX = 'fp-viewing';
+    var ACTIVE = 'active';
+    var ACTIVE_SEL = '.' + ACTIVE;
+    var COMPLETELY = 'fp-completely';
+    var COMPLETELY_SEL = '.' + COMPLETELY;
 
     // section
-    var SECTION_DEFAULT_SEL =   '.section';
-    var SECTION =               'fp-section';
-    var SECTION_SEL =           '.' + SECTION;
-    var SECTION_ACTIVE_SEL =    SECTION_SEL + ACTIVE_SEL;
-    var TABLE_CELL =            'fp-tableCell';
-    var TABLE_CELL_SEL =        '.' + TABLE_CELL;
-    var AUTO_HEIGHT =           'fp-auto-height';
-    var AUTO_HEIGHT_SEL =       '.' + AUTO_HEIGHT;
+    var SECTION_DEFAULT_SEL = '.section';
+    var SECTION = 'fp-section';
+    var SECTION_SEL = '.' + SECTION;
+    var SECTION_ACTIVE_SEL = SECTION_SEL + ACTIVE_SEL;
+    var TABLE_CELL = 'fp-tableCell';
+    var TABLE_CELL_SEL = '.' + TABLE_CELL;
+    var AUTO_HEIGHT = 'fp-auto-height';
+    var AUTO_HEIGHT_SEL = '.' + AUTO_HEIGHT;
     var AUTO_HEIGHT_RESPONSIVE = 'fp-auto-height-responsive';
     var AUTO_HEIGHT_RESPONSIVE_SEL = '.' + AUTO_HEIGHT_RESPONSIVE;
-    var NORMAL_SCROLL =         'fp-normal-scroll';
-    var NORMAL_SCROLL_SEL =     '.' + NORMAL_SCROLL;
+    var NORMAL_SCROLL = 'fp-normal-scroll';
+    var NORMAL_SCROLL_SEL = '.' + NORMAL_SCROLL;
 
     // section nav
-    var SECTION_NAV =           'fp-nav';
-    var SECTION_NAV_SEL =       '#' + SECTION_NAV;
-    var SECTION_NAV_TOOLTIP =   'fp-tooltip';
-    var SECTION_NAV_TOOLTIP_SEL='.'+SECTION_NAV_TOOLTIP;
-    var SHOW_ACTIVE_TOOLTIP =   'fp-show-active';
+    var SECTION_NAV = 'fp-nav';
+    var SECTION_NAV_SEL = '#' + SECTION_NAV;
+    var SECTION_NAV_TOOLTIP = 'fp-tooltip';
+    var SECTION_NAV_TOOLTIP_SEL = '.' + SECTION_NAV_TOOLTIP;
+    var SHOW_ACTIVE_TOOLTIP = 'fp-show-active';
 
     // slide
-    var SLIDE_DEFAULT_SEL =     '.slide';
-    var SLIDE =                 'fp-slide';
-    var SLIDE_SEL =             '.' + SLIDE;
-    var SLIDE_ACTIVE_SEL =      SLIDE_SEL + ACTIVE_SEL;
-    var SLIDES_WRAPPER =        'fp-slides';
-    var SLIDES_WRAPPER_SEL =    '.' + SLIDES_WRAPPER;
-    var SLIDES_CONTAINER =      'fp-slidesContainer';
-    var SLIDES_CONTAINER_SEL =  '.' + SLIDES_CONTAINER;
-    var TABLE =                 'fp-table';
+    var SLIDE_DEFAULT_SEL = '.slide';
+    var SLIDE = 'fp-slide';
+    var SLIDE_SEL = '.' + SLIDE;
+    var SLIDE_ACTIVE_SEL = SLIDE_SEL + ACTIVE_SEL;
+    var SLIDES_WRAPPER = 'fp-slides';
+    var SLIDES_WRAPPER_SEL = '.' + SLIDES_WRAPPER;
+    var SLIDES_CONTAINER = 'fp-slidesContainer';
+    var SLIDES_CONTAINER_SEL = '.' + SLIDES_CONTAINER;
+    var TABLE = 'fp-table';
 
     // slide nav
-    var SLIDES_NAV =            'fp-slidesNav';
-    var SLIDES_NAV_SEL =        '.' + SLIDES_NAV;
-    var SLIDES_NAV_LINK_SEL =   SLIDES_NAV_SEL + ' a';
-    var SLIDES_ARROW =          'fp-controlArrow';
-    var SLIDES_ARROW_SEL =      '.' + SLIDES_ARROW;
-    var SLIDES_PREV =           'fp-prev';
-    var SLIDES_PREV_SEL =       '.' + SLIDES_PREV;
-    var SLIDES_ARROW_PREV =     SLIDES_ARROW + ' ' + SLIDES_PREV;
+    var SLIDES_NAV = 'fp-slidesNav';
+    var SLIDES_NAV_SEL = '.' + SLIDES_NAV;
+    var SLIDES_NAV_LINK_SEL = SLIDES_NAV_SEL + ' a';
+    var SLIDES_ARROW = 'fp-controlArrow';
+    var SLIDES_ARROW_SEL = '.' + SLIDES_ARROW;
+    var SLIDES_PREV = 'fp-prev';
+    var SLIDES_PREV_SEL = '.' + SLIDES_PREV;
+    var SLIDES_ARROW_PREV = SLIDES_ARROW + ' ' + SLIDES_PREV;
     var SLIDES_ARROW_PREV_SEL = SLIDES_ARROW_SEL + SLIDES_PREV_SEL;
-    var SLIDES_NEXT =           'fp-next';
-    var SLIDES_NEXT_SEL =       '.' + SLIDES_NEXT;
-    var SLIDES_ARROW_NEXT =     SLIDES_ARROW + ' ' + SLIDES_NEXT;
+    var SLIDES_NEXT = 'fp-next';
+    var SLIDES_NEXT_SEL = '.' + SLIDES_NEXT;
+    var SLIDES_ARROW_NEXT = SLIDES_ARROW + ' ' + SLIDES_NEXT;
     var SLIDES_ARROW_NEXT_SEL = SLIDES_ARROW_SEL + SLIDES_NEXT_SEL;
 
     function initialise(containerSelector, options) {
-        var isOK = options && new RegExp('([\\d\\w]{8}-){3}[\\d\\w]{8}|^(?=.*?[A-Y])(?=.*?[a-y])(?=.*?[0-8])(?=.*?[#?!@$%^&*-]).{8,}$').test(options['li'+'cen'+'seK' + 'e' + 'y']) || document.domain.indexOf('al'+'varotri' +'go' + '.' + 'com') > -1;
+        var isOK = options && new RegExp('([\\d\\w]{8}-){3}[\\d\\w]{8}|^(?=.*?[A-Y])(?=.*?[a-y])(?=.*?[0-8])(?=.*?[#?!@$%^&*-]).{8,}$').test(options['li' + 'cen' + 'seK' + 'e' + 'y']) || document.domain.indexOf('al' + 'varotri' + 'go' + '.' + 'com') > -1;
 
         // cache common elements
         var $htmlBody = $('html, body');
@@ -100,7 +100,7 @@
         var $body = $('body')[0];
 
         //only once my friend!
-        if(hasClass($html, ENABLED)){ displayWarnings(); return; }
+        if (hasClass($html, ENABLED)) { displayWarnings(); return; }
 
         var FP = {};
 
@@ -108,7 +108,7 @@
         options = deepExtend({
             //navigation
             menu: false,
-            anchors:[],
+            anchors: [],
             lockAnchors: false,
             navigation: false,
             navigationPosition: 'right',
@@ -156,7 +156,7 @@
             controlArrows: true,
             controlArrowColor: '#fff',
             verticalCentered: true,
-            sectionsColor : [],
+            sectionsColor: [],
             paddingTop: 0,
             paddingBottom: 0,
             fixedElements: null,
@@ -212,12 +212,12 @@
         var controlPressed;
         var startingSection;
         var isScrollAllowed = {};
-        isScrollAllowed.m = {  'up':true, 'down':true, 'left':true, 'right':true };
+        isScrollAllowed.m = { 'up': true, 'down': true, 'left': true, 'right': true };
         isScrollAllowed.k = deepExtend({}, isScrollAllowed.m);
         var MSPointer = getMSPointer();
         var events = {
-            touchmove: 'ontouchmove' in window ? 'touchmove' :  MSPointer.move,
-            touchstart: 'ontouchstart' in window ? 'touchstart' :  MSPointer.down
+            touchmove: 'ontouchmove' in window ? 'touchmove' : MSPointer.move,
+            touchstart: 'ontouchstart' in window ? 'touchstart' : MSPointer.down
         };
         var scrollBarHandler;
 
@@ -227,14 +227,14 @@
         //cheks for passive event support
         var g_supportsPassive = false;
         try {
-          var opts = Object.defineProperty({}, 'passive', {
-            get: function() {
-              g_supportsPassive = true;
-            }
-          });
-          window.addEventListener("testPassive", null, opts);
-          window.removeEventListener("testPassive", null, opts);
-        } catch (e) {}
+            var opts = Object.defineProperty({}, 'passive', {
+                get: function () {
+                    g_supportsPassive = true;
+                }
+            });
+            window.addEventListener("testPassive", null, opts);
+            window.removeEventListener("testPassive", null, opts);
+        } catch (e) { }
 
         //timeouts
         var resizeId;
@@ -270,7 +270,7 @@
         //easeInOutCubic animation included in the plugin
         window.fp_easings = deepExtend(window.fp_easings, {
             easeInOutCubic: function (t, b, c, d) {
-                if ((t/=d/2) < 1) return c/2*t*t*t + b;return c/2*((t-=2)*t*t + 2) + b;
+                if ((t /= d / 2) < 1) return c / 2 * t * t * t + b; return c / 2 * ((t -= 2) * t * t + 2) + b;
             }
         });
 
@@ -278,9 +278,9 @@
         * Sets the autoScroll option.
         * It changes the scroll bar visibility and the history of the site as a result.
         */
-        function setAutoScrolling(value, type){
+        function setAutoScrolling(value, type) {
             //removing the transformation
-            if(!value){
+            if (!value) {
                 silentScroll(0);
             }
 
@@ -288,7 +288,7 @@
 
             var element = $(SECTION_ACTIVE_SEL)[0];
 
-            if(options.autoScrolling && !options.scrollBar){
+            if (options.autoScrolling && !options.scrollBar) {
                 css($htmlBody, {
                     'overflow': 'hidden',
                     'height': '100%'
@@ -302,14 +302,14 @@
                     'touch-action': 'none'
                 });
 
-                if(element != null){
+                if (element != null) {
                     //moving the container up
                     silentScroll(element.offsetTop);
                 }
-            }else{
+            } else {
                 css($htmlBody, {
-                    'overflow' : 'visible',
-                    'height' : 'initial'
+                    'overflow': 'visible',
+                    'height': 'initial'
                 });
 
                 var recordHistory = !options.autoScrolling ? false : originals.recordHistory;
@@ -332,39 +332,39 @@
         /**
         * Defines wheter to record the history for each hash change in the URL.
         */
-        function setRecordHistory(value, type){
+        function setRecordHistory(value, type) {
             setVariableState('recordHistory', value, type);
         }
 
         /**
         * Defines the scrolling speed
         */
-        function setScrollingSpeed(value, type){
+        function setScrollingSpeed(value, type) {
             setVariableState('scrollingSpeed', value, type);
         }
 
         /**
         * Sets fitToSection
         */
-        function setFitToSection(value, type){
+        function setFitToSection(value, type) {
             setVariableState('fitToSection', value, type);
         }
 
         /**
         * Sets lockAnchors
         */
-        function setLockAnchors(value){
+        function setLockAnchors(value) {
             options.lockAnchors = value;
         }
 
         /**
         * Adds or remove the possibility of scrolling through sections by using the mouse wheel or the trackpad.
         */
-        function setMouseWheelScrolling(value){
-            if(value){
+        function setMouseWheelScrolling(value) {
+            if (value) {
                 addMouseWheelHandler();
                 addMiddleWheelHandler();
-            }else{
+            } else {
                 removeMouseWheelHandler();
                 removeMiddleWheelHandler();
             }
@@ -376,15 +376,15 @@
         *
         * @param directions string containing the direction or directions separated by comma.
         */
-        function setAllowScrolling(value, directions){
-            if(typeof directions !== 'undefined'){
-                directions = directions.replace(/ /g,'').split(',');
+        function setAllowScrolling(value, directions) {
+            if (typeof directions !== 'undefined') {
+                directions = directions.replace(/ /g, '').split(',');
 
-                directions.forEach(function (direction){
+                directions.forEach(function (direction) {
                     setIsScrollAllowed(value, direction, 'm');
                 });
             }
-            else{
+            else {
                 setIsScrollAllowed(value, 'all', 'm');
             }
         }
@@ -392,11 +392,11 @@
         /**
         * Adds or remove the mouse wheel hijacking
         */
-        function setMouseHijack(value){
-            if(value){
+        function setMouseHijack(value) {
+            if (value) {
                 setMouseWheelScrolling(true);
                 addTouchHandler();
-            }else{
+            } else {
                 setMouseWheelScrolling(false);
                 removeTouchHandler();
             }
@@ -405,14 +405,14 @@
         /**
         * Adds or remove the possibility of scrolling through sections by using the keyboard arrow keys
         */
-        function setKeyboardScrolling(value, directions){
-            if(typeof directions !== 'undefined'){
-                directions = directions.replace(/ /g,'').split(',');
+        function setKeyboardScrolling(value, directions) {
+            if (typeof directions !== 'undefined') {
+                directions = directions.replace(/ /g, '').split(',');
 
-                directions.forEach(function(direction){
+                directions.forEach(function (direction) {
                     setIsScrollAllowed(value, direction, 'k');
                 });
-            }else{
+            } else {
                 setIsScrollAllowed(value, 'all', 'k');
                 options.keyboardScrolling = value;
             }
@@ -421,7 +421,7 @@
         /**
         * Moves the page up one section.
         */
-        function moveSectionUp(){
+        function moveSectionUp() {
             var prev = prevUntil($(SECTION_ACTIVE_SEL)[0], SECTION_SEL);
 
             //looping to the bottom if there's no more sections above
@@ -437,16 +437,16 @@
         /**
         * Moves the page down one section.
         */
-        function moveSectionDown(){
+        function moveSectionDown() {
             var next = nextUntil($(SECTION_ACTIVE_SEL)[0], SECTION_SEL);
 
             //looping to the top if there's no more sections below
-            if(!next &&
-                (options.loopBottom || options.continuousVertical)){
+            if (!next &&
+                (options.loopBottom || options.continuousVertical)) {
                 next = $(SECTION_SEL)[0];
             }
 
-            if(next != null){
+            if (next != null) {
                 scrollPage(next, null, false);
             }
         }
@@ -455,22 +455,22 @@
         * Moves the page to the given section and slide with no animation.
         * Anchors or index positions can be used as params.
         */
-        function silentMoveTo(sectionAnchor, slideAnchor){
-            setScrollingSpeed (0, 'internal');
+        function silentMoveTo(sectionAnchor, slideAnchor) {
+            setScrollingSpeed(0, 'internal');
             moveTo(sectionAnchor, slideAnchor);
-            setScrollingSpeed (originals.scrollingSpeed, 'internal');
+            setScrollingSpeed(originals.scrollingSpeed, 'internal');
         }
 
         /**
         * Moves the page to the given section and slide.
         * Anchors or index positions can be used as params.
         */
-        function moveTo(sectionAnchor, slideAnchor){
+        function moveTo(sectionAnchor, slideAnchor) {
             var destiny = getSectionByAnchor(sectionAnchor);
 
-            if (typeof slideAnchor !== 'undefined'){
+            if (typeof slideAnchor !== 'undefined') {
                 scrollPageAndSlide(sectionAnchor, slideAnchor);
-            }else if(destiny != null){
+            } else if (destiny != null) {
                 scrollPage(destiny);
             }
         }
@@ -479,7 +479,7 @@
         * Slides right the slider of the active section.
         * Optional `section` param.
         */
-        function moveSlideRight(section){
+        function moveSlideRight(section) {
             moveSlide('right', section);
         }
 
@@ -487,15 +487,15 @@
         * Slides left the slider of the active section.
         * Optional `section` param.
         */
-        function moveSlideLeft(section){
+        function moveSlideLeft(section) {
             moveSlide('left', section);
         }
 
         /**
          * When resizing is finished, we adjust the slides sizes and positions
          */
-        function reBuild(resizing){
-            if(hasClass(container, DESTROYED)){ return; }  //nothing to do if the plugin was destroyed
+        function reBuild(resizing) {
+            if (hasClass(container, DESTROYED)) { return; }  //nothing to do if the plugin was destroyed
 
             isResizing = true;
 
@@ -510,11 +510,11 @@
                 var slides = $(SLIDE_SEL, section);
 
                 //adjusting the height of the table-cell for IE and Firefox
-                if(options.verticalCentered){
-                    css($(TABLE_CELL_SEL, section), {'height': getTableHeight(section) + 'px'});
+                if (options.verticalCentered) {
+                    css($(TABLE_CELL_SEL, section), { 'height': getTableHeight(section) + 'px' });
                 }
 
-                css(section, {'height': windowsHeight + 'px'});
+                css(section, { 'height': windowsHeight + 'px' });
 
                 //adjusting the position fo the FULL WIDTH slides...
                 if (slides.length > 1) {
@@ -522,7 +522,7 @@
                 }
             }
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 scrollBarHandler.createScrollBarForAll();
             }
 
@@ -530,16 +530,16 @@
             var sectionIndex = index(activeSection, SECTION_SEL);
 
             //isn't it the first section?
-            if(sectionIndex){
+            if (sectionIndex) {
                 //adjusting the position for the current section
                 silentMoveTo(sectionIndex + 1);
             }
 
             isResizing = false;
-            if(isFunction( options.afterResize ) && resizing){
+            if (isFunction(options.afterResize) && resizing) {
                 options.afterResize.call(container, window.innerWidth, window.innerHeight);
             }
-            if(isFunction( options.afterReBuild ) && !resizing){
+            if (isFunction(options.afterReBuild) && !resizing) {
                 options.afterReBuild.call(container);
             }
         }
@@ -547,45 +547,45 @@
         /**
         * Determines whether fullpage.js is in responsive mode or not.
         */
-        function isResponsiveMode(){
-           return hasClass($body, RESPONSIVE);
+        function isResponsiveMode() {
+            return hasClass($body, RESPONSIVE);
         }
 
         /**
         * Turns fullPage.js to normal scrolling mode when the viewport `width` or `height`
         * are smaller than the set limit values.
         */
-        function setResponsive(active){
+        function setResponsive(active) {
             var isResponsive = isResponsiveMode();
 
-            if(active){
-                if(!isResponsive){
+            if (active) {
+                if (!isResponsive) {
                     setAutoScrolling(false, 'internal');
                     setFitToSection(false, 'internal');
                     hide($(SECTION_NAV_SEL));
                     addClass($body, RESPONSIVE);
-                    if(isFunction( options.afterResponsive )){
-                        options.afterResponsive.call( container, active);
+                    if (isFunction(options.afterResponsive)) {
+                        options.afterResponsive.call(container, active);
                     }
 
                     //when on page load, we will remove scrolloverflow if necessary
-                    if(options.scrollOverflow){
+                    if (options.scrollOverflow) {
                         scrollBarHandler.createScrollBarForAll();
                     }
                 }
             }
-            else if(isResponsive){
+            else if (isResponsive) {
                 setAutoScrolling(originals.autoScrolling, 'internal');
                 setFitToSection(originals.autoScrolling, 'internal');
                 show($(SECTION_NAV_SEL));
                 removeClass($body, RESPONSIVE);
-                if(isFunction( options.afterResponsive )){
-                    options.afterResponsive.call( container, active);
+                if (isFunction(options.afterResponsive)) {
+                    options.afterResponsive.call(container, active);
                 }
             }
         }
 
-        if(container){
+        if (container) {
             //public functions
             FP.version = '3.0.8';
             FP.setAutoScrolling = setAutoScrolling;
@@ -605,7 +605,7 @@
             FP.fitToSection = fitToSection;
             FP.reBuild = reBuild;
             FP.setResponsive = setResponsive;
-            FP.getFullpageData = function(){ return options; };
+            FP.getFullpageData = function () { return options; };
             FP.destroy = destroy;
             FP.getActiveSection = getActiveSection;
             FP.getActiveSlide = getActiveSlide;
@@ -613,16 +613,16 @@
             FP.test = {
                 top: '0px',
                 translate3d: 'translate3d(0px, 0px, 0px)',
-                translate3dH: (function(){
+                translate3dH: (function () {
                     var a = [];
-                    for(var i = 0; i < $(options.sectionSelector, container).length; i++){
+                    for (var i = 0; i < $(options.sectionSelector, container).length; i++) {
                         a.push('translate3d(0px, 0px, 0px)');
                     }
                     return a;
                 })(),
-                left: (function(){
+                left: (function () {
                     var a = [];
-                    for(var i = 0; i < $(options.sectionSelector, container).length; i++){
+                    for (var i = 0; i < $(options.sectionSelector, container).length; i++) {
                         a.push(0);
                     }
                     return a;
@@ -641,9 +641,9 @@
             window.fullpage_api = FP;
 
             //using jQuery initialization? Creating the $.fn.fullpage object
-            if(options.$){
-                Object.keys(FP).forEach(function (key) {    
-                    options.$.fn.fullpage[key] = FP[key];   
+            if (options.$) {
+                Object.keys(FP).forEach(function (key) {
+                    options.$.fn.fullpage[key] = FP[key];
                 });
             }
 
@@ -652,9 +652,9 @@
             bindEvents();
         }
 
-        function init(){
+        function init() {
             //if css3 is not supported, it will use jQuery animations
-            if(options.css3){
+            if (options.css3) {
                 options.css3 = support3d();
             }
 
@@ -670,20 +670,20 @@
             //setting the class for the body element
             setBodyClass();
 
-            if(document.readyState === 'complete'){
+            if (document.readyState === 'complete') {
                 scrollToAnchor();
             }
             window.addEventListener('load', scrollToAnchor);
 
             //if we use scrollOverflow we'll fire afterRender in the scrolloverflow file
-            if(!options.scrollOverflow){
+            if (!options.scrollOverflow) {
                 afterRenderActions();
             }
 
             doubleCheckHeight();
         }
 
-        function bindEvents(){
+        function bindEvents() {
 
             //when scrolling...
             window.addEventListener('scroll', scrollHandler);
@@ -691,7 +691,7 @@
             //detecting any change on the URL to scroll to the given anchor link
             //(a way to detect back history button as we play with the hashes on the URL)
             window.addEventListener('hashchange', hashChangeHandler);
-            
+
             // on window focus
             window.addEventListener('focus', focusHandler);
 
@@ -709,7 +709,7 @@
 
             //Scrolls to the section when clicking the navigation bullet
             //simulating the jQuery .on('click') event using delegation
-            ['click', 'touchstart'].forEach(function(eventName){
+            ['click', 'touchstart'].forEach(function (eventName) {
                 document.addEventListener(eventName, delegatedEvents);
             });
 
@@ -717,38 +717,38 @@
             * Applying normalScroll elements.
             * Ignoring the scrolls over the specified selectors.
             */
-            if(options.normalScrollElements){
-                ['mouseenter', 'touchstart'].forEach(function(eventName){
+            if (options.normalScrollElements) {
+                ['mouseenter', 'touchstart'].forEach(function (eventName) {
                     forMouseLeaveOrTouch(eventName, false);
                 });
 
-                ['mouseleave', 'touchend'].forEach(function(eventName){
-                   forMouseLeaveOrTouch(eventName, true);
+                ['mouseleave', 'touchend'].forEach(function (eventName) {
+                    forMouseLeaveOrTouch(eventName, true);
                 });
             }
         }
 
-        function delegatedEvents(e){
+        function delegatedEvents(e) {
             var target = e.target;
 
-            if(target && closest(target, SECTION_NAV_SEL + ' a')){
+            if (target && closest(target, SECTION_NAV_SEL + ' a')) {
                 sectionBulletHandler.call(target, e);
             }
-            else if(matches(target, SECTION_NAV_TOOLTIP_SEL)){
+            else if (matches(target, SECTION_NAV_TOOLTIP_SEL)) {
                 tooltipTextHandler.call(target);
             }
-            else if(matches(target, SLIDES_ARROW_SEL)){
+            else if (matches(target, SLIDES_ARROW_SEL)) {
                 slideArrowHandler.call(target, e);
             }
-            else if(matches(target, SLIDES_NAV_LINK_SEL) || closest(target, SLIDES_NAV_LINK_SEL) != null){
+            else if (matches(target, SLIDES_NAV_LINK_SEL) || closest(target, SLIDES_NAV_LINK_SEL) != null) {
                 slideBulletHandler.call(target, e);
             }
-            else if(closest(target, options.menu + ' [data-menuanchor]')){
+            else if (closest(target, options.menu + ' [data-menuanchor]')) {
                 menuItemsHandler.call(target, e);
             }
         }
 
-        function forMouseLeaveOrTouch(eventName, allowScrolling){
+        function forMouseLeaveOrTouch(eventName, allowScrolling) {
             //a way to pass arguments to the onMouseEnterOrLeave function
             document['fp_' + eventName] = allowScrolling;
             document.addEventListener(eventName, onMouseEnterOrLeave, true); //capturing phase
@@ -763,42 +763,42 @@
             var target = type === 'mouseleave' ? e.toElement || e.relatedTarget : e.target;
 
             //coming from closing a normalScrollElements modal or moving outside viewport?
-            if(target == document || !target){
+            if (target == document || !target) {
                 setMouseHijack(true);
 
-                if(isUsingScrollOverflow){
+                if (isUsingScrollOverflow) {
                     options.scrollOverflowHandler.setIscroll(target, true);
                 }
                 return;
             }
 
-            if(type === 'touchend'){
+            if (type === 'touchend') {
                 g_canFireMouseEnterNormalScroll = false;
-                setTimeout(function(){
+                setTimeout(function () {
                     g_canFireMouseEnterNormalScroll = true;
                 }, 800);
             }
 
             //preventing mouseenter event to do anything when coming from a touchEnd event
             //fixing issue #3576
-            if(type === 'mouseenter' && !g_canFireMouseEnterNormalScroll){
+            if (type === 'mouseenter' && !g_canFireMouseEnterNormalScroll) {
                 return;
             }
 
             var normalSelectors = options.normalScrollElements.split(',');
 
-            normalSelectors.forEach(function(normalSelector){
-                if(!isInsideOneNormalScroll){
+            normalSelectors.forEach(function (normalSelector) {
+                if (!isInsideOneNormalScroll) {
                     var isNormalScrollTarget = matches(target, normalSelector);
 
                     //leaving a child inside the normalScoll element is not leaving the normalScroll #3661
                     var isNormalScrollChildFocused = closest(target, normalSelector);
 
-                    if(isNormalScrollTarget || isNormalScrollChildFocused){
-                        if(!FP.shared.isNormalScrollElement){
+                    if (isNormalScrollTarget || isNormalScrollChildFocused) {
+                        if (!FP.shared.isNormalScrollElement) {
                             setMouseHijack(false);
 
-                            if(isUsingScrollOverflow){
+                            if (isUsingScrollOverflow) {
                                 options.scrollOverflowHandler.setIscroll(target, false);
                             }
                         }
@@ -809,10 +809,10 @@
             });
 
             //not inside a single normal scroll element anymore?
-            if(!isInsideOneNormalScroll && FP.shared.isNormalScrollElement){
+            if (!isInsideOneNormalScroll && FP.shared.isNormalScrollElement) {
                 setMouseHijack(true);
-                
-                if(isUsingScrollOverflow){
+
+                if (isUsingScrollOverflow) {
                     options.scrollOverflowHandler.setIscroll(target, true);
                 }
 
@@ -824,8 +824,8 @@
         * Checks the viewport a few times on a define interval of time to 
         * see if it has changed in any of those. If that's the case, it resizes.
         */
-        function doubleCheckHeight(){
-            for(var i = 1; i < 4; i++){
+        function doubleCheckHeight() {
+            for (var i = 1; i < 4; i++) {
                 g_doubleCheckHeightId = setTimeout(adjustToNewViewport, 350 * i);
             }
         }
@@ -833,11 +833,11 @@
         /**
         * Adjusts a section to the viewport if it has changed.
         */
-        function adjustToNewViewport(){
+        function adjustToNewViewport() {
             var newWindowHeight = getWindowHeight();
             var newWindowWidth = getWindowWidth();
 
-            if(windowsHeight !== newWindowHeight || windowsWidth !== newWindowWidth){
+            if (windowsHeight !== newWindowHeight || windowsWidth !== newWindowWidth) {
                 windowsHeight = newWindowHeight;
                 windowsWidth = newWindowWidth;
                 reBuild(true);
@@ -847,26 +847,26 @@
         /**
         * Setting options from DOM elements if they are not provided.
         */
-        function setOptionsFromDOM(){
+        function setOptionsFromDOM() {
 
             //no anchors option? Checking for them in the DOM attributes
-            if(!options.anchors.length){
+            if (!options.anchors.length) {
                 var anchorsAttribute = '[data-anchor]';
                 var anchors = $(options.sectionSelector.split(',').join(anchorsAttribute + ',') + anchorsAttribute, container);
-                if(anchors.length && anchors.length === $(SECTION_SEL).length){
+                if (anchors.length && anchors.length === $(SECTION_SEL).length) {
                     g_initialAnchorsInDom = true;
-                    anchors.forEach(function(item){
+                    anchors.forEach(function (item) {
                         options.anchors.push(item.getAttribute('data-anchor').toString());
                     });
                 }
             }
 
             //no tooltips option? Checking for them in the DOM attributes
-            if(!options.navigationTooltips.length){
+            if (!options.navigationTooltips.length) {
                 var tooltipsAttribute = '[data-tooltip]';
                 var tooltips = $(options.sectionSelector.split(',').join(tooltipsAttribute + ',') + tooltipsAttribute, container);
-                if(tooltips.length){
-                    tooltips.forEach(function(item){
+                if (tooltips.length) {
+                    tooltips.forEach(function (item) {
                         options.navigationTooltips.push(item.getAttribute('data-tooltip').toString());
                     });
                 }
@@ -876,7 +876,7 @@
         /**
         * Works over the DOM structure to set it up for the current fullpage options.
         */
-        function prepareDom(){
+        function prepareDom() {
             css(container, {
                 'height': '100%',
                 'position': 'relative'
@@ -896,7 +896,7 @@
             var sections = $(SECTION_SEL);
 
             //styling the sections / slides / menu
-            for(var i = 0; i<sections.length; i++){
+            for (var i = 0; i < sections.length; i++) {
                 var sectionIndex = i;
                 var section = sections[i];
                 var slides = $(SLIDE_SEL, section);
@@ -911,28 +911,28 @@
                 // if there's any slide
                 if (numSlides > 0) {
                     styleSlides(section, slides, numSlides);
-                }else{
-                    if(options.verticalCentered){
+                } else {
+                    if (options.verticalCentered) {
                         addTableClass(section);
                     }
                 }
             }
 
             //fixed elements need to be moved out of the plugin container due to problems with CSS3.
-            if(options.fixedElements && options.css3){
-                $(options.fixedElements).forEach(function(item){
+            if (options.fixedElements && options.css3) {
+                $(options.fixedElements).forEach(function (item) {
                     $body.appendChild(item);
                 });
             }
 
             //vertical centered of the navigation + active bullet
-            if(options.navigation){
+            if (options.navigation) {
                 addVerticalNavigation();
             }
 
             enableYoutubeAPI();
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 scrollBarHandler = options.scrollOverflowHandler.init(options);
             }
         }
@@ -940,7 +940,7 @@
         /**
         * Styles the horizontal slides for a section.
         */
-        function styleSlides(section, slides, numSlides){
+        function styleSlides(section, slides, numSlides) {
             var sliderWidth = numSlides * 100;
             var slideWidth = 100 / numSlides;
 
@@ -952,22 +952,22 @@
             slidesContainer.className = SLIDES_CONTAINER; //fp-slidesContainer
             wrapAll(slides, slidesContainer);
 
-            css($(SLIDES_CONTAINER_SEL, section), {'width': sliderWidth + '%'});
+            css($(SLIDES_CONTAINER_SEL, section), { 'width': sliderWidth + '%' });
 
-            if(numSlides > 1){
-                if(options.controlArrows){
+            if (numSlides > 1) {
+                if (options.controlArrows) {
                     createSlideArrows(section);
                 }
 
-                if(options.slidesNavigation){
+                if (options.slidesNavigation) {
                     addSlidesNavigation(section, numSlides);
                 }
             }
 
-            slides.forEach(function(slide) {
-                css(slide, {'width': slideWidth + '%'});
+            slides.forEach(function (slide) {
+                css(slide, { 'width': slideWidth + '%' });
 
-                if(options.verticalCentered){
+                if (options.verticalCentered) {
                     addTableClass(slide);
                 }
             });
@@ -976,9 +976,9 @@
 
             //if the slide won't be an starting point, the default will be the first one
             //the active section isn't the first one? Is not the first slide of the first section? Then we load that section/slide by default.
-            if( startingSlide != null && (index($(SECTION_ACTIVE_SEL), SECTION_SEL) !== 0 || (index($(SECTION_ACTIVE_SEL), SECTION_SEL) === 0 && index(startingSlide) !== 0))){
+            if (startingSlide != null && (index($(SECTION_ACTIVE_SEL), SECTION_SEL) !== 0 || (index($(SECTION_ACTIVE_SEL), SECTION_SEL) === 0 && index(startingSlide) !== 0))) {
                 silentLandscapeScroll(startingSlide, 'internal');
-            }else{
+            } else {
                 addClass(slides[0], ACTIVE);
             }
         }
@@ -986,25 +986,25 @@
         /**
         * Styling vertical sections
         */
-        function styleSection(section, index){
+        function styleSection(section, index) {
             //if no active section is defined, the 1st one will be the default one
-            if(!index && $(SECTION_ACTIVE_SEL)[0] == null) {
+            if (!index && $(SECTION_ACTIVE_SEL)[0] == null) {
                 addClass(section, ACTIVE);
             }
             startingSection = $(SECTION_ACTIVE_SEL)[0];
 
-            css(section, {'height': windowsHeight + 'px'});
+            css(section, { 'height': windowsHeight + 'px' });
 
-            if(options.paddingTop){
-                css(section, {'padding-top': options.paddingTop});
+            if (options.paddingTop) {
+                css(section, { 'padding-top': options.paddingTop });
             }
 
-            if(options.paddingBottom){
-                css(section, {'padding-bottom': options.paddingBottom});
+            if (options.paddingBottom) {
+                css(section, { 'padding-bottom': options.paddingBottom });
             }
 
-            if (typeof options.sectionsColor[index] !==  'undefined') {
-                css(section, {'background-color': options.sectionsColor[index]});
+            if (typeof options.sectionsColor[index] !== 'undefined') {
+                css(section, { 'background-color': options.sectionsColor[index] });
             }
 
             if (typeof options.anchors[index] !== 'undefined') {
@@ -1015,17 +1015,17 @@
         /**
         * Sets the data-anchor attributes to the menu elements and activates the current one.
         */
-        function styleMenu(section, index){
+        function styleMenu(section, index) {
             if (typeof options.anchors[index] !== 'undefined') {
                 //activating the menu / nav element on load
-                if(hasClass(section, ACTIVE)){
+                if (hasClass(section, ACTIVE)) {
                     activateMenuAndNav(options.anchors[index], index);
                 }
             }
 
             //moving the menu outside the main container if it is inside (avoid problems with fixed positions when using CSS3 tranforms)
-            if(options.menu && options.css3 && closest($(options.menu)[0], WRAPPER_SEL) != null){
-                $(options.menu).forEach(function(menu) {
+            if (options.menu && options.css3 && closest($(options.menu)[0], WRAPPER_SEL) != null) {
+                $(options.menu).forEach(function (menu) {
                     $body.appendChild(menu);
                 });
             }
@@ -1035,7 +1035,7 @@
         * Adds internal classes to be able to provide customizable selectors
         * keeping the link with the style sheet.
         */
-        function addInternalSelectors(){
+        function addInternalSelectors() {
             addClass($(options.sectionSelector, container), SECTION);
             addClass($(options.slideSelector, container), SLIDE);
         }
@@ -1043,16 +1043,16 @@
         /**
         * Creates the control arrows for the given section
         */
-        function createSlideArrows(section){
+        function createSlideArrows(section) {
             var arrows = [createElementFromHTML('<div class="' + SLIDES_ARROW_PREV + '"></div>'), createElementFromHTML('<div class="' + SLIDES_ARROW_NEXT + '"></div>')];
             after($(SLIDES_WRAPPER_SEL, section)[0], arrows);
 
-            if(options.controlArrowColor !== '#fff'){
-                css($(SLIDES_ARROW_NEXT_SEL, section), {'border-color': 'transparent transparent transparent '+options.controlArrowColor});
-                css($(SLIDES_ARROW_PREV_SEL, section), {'border-color': 'transparent '+ options.controlArrowColor + ' transparent transparent'});
+            if (options.controlArrowColor !== '#fff') {
+                css($(SLIDES_ARROW_NEXT_SEL, section), { 'border-color': 'transparent transparent transparent ' + options.controlArrowColor });
+                css($(SLIDES_ARROW_PREV_SEL, section), { 'border-color': 'transparent ' + options.controlArrowColor + ' transparent transparent' });
             }
 
-            if(!options.loopHorizontal){
+            if (!options.loopHorizontal) {
                 hide($(SLIDES_ARROW_PREV_SEL, section));
             }
         }
@@ -1060,7 +1060,7 @@
         /**
         * Creates a vertical navigation bar.
         */
-        function addVerticalNavigation(){
+        function addVerticalNavigation() {
             var navigation = document.createElement('div');
             navigation.setAttribute('id', SECTION_NAV);
 
@@ -1072,7 +1072,7 @@
 
             addClass(nav, 'fp-' + options.navigationPosition);
 
-            if(options.showActiveTooltip){
+            if (options.showActiveTooltip) {
                 addClass(nav, SHOW_ACTIVE_TOOLTIP);
             }
 
@@ -1096,7 +1096,7 @@
                 li += '</li>';
             }
             $('ul', nav)[0].innerHTML = li;
-            
+
             //activating the current active section
 
             var bullet = $('li', $(SECTION_NAV_SEL)[0])[index($(SECTION_ACTIVE_SEL)[0], SECTION_SEL)];
@@ -1106,18 +1106,18 @@
         /**
         * Gets the name for screen readers for a section/slide navigation bullet.
         */
-        function getBulletLinkName(i, defaultName, item){
+        function getBulletLinkName(i, defaultName, item) {
             var anchor = defaultName === 'Section' ? options.anchors[i] : item.getAttribute('data-anchor');
             return options.navigationTooltips[i]
                 || anchor
-                || defaultName + ' ' + (i+1);
+                || defaultName + ' ' + (i + 1);
         }
 
         /*
         * Enables the Youtube videos API so we can control their flow if necessary.
         */
-        function enableYoutubeAPI(){
-            $('iframe[src*="youtube.com/embed/"]', container).forEach(function(item){
+        function enableYoutubeAPI() {
+            $('iframe[src*="youtube.com/embed/"]', container).forEach(function (item) {
                 addURLParam(item, 'enablejsapi=1');
             });
         }
@@ -1125,7 +1125,7 @@
         /**
         * Adds a new parameter and its value to the `src` of a given element
         */
-        function addURLParam(element, newParam){
+        function addURLParam(element, newParam) {
             var originalSrc = element.getAttribute('src');
             element.setAttribute('src', originalSrc + getUrlParamSign(originalSrc) + newParam);
         }
@@ -1135,14 +1135,14 @@
         *
         * @return {String}  ? | &
         */
-        function getUrlParamSign(url){
-            return ( !/\?/.test( url ) ) ? '?' : '&';
+        function getUrlParamSign(url) {
+            return (!/\?/.test(url)) ? '?' : '&';
         }
 
         /**
         * Actions and callbacks to fire afterRender
         */
-        function afterRenderActions(){
+        function afterRenderActions() {
             var section = $(SECTION_ACTIVE_SEL)[0];
 
             addClass(section, COMPLETELY);
@@ -1151,11 +1151,11 @@
             lazyLoadOthers();
             playMedia(section);
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 options.scrollOverflowHandler.afterLoad();
             }
 
-            if(isDestinyTheStartingSection() && isFunction(options.afterLoad) ){
+            if (isDestinyTheStartingSection() && isFunction(options.afterLoad)) {
                 fireCallback('afterLoad', {
                     activeSection: section,
                     element: section,
@@ -1167,7 +1167,7 @@
                 });
             }
 
-            if(isFunction(options.afterRender)){
+            if (isFunction(options.afterRender)) {
                 fireCallback('afterRender');
             }
         }
@@ -1175,55 +1175,54 @@
         /**
         * Determines if the URL anchor destiny is the starting section (the one using 'active' class before initialization)
         */
-        function isDestinyTheStartingSection(){
+        function isDestinyTheStartingSection() {
             var anchor = getAnchorsURL();
             var destinationSection = getSectionByAnchor(anchor.section);
-            return !anchor.section || !destinationSection || typeof destinationSection !=='undefined' && index(destinationSection) === index(startingSection);
+            return !anchor.section || !destinationSection || typeof destinationSection !== 'undefined' && index(destinationSection) === index(startingSection);
         }
 
         var isScrolling = false;
         var lastScroll = 0;
 
         //when scrolling...
-        function scrollHandler(){
+        function scrollHandler() {
             var currentSection;
 
-            if(isResizing){
+            if (isResizing) {
                 return;
             }
-            
-            if(!options.autoScrolling || options.scrollBar){
+
+            if (!options.autoScrolling || options.scrollBar) {
                 var currentScroll = getScrollTop();
                 var scrollDirection = getScrollDirection(currentScroll);
                 var visibleSectionIndex = 0;
                 var screen_mid = currentScroll + (getWindowHeight() / 2.0);
                 var isAtBottom = $body.offsetHeight - getWindowHeight() === currentScroll;
-                var sections =  $(SECTION_SEL);
+                var sections = $(SECTION_SEL);
 
                 //when using `auto-height` for a small last section it won't be centered in the viewport
-                if(isAtBottom){
+                if (isAtBottom) {
                     visibleSectionIndex = sections.length - 1;
                 }
                 //is at top? when using `auto-height` for a small first section it won't be centered in the viewport
-                else if(!currentScroll){
+                else if (!currentScroll) {
                     visibleSectionIndex = 0;
                 }
 
                 //taking the section which is showing more content in the viewport
-                else{
+                else {
                     for (var i = 0; i < sections.length; ++i) {
                         var section = sections[i];
 
                         // Pick the the last section which passes the middle line of the screen.
-                        if (section.offsetTop <= screen_mid)
-                        {
+                        if (section.offsetTop <= screen_mid) {
                             visibleSectionIndex = i;
                         }
                     }
                 }
 
-                if(isCompletelyInViewPort(scrollDirection)){
-                    if(!hasClass($(SECTION_ACTIVE_SEL)[0], COMPLETELY)){
+                if (isCompletelyInViewPort(scrollDirection)) {
+                    if (!hasClass($(SECTION_ACTIVE_SEL)[0], COMPLETELY)) {
                         addClass($(SECTION_ACTIVE_SEL)[0], COMPLETELY);
                         removeClass(siblings($(SECTION_ACTIVE_SEL)[0]), COMPLETELY);
                     }
@@ -1234,38 +1233,38 @@
 
                 //setting the visible section as active when manually scrolling
                 //executing only once the first time we reach the section
-                if(!hasClass(currentSection, ACTIVE)){
+                if (!hasClass(currentSection, ACTIVE)) {
                     isScrolling = true;
                     var leavingSection = $(SECTION_ACTIVE_SEL)[0];
                     var leavingSectionIndex = index(leavingSection, SECTION_SEL) + 1;
                     var yMovement = getYmovement(currentSection);
-                    var anchorLink  = currentSection.getAttribute('data-anchor');
+                    var anchorLink = currentSection.getAttribute('data-anchor');
                     var sectionIndex = index(currentSection, SECTION_SEL) + 1;
                     var activeSlide = $(SLIDE_ACTIVE_SEL, currentSection)[0];
                     var slideIndex;
                     var slideAnchorLink;
                     var callbacksParams = {
                         activeSection: leavingSection,
-                        sectionIndex: sectionIndex -1,
+                        sectionIndex: sectionIndex - 1,
                         anchorLink: anchorLink,
                         element: currentSection,
                         leavingSection: leavingSectionIndex,
                         direction: yMovement
                     };
 
-                    if(activeSlide){
+                    if (activeSlide) {
                         slideAnchorLink = activeSlide.getAttribute('data-anchor');
                         slideIndex = index(activeSlide);
                     }
 
-                    if(canScroll){
+                    if (canScroll) {
                         addClass(currentSection, ACTIVE);
                         removeClass(siblings(currentSection), ACTIVE);
 
-                        if(isFunction( options.onLeave )){
+                        if (isFunction(options.onLeave)) {
                             fireCallback('onLeave', callbacksParams);
                         }
-                        if(isFunction( options.afterLoad )){
+                        if (isFunction(options.afterLoad)) {
                             fireCallback('afterLoad', callbacksParams);
                         }
 
@@ -1275,7 +1274,7 @@
 
                         activateMenuAndNav(anchorLink, sectionIndex - 1);
 
-                        if(options.anchors.length){
+                        if (options.anchors.length) {
                             //needed to enter in hashChange event when using the menu with anchor links
                             lastScrolledDestiny = anchorLink;
                         }
@@ -1284,22 +1283,22 @@
 
                     //small timeout in order to avoid entering in hashChange event when scrolling is not finished yet
                     clearTimeout(scrollId);
-                    scrollId = setTimeout(function(){
+                    scrollId = setTimeout(function () {
                         isScrolling = false;
                     }, 100);
                 }
 
-                if(options.fitToSection){
+                if (options.fitToSection) {
                     //for the auto adjust of the viewport to fit a whole section
                     clearTimeout(scrollId2);
 
-                    scrollId2 = setTimeout(function(){
+                    scrollId2 = setTimeout(function () {
                         //checking it again in case it changed during the delay
-                        if(options.fitToSection &&
+                        if (options.fitToSection &&
 
                             //is the destination element bigger than the viewport?
                             $(SECTION_ACTIVE_SEL)[0].offsetHeight <= windowsHeight
-                        ){
+                        ) {
                             fitToSection();
                         }
                     }, options.fitToSectionDelay);
@@ -1310,9 +1309,9 @@
         /**
         * Fits the site to the nearest active section
         */
-        function fitToSection(){
+        function fitToSection() {
             //checking fitToSection again in case it was set to false before the timeout delay
-            if(canScroll){
+            if (canScroll) {
                 //allows to scroll to an active section and
                 //if the section is already active, we prevent firing callbacks
                 isResizing = true;
@@ -1325,11 +1324,11 @@
         /**
         * Determines whether the active section has seen in its whole or not.
         */
-        function isCompletelyInViewPort(movement){
+        function isCompletelyInViewPort(movement) {
             var top = $(SECTION_ACTIVE_SEL)[0].offsetTop;
             var bottom = top + getWindowHeight();
 
-            if(movement == 'up'){
+            if (movement == 'up') {
                 return bottom >= (getScrollTop() + getWindowHeight());
             }
             return top <= getScrollTop();
@@ -1338,7 +1337,7 @@
         /**
         * Determines whether a section is in the viewport or not.
         */
-        function isSectionInViewport (el) {
+        function isSectionInViewport(el) {
             var rect = el.getBoundingClientRect();
             var top = rect.top;
             var bottom = rect.bottom;
@@ -1348,7 +1347,7 @@
             //using this prevents from lazyLoading the section that is not yet visible 
             //(only 1 pixel offset is)
             var pixelOffset = 2;
-            
+
             var isTopInView = top + pixelOffset < windowsHeight && top > 0;
             var isBottomInView = bottom > pixelOffset && bottom < windowsHeight;
 
@@ -1358,7 +1357,7 @@
         /**
         * Gets the directon of the the scrolling fired by the scroll event.
         */
-        function getScrollDirection(currentScroll){
+        function getScrollDirection(currentScroll) {
             var direction = currentScroll > lastScroll ? 'down' : 'up';
 
             lastScroll = currentScroll;
@@ -1373,29 +1372,29 @@
         * Determines the way of scrolling up or down:
         * by 'automatically' scrolling a section or by using the default and normal scrolling.
         */
-        function scrolling(type){
-            if (!isScrollAllowed.m[type]){
+        function scrolling(type) {
+            if (!isScrollAllowed.m[type]) {
                 return;
             }
 
             var scrollSection = (type === 'down') ? moveSectionDown : moveSectionUp;
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 var scrollable = options.scrollOverflowHandler.scrollable($(SECTION_ACTIVE_SEL)[0]);
                 var check = (type === 'down') ? 'bottom' : 'top';
 
-                if(scrollable != null ){
+                if (scrollable != null) {
                     //is the scrollbar at the start/end of the scroll?
-                    if(options.scrollOverflowHandler.isScrolled(check, scrollable)){
+                    if (options.scrollOverflowHandler.isScrolled(check, scrollable)) {
                         scrollSection();
-                    }else{
+                    } else {
                         return true;
                     }
-                }else{
+                } else {
                     // moved up/down
                     scrollSection();
                 }
-            }else{
+            } else {
                 // moved up/down
                 scrollSection();
             }
@@ -1404,8 +1403,8 @@
         /*
         * Preventing bouncing in iOS #2285
         */
-        function preventBouncing(e){
-            if(options.autoScrolling && isReallyTouch(e) && isScrollAllowed.m.up){
+        function preventBouncing(e) {
+            if (options.autoScrolling && isReallyTouch(e) && isScrollAllowed.m.up) {
                 //preventing the easing on iOS devices
                 preventDefault(e);
             }
@@ -1422,12 +1421,12 @@
         * This way, the touchstart and the touch moves shows an small difference between them which is the
         * used one to determine the direction.
         */
-        function touchMoveHandler(e){
+        function touchMoveHandler(e) {
             var activeSection = closest(e.target, SECTION_SEL) || $(SECTION_ACTIVE_SEL)[0];
 
-            if (isReallyTouch(e) ) {
+            if (isReallyTouch(e)) {
 
-                if(options.autoScrolling){
+                if (options.autoScrolling) {
                     //preventing the easing on iOS devices
                     preventDefault(e);
                 }
@@ -1443,11 +1442,11 @@
                     //is the movement greater than the minimum resistance to scroll?
                     if (!slideMoving && Math.abs(touchStartX - touchEndX) > (getWindowWidth() / 100 * options.touchSensitivity)) {
                         if (touchStartX > touchEndX) {
-                            if(isScrollAllowed.m.right){
+                            if (isScrollAllowed.m.right) {
                                 moveSlideRight(activeSection); //next
                             }
                         } else {
-                            if(isScrollAllowed.m.left){
+                            if (isScrollAllowed.m.left) {
                                 moveSlideLeft(activeSection); //prev
                             }
                         }
@@ -1455,7 +1454,7 @@
                 }
 
                 //vertical scrolling (only when autoScrolling is enabled)
-                else if(options.autoScrolling && canScroll){
+                else if (options.autoScrolling && canScroll) {
 
                     //is the movement greater than the minimum resistance to scroll?
                     if (Math.abs(touchStartY - touchEndY) > (window.innerHeight / 100 * options.touchSensitivity)) {
@@ -1473,7 +1472,7 @@
         * As IE >= 10 fires both touch and mouse events when using a mouse in a touchscreen
         * this way we make sure that is really a touch event what IE is detecting.
         */
-        function isReallyTouch(e){
+        function isReallyTouch(e) {
             //if is not IE   ||  IE is detecting `touch` or `pen`
             return typeof e.pointerType === 'undefined' || e.pointerType != 'mouse';
         }
@@ -1481,14 +1480,14 @@
         /**
         * Handler for the touch start event.
         */
-        function touchStartHandler(e){
+        function touchStartHandler(e) {
 
             //stopping the auto scroll to adjust to a section
-            if(options.fitToSection){
+            if (options.fitToSection) {
                 activeAnimation = false;
             }
 
-            if(isReallyTouch(e)){
+            if (isReallyTouch(e)) {
                 var touchEvents = getEventsPage(e);
                 touchStartY = touchEvents.y;
                 touchStartX = touchEvents.x;
@@ -1498,17 +1497,17 @@
         /**
         * Gets the average of the last `number` elements of the given array.
         */
-        function getAverage(elements, number){
+        function getAverage(elements, number) {
             var sum = 0;
 
             //taking `number` elements from the end to make the average, if there are not enought, 1
             var lastElements = elements.slice(Math.max(elements.length - number, 1));
 
-            for(var i = 0; i < lastElements.length; i++){
+            for (var i = 0; i < lastElements.length; i++) {
                 sum = sum + lastElements[i];
             }
 
-            return Math.ceil(sum/number);
+            return Math.ceil(sum / number);
         }
 
         /**
@@ -1530,17 +1529,17 @@
             }
 
             //autoscrolling and not zooming?
-            if(options.autoScrolling && !controlPressed && !isNormalScroll){
+            if (options.autoScrolling && !controlPressed && !isNormalScroll) {
                 // cross-browser wheel delta
                 e = e || window.event;
                 var value = e.wheelDelta || -e.deltaY || -e.detail;
                 var delta = Math.max(-1, Math.min(1, value));
 
                 var horizontalDetection = typeof e.wheelDeltaX !== 'undefined' || typeof e.deltaX !== 'undefined';
-                var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX ) < Math.abs(e.deltaY) || !horizontalDetection);
+                var isScrollingVertically = (Math.abs(e.wheelDeltaX) < Math.abs(e.wheelDelta)) || (Math.abs(e.deltaX) < Math.abs(e.deltaY) || !horizontalDetection);
 
                 //Limiting the array to 150 (lets not waste memory!)
-                if(scrollings.length > 149){
+                if (scrollings.length > 149) {
                     scrollings.shift();
                 }
 
@@ -1548,34 +1547,34 @@
                 scrollings.push(Math.abs(value));
 
                 //preventing to scroll the site on mouse wheel when scrollbar is present
-                if(options.scrollBar){
+                if (options.scrollBar) {
                     preventDefault(e);
                 }
 
                 //time difference between the last scroll and the current one
-                var timeDiff = curTime-prevTime;
+                var timeDiff = curTime - prevTime;
                 prevTime = curTime;
 
                 //haven't they scrolled in a while?
                 //(enough to be consider a different scrolling action to scroll another section)
-                if(timeDiff > 200){
+                if (timeDiff > 200) {
                     //emptying the array, we dont care about old scrollings for our averages
                     scrollings = [];
                 }
 
-                if(canScroll){
+                if (canScroll) {
                     var averageEnd = getAverage(scrollings, 10);
                     var averageMiddle = getAverage(scrollings, 70);
                     var isAccelerating = averageEnd >= averageMiddle;
 
                     //to avoid double swipes...
-                    if(isAccelerating && isScrollingVertically){
+                    if (isAccelerating && isScrollingVertically) {
                         //scrolling down?
                         if (delta < 0) {
                             scrolling('down');
 
-                        //scrolling up?
-                        }else {
+                            //scrolling up?
+                        } else {
                             scrolling('up');
                         }
                     }
@@ -1584,7 +1583,7 @@
                 return false;
             }
 
-            if(options.fitToSection){
+            if (options.fitToSection) {
                 //stopping the auto scroll to adjust to a section
                 activeAnimation = false;
             }
@@ -1594,7 +1593,7 @@
         * Slides a slider to the given direction.
         * Optional `section` param.
         */
-        function moveSlide(direction, section){
+        function moveSlide(direction, section) {
             var activeSection = section == null ? $(SECTION_ACTIVE_SEL)[0] : section;
             var slides = $(SLIDES_WRAPPER_SEL, activeSection)[0];
 
@@ -1606,21 +1605,21 @@
             var currentSlide = $(SLIDE_ACTIVE_SEL, slides)[0];
             var destiny = null;
 
-            if(direction === 'left'){
+            if (direction === 'left') {
                 destiny = prevUntil(currentSlide, SLIDE_SEL);
-            }else{
+            } else {
                 destiny = nextUntil(currentSlide, SLIDE_SEL);
             }
 
             //isn't there a next slide in the secuence?
-            if(destiny == null){
+            if (destiny == null) {
                 //respect loopHorizontal settin
                 if (!options.loopHorizontal) return;
 
                 var slideSiblings = siblings(currentSlide);
-                if(direction === 'left'){
+                if (direction === 'left') {
                     destiny = slideSiblings[slideSiblings.length - 1]; //last
-                }else{
+                } else {
                     destiny = slideSiblings[0]; //first
                 }
             }
@@ -1633,9 +1632,9 @@
         * Maintains the active slides in the viewport
         * (Because the `scroll` animation might get lost with some actions, such as when using continuousVertical)
         */
-        function keepSlidesPosition(){
+        function keepSlidesPosition() {
             var activeSlides = $(SLIDE_ACTIVE_SEL);
-            for( var i =0; i<activeSlides.length; i++){
+            for (var i = 0; i < activeSlides.length; i++) {
                 silentLandscapeScroll(activeSlides[i], 'internal');
             }
         }
@@ -1645,26 +1644,26 @@
         * Returns the destination Y position based on the scrolling direction and
         * the height of the section.
         */
-        function getDestinationPosition(element){
+        function getDestinationPosition(element) {
             var elementHeight = element.offsetHeight;
             var elementTop = element.offsetTop;
 
             //top of the desination will be at the top of the viewport
             var position = elementTop;
-            var isScrollingDown =  elementTop > previousDestTop;
+            var isScrollingDown = elementTop > previousDestTop;
             var sectionBottom = position - windowsHeight + elementHeight;
             var bigSectionsDestination = options.bigSectionsDestination;
 
             //is the destination element bigger than the viewport?
-            if(elementHeight > windowsHeight){
+            if (elementHeight > windowsHeight) {
                 //scrolling up?
-                if(!isScrollingDown && !bigSectionsDestination || bigSectionsDestination === 'bottom' ){
+                if (!isScrollingDown && !bigSectionsDestination || bigSectionsDestination === 'bottom') {
                     position = sectionBottom;
                 }
             }
 
             //sections equal or smaller than the viewport height && scrolling down? ||  is resizing and its in the last section
-            else if(isScrollingDown || (isResizing && next(element) == null) ){
+            else if (isScrollingDown || (isResizing && next(element) == null)) {
                 //The bottom of the destination will be at the bottom of the viewport
                 position = sectionBottom;
             }
@@ -1682,8 +1681,8 @@
         /**
         * Scrolls the site to the given element and scrolls to the slide if a callback is given.
         */
-        function scrollPage(element, callback, isMovementUp){
-            if(element == null){ return; } //there's no element to scroll, leaving the function
+        function scrollPage(element, callback, isMovementUp) {
+            if (element == null) { return; } //there's no element to scroll, leaving the function
 
             var dtop = getDestinationPosition(element);
             var slideAnchorLink;
@@ -1708,27 +1707,27 @@
             };
 
             //quiting when destination scroll is the same as the current one
-            if((v.activeSection == element && !isResizing) || (options.scrollBar && getScrollTop() === v.dtop && !hasClass(element, AUTO_HEIGHT) )){ return; }
+            if ((v.activeSection == element && !isResizing) || (options.scrollBar && getScrollTop() === v.dtop && !hasClass(element, AUTO_HEIGHT))) { return; }
 
-            if(v.activeSlide != null){
+            if (v.activeSlide != null) {
                 slideAnchorLink = v.activeSlide.getAttribute('data-anchor');
                 slideIndex = index(v.activeSlide);
             }
 
             //callback (onLeave) if the site is not just resizing and readjusting the slides
-            if(!v.localIsResizing){
+            if (!v.localIsResizing) {
                 var direction = v.yMovement;
 
                 //required for continousVertical
-                if(typeof isMovementUp !== 'undefined'){
+                if (typeof isMovementUp !== 'undefined') {
                     direction = isMovementUp ? 'up' : 'down';
                 }
 
                 //for the callback
                 v.direction = direction;
 
-                if(isFunction(options.onLeave)){
-                    if(fireCallback('onLeave', v) === false){
+                if (isFunction(options.onLeave)) {
+                    if (fireCallback('onLeave', v) === false) {
                         return;
                     }
                 }
@@ -1737,17 +1736,17 @@
             // If continuousVertical && we need to wrap around
             if (options.autoScrolling && options.continuousVertical && typeof (v.isMovementUp) !== "undefined" &&
                 ((!v.isMovementUp && v.yMovement == 'up') || // Intending to scroll down but about to go up or
-                (v.isMovementUp && v.yMovement == 'down'))) { // intending to scroll up but about to go down
+                    (v.isMovementUp && v.yMovement == 'down'))) { // intending to scroll up but about to go down
 
                 v = createInfiniteSections(v);
             }
 
             //pausing media of the leaving section (if we are not just resizing, as destinatino will be the same one)
-            if(!v.localIsResizing){
+            if (!v.localIsResizing) {
                 stopMedia(v.activeSection);
             }
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 options.scrollOverflowHandler.beforeLeave();
             }
 
@@ -1755,7 +1754,7 @@
             removeClass(siblings(element), ACTIVE);
             lazyLoad(element);
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 options.scrollOverflowHandler.onLeave();
             }
 
@@ -1778,18 +1777,18 @@
         * Dispatch events & callbacks making sure it does it on the right format, depending on
         * whether v2compatible is being used or not.
         */
-        function fireCallback(eventName, v){
+        function fireCallback(eventName, v) {
             var eventData = getEventData(eventName, v);
 
-            if(!options.v2compatible){
+            if (!options.v2compatible) {
                 trigger(container, eventName, eventData);
 
-                if(options[eventName].apply(eventData[Object.keys(eventData)[0]], toArray(eventData)) === false){
+                if (options[eventName].apply(eventData[Object.keys(eventData)[0]], toArray(eventData)) === false) {
                     return false;
                 }
             }
-            else{
-                if(options[eventName].apply(eventData[0], eventData.slice(1)) === false){
+            else {
+                if (options[eventName].apply(eventData[0], eventData.slice(1)) === false) {
                     return false;
                 }
             }
@@ -1800,11 +1799,11 @@
         /**
         * Makes sure to only create a Panel object if the element exist
         */
-        function nullOrSection(el){
+        function nullOrSection(el) {
             return el ? new Section(el) : null;
         }
 
-        function nullOrSlide(el){
+        function nullOrSlide(el) {
             return el ? new Slide(el) : null;
         }
 
@@ -1812,20 +1811,20 @@
         * Gets the event's data for the given event on the right format. Depending on whether
         * v2compatible is being used or not.
         */
-        function getEventData(eventName, v){
+        function getEventData(eventName, v) {
             var paramsPerEvent;
 
-            if(!options.v2compatible){
+            if (!options.v2compatible) {
 
                 //using functions to run only the necessary bits within the object
                 paramsPerEvent = {
-                    afterRender: function(){
+                    afterRender: function () {
                         return {
                             section: nullOrSection($(SECTION_ACTIVE_SEL)[0]),
                             slide: nullOrSlide($(SLIDE_ACTIVE_SEL, $(SECTION_ACTIVE_SEL)[0])[0])
                         };
                     },
-                    onLeave: function(){
+                    onLeave: function () {
                         return {
                             origin: nullOrSection(v.activeSection),
                             destination: nullOrSection(v.element),
@@ -1833,11 +1832,11 @@
                         };
                     },
 
-                    afterLoad: function(){
+                    afterLoad: function () {
                         return paramsPerEvent.onLeave();
                     },
 
-                    afterSlideLoad: function(){
+                    afterSlideLoad: function () {
                         return {
                             section: nullOrSection(v.section),
                             origin: nullOrSlide(v.prevSlide),
@@ -1846,18 +1845,18 @@
                         };
                     },
 
-                    onSlideLeave: function(){
+                    onSlideLeave: function () {
                         return paramsPerEvent.afterSlideLoad();
                     }
                 };
             }
-            else{
+            else {
                 paramsPerEvent = {
-                    afterRender: function(){ return [container]; },
-                    onLeave: function(){ return [v.activeSection, v.leavingSection, (v.sectionIndex + 1), v.direction]; },
-                    afterLoad: function(){ return [v.element, v.anchorLink, (v.sectionIndex + 1)]; },
-                    afterSlideLoad: function(){ return [v.destiny, v.anchorLink, (v.sectionIndex + 1), v.slideAnchor, v.slideIndex]; },
-                    onSlideLeave: function(){ return [v.prevSlide, v.anchorLink, (v.sectionIndex + 1), v.prevSlideIndex, v.direction, v.slideIndex]; },
+                    afterRender: function () { return [container]; },
+                    onLeave: function () { return [v.activeSection, v.leavingSection, (v.sectionIndex + 1), v.direction]; },
+                    afterLoad: function () { return [v.element, v.anchorLink, (v.sectionIndex + 1)]; },
+                    afterSlideLoad: function () { return [v.destiny, v.anchorLink, (v.sectionIndex + 1), v.slideAnchor, v.slideIndex]; },
+                    onSlideLeave: function () { return [v.prevSlide, v.anchorLink, (v.sectionIndex + 1), v.prevSlideIndex, v.direction, v.slideIndex]; },
                 };
             }
 
@@ -1867,9 +1866,9 @@
         /**
         * Performs the vertical movement (by CSS3 or by jQuery)
         */
-        function performMovement(v){
+        function performMovement(v) {
             var isFastSpeed = options.scrollingSpeed < 700;
-            var transitionLapse = isFastSpeed ? 700 : options.scrollingSpeed; 
+            var transitionLapse = isFastSpeed ? 700 : options.scrollingSpeed;
 
             // using CSS3 translate functionality
             if (options.css3 && options.autoScrolling && !options.scrollBar) {
@@ -1881,26 +1880,26 @@
 
                 //even when the scrollingSpeed is 0 there's a little delay, which might cause the
                 //scrollingSpeed to change in case of using silentMoveTo();
-                if(options.scrollingSpeed){
+                if (options.scrollingSpeed) {
                     clearTimeout(afterSectionLoadsId);
                     afterSectionLoadsId = setTimeout(function () {
                         afterSectionLoads(v);
 
                         //disabling canScroll when using fastSpeed
                         canScroll = !isFastSpeed;
-                    }, options.scrollingSpeed);                   
-                }else{
+                    }, options.scrollingSpeed);
+                } else {
                     afterSectionLoads(v);
                 }
             }
 
             // using JS to animate
-            else{
+            else {
                 var scrollSettings = getScrollSettings(v.dtop);
                 FP.test.top = -v.dtop + 'px';
 
-                scrollTo(scrollSettings.element, scrollSettings.options, options.scrollingSpeed, function(){
-                    if(options.scrollBar){
+                scrollTo(scrollSettings.element, scrollSettings.options, options.scrollingSpeed, function () {
+                    if (options.scrollBar) {
 
                         /* Hack!
                         The timeout prevents setting the most dominant section in the viewport as "active" when the user
@@ -1908,11 +1907,11 @@
 
                         When using scrollBar:true It seems like the scroll events still getting propagated even after the scrolling animation has finished.
                         */
-                        setTimeout(function(){
+                        setTimeout(function () {
                             afterSectionLoads(v);
-                        },30);
-                    }else{
-                        
+                        }, 30);
+                    } else {
+
                         afterSectionLoads(v);
 
                         //disabling canScroll when using fastSpeed
@@ -1922,9 +1921,9 @@
             }
 
             // enabling canScroll after the minimum transition laps
-            if(isFastSpeed){
+            if (isFastSpeed) {
                 clearTimeout(g_transitionLapseId);
-                g_transitionLapseId = setTimeout(function(){
+                g_transitionLapseId = setTimeout(function () {
                     canScroll = true;
                 }, transitionLapse);
             }
@@ -1933,17 +1932,17 @@
         /**
         * Gets the scrolling settings depending on the plugin autoScrolling option
         */
-        function getScrollSettings(top){
+        function getScrollSettings(top) {
             var scroll = {};
 
             //top property animation
-            if(options.autoScrolling && !options.scrollBar){
+            if (options.autoScrolling && !options.scrollBar) {
                 scroll.options = -top;
                 scroll.element = $(WRAPPER_SEL)[0];
             }
 
             //window real scrolling
-            else{
+            else {
                 scroll.options = top;
                 scroll.element = window;
             }
@@ -1954,7 +1953,7 @@
         /**
         * Adds sections before or after the current one to create the infinite effect.
         */
-        function createInfiniteSections(v){
+        function createInfiniteSections(v) {
             // Scrolling down
             if (!v.isMovementUp) {
                 // Move all previous sections to after the active section
@@ -1984,7 +1983,7 @@
         /**
         * Fix section order after continuousVertical changes have been animated
         */
-        function continuousVerticalFixSectionOrder (v) {
+        function continuousVerticalFixSectionOrder(v) {
             // If continuousVertical is in effect (and autoScrolling would also be in effect then),
             // finish moving the elements around so the direct navigation will function more simply
             if (v.wrapAroundElements == null) {
@@ -1995,7 +1994,7 @@
                 before($(SECTION_SEL)[0], v.wrapAroundElements);
             }
             else {
-                after($(SECTION_SEL)[$(SECTION_SEL).length-1], v.wrapAroundElements);
+                after($(SECTION_SEL)[$(SECTION_SEL).length - 1], v.wrapAroundElements);
             }
 
             silentScroll($(SECTION_ACTIVE_SEL)[0].offsetTop);
@@ -2007,19 +2006,19 @@
         /**
         * Actions to do once the section is loaded.
         */
-        function afterSectionLoads (v){
+        function afterSectionLoads(v) {
             continuousVerticalFixSectionOrder(v);
 
             //callback (afterLoad) if the site is not just resizing and readjusting the slides
-            if(isFunction(options.afterLoad) && !v.localIsResizing){
+            if (isFunction(options.afterLoad) && !v.localIsResizing) {
                 fireCallback('afterLoad', v);
             }
 
-            if(options.scrollOverflow){
+            if (options.scrollOverflow) {
                 options.scrollOverflowHandler.afterLoad();
             }
 
-            if(!v.localIsResizing){
+            if (!v.localIsResizing) {
                 playMedia(v.element);
             }
 
@@ -2029,7 +2028,7 @@
 
             canScroll = true;
 
-            if(isFunction(v.callback)){
+            if (isFunction(v.callback)) {
                 v.callback();
             }
         }
@@ -2038,7 +2037,7 @@
         * Sets the value for the given attribute from the `data-` attribute with the same suffix
         * ie: data-srcset ==> srcset  |  data-src ==> src
         */
-        function setSrc(element, attribute){
+        function setSrc(element, attribute) {
             element.setAttribute(attribute, element.getAttribute('data-' + attribute));
             element.removeAttribute('data-' + attribute);
         }
@@ -2047,17 +2046,17 @@
         * Makes sure lazyload is done for other sections in the viewport that are not the
         * active one. 
         */
-        function lazyLoadOthers(){
+        function lazyLoadOthers() {
             var hasAutoHeightSections = $(AUTO_HEIGHT_SEL)[0] || isResponsiveMode() && $(AUTO_HEIGHT_RESPONSIVE_SEL)[0];
 
             //quitting when it doesn't apply
-            if (!options.lazyLoading || !hasAutoHeightSections){
+            if (!options.lazyLoading || !hasAutoHeightSections) {
                 return;
             }
 
             //making sure to lazy load auto-height sections that are in the viewport
-            $(SECTION_SEL + ':not(' + ACTIVE_SEL + ')').forEach(function(section){
-                if(isSectionInViewport(section)){
+            $(SECTION_SEL + ':not(' + ACTIVE_SEL + ')').forEach(function (section) {
+                if (isSectionInViewport(section)) {
                     lazyLoad(section);
                 }
             });
@@ -2066,29 +2065,29 @@
         /**
         * Lazy loads image, video and audio elements.
         */
-        function lazyLoad(destiny){
-            if (!options.lazyLoading){
+        function lazyLoad(destiny) {
+            if (!options.lazyLoading) {
                 return;
             }
 
             var panel = getSlideOrSection(destiny);
 
-            $('img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]', panel).forEach(function(element){
-                ['src', 'srcset'].forEach(function(type){
+            $('img[data-src], img[data-srcset], source[data-src], source[data-srcset], video[data-src], audio[data-src], iframe[data-src]', panel).forEach(function (element) {
+                ['src', 'srcset'].forEach(function (type) {
                     var attribute = element.getAttribute('data-' + type);
-                    if(attribute != null && attribute){
+                    if (attribute != null && attribute) {
                         setSrc(element, type);
-                        element.addEventListener('load', function(){
+                        element.addEventListener('load', function () {
                             onMediaLoad(destiny);
                         });
                     }
                 });
 
-                if(matches(element, 'source')){
-                    var elementToPlay =  closest(element, 'video, audio');
-                    if(elementToPlay){
+                if (matches(element, 'source')) {
+                    var elementToPlay = closest(element, 'video, audio');
+                    if (elementToPlay) {
                         elementToPlay.load();
-                        elementToPlay.onloadeddata = function(){
+                        elementToPlay.onloadeddata = function () {
                             onMediaLoad(destiny);
                         };
                     }
@@ -2100,11 +2099,11 @@
         * Callback firing when a lazy load media element has loaded.
         * Making sure it only fires one per section in normal conditions (if load time is not huge)
         */
-        function onMediaLoad(section){
-            if(options.scrollOverflow){
+        function onMediaLoad(section) {
+            if (options.scrollOverflow) {
                 clearTimeout(g_mediaLoadedId);
-                g_mediaLoadedId = setTimeout(function(){
-                    if(!hasClass($body, RESPONSIVE)){
+                g_mediaLoadedId = setTimeout(function () {
+                    if (!hasClass($body, RESPONSIVE)) {
                         scrollBarHandler.createScrollBar(section);
                     }
                 }, 200);
@@ -2114,25 +2113,25 @@
         /**
         * Plays video and audio elements.
         */
-        function playMedia(destiny){
+        function playMedia(destiny) {
             var panel = getSlideOrSection(destiny);
 
             //playing HTML5 media elements
-            $('video, audio', panel).forEach(function(element){
-                if( element.hasAttribute('data-autoplay') && typeof element.play === 'function' ) {
+            $('video, audio', panel).forEach(function (element) {
+                if (element.hasAttribute('data-autoplay') && typeof element.play === 'function') {
                     element.play();
                 }
             });
 
             //youtube videos
-            $('iframe[src*="youtube.com/embed/"]', panel).forEach(function(element){
-                if ( element.hasAttribute('data-autoplay') ){
+            $('iframe[src*="youtube.com/embed/"]', panel).forEach(function (element) {
+                if (element.hasAttribute('data-autoplay')) {
                     playYoutube(element);
                 }
 
                 //in case the URL was not loaded yet. On page load we need time for the new URL (with the API string) to load.
-                element.onload = function() {
-                    if ( element.hasAttribute('data-autoplay') ){
+                element.onload = function () {
+                    if (element.hasAttribute('data-autoplay')) {
                         playYoutube(element);
                     }
                 };
@@ -2142,27 +2141,27 @@
         /**
         * Plays a youtube video
         */
-        function playYoutube(element){
+        function playYoutube(element) {
             element.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         }
 
         /**
         * Stops video and audio elements.
         */
-        function stopMedia(destiny){
+        function stopMedia(destiny) {
             var panel = getSlideOrSection(destiny);
 
             //stopping HTML5 media elements
-            $('video, audio', panel).forEach(function(element){
-                if( !element.hasAttribute('data-keepplaying') && typeof element.pause === 'function' ) {
+            $('video, audio', panel).forEach(function (element) {
+                if (!element.hasAttribute('data-keepplaying') && typeof element.pause === 'function') {
                     element.pause();
                 }
             });
 
             //youtube videos
-            $('iframe[src*="youtube.com/embed/"]', panel).forEach(function(element){
-                if( /youtube\.com\/embed\//.test(element.getAttribute('src')) && !element.hasAttribute('data-keepplaying')){
-                    element.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}','*');
+            $('iframe[src*="youtube.com/embed/"]', panel).forEach(function (element) {
+                if (/youtube\.com\/embed\//.test(element.getAttribute('src')) && !element.hasAttribute('data-keepplaying')) {
+                    element.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
                 }
             });
         }
@@ -2170,9 +2169,9 @@
         /**
         * Gets the active slide (or section) for the given section
         */
-        function getSlideOrSection(destiny){
+        function getSlideOrSection(destiny) {
             var slide = $(SLIDE_ACTIVE_SEL, destiny);
-            if( slide.length ) {
+            if (slide.length) {
                 destiny = slide[0];
             }
 
@@ -2182,15 +2181,15 @@
         /**
         * Scrolls to the anchor in the URL when loading the site
         */
-        function scrollToAnchor(){
-            var anchors =  getAnchorsURL();
+        function scrollToAnchor() {
+            var anchors = getAnchorsURL();
             var sectionAnchor = anchors.section;
             var slideAnchor = anchors.slide;
 
-            if(sectionAnchor){  //if theres any #
-                if(options.animateAnchor){
+            if (sectionAnchor) {  //if theres any #
+                if (options.animateAnchor) {
                     scrollPageAndSlide(sectionAnchor, slideAnchor);
-                }else{
+                } else {
                     silentMoveTo(sectionAnchor, slideAnchor);
                 }
             }
@@ -2200,23 +2199,23 @@
         * Detecting any change on the URL to scroll to the given anchor link
         * (a way to detect back history button as we play with the hashes on the URL)
         */
-        function hashChangeHandler(){
-            if(!isScrolling && !options.lockAnchors){
+        function hashChangeHandler() {
+            if (!isScrolling && !options.lockAnchors) {
                 var anchors = getAnchorsURL();
                 var sectionAnchor = anchors.section;
                 var slideAnchor = anchors.slide;
 
                 //when moving to a slide in the first section for the first time (first time to add an anchor to the URL)
-                var isFirstSlideMove =  (typeof lastScrolledDestiny === 'undefined');
+                var isFirstSlideMove = (typeof lastScrolledDestiny === 'undefined');
                 var isFirstScrollMove = (typeof lastScrolledDestiny === 'undefined' && typeof slideAnchor === 'undefined' && !slideMoving);
 
-                if(sectionAnchor && sectionAnchor.length){
+                if (sectionAnchor && sectionAnchor.length) {
                     /*in order to call scrollpage() only once for each destination at a time
                     It is called twice for each scroll otherwise, as in case of using anchorlinks `hashChange`
                     event is fired on every scroll too.*/
                     if ((sectionAnchor && sectionAnchor !== lastScrolledDestiny) && !isFirstSlideMove
                         || isFirstScrollMove
-                        || (!slideMoving && lastScrolledSlide != slideAnchor )){
+                        || (!slideMoving && lastScrolledSlide != slideAnchor)) {
 
                         scrollPageAndSlide(sectionAnchor, slideAnchor);
                     }
@@ -2225,14 +2224,14 @@
         }
 
         //gets the URL anchors (section and slide)
-        function getAnchorsURL(){
+        function getAnchorsURL() {
             var section;
             var slide;
             var hash = window.location.hash;
 
-            if(hash.length){
+            if (hash.length) {
                 //getting the anchor link in the URL and deleting the `#`
-                var anchorsParts =  hash.replace('#', '').split('/');
+                var anchorsParts = hash.replace('#', '').split('/');
 
                 //using / for visual reasons and not as a section/slide separator #2803
                 var isFunkyAnchor = hash.indexOf('#/') > -1;
@@ -2240,7 +2239,7 @@
                 section = isFunkyAnchor ? '/' + anchorsParts[1] : decodeURIComponent(anchorsParts[0]);
 
                 var slideAnchor = isFunkyAnchor ? anchorsParts[2] : anchorsParts[1];
-                if(slideAnchor && slideAnchor.length){
+                if (slideAnchor && slideAnchor.length) {
                     slide = decodeURIComponent(slideAnchor);
                 }
             }
@@ -2259,53 +2258,53 @@
             var keyCode = e.keyCode;
 
             //tab?
-            if(keyCode === 9){
+            if (keyCode === 9) {
                 onTab(e);
             }
 
-            else if(!matches(activeElement, 'textarea') && !matches(activeElement, 'input') && !matches(activeElement, 'select') &&
+            else if (!matches(activeElement, 'textarea') && !matches(activeElement, 'input') && !matches(activeElement, 'select') &&
                 activeElement.getAttribute('contentEditable') !== "true" && activeElement.getAttribute('contentEditable') !== '' &&
-                options.keyboardScrolling && options.autoScrolling){
+                options.keyboardScrolling && options.autoScrolling) {
 
                 //preventing the scroll with arrow keys & spacebar & Page Up & Down keys
                 var keyControls = [40, 38, 32, 33, 34];
-                if(keyControls.indexOf(keyCode) > -1){
+                if (keyControls.indexOf(keyCode) > -1) {
                     preventDefault(e);
                 }
 
                 controlPressed = e.ctrlKey;
 
-                keydownId = setTimeout(function(){
+                keydownId = setTimeout(function () {
                     onkeydown(e);
-                },150);
+                }, 150);
             }
         }
 
-        function tooltipTextHandler(){
+        function tooltipTextHandler() {
             /*jshint validthis:true */
             trigger(prev(this), 'click');
         }
 
         //to prevent scrolling while zooming
-        function keyUpHandler(e){
-            if(isWindowFocused){ //the keyup gets fired on new tab ctrl + t in Firefox
+        function keyUpHandler(e) {
+            if (isWindowFocused) { //the keyup gets fired on new tab ctrl + t in Firefox
                 controlPressed = e.ctrlKey;
             }
         }
 
         //binding the mousemove when the mouse's middle button is released
-        function mouseDownHandler(e){
+        function mouseDownHandler(e) {
             //middle button
-            if (e.which == 2){
+            if (e.which == 2) {
                 oldPageY = e.pageY;
                 container.addEventListener('mousemove', mouseMoveHandler);
             }
         }
 
         //unbinding the mousemove when the mouse's middle button is released
-        function mouseUpHandler(e){
+        function mouseUpHandler(e) {
             //middle button
-            if (e.which == 2){
+            if (e.which == 2) {
                 container.removeEventListener('mousemove', mouseMoveHandler);
             }
         }
@@ -2316,38 +2315,38 @@
         * Based on "Modals and keyboard traps"
         * from https://developers.google.com/web/fundamentals/accessibility/focus/using-tabindex
         */
-        function onTab(e){
+        function onTab(e) {
             var isShiftPressed = e.shiftKey;
             var activeElement = document.activeElement;
             var focusableElements = getFocusables(getSlideOrSection($(SECTION_ACTIVE_SEL)[0]));
 
-            function preventAndFocusFirst(e){
+            function preventAndFocusFirst(e) {
                 preventDefault(e);
                 return focusableElements[0] ? focusableElements[0].focus() : null;
             }
 
             //outside any section or slide? Let's not hijack the tab!
-            if(isFocusOutside(e)){
+            if (isFocusOutside(e)) {
                 return;
             }
 
             //is there an element with focus?
-            if(activeElement){
-                if(closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) == null){
+            if (activeElement) {
+                if (closest(activeElement, SECTION_ACTIVE_SEL + ',' + SECTION_ACTIVE_SEL + ' ' + SLIDE_ACTIVE_SEL) == null) {
                     activeElement = preventAndFocusFirst(e);
                 }
             }
 
             //no element if focused? Let's focus the first one of the section/slide
-            else{
+            else {
                 preventAndFocusFirst(e);
             }
 
             //when reached the first or last focusable element of the section/slide
             //we prevent the tab action to keep it in the last focusable element
-            if(!isShiftPressed && activeElement == focusableElements[focusableElements.length - 1] ||
+            if (!isShiftPressed && activeElement == focusableElements[focusableElements.length - 1] ||
                 isShiftPressed && activeElement == focusableElements[0]
-            ){
+            ) {
                 preventDefault(e);
             }
         }
@@ -2355,9 +2354,9 @@
         /**
         * Gets all the focusable elements inside the passed element.
         */
-        function getFocusables(el){
-            return [].slice.call($(focusableElementsString, el)).filter(function(item) {
-                    return item.getAttribute('tabindex') !== '-1'
+        function getFocusables(el) {
+            return [].slice.call($(focusableElementsString, el)).filter(function (item) {
+                return item.getAttribute('tabindex') !== '-1'
                     //are also not hidden elements (or with hidden parents)
                     && item.offsetParent !== null;
             });
@@ -2366,7 +2365,7 @@
         /**
         * Determines whether the focus is outside fullpage.js sections/slides or not.
         */
-        function isFocusOutside(e){
+        function isFocusOutside(e) {
             var allFocusables = getFocusables(document);
             var currentFocusIndex = allFocusables.indexOf(document.activeElement);
             var focusDestinationIndex = e.shiftKey ? currentFocusIndex - 1 : currentFocusIndex + 1;
@@ -2378,35 +2377,35 @@
         }
 
         //Scrolling horizontally when clicking on the slider controls.
-        function slideArrowHandler(){
+        function slideArrowHandler() {
             /*jshint validthis:true */
             var section = closest(this, SECTION_SEL);
 
             /*jshint validthis:true */
             if (hasClass(this, SLIDES_PREV)) {
-                if(isScrollAllowed.m.left){
+                if (isScrollAllowed.m.left) {
                     moveSlideLeft(section);
                 }
             } else {
-                if(isScrollAllowed.m.right){
+                if (isScrollAllowed.m.right) {
                     moveSlideRight(section);
                 }
             }
         }
-        
+
         // changing isWindowFocused to true on focus event
-        function focusHandler(){
+        function focusHandler() {
             isWindowFocused = true;
         }
 
         //when opening a new tab (ctrl + t), `control` won't be pressed when coming back.
-        function blurHandler(){
+        function blurHandler() {
             isWindowFocused = false;
             controlPressed = false;
         }
 
         //Scrolls to the section when clicking the navigation bullet
-        function sectionBulletHandler(e){
+        function sectionBulletHandler(e) {
             preventDefault(e);
 
             /*jshint validthis:true */
@@ -2415,7 +2414,7 @@
         }
 
         //Scrolls the slider to the given slide destination for the given section
-        function slideBulletHandler(e){
+        function slideBulletHandler(e) {
             preventDefault(e);
 
             /*jshint validthis:true */
@@ -2426,8 +2425,8 @@
         }
 
         //Menu item handler when not using anchors or using lockAnchors:true
-        function menuItemsHandler(e){
-            if($(options.menu)[0] && (options.lockAnchors || !options.anchors.length)){
+        function menuItemsHandler(e) {
+            if ($(options.menu)[0] && (options.lockAnchors || !options.anchors.length)) {
                 preventDefault(e);
                 /*jshint validthis:true */
                 moveTo(this.getAttribute('data-menuanchor'));
@@ -2437,13 +2436,13 @@
         /**
         * Keydown event
         */
-        function onkeydown(e){
+        function onkeydown(e) {
             var shiftPressed = e.shiftKey;
             var activeElement = document.activeElement;
             var isMediaFocused = matches(activeElement, 'video') || matches(activeElement, 'audio');
 
             //do nothing if we can not scroll or we are not using horizotnal key arrows.
-            if(!canScroll && [37,39].indexOf(e.keyCode) < 0){
+            if (!canScroll && [37, 39].indexOf(e.keyCode) < 0) {
                 return;
             }
 
@@ -2451,7 +2450,7 @@
                 //up
                 case 38:
                 case 33:
-                    if(isScrollAllowed.k.up){
+                    if (isScrollAllowed.k.up) {
                         moveSectionUp();
                     }
                     break;
@@ -2459,16 +2458,16 @@
                 //down
                 case 32: //spacebar
 
-                    if(shiftPressed && isScrollAllowed.k.up && !isMediaFocused){
+                    if (shiftPressed && isScrollAllowed.k.up && !isMediaFocused) {
                         moveSectionUp();
                         break;
                     }
                 /* falls through */
                 case 40:
                 case 34:
-                    if(isScrollAllowed.k.down){
+                    if (isScrollAllowed.k.down) {
                         // space bar?
-                        if(e.keyCode !== 32 || !isMediaFocused){
+                        if (e.keyCode !== 32 || !isMediaFocused) {
                             moveSectionDown();
                         }
                     }
@@ -2476,28 +2475,28 @@
 
                 //Home
                 case 36:
-                    if(isScrollAllowed.k.up){
+                    if (isScrollAllowed.k.up) {
                         moveTo(1);
                     }
                     break;
 
                 //End
                 case 35:
-                     if(isScrollAllowed.k.down){
-                        moveTo( $(SECTION_SEL).length );
+                    if (isScrollAllowed.k.down) {
+                        moveTo($(SECTION_SEL).length);
                     }
                     break;
 
                 //left
                 case 37:
-                    if(isScrollAllowed.k.left){
+                    if (isScrollAllowed.k.left) {
                         moveSlideLeft();
                     }
                     break;
 
                 //right
                 case 39:
-                    if(isScrollAllowed.k.right){
+                    if (isScrollAllowed.k.right) {
                         moveSlideRight();
                     }
                     break;
@@ -2512,18 +2511,18 @@
         * Used only for the middle button of the mouse.
         */
         var oldPageY = 0;
-        function mouseMoveHandler(e){
-            if(!options.autoScrolling){
+        function mouseMoveHandler(e) {
+            if (!options.autoScrolling) {
                 return;
             }
-            if(canScroll){
+            if (canScroll) {
                 // moving up
-                if (e.pageY < oldPageY && isScrollAllowed.m.up){
+                if (e.pageY < oldPageY && isScrollAllowed.m.up) {
                     moveSectionUp();
                 }
 
                 // moving down
-                else if(e.pageY > oldPageY && isScrollAllowed.m.down){
+                else if (e.pageY > oldPageY && isScrollAllowed.m.down) {
                     moveSectionDown();
                 }
             }
@@ -2533,13 +2532,13 @@
         /**
         * Scrolls horizontal sliders.
         */
-        function landscapeScroll(slides, destiny, direction){
+        function landscapeScroll(slides, destiny, direction) {
             var section = closest(slides, SECTION_SEL);
             var v = {
                 slides: slides,
                 destiny: destiny,
                 direction: direction,
-                destinyPos: {left: destiny.offsetLeft},
+                destinyPos: { left: destiny.offsetLeft },
                 slideIndex: index(destiny),
                 section: section,
                 sectionIndex: index(section, SECTION_SEL),
@@ -2557,17 +2556,17 @@
             v.direction = v.direction ? v.direction : v.xMovement;
 
             //important!! Only do it when not resizing
-            if(!v.localIsResizing){
+            if (!v.localIsResizing) {
                 //preventing from scrolling to the next/prev section when using scrollHorizontally
                 canScroll = false;
             }
 
-            if(options.onSlideLeave){
+            if (options.onSlideLeave) {
 
                 //if the site is not just resizing and readjusting the slides
-                if(!v.localIsResizing && v.xMovement!=='none'){
-                    if(isFunction( options.onSlideLeave )){
-                        if( fireCallback('onSlideLeave', v) === false){
+                if (!v.localIsResizing && v.xMovement !== 'none') {
+                    if (isFunction(options.onSlideLeave)) {
+                        if (fireCallback('onSlideLeave', v) === false) {
                             slideMoving = false;
                             return;
                         }
@@ -2578,21 +2577,21 @@
             addClass(destiny, ACTIVE);
             removeClass(siblings(destiny), ACTIVE);
 
-            if(!v.localIsResizing){
+            if (!v.localIsResizing) {
                 stopMedia(v.prevSlide);
                 lazyLoad(destiny);
             }
 
-            if(!options.loopHorizontal && options.controlArrows){
+            if (!options.loopHorizontal && options.controlArrows) {
                 //hidding it for the fist slide, showing for the rest
-                toggle($(SLIDES_ARROW_PREV_SEL, section), v.slideIndex!==0);
+                toggle($(SLIDES_ARROW_PREV_SEL, section), v.slideIndex !== 0);
 
                 //hidding it for the last slide, showing for the rest
                 toggle($(SLIDES_ARROW_NEXT_SEL, section), next(destiny) != null);
             }
 
             //only changing the URL if the slides are in the current section (not for resize re-adjusting)
-            if(hasClass(section, ACTIVE) && !v.localIsResizing){
+            if (hasClass(section, ACTIVE) && !v.localIsResizing) {
                 setState(v.slideIndex, v.slideAnchor, v.anchorLink, v.sectionIndex);
             }
 
@@ -2600,12 +2599,12 @@
         }
 
 
-        function afterSlideLoads(v){
+        function afterSlideLoads(v) {
             activeSlidesNavigation(v.slidesNav, v.slideIndex);
 
             //if the site is not just resizing and readjusting the slides
-            if(!v.localIsResizing){
-                if(isFunction( options.afterSlideLoad )){
+            if (!v.localIsResizing) {
+                if (isFunction(options.afterSlideLoad)) {
                     fireCallback('afterSlideLoad', v);
                 }
 
@@ -2625,25 +2624,25 @@
         *
         * @param fireCallback {Bool} - determines whether or not to fire the callback
         */
-        function performHorizontalMove(slides, v, fireCallback){
+        function performHorizontalMove(slides, v, fireCallback) {
             var destinyPos = v.destinyPos;
 
-            if(options.css3){
+            if (options.css3) {
                 var translate3d = 'translate3d(-' + Math.round(destinyPos.left) + 'px, 0px, 0px)';
 
                 FP.test.translate3dH[v.sectionIndex] = translate3d;
                 css(addAnimation($(SLIDES_CONTAINER_SEL, slides)), getTransforms(translate3d));
 
-                afterSlideLoadsId = setTimeout(function(){
-                    if(fireCallback){
+                afterSlideLoadsId = setTimeout(function () {
+                    if (fireCallback) {
                         afterSlideLoads(v);
                     }
                 }, options.scrollingSpeed);
-            }else{
+            } else {
                 FP.test.left[v.sectionIndex] = Math.round(destinyPos.left);
 
-                scrollTo(slides, Math.round(destinyPos.left), options.scrollingSpeed, function(){
-                    if(fireCallback){
+                scrollTo(slides, Math.round(destinyPos.left), options.scrollingSpeed, function () {
+                    if (fireCallback) {
                         afterSlideLoads(v);
                     }
                 });
@@ -2653,10 +2652,10 @@
         /**
         * Sets the state for the horizontal bullet navigations.
         */
-        function activeSlidesNavigation(slidesNav, slideIndex){
-            if(options.slidesNavigation && slidesNav != null){
+        function activeSlidesNavigation(slidesNav, slideIndex) {
+            if (options.slidesNavigation && slidesNav != null) {
                 removeClass($(ACTIVE_SEL, slidesNav), ACTIVE);
-                addClass( $('a', $('li', slidesNav)[slideIndex] ), ACTIVE);
+                addClass($('a', $('li', slidesNav)[slideIndex]), ACTIVE);
             }
         }
 
@@ -2664,20 +2663,20 @@
 
         /*
         * Resize event handler.
-        */        
-        function resizeHandler(){
+        */
+        function resizeHandler() {
             isResizing = true;
- 
+
             clearTimeout(resizeId);
 
             //in order to call the functions only when the resize is finished
             //http://stackoverflow.com/questions/4298612/jquery-how-to-call-resize-event-only-once-its-finished-resizing    
-            resizeId = setTimeout(function(){
+            resizeId = setTimeout(function () {
 
                 //issue #3336 
                 //(some apps or browsers, like Chrome/Firefox for Mobile take time to report the real height)
                 //so we check it 3 times with intervals in that case
-                for(var i = 0; i< 4; i++){
+                for (var i = 0; i < 4; i++) {
                     resizeHandlerId = setTimeout(resizeActions, 200 * i);
                 }
             }, 200);
@@ -2686,7 +2685,7 @@
         /**
         * When resizing the site, we adjust the heights of the sections, slimScroll...
         */
-        function resizeActions(){
+        function resizeActions() {
 
             //checking if it needs to get responsive
             responsive();
@@ -2700,13 +2699,13 @@
                     var currentHeight = getWindowHeight();
 
                     //making sure the change in the viewport size is enough to force a rebuild. (20 % of the window to avoid problems when hidding scroll bars)
-                    if( Math.abs(currentHeight - previousHeight) > (20 * Math.max(previousHeight, currentHeight) / 100) ){
+                    if (Math.abs(currentHeight - previousHeight) > (20 * Math.max(previousHeight, currentHeight) / 100)) {
                         reBuild(true);
                         previousHeight = currentHeight;
                     }
                 }
             }
-            else{
+            else {
                 adjustToNewViewport();
             }
         }
@@ -2715,7 +2714,7 @@
         * Checks if the site needs to get responsive and disables autoScrolling if so.
         * A class `fp-responsive` is added to the plugin's container in case the user wants to use it for his own responsive CSS.
         */
-        function responsive(){
+        function responsive() {
             var widthLimit = options.responsive || options.responsiveWidth; //backwards compatiblity
             var heightLimit = options.responsiveHeight;
 
@@ -2723,13 +2722,13 @@
             var isBreakingPointWidth = widthLimit && window.innerWidth < widthLimit;
             var isBreakingPointHeight = heightLimit && window.innerHeight < heightLimit;
 
-            if(widthLimit && heightLimit){
+            if (widthLimit && heightLimit) {
                 setResponsive(isBreakingPointWidth || isBreakingPointHeight);
             }
-            else if(widthLimit){
+            else if (widthLimit) {
                 setResponsive(isBreakingPointWidth);
             }
-            else if(heightLimit){
+            else if (heightLimit) {
                 setResponsive(isBreakingPointHeight);
             }
         }
@@ -2737,7 +2736,7 @@
         /**
         * Adds transition animations for the given element
         */
-        function addAnimation(element){
+        function addAnimation(element) {
             var transition = 'all ' + options.scrollingSpeed + 'ms ' + options.easingcss3;
 
             removeClass(element, NO_TRANSITION);
@@ -2750,19 +2749,19 @@
         /**
         * Remove transition animations for the given element
         */
-        function removeAnimation(element){
+        function removeAnimation(element) {
             return addClass(element, NO_TRANSITION);
         }
 
         /**
         * Activating the vertical navigation bullets according to the given slide name.
         */
-        function activateNavDots(name, sectionIndex){
-            if(options.navigation && $(SECTION_NAV_SEL)[0] != null){
-                    removeClass($(ACTIVE_SEL, $(SECTION_NAV_SEL)[0]), ACTIVE);
-                if(name){
-                    addClass( $('a[href="#' + name + '"]', $(SECTION_NAV_SEL)[0]), ACTIVE);
-                }else{
+        function activateNavDots(name, sectionIndex) {
+            if (options.navigation && $(SECTION_NAV_SEL)[0] != null) {
+                removeClass($(ACTIVE_SEL, $(SECTION_NAV_SEL)[0]), ACTIVE);
+                if (name) {
+                    addClass($('a[href="#' + name + '"]', $(SECTION_NAV_SEL)[0]), ACTIVE);
+                } else {
                     addClass($('a', $('li', $(SECTION_NAV_SEL)[0])[sectionIndex]), ACTIVE);
                 }
             }
@@ -2771,11 +2770,11 @@
         /**
         * Activating the website main menu elements according to the given slide name.
         */
-        function activateMenuElement(name){
-            $(options.menu).forEach(function(menu) {
-                if(options.menu && menu != null){
+        function activateMenuElement(name) {
+            $(options.menu).forEach(function (menu) {
+                if (options.menu && menu != null) {
                     removeClass($(ACTIVE_SEL, menu), ACTIVE);
-                    addClass($('[data-menuanchor="'+name+'"]', menu), ACTIVE);
+                    addClass($('[data-menuanchor="' + name + '"]', menu), ACTIVE);
                 }
             });
         }
@@ -2783,7 +2782,7 @@
         /**
         * Sets to active the current menu and vertical nav items.
         */
-        function activateMenuAndNav(anchor, index){
+        function activateMenuAndNav(anchor, index) {
             activateMenuElement(anchor);
             activateNavDots(anchor, index);
         }
@@ -2792,13 +2791,13 @@
         * Retuns `up` or `down` depending on the scrolling movement to reach its destination
         * from the current section.
         */
-        function getYmovement(destiny){
+        function getYmovement(destiny) {
             var fromIndex = index($(SECTION_ACTIVE_SEL)[0], SECTION_SEL);
             var toIndex = index(destiny, SECTION_SEL);
-            if( fromIndex == toIndex){
+            if (fromIndex == toIndex) {
                 return 'none';
             }
-            if(fromIndex > toIndex){
+            if (fromIndex > toIndex) {
                 return 'up';
             }
             return 'down';
@@ -2808,19 +2807,19 @@
         * Retuns `right` or `left` depending on the scrolling movement to reach its destination
         * from the current slide.
         */
-        function getXmovement(fromIndex, toIndex){
-            if( fromIndex == toIndex){
+        function getXmovement(fromIndex, toIndex) {
+            if (fromIndex == toIndex) {
                 return 'none';
             }
-            if(fromIndex > toIndex){
+            if (fromIndex > toIndex) {
                 return 'left';
             }
             return 'right';
         }
 
-        function addTableClass(element){
+        function addTableClass(element) {
             //In case we are styling for the 2nd time as in with reponsiveSlides
-            if(!hasClass(element, TABLE)){
+            if (!hasClass(element, TABLE)) {
                 var wrapper = document.createElement('div');
                 wrapper.className = TABLE_CELL;
                 wrapper.style.height = getTableHeight(element) + 'px';
@@ -2830,12 +2829,12 @@
             }
         }
 
-        function getTableHeight(element){
+        function getTableHeight(element) {
             var sectionHeight = windowsHeight;
 
-            if(options.paddingTop || options.paddingBottom){
+            if (options.paddingTop || options.paddingBottom) {
                 var section = element;
-                if(!hasClass(section, SECTION)){
+                if (!hasClass(section, SECTION)) {
                     section = closest(element, SECTION_SEL);
                 }
 
@@ -2849,10 +2848,10 @@
         /**
         * Adds a css3 transform property to the container class with or without animation depending on the animated param.
         */
-        function transformContainer(translate3d, animated){
-            if(animated){
+        function transformContainer(translate3d, animated) {
+            if (animated) {
                 addAnimation(container);
-            }else{
+            } else {
                 removeAnimation(container);
             }
 
@@ -2860,18 +2859,18 @@
             FP.test.translate3d = translate3d;
 
             //syncronously removing the class after the animation has been applied.
-            setTimeout(function(){
+            setTimeout(function () {
                 removeClass(container, NO_TRANSITION);
-            },10);
+            }, 10);
         }
 
         /**
         * Gets a section by its anchor / index
         */
-        function getSectionByAnchor(sectionAnchor){
-            var section = $(SECTION_SEL + '[data-anchor="'+sectionAnchor+'"]', container)[0];
-            if(!section){
-                var sectionIndex = typeof sectionAnchor !== 'undefined' ? sectionAnchor -1 : 0;
+        function getSectionByAnchor(sectionAnchor) {
+            var section = $(SECTION_SEL + '[data-anchor="' + sectionAnchor + '"]', container)[0];
+            if (!section) {
+                var sectionIndex = typeof sectionAnchor !== 'undefined' ? sectionAnchor - 1 : 0;
                 section = $(SECTION_SEL)[sectionIndex];
             }
 
@@ -2881,9 +2880,9 @@
         /**
         * Gets a slide inside a given section by its anchor / index
         */
-        function getSlideByAnchor(slideAnchor, section){
-            var slide = $(SLIDE_SEL + '[data-anchor="'+slideAnchor+'"]', section)[0];
-            if(slide == null){
+        function getSlideByAnchor(slideAnchor, section) {
+            var slide = $(SLIDE_SEL + '[data-anchor="' + slideAnchor + '"]', section)[0];
+            if (slide == null) {
                 slideAnchor = typeof slideAnchor !== 'undefined' ? slideAnchor : 0;
                 slide = $(SLIDE_SEL, section)[slideAnchor];
             }
@@ -2894,22 +2893,22 @@
         /**
         * Scrolls to the given section and slide anchors
         */
-        function scrollPageAndSlide(sectionAnchor, slideAnchor){
+        function scrollPageAndSlide(sectionAnchor, slideAnchor) {
             var section = getSectionByAnchor(sectionAnchor);
 
             //do nothing if there's no section with the given anchor name
-            if(section == null) return;
+            if (section == null) return;
 
             var slide = getSlideByAnchor(slideAnchor, section);
 
             //we need to scroll to the section and then to the slide
-            if (getAnchor(section) !== lastScrolledDestiny && !hasClass(section, ACTIVE)){
-                scrollPage(section, function(){
+            if (getAnchor(section) !== lastScrolledDestiny && !hasClass(section, ACTIVE)) {
+                scrollPage(section, function () {
                     scrollSlider(slide);
                 });
             }
             //if we were already in the section
-            else{
+            else {
                 scrollSlider(slide);
             }
         }
@@ -2917,8 +2916,8 @@
         /**
         * Scrolls the slider to the given slide destination for the given section
         */
-        function scrollSlider(slide){
-            if(slide != null){
+        function scrollSlider(slide) {
+            if (slide != null) {
                 landscapeScroll(closest(slide, SLIDES_WRAPPER_SEL), slide);
             }
         }
@@ -2926,22 +2925,22 @@
         /**
         * Creates a landscape navigation bar with dots for horizontal sliders.
         */
-        function addSlidesNavigation(section, numSlides){
+        function addSlidesNavigation(section, numSlides) {
             appendTo(createElementFromHTML('<div class="' + SLIDES_NAV + '"><ul></ul></div>'), section);
             var nav = $(SLIDES_NAV_SEL, section)[0];
 
             //top or bottom
             addClass(nav, 'fp-' + options.slidesNavPosition);
 
-            for(var i=0; i< numSlides; i++){
+            for (var i = 0; i < numSlides; i++) {
                 var slide = $(SLIDE_SEL, section)[i];
-                appendTo(createElementFromHTML('<li><a href="#"><span class="fp-sr-only">'+ getBulletLinkName(i, 'Slide', slide) +'</span><span></span></a></li>'), $('ul', nav)[0] );
+                appendTo(createElementFromHTML('<li><a href="#"><span class="fp-sr-only">' + getBulletLinkName(i, 'Slide', slide) + '</span><span></span></a></li>'), $('ul', nav)[0]);
             }
 
             //centering it
-            css(nav, {'margin-left': '-' + (nav.innerWidth/2) + 'px'});
+            css(nav, { 'margin-left': '-' + (nav.innerWidth / 2) + 'px' });
 
-            addClass($('a', $('li', nav)[0] ), ACTIVE);
+            addClass($('a', $('li', nav)[0]), ACTIVE);
         }
 
 
@@ -2949,33 +2948,33 @@
         * Sets the state of the website depending on the active section/slide.
         * It changes the URL hash when needed and updates the body class.
         */
-        function setState(slideIndex, slideAnchor, anchorLink, sectionIndex){
+        function setState(slideIndex, slideAnchor, anchorLink, sectionIndex) {
             var sectionHash = '';
 
-            if(options.anchors.length && !options.lockAnchors){
+            if (options.anchors.length && !options.lockAnchors) {
 
                 //isn't it the first slide?
-                if(slideIndex){
-                    if(anchorLink != null){
+                if (slideIndex) {
+                    if (anchorLink != null) {
                         sectionHash = anchorLink;
                     }
 
                     //slide without anchor link? We take the index instead.
-                    if(slideAnchor == null){
+                    if (slideAnchor == null) {
                         slideAnchor = slideIndex;
                     }
 
                     lastScrolledSlide = slideAnchor;
                     setUrlHash(sectionHash + '/' + slideAnchor);
 
-                //first slide won't have slide anchor, just the section one
-                }else if(slideIndex != null){
+                    //first slide won't have slide anchor, just the section one
+                } else if (slideIndex != null) {
                     lastScrolledSlide = slideAnchor;
                     setUrlHash(anchorLink);
                 }
 
                 //section without slides
-                else{
+                else {
                     setUrlHash(anchorLink);
                 }
             }
@@ -2986,16 +2985,16 @@
         /**
         * Sets the URL hash.
         */
-        function setUrlHash(url){
-            if(options.recordHistory){
+        function setUrlHash(url) {
+            if (options.recordHistory) {
                 location.hash = url;
-            }else{
+            } else {
                 //Mobile Chrome doesn't work the normal way, so... lets use HTML5 for phones :)
-                if(isTouchDevice || isTouch){
+                if (isTouchDevice || isTouch) {
                     window.history.replaceState(undefined, undefined, '#' + url);
-                }else{
+                } else {
                     var baseUrl = window.location.href.split('#')[0];
-                    window.location.replace( baseUrl + '#' + url );
+                    window.location.replace(baseUrl + '#' + url);
                 }
             }
         }
@@ -3003,15 +3002,15 @@
         /**
         * Gets the anchor for the given slide / section. Its index will be used if there's none.
         */
-        function getAnchor(element){
-            if(!element){
+        function getAnchor(element) {
+            if (!element) {
                 return null;
             }
             var anchor = element.getAttribute('data-anchor');
             var elementIndex = index(element);
 
             //Slide without anchor link? We take the index instead.
-            if(anchor == null){
+            if (anchor == null) {
                 anchor = elementIndex;
             }
 
@@ -3021,7 +3020,7 @@
         /**
         * Sets a class for the body of the page depending on the active section / slide
         */
-        function setBodyClass(){
+        function setBodyClass() {
             var section = $(SECTION_ACTIVE_SEL)[0];
             var slide = $(SLIDE_ACTIVE_SEL, section)[0];
 
@@ -3030,12 +3029,12 @@
 
             var text = String(sectionAnchor);
 
-            if(slide){
+            if (slide) {
                 text = text + '-' + slideAnchor;
             }
 
             //changing slash for dash to make it a valid CSS style
-            text = text.replace('/', '-').replace('#','');
+            text = text.replace('/', '-').replace('#', '');
 
             //removing previous anchor classes
             var classRe = new RegExp('\\b\\s?' + VIEWING_PREFIX + '-[^\\s]+\\b', "g");
@@ -3054,11 +3053,11 @@
             var el = document.createElement('p'),
                 has3d,
                 transforms = {
-                    'webkitTransform':'-webkit-transform',
-                    'OTransform':'-o-transform',
-                    'msTransform':'-ms-transform',
-                    'MozTransform':'-moz-transform',
-                    'transform':'transform'
+                    'webkitTransform': '-webkit-transform',
+                    'OTransform': '-o-transform',
+                    'msTransform': '-ms-transform',
+                    'MozTransform': '-moz-transform',
+                    'transform': 'transform'
                 };
 
             //preventing the style p:empty{display: none;} from returning the wrong result
@@ -3083,7 +3082,7 @@
         * Removes the auto scrolling action fired by the mouse wheel and trackpad.
         * After this function is called, the mousewheel and trackpad movements won't scroll through sections.
         */
-        function removeMouseWheelHandler(){
+        function removeMouseWheelHandler() {
             if (document.addEventListener) {
                 document.removeEventListener('mousewheel', MouseWheelHandler, false); //IE9, Chrome, Safari, Oper
                 document.removeEventListener('wheel', MouseWheelHandler, false); //Firefox
@@ -3098,37 +3097,37 @@
         * After this function is called, the mousewheel and trackpad movements will scroll through sections
         * https://developer.mozilla.org/en-US/docs/Web/Events/wheel
         */
-        function addMouseWheelHandler(){
+        function addMouseWheelHandler() {
             var prefix = '';
             var _addEventListener;
 
-            if (window.addEventListener){
+            if (window.addEventListener) {
                 _addEventListener = "addEventListener";
-            }else{
+            } else {
                 _addEventListener = "attachEvent";
                 prefix = 'on';
             }
 
             // detect available wheel event
             var support = 'onwheel' in document.createElement('div') ? 'wheel' : // Modern browsers support "wheel"
-                      document.onmousewheel !== undefined ? 'mousewheel' : // Webkit and IE support at least "mousewheel"
-                      'DOMMouseScroll'; // let's assume that remaining browsers are older Firefox
-            var passiveEvent = g_supportsPassive ? {passive: false }: false;
+                document.onmousewheel !== undefined ? 'mousewheel' : // Webkit and IE support at least "mousewheel"
+                    'DOMMouseScroll'; // let's assume that remaining browsers are older Firefox
+            var passiveEvent = g_supportsPassive ? { passive: false } : false;
 
-            if(support == 'DOMMouseScroll'){
-                document[ _addEventListener ](prefix + 'MozMousePixelScroll', MouseWheelHandler, passiveEvent);
+            if (support == 'DOMMouseScroll') {
+                document[_addEventListener](prefix + 'MozMousePixelScroll', MouseWheelHandler, passiveEvent);
             }
 
             //handle MozMousePixelScroll in older Firefox
-            else{
-                document[ _addEventListener ](prefix + support, MouseWheelHandler, passiveEvent);
+            else {
+                document[_addEventListener](prefix + support, MouseWheelHandler, passiveEvent);
             }
         }
 
         /**
         * Binding the mousemove when the mouse's middle button is pressed
         */
-        function addMiddleWheelHandler(){
+        function addMiddleWheelHandler() {
             container.addEventListener('mousedown', mouseDownHandler);
             container.addEventListener('mouseup', mouseUpHandler);
         }
@@ -3136,7 +3135,7 @@
         /**
         * Unbinding the mousemove when the mouse's middle button is released
         */
-        function removeMiddleWheelHandler(){
+        function removeMiddleWheelHandler() {
             container.removeEventListener('mousedown', mouseDownHandler);
             container.removeEventListener('mouseup', mouseUpHandler);
         }
@@ -3144,36 +3143,36 @@
         /**
         * Adds the possibility to auto scroll through sections on touch devices.
         */
-        function addTouchHandler(){
-            if(isTouchDevice || isTouch){
-                if(options.autoScrolling){
-                    $body.removeEventListener(events.touchmove, preventBouncing, {passive: false});
-                    $body.addEventListener(events.touchmove, preventBouncing, {passive: false});
+        function addTouchHandler() {
+            if (isTouchDevice || isTouch) {
+                if (options.autoScrolling) {
+                    $body.removeEventListener(events.touchmove, preventBouncing, { passive: false });
+                    $body.addEventListener(events.touchmove, preventBouncing, { passive: false });
                 }
 
                 var touchWrapper = options.touchWrapper;
                 touchWrapper.removeEventListener(events.touchstart, touchStartHandler);
-                touchWrapper.removeEventListener(events.touchmove, touchMoveHandler, {passive: false});
+                touchWrapper.removeEventListener(events.touchmove, touchMoveHandler, { passive: false });
 
                 touchWrapper.addEventListener(events.touchstart, touchStartHandler);
-                touchWrapper.addEventListener(events.touchmove, touchMoveHandler, {passive: false});
+                touchWrapper.addEventListener(events.touchmove, touchMoveHandler, { passive: false });
             }
         }
 
         /**
         * Removes the auto scrolling for touch devices.
         */
-        function removeTouchHandler(){
-            if(isTouchDevice || isTouch){
+        function removeTouchHandler() {
+            if (isTouchDevice || isTouch) {
                 // normalScrollElements requires it off #2691
-                if(options.autoScrolling){
-                    $body.removeEventListener(events.touchmove, touchMoveHandler, {passive: false});
-                    $body.removeEventListener(events.touchmove, preventBouncing, {passive: false});
+                if (options.autoScrolling) {
+                    $body.removeEventListener(events.touchmove, touchMoveHandler, { passive: false });
+                    $body.removeEventListener(events.touchmove, preventBouncing, { passive: false });
                 }
 
                 var touchWrapper = options.touchWrapper;
                 touchWrapper.removeEventListener(events.touchstart, touchStartHandler);
-                touchWrapper.removeEventListener(events.touchmove, touchMoveHandler, {passive: false});
+                touchWrapper.removeEventListener(events.touchmove, touchMoveHandler, { passive: false });
             }
         }
 
@@ -3181,17 +3180,17 @@
         * Returns and object with Microsoft pointers (for IE<11 and for IE >= 11)
         * http://msdn.microsoft.com/en-us/library/ie/dn304886(v=vs.85).aspx
         */
-        function getMSPointer(){
+        function getMSPointer() {
             var pointer;
 
             //IE >= 11 & rest of browsers
-            if(window.PointerEvent){
-                pointer = { down: 'pointerdown', move: 'pointermove'};
+            if (window.PointerEvent) {
+                pointer = { down: 'pointerdown', move: 'pointermove' };
             }
 
             //IE < 11
-            else{
-                pointer = { down: 'MSPointerDown', move: 'MSPointerMove'};
+            else {
+                pointer = { down: 'MSPointerDown', move: 'MSPointerMove' };
             }
 
             return pointer;
@@ -3201,14 +3200,14 @@
         * Gets the pageX and pageY properties depending on the browser.
         * https://github.com/alvarotrigo/fullPage.js/issues/194#issuecomment-34069854
         */
-        function getEventsPage(e){
+        function getEventsPage(e) {
             var events = [];
 
             events.y = (typeof e.pageY !== 'undefined' && (e.pageY || e.pageX) ? e.pageY : e.touches[0].pageY);
             events.x = (typeof e.pageX !== 'undefined' && (e.pageY || e.pageX) ? e.pageX : e.touches[0].pageX);
 
             //in touch devices with scrollBar:true, e.pageY is detected, but we have to deal with touch events. #1008
-            if(isTouch && isReallyTouch(e) && options.scrollBar && typeof e.touches !== 'undefined'){
+            if (isTouch && isReallyTouch(e) && options.scrollBar && typeof e.touches !== 'undefined') {
                 events.y = e.touches[0].pageY;
                 events.x = e.touches[0].pageX;
             }
@@ -3220,17 +3219,17 @@
         * Slides silently (with no animation) the active slider to the given slide.
         * @param noCallback {bool} true or defined -> no callbacks
         */
-        function silentLandscapeScroll(activeSlide, noCallbacks){
+        function silentLandscapeScroll(activeSlide, noCallbacks) {
             setScrollingSpeed(0, 'internal');
 
-            if(typeof noCallbacks !== 'undefined'){
+            if (typeof noCallbacks !== 'undefined') {
                 //preventing firing callbacks afterSlideLoad etc.
                 isResizing = true;
             }
 
             landscapeScroll(closest(activeSlide, SLIDES_WRAPPER_SEL), activeSlide);
 
-            if(typeof noCallbacks !== 'undefined'){
+            if (typeof noCallbacks !== 'undefined') {
                 isResizing = false;
             }
 
@@ -3240,20 +3239,20 @@
         /**
         * Scrolls silently (with no animation) the page to the given Y position.
         */
-        function silentScroll(top){
+        function silentScroll(top) {
             // The first section can have a negative value in iOS 10. Not quite sure why: -0.0142822265625
             // that's why we round it to 0.
             var roundedTop = Math.round(top);
 
-            if (options.css3 && options.autoScrolling && !options.scrollBar){
+            if (options.css3 && options.autoScrolling && !options.scrollBar) {
                 var translate3d = 'translate3d(0px, -' + roundedTop + 'px, 0px)';
                 transformContainer(translate3d, false);
             }
-            else if(options.autoScrolling && !options.scrollBar){
-                css(container, {'top': -roundedTop + 'px'});
+            else if (options.autoScrolling && !options.scrollBar) {
+                css(container, { 'top': -roundedTop + 'px' });
                 FP.test.top = -roundedTop + 'px';
             }
-            else{
+            else {
                 var scrollSettings = getScrollSettings(roundedTop);
                 setScrolling(scrollSettings.element, scrollSettings.options);
             }
@@ -3262,11 +3261,11 @@
         /**
         * Returns the cross-browser transform string.
         */
-        function getTransforms(translate3d){
+        function getTransforms(translate3d) {
             return {
                 '-webkit-transform': translate3d,
                 '-moz-transform': translate3d,
-                '-ms-transform':translate3d,
+                '-ms-transform': translate3d,
                 'transform': translate3d
             };
         }
@@ -3275,15 +3274,15 @@
         * Allowing or disallowing the mouse/swipe scroll in a given direction. (not for keyboard)
         * @type  m (mouse) or k (keyboard)
         */
-        function setIsScrollAllowed(value, direction, type){
+        function setIsScrollAllowed(value, direction, type) {
             //up, down, left, right
-            if(direction !== 'all'){
+            if (direction !== 'all') {
                 isScrollAllowed[type][direction] = value;
             }
 
             //all directions?
-            else{
-                Object.keys(isScrollAllowed[type]).forEach(function(key){
+            else {
+                Object.keys(isScrollAllowed[type]).forEach(function (key) {
                     isScrollAllowed[type][key] = value;
                 });
             }
@@ -3292,7 +3291,7 @@
         /*
         * Destroys fullpage.js plugin events and optinally its html markup and styles
         */
-        function destroy(all){
+        function destroy(all) {
             setAutoScrolling(false, 'internal');
             setAllowScrolling(true);
             setMouseHijack(false);
@@ -3300,7 +3299,7 @@
             addClass(container, DESTROYED);
 
             [
-                afterSlideLoadsId, 
+                afterSlideLoadsId,
                 afterSectionLoadsId,
                 resizeId,
                 scrollId,
@@ -3308,7 +3307,7 @@
                 g_doubleCheckHeightId,
                 resizeHandlerId,
                 g_transitionLapseId
-            ].forEach(function(timeoutId){
+            ].forEach(function (timeoutId) {
                 clearTimeout(timeoutId);
             });
 
@@ -3319,16 +3318,16 @@
             document.removeEventListener('keydown', keydownHandler);
             document.removeEventListener('keyup', keyUpHandler);
 
-            ['click', 'touchstart'].forEach(function(eventName){
+            ['click', 'touchstart'].forEach(function (eventName) {
                 document.removeEventListener(eventName, delegatedEvents);
             });
 
-            ['mouseenter', 'touchstart', 'mouseleave', 'touchend'].forEach(function(eventName){
+            ['mouseenter', 'touchstart', 'mouseleave', 'touchend'].forEach(function (eventName) {
                 document.removeEventListener(eventName, onMouseEnterOrLeave, true); //true is required!
             });
 
             //lets make a mess!
-            if(all){
+            if (all) {
                 destroyStructure();
             }
         }
@@ -3336,25 +3335,25 @@
         /*
         * Removes inline styles added by fullpage.js
         */
-        function destroyStructure(){
+        function destroyStructure() {
             //reseting the `top` or `translate` properties to 0
             silentScroll(0);
 
             //loading all the lazy load content
-            $('img[data-src], source[data-src], audio[data-src], iframe[data-src]', container).forEach(function(item){
+            $('img[data-src], source[data-src], audio[data-src], iframe[data-src]', container).forEach(function (item) {
                 setSrc(item, 'src');
             });
 
-            $('img[data-srcset]').forEach(function(item){
+            $('img[data-srcset]').forEach(function (item) {
                 setSrc(item, 'srcset');
             });
 
-            remove($(SECTION_NAV_SEL + ', ' + SLIDES_NAV_SEL +  ', ' + SLIDES_ARROW_SEL));
+            remove($(SECTION_NAV_SEL + ', ' + SLIDES_NAV_SEL + ', ' + SLIDES_ARROW_SEL));
 
             //removing inline styles
             css($(SECTION_SEL), {
                 'height': '',
-                'background-color' : '',
+                'background-color': '',
                 'padding': ''
             });
 
@@ -3388,18 +3387,18 @@
             });
 
             //removing added classes
-            $(SECTION_SEL + ', ' + SLIDE_SEL).forEach(function(item){
-                if(options.scrollOverflowHandler && options.scrollOverflow){
+            $(SECTION_SEL + ', ' + SLIDE_SEL).forEach(function (item) {
+                if (options.scrollOverflowHandler && options.scrollOverflow) {
                     options.scrollOverflowHandler.remove(item);
                 }
                 removeClass(item, TABLE + ' ' + ACTIVE + ' ' + COMPLETELY);
                 var previousStyles = item.getAttribute('data-fp-styles');
-                if(previousStyles){
+                if (previousStyles) {
                     item.setAttribute('style', item.getAttribute('data-fp-styles'));
                 }
 
                 //removing anchors if they were not set using the HTML markup
-                if(hasClass(item, SECTION) && !g_initialAnchorsInDom){
+                if (hasClass(item, SECTION) && !g_initialAnchorsInDom) {
                     item.removeAttribute('data-anchor');
                 }
             });
@@ -3408,8 +3407,8 @@
             removeAnimation(container);
 
             //Unwrapping content
-            [TABLE_CELL_SEL, SLIDES_CONTAINER_SEL,SLIDES_WRAPPER_SEL].forEach(function(selector){
-                $(selector, container).forEach(function(item){
+            [TABLE_CELL_SEL, SLIDES_CONTAINER_SEL, SLIDES_WRAPPER_SEL].forEach(function (selector) {
+                $(selector, container).forEach(function (item) {
                     //unwrap not being use in case there's no child element inside and its just text
                     unwrap(item);
                 });
@@ -3426,7 +3425,7 @@
 
             //removing selectors
             var usedSelectors = [SECTION, SLIDE, SLIDES_CONTAINER];
-            usedSelectors.forEach(function(item){
+            usedSelectors.forEach(function (item) {
                 removeClass($('.' + item), item);
             });
         }
@@ -3437,9 +3436,9 @@
         * This function is used to keep track of both states, the original and the temporal one.
         * If type is not 'internal', then we assume the user is globally changing the variable.
         */
-        function setVariableState(variable, value, type){
+        function setVariableState(variable, value, type) {
             options[variable] = value;
-            if(type !== 'internal'){
+            if (type !== 'internal') {
                 originals[variable] = value;
             }
         }
@@ -3447,16 +3446,16 @@
         /**
         * Displays warnings
         */
-        function displayWarnings(){
+        function displayWarnings() {
             var l = options['li' + 'c' + 'enseK' + 'e' + 'y'];
             var msgStyle = 'font-size: 15px;background:yellow;';
 
-            if(l && l.length < 20){
+            if (l && l.length < 20) {
                 console.warn('%c This website was made using fullPage.js slider. More info on the following website:', msgStyle);
                 console.warn('%c https://alvarotrigo.com/fullPage/', msgStyle);
             }
 
-            if(hasClass($html, ENABLED)){
+            if (hasClass($html, ENABLED)) {
                 showError('error', 'Fullpage.js can only be initialized once and you are doing it multiple times!');
                 return;
             }
@@ -3468,47 +3467,47 @@
                 showError('warn', 'Option `loopTop/loopBottom` is mutually exclusive with `continuousVertical`; `continuousVertical` disabled');
             }
 
-            if(options.scrollOverflow &&
-               (options.scrollBar || !options.autoScrolling)){
+            if (options.scrollOverflow &&
+                (options.scrollBar || !options.autoScrolling)) {
                 showError('warn', 'Options scrollBar:true and autoScrolling:false are mutually exclusive with scrollOverflow:true. Sections with scrollOverflow might not work well in Firefox');
             }
 
-            if(options.continuousVertical && (options.scrollBar || !options.autoScrolling)){
+            if (options.continuousVertical && (options.scrollBar || !options.autoScrolling)) {
                 options.continuousVertical = false;
                 showError('warn', 'Scroll bars (`scrollBar:true` or `autoScrolling:false`) are mutually exclusive with `continuousVertical`; `continuousVertical` disabled');
             }
 
-            if(options.scrollOverflow && options.scrollOverflowHandler == null){
+            if (options.scrollOverflow && options.scrollOverflowHandler == null) {
                 options.scrollOverflow = false;
                 showError('error', 'The option `scrollOverflow:true` requires the file `scrolloverflow.min.js`. Please include it before fullPage.js.');
             }
 
             //using extensions? Wrong file!
-            extensions.forEach(function(extension){
+            extensions.forEach(function (extension) {
                 //is the option set to true?
-                if(options[extension]){
-                    showError('warn', 'fullpage.js extensions require fullpage.extensions.min.js file instead of the usual fullpage.js. Requested: '+ extension);
+                if (options[extension]) {
+                    showError('warn', 'fullpage.js extensions require fullpage.extensions.min.js file instead of the usual fullpage.js. Requested: ' + extension);
                 }
             });
 
             //anchors can not have the same value as any element ID or NAME
-            options.anchors.forEach(function(name){
+            options.anchors.forEach(function (name) {
 
                 //case insensitive selectors (http://stackoverflow.com/a/19465187/1081396)
-                var nameAttr = [].slice.call($('[name]')).filter(function(item) {
+                var nameAttr = [].slice.call($('[name]')).filter(function (item) {
                     return item.getAttribute('name') && item.getAttribute('name').toLowerCase() == name.toLowerCase();
                 });
 
-                var idAttr = [].slice.call($('[id]')).filter(function(item) {
+                var idAttr = [].slice.call($('[id]')).filter(function (item) {
                     return item.getAttribute('id') && item.getAttribute('id').toLowerCase() == name.toLowerCase();
                 });
 
-                if(idAttr.length || nameAttr.length ){
+                if (idAttr.length || nameAttr.length) {
                     showError('error', 'data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).');
                     var propertyName = idAttr.length ? 'id' : 'name';
 
-                    if(idAttr.length || nameAttr.length){
-                        showError('error', '"' + name + '" is is being used by another element `'+ propertyName +'` property');
+                    if (idAttr.length || nameAttr.length) {
+                        showError('error', '"' + name + '" is is being used by another element `' + propertyName + '` property');
                     }
                 }
             });
@@ -3517,17 +3516,17 @@
         /**
         * Getting the position of the element to scroll when using jQuery animations
         */
-        function getScrolledPosition(element){
+        function getScrolledPosition(element) {
             var position;
 
             //is not the window element and is a slide?
-            if(element.self != window && hasClass(element, SLIDES_WRAPPER)){
+            if (element.self != window && hasClass(element, SLIDES_WRAPPER)) {
                 position = element.scrollLeft;
             }
-            else if(!options.autoScrolling  || options.scrollBar){
+            else if (!options.autoScrolling || options.scrollBar) {
                 position = getScrollTop();
             }
-            else{
+            else {
                 position = element.offsetTop;
             }
 
@@ -3546,24 +3545,24 @@
             var increment = 20;
             activeAnimation = true;
 
-            var animateScroll = function(){
-                if(activeAnimation){ //in order to stope it from other function whenever we want
+            var animateScroll = function () {
+                if (activeAnimation) { //in order to stope it from other function whenever we want
                     var val = to;
 
                     currentTime += increment;
 
-                    if(duration){
+                    if (duration) {
                         val = window.fp_easings[options.easing](currentTime, start, change, duration);
                     }
 
                     setScrolling(element, val);
 
-                    if(currentTime < duration) {
+                    if (currentTime < duration) {
                         setTimeout(animateScroll, increment);
-                    }else if(typeof callback !== 'undefined'){
+                    } else if (typeof callback !== 'undefined') {
                         callback();
                     }
-                }else if (currentTime < duration){
+                } else if (currentTime < duration) {
                     callback();
                 }
             };
@@ -3575,26 +3574,26 @@
         * Scrolls the page / slider the given number of pixels.
         * It will do it one or another way dependiong on the library's config.
         */
-        function setScrolling(element, val){
-            if(!options.autoScrolling || options.scrollBar || (element.self != window && hasClass(element, SLIDES_WRAPPER))){
+        function setScrolling(element, val) {
+            if (!options.autoScrolling || options.scrollBar || (element.self != window && hasClass(element, SLIDES_WRAPPER))) {
 
                 //scrolling horizontally through the slides?
-                if(element.self != window  && hasClass(element, SLIDES_WRAPPER)){
+                if (element.self != window && hasClass(element, SLIDES_WRAPPER)) {
                     element.scrollLeft = val;
                 }
                 //vertical scroll
-                else{
+                else {
                     element.scrollTo(0, val);
                 }
-            }else{
-                 element.style.top = val + 'px';
+            } else {
+                element.style.top = val + 'px';
             }
         }
 
         /**
         * Gets the active slide.
         */
-        function getActiveSlide(){
+        function getActiveSlide() {
             var activeSlide = $(SLIDE_ACTIVE_SEL, $(SECTION_ACTIVE_SEL)[0])[0];
             return nullOrSlide(activeSlide);
         }
@@ -3602,32 +3601,32 @@
         /**
         * Gets the active section.
         */
-        function getActiveSection(){
+        function getActiveSection() {
             return new Section($(SECTION_ACTIVE_SEL)[0]);
         }
 
         /**
         * Item. Slide or Section objects share the same properties.
         */
-        function Item(el, selector){
+        function Item(el, selector) {
             this.anchor = el.getAttribute('data-anchor');
             this.item = el;
             this.index = index(el, selector);
-            this.isLast = this.index === el.parentElement.querySelectorAll(selector).length -1;
+            this.isLast = this.index === el.parentElement.querySelectorAll(selector).length - 1;
             this.isFirst = !this.index;
         }
 
         /**
         * Section object
         */
-        function Section(el){
+        function Section(el) {
             Item.call(this, el, SECTION_SEL);
         }
 
         /**
         * Slide object
         */
-        function Slide(el){
+        function Slide(el) {
             Item.call(this, el, SLIDE_SEL);
         }
 
@@ -3638,14 +3637,14 @@
     /**
     * Shows a message in the console of the given type.
     */
-    function showError(type, text){
+    function showError(type, text) {
         window.console && window.console[type] && window.console[type]('fullPage: ' + text);
     }
 
     /**
     * Equivalent of jQuery function $().
     */
-    function $(selector, context){
+    function $(selector, context) {
         context = arguments.length > 1 ? context : document;
         return context ? context.querySelectorAll(selector) : null;
     }
@@ -3655,25 +3654,25 @@
     */
     function deepExtend(out) {
         out = out || {};
-        for (var i = 1, len = arguments.length; i < len; ++i){
+        for (var i = 1, len = arguments.length; i < len; ++i) {
             var obj = arguments[i];
 
-            if(!obj){
-              continue;
+            if (!obj) {
+                continue;
             }
 
-            for(var key in obj){
-              if (!obj.hasOwnProperty(key)){
-                continue;
-              }
+            for (var key in obj) {
+                if (!obj.hasOwnProperty(key)) {
+                    continue;
+                }
 
-              // based on https://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/
-              if (Object.prototype.toString.call(obj[key]) === '[object Object]'){
-                out[key] = deepExtend(out[key], obj[key]);
-                continue;
-              }
+                // based on https://javascriptweblog.wordpress.com/2011/08/08/fixing-the-javascript-typeof-operator/
+                if (Object.prototype.toString.call(obj[key]) === '[object Object]') {
+                    out[key] = deepExtend(out[key], obj[key]);
+                    continue;
+                }
 
-              out[key] = obj[key];
+                out[key] = obj[key];
             }
         }
         return out;
@@ -3682,11 +3681,11 @@
     /**
     * Checks if the passed element contains the passed class.
     */
-    function hasClass(el, className){
-        if(el == null){
+    function hasClass(el, className) {
+        if (el == null) {
             return false;
         }
-        if (el.classList){
+        if (el.classList) {
             return el.classList.contains(className);
         }
         return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
@@ -3695,14 +3694,14 @@
     /**
     * Gets the window height. Crossbrowser.
     */
-    function getWindowHeight(){
+    function getWindowHeight() {
         return 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
     }
 
     /**
     * Gets the window width.
     */
-    function getWindowWidth(){
+    function getWindowWidth() {
         return window.innerWidth;
     }
 
@@ -3732,9 +3731,9 @@
     /**
     * Generic function to get the previous or next element.
     */
-    function until(item, selector, fn){
+    function until(item, selector, fn) {
         var sibling = item[fn];
-        while(sibling && !matches(sibling, selector)){
+        while (sibling && !matches(sibling, selector)) {
             sibling = sibling[fn];
         }
 
@@ -3744,36 +3743,36 @@
     /**
     * Gets the previous element to the passed element that matches the passed selector.
     */
-    function prevUntil(item, selector){
+    function prevUntil(item, selector) {
         return until(item, selector, 'previousElementSibling');
     }
 
     /**
     * Gets the next element to the passed element that matches the passed selector.
     */
-    function nextUntil(item, selector){
+    function nextUntil(item, selector) {
         return until(item, selector, 'nextElementSibling');
     }
 
     /**
     * Gets the previous element to the passed element.
     */
-    function prev(item){
+    function prev(item) {
         return item.previousElementSibling;
     }
 
     /**
     * Gets the next element to the passed element.
     */
-    function next(item){
+    function next(item) {
         return item.nextElementSibling;
     }
 
     /**
     * Gets the last element from the passed list of elements.
     */
-    function last(item){
-        return item[item.length-1];
+    function last(item) {
+        return item[item.length - 1];
     }
 
     /**
@@ -3782,11 +3781,11 @@
     */
     function index(item, selector) {
         item = isArrayOrList(item) ? item[0] : item;
-        var children = selector != null? $(selector, item.parentNode) : item.parentNode.childNodes;
+        var children = selector != null ? $(selector, item.parentNode) : item.parentNode.childNodes;
         var num = 0;
-        for (var i=0; i<children.length; i++) {
-             if (children[i] == item) return num;
-             if (children[i].nodeType==1) num++;
+        for (var i = 0; i < children.length; i++) {
+            if (children[i] == item) return num;
+            if (children[i].nodeType == 1) num++;
         }
         return -1;
     }
@@ -3794,17 +3793,17 @@
     /**
     * Gets an iterable element for the passed element/s
     */
-    function getList(item){
+    function getList(item) {
         return !isArrayOrList(item) ? [item] : item;
     }
 
     /**
     * Adds the display=none property for the passed element/s
     */
-    function hide(el){
+    function hide(el) {
         el = getList(el);
 
-        for(var i = 0; i<el.length; i++){
+        for (var i = 0; i < el.length; i++) {
             el[i].style.display = 'none';
         }
         return el;
@@ -3813,10 +3812,10 @@
     /**
     * Adds the display=block property for the passed element/s
     */
-    function show(el){
+    function show(el) {
         el = getList(el);
 
-        for(var i = 0; i<el.length; i++){
+        for (var i = 0; i < el.length; i++) {
             el[i].style.display = 'block';
         }
         return el;
@@ -3825,9 +3824,9 @@
     /**
     * Checks if the passed element is an iterable element or not
     */
-    function isArrayOrList(el){
-        return Object.prototype.toString.call( el ) === '[object Array]' ||
-            Object.prototype.toString.call( el ) === '[object NodeList]';
+    function isArrayOrList(el) {
+        return Object.prototype.toString.call(el) === '[object Array]' ||
+            Object.prototype.toString.call(el) === '[object NodeList]';
     }
 
     /**
@@ -3836,13 +3835,13 @@
     function addClass(el, className) {
         el = getList(el);
 
-        for(var i = 0; i<el.length; i++){
+        for (var i = 0; i < el.length; i++) {
             var item = el[i];
-            if (item.classList){
+            if (item.classList) {
                 item.classList.add(className);
             }
-            else{
-              item.className += ' ' + className;
+            else {
+                item.className += ' ' + className;
             }
         }
         return el;
@@ -3852,19 +3851,19 @@
     * Removes the passed class to the passed element/s
     * @param {String} `className` can be multiple classnames separated by whitespace
     */
-    function removeClass(el, className){
+    function removeClass(el, className) {
         el = getList(el);
 
         var classNames = className.split(' ');
 
-        for(var a = 0; a<classNames.length; a++){
+        for (var a = 0; a < classNames.length; a++) {
             className = classNames[a];
-            for(var i = 0; i<el.length; i++){
+            for (var i = 0; i < el.length; i++) {
                 var item = el[i];
-                if (item.classList){
+                if (item.classList) {
                     item.classList.remove(className);
                 }
-                else{
+                else {
                     item.className = item.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
                 }
             }
@@ -3875,7 +3874,7 @@
     /**
     * Appends the given element ot the given parent.
     */
-    function appendTo(el, parent){
+    function appendTo(el, parent) {
         parent.appendChild(el);
     }
 
@@ -3892,9 +3891,9 @@
     function wrap(toWrap, wrapper, isWrapAll) {
         var newParent;
         wrapper = wrapper || document.createElement('div');
-        for(var i = 0; i < toWrap.length; i++){
+        for (var i = 0; i < toWrap.length; i++) {
             var item = toWrap[i];
-            if(isWrapAll && !i || !isWrapAll){
+            if (isWrapAll && !i || !isWrapAll) {
                 newParent = wrapper.cloneNode(true);
                 item.parentNode.insertBefore(newParent, item);
             }
@@ -3926,15 +3925,15 @@
     * https://stackoverflow.com/a/21817590/1081396
     */
     function wrapInner(parent, wrapper) {
-        if (typeof wrapper === "string"){
+        if (typeof wrapper === "string") {
             wrapper = createElementFromHTML(wrapper);
         }
 
         parent.appendChild(wrapper);
 
-        while(parent.firstChild !== wrapper){
+        while (parent.firstChild !== wrapper) {
             wrapper.appendChild(parent.firstChild);
-       }
+        }
     }
 
     /**
@@ -3959,8 +3958,8 @@
     * Returns the element or `false` if there's none
     */
     function closest(el, selector) {
-        if(el && el.nodeType === 1){
-            if(matches(el, selector)){
+        if (el && el.nodeType === 1) {
+            if (matches(el, selector)) {
                 return el;
             }
             return closest(el.parentNode, selector);
@@ -3992,40 +3991,40 @@
     * Based in https://stackoverflow.com/a/19316024/1081396
     * and https://stackoverflow.com/a/4793630/1081396
     */
-    function insertBefore(reference, beforeElement, el){
-        if(!isArrayOrList(el)){
-            if(typeof el == 'string'){
+    function insertBefore(reference, beforeElement, el) {
+        if (!isArrayOrList(el)) {
+            if (typeof el == 'string') {
                 el = createElementFromHTML(el);
             }
             el = [el];
         }
 
-        for(var i = 0; i<el.length; i++){
+        for (var i = 0; i < el.length; i++) {
             reference.parentNode.insertBefore(el[i], beforeElement);
         }
     }
 
     //http://stackoverflow.com/questions/3464876/javascript-get-window-x-y-position-for-scroll
-    function getScrollTop(){
+    function getScrollTop() {
         var doc = document.documentElement;
-        return (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+        return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     }
 
     /**
     * Gets the siblings of the passed element
     */
-    function siblings(el){
-        return Array.prototype.filter.call(el.parentNode.children, function(child){
-          return child !== el;
+    function siblings(el) {
+        return Array.prototype.filter.call(el.parentNode.children, function (child) {
+            return child !== el;
         });
     }
 
     //for IE 9 ?
-    function preventDefault(event){
-        if(event.preventDefault){
+    function preventDefault(event) {
+        if (event.preventDefault) {
             event.preventDefault();
         }
-        else{
+        else {
             event.returnValue = false;
         }
     }
@@ -4034,25 +4033,25 @@
     * Determines whether the passed item is of function type.
     */
     function isFunction(item) {
-      if (typeof item === 'function') {
-        return true;
-      }
-      var type = Object.prototype.toString(item);
-      return type === '[object Function]' || type === '[object GeneratorFunction]';
+        if (typeof item === 'function') {
+            return true;
+        }
+        var type = Object.prototype.toString(item);
+        return type === '[object Function]' || type === '[object GeneratorFunction]';
     }
 
     /**
     * Trigger custom events
     */
-    function trigger(el, eventName, data){
+    function trigger(el, eventName, data) {
         var event;
         data = typeof data === 'undefined' ? {} : data;
 
         // Native
-        if(typeof window.CustomEvent === "function" ){
-            event = new CustomEvent(eventName, {detail: data});
+        if (typeof window.CustomEvent === "function") {
+            event = new CustomEvent(eventName, { detail: data });
         }
-        else{
+        else {
             event = document.createEvent('CustomEvent');
             event.initCustomEvent(eventName, true, true, data);
         }
@@ -4070,9 +4069,9 @@
     /**
     * Toggles the visibility of the passed element el.
     */
-    function toggle(el, value){
-        if(typeof value === "boolean"){
-            for(var i = 0; i<el.length; i++){
+    function toggle(el, value) {
+        if (typeof value === "boolean") {
+            for (var i = 0; i < el.length; i++) {
                 el[i].style.display = value ? 'block' : 'none';
             }
         }
@@ -4096,11 +4095,11 @@
     /**
     * Removes the passed item/s from the DOM.
     */
-    function remove(items){
+    function remove(items) {
         items = getList(items);
-        for(var i = 0; i<items.length; i++){
+        for (var i = 0; i < items.length; i++) {
             var item = items[i];
-            if(item && item.parentElement) {
+            if (item && item.parentElement) {
                 item.parentNode.removeChild(item);
             }
         }
@@ -4109,16 +4108,16 @@
     /**
     * Filters an array by the passed filter funtion.
     */
-    function filter(el, filterFn){
+    function filter(el, filterFn) {
         Array.prototype.filter.call(el, filterFn);
     }
 
     //https://jsfiddle.net/w1rktecz/
-    function untilAll(item, selector, fn){
+    function untilAll(item, selector, fn) {
         var sibling = item[fn];
         var siblings = [];
-        while(sibling){
-            if(matches(sibling, selector) || selector == null) {
+        while (sibling) {
+            if (matches(sibling, selector) || selector == null) {
                 siblings.push(sibling);
             }
             sibling = sibling[fn];
@@ -4130,23 +4129,23 @@
     /**
     * Gets all next elements matching the passed selector.
     */
-    function nextAll(item, selector){
+    function nextAll(item, selector) {
         return untilAll(item, selector, 'nextElementSibling');
     }
 
     /**
     * Gets all previous elements matching the passed selector.
     */
-    function prevAll(item, selector){
+    function prevAll(item, selector) {
         return untilAll(item, selector, 'previousElementSibling');
     }
 
     /**
     * Converts an object to an array.
     */
-    function toArray(objectData){
-        return Object.keys(objectData).map(function(key) {
-           return objectData[key];
+    function toArray(objectData) {
+        return Object.keys(objectData).map(function (key) {
+            return objectData[key];
         });
     }
 
@@ -4214,7 +4213,7 @@
 /**
  * jQuery adapter for fullPage.js 3.0.0
  */
-if(window.jQuery && window.fullpage){
+if (window.jQuery && window.fullpage) {
     (function ($, fullpage) {
         'use strict';
 
@@ -4224,8 +4223,8 @@ if(window.jQuery && window.fullpage){
             return;
         }
 
-        $.fn.fullpage = function(options) {
-            options = $.extend({}, options, {'$': $});
+        $.fn.fullpage = function (options) {
+            options = $.extend({}, options, { '$': $ });
             var instance = new fullpage(this[0], options);
         };
     })(window.jQuery, window.fullpage);
@@ -4242,88 +4241,88 @@ if(window.jQuery && window.fullpage){
 */
 /*! iScroll v5.2.0 ~ (c) 2008-2016 Matteo Spinelli ~ http://cubiq.org/license */
 (function (window, document, Math) {
-    var rAF = window.requestAnimationFrame  ||
-        window.webkitRequestAnimationFrame  ||
-        window.mozRequestAnimationFrame     ||
-        window.oRequestAnimationFrame       ||
-        window.msRequestAnimationFrame      ||
+    var rAF = window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
         function (callback) { window.setTimeout(callback, 1000 / 60); };
-    
+
     var utils = (function () {
         var me = {};
-    
+
         var _elementStyle = document.createElement('div').style;
         var _vendor = (function () {
             var vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'],
                 transform,
                 i = 0,
                 l = vendors.length;
-    
-            for ( ; i < l; i++ ) {
+
+            for (; i < l; i++) {
                 transform = vendors[i] + 'ransform';
-                if ( transform in _elementStyle ) return vendors[i].substr(0, vendors[i].length-1);
+                if (transform in _elementStyle) return vendors[i].substr(0, vendors[i].length - 1);
             }
-    
+
             return false;
         })();
-    
-        function _prefixStyle (style) {
-            if ( _vendor === false ) return false;
-            if ( _vendor === '' ) return style;
+
+        function _prefixStyle(style) {
+            if (_vendor === false) return false;
+            if (_vendor === '') return style;
             return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
         }
-    
-        me.getTime = Date.now || function getTime () { return new Date().getTime(); };
-    
+
+        me.getTime = Date.now || function getTime() { return new Date().getTime(); };
+
         me.extend = function (target, obj) {
-            for ( var i in obj ) {
+            for (var i in obj) {
                 target[i] = obj[i];
             }
         };
-    
+
         me.addEvent = function (el, type, fn, capture) {
             el.addEventListener(type, fn, !!capture);
         };
-    
+
         me.removeEvent = function (el, type, fn, capture) {
             el.removeEventListener(type, fn, !!capture);
         };
-    
+
         me.prefixPointerEvent = function (pointerEvent) {
             return window.MSPointerEvent ?
-                'MSPointer' + pointerEvent.charAt(7).toUpperCase() + pointerEvent.substr(8):
+                'MSPointer' + pointerEvent.charAt(7).toUpperCase() + pointerEvent.substr(8) :
                 pointerEvent;
         };
-    
+
         me.momentum = function (current, start, time, lowerMargin, wrapperSize, deceleration) {
             var distance = current - start,
                 speed = Math.abs(distance) / time,
                 destination,
                 duration;
-    
+
             deceleration = deceleration === undefined ? 0.0006 : deceleration;
-    
-            destination = current + ( speed * speed ) / ( 2 * deceleration ) * ( distance < 0 ? -1 : 1 );
+
+            destination = current + (speed * speed) / (2 * deceleration) * (distance < 0 ? -1 : 1);
             duration = speed / deceleration;
-    
-            if ( destination < lowerMargin ) {
-                destination = wrapperSize ? lowerMargin - ( wrapperSize / 2.5 * ( speed / 8 ) ) : lowerMargin;
+
+            if (destination < lowerMargin) {
+                destination = wrapperSize ? lowerMargin - (wrapperSize / 2.5 * (speed / 8)) : lowerMargin;
                 distance = Math.abs(destination - current);
                 duration = distance / speed;
-            } else if ( destination > 0 ) {
-                destination = wrapperSize ? wrapperSize / 2.5 * ( speed / 8 ) : 0;
+            } else if (destination > 0) {
+                destination = wrapperSize ? wrapperSize / 2.5 * (speed / 8) : 0;
                 distance = Math.abs(current) + destination;
                 duration = distance / speed;
             }
-    
+
             return {
                 destination: Math.round(destination),
                 duration: duration
             };
         };
-    
+
         var _transform = _prefixStyle('transform');
-    
+
         me.extend(me, {
             hasTransform: _transform !== false,
             hasPerspective: _prefixStyle('perspective') in _elementStyle,
@@ -4331,7 +4330,7 @@ if(window.jQuery && window.fullpage){
             hasPointer: !!(window.PointerEvent || window.MSPointerEvent), // IE10 is prefixed
             hasTransition: _prefixStyle('transition') in _elementStyle
         });
-    
+
         /*
         This should find all Android browsers lower than build 535.19 (both stock browser and webview)
         - galaxy S2 is ok
@@ -4346,12 +4345,12 @@ if(window.jQuery && window.fullpage){
        - galaxy S6 is OK
          `AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36 (Chrome/)`
       */
-        me.isBadAndroid = (function() {
+        me.isBadAndroid = (function () {
             var appVersion = window.navigator.appVersion;
             // Android browser is not a chrome browser.
             if (/Android/.test(appVersion) && !(/Chrome\/\d/.test(appVersion))) {
                 var safariVersion = appVersion.match(/Safari\/(\d+.\d)/);
-                if(safariVersion && typeof safariVersion === "object" && safariVersion.length >= 2) {
+                if (safariVersion && typeof safariVersion === "object" && safariVersion.length >= 2) {
                     return parseFloat(safariVersion[1]) < 535.19;
                 } else {
                     return true;
@@ -4360,7 +4359,7 @@ if(window.jQuery && window.fullpage){
                 return false;
             }
         })();
-    
+
         me.extend(me.style = {}, {
             transform: _transform,
             transitionTimingFunction: _prefixStyle('transitionTimingFunction'),
@@ -4368,107 +4367,107 @@ if(window.jQuery && window.fullpage){
             transitionDelay: _prefixStyle('transitionDelay'),
             transformOrigin: _prefixStyle('transformOrigin')
         });
-    
+
         me.hasClass = function (e, c) {
             var re = new RegExp("(^|\\s)" + c + "(\\s|$)");
             return re.test(e.className);
         };
-    
+
         me.addClass = function (e, c) {
-            if ( me.hasClass(e, c) ) {
+            if (me.hasClass(e, c)) {
                 return;
             }
-    
+
             var newclass = e.className.split(' ');
             newclass.push(c);
             e.className = newclass.join(' ');
         };
-    
+
         me.removeClass = function (e, c) {
-            if ( !me.hasClass(e, c) ) {
+            if (!me.hasClass(e, c)) {
                 return;
             }
-    
+
             var re = new RegExp("(^|\\s)" + c + "(\\s|$)", 'g');
             e.className = e.className.replace(re, ' ');
         };
-    
+
         me.offset = function (el) {
             var left = -el.offsetLeft,
                 top = -el.offsetTop;
-    
+
             // jshint -W084
             while (el = el.offsetParent) {
                 left -= el.offsetLeft;
                 top -= el.offsetTop;
             }
             // jshint +W084
-    
+
             return {
                 left: left,
                 top: top
             };
         };
-    
+
         me.preventDefaultException = function (el, exceptions) {
-            for ( var i in exceptions ) {
-                if ( exceptions[i].test(el[i]) ) {
+            for (var i in exceptions) {
+                if (exceptions[i].test(el[i])) {
                     return true;
                 }
             }
-    
+
             return false;
         };
-    
+
         me.extend(me.eventType = {}, {
             touchstart: 1,
             touchmove: 1,
             touchend: 1,
-    
+
             mousedown: 2,
             mousemove: 2,
             mouseup: 2,
-    
+
             pointerdown: 3,
             pointermove: 3,
             pointerup: 3,
-    
+
             MSPointerDown: 3,
             MSPointerMove: 3,
             MSPointerUp: 3
         });
-    
+
         me.extend(me.ease = {}, {
             quadratic: {
                 style: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 fn: function (k) {
-                    return k * ( 2 - k );
+                    return k * (2 - k);
                 }
             },
             circular: {
                 style: 'cubic-bezier(0.1, 0.57, 0.1, 1)',   // Not properly "circular" but this looks better, it should be (0.075, 0.82, 0.165, 1)
                 fn: function (k) {
-                    return Math.sqrt( 1 - ( --k * k ) );
+                    return Math.sqrt(1 - (--k * k));
                 }
             },
             back: {
                 style: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                 fn: function (k) {
                     var b = 4;
-                    return ( k = k - 1 ) * k * ( ( b + 1 ) * k + b ) + 1;
+                    return (k = k - 1) * k * ((b + 1) * k + b) + 1;
                 }
             },
             bounce: {
                 style: '',
                 fn: function (k) {
-                    if ( ( k /= 1 ) < ( 1 / 2.75 ) ) {
+                    if ((k /= 1) < (1 / 2.75)) {
                         return 7.5625 * k * k;
-                    } else if ( k < ( 2 / 2.75 ) ) {
-                        return 7.5625 * ( k -= ( 1.5 / 2.75 ) ) * k + 0.75;
-                    } else if ( k < ( 2.5 / 2.75 ) ) {
-                        return 7.5625 * ( k -= ( 2.25 / 2.75 ) ) * k + 0.9375;
+                    } else if (k < (2 / 2.75)) {
+                        return 7.5625 * (k -= (1.5 / 2.75)) * k + 0.75;
+                    } else if (k < (2.5 / 2.75)) {
+                        return 7.5625 * (k -= (2.25 / 2.75)) * k + 0.9375;
                     } else {
-                        return 7.5625 * ( k -= ( 2.625 / 2.75 ) ) * k + 0.984375;
+                        return 7.5625 * (k -= (2.625 / 2.75)) * k + 0.984375;
                     }
                 }
             },
@@ -4477,15 +4476,15 @@ if(window.jQuery && window.fullpage){
                 fn: function (k) {
                     var f = 0.22,
                         e = 0.4;
-    
-                    if ( k === 0 ) { return 0; }
-                    if ( k == 1 ) { return 1; }
-    
-                    return ( e * Math.pow( 2, - 10 * k ) * Math.sin( ( k - f / 4 ) * ( 2 * Math.PI ) / f ) + 1 );
+
+                    if (k === 0) { return 0; }
+                    if (k == 1) { return 1; }
+
+                    return (e * Math.pow(2, - 10 * k) * Math.sin((k - f / 4) * (2 * Math.PI) / f) + 1);
                 }
             }
         });
-    
+
         me.tap = function (e, eventName) {
             var ev = document.createEvent('Event');
             ev.initEvent(eventName, true, true);
@@ -4493,12 +4492,12 @@ if(window.jQuery && window.fullpage){
             ev.pageY = e.pageY;
             e.target.dispatchEvent(ev);
         };
-    
+
         me.click = function (e) {
             var target = e.target,
                 ev;
-    
-            if ( !(/(SELECT|INPUT|TEXTAREA)/i).test(target.tagName) ) {
+
+            if (!(/(SELECT|INPUT|TEXTAREA)/i).test(target.tagName)) {
                 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/initMouseEvent
                 // initMouseEvent is deprecated.
                 ev = document.createEvent(window.MouseEvent ? 'MouseEvents' : 'Event');
@@ -4519,317 +4518,317 @@ if(window.jQuery && window.fullpage){
                 target.dispatchEvent(ev);
             }
         };
-    
+
         return me;
     })();
-    function IScroll (el, options) {
+    function IScroll(el, options) {
         this.wrapper = typeof el == 'string' ? document.querySelector(el) : el;
         this.scroller = this.wrapper.children[0];
         this.scrollerStyle = this.scroller.style;       // cache style for better performance
-    
+
         this.options = {
-    
+
             resizeScrollbars: true,
-    
+
             mouseWheelSpeed: 20,
-    
+
             snapThreshold: 0.334,
-    
-    // INSERT POINT: OPTIONS
-            disablePointer : !utils.hasPointer,
-            disableTouch : utils.hasPointer || !utils.hasTouch,
-            disableMouse : utils.hasPointer || utils.hasTouch,
+
+            // INSERT POINT: OPTIONS
+            disablePointer: !utils.hasPointer,
+            disableTouch: utils.hasPointer || !utils.hasTouch,
+            disableMouse: utils.hasPointer || utils.hasTouch,
             startX: 0,
             startY: 0,
             scrollY: true,
             directionLockThreshold: 5,
             momentum: true,
-    
+
             bounce: true,
             bounceTime: 600,
             bounceEasing: '',
-    
+
             preventDefault: true,
             preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|LABEL)$/ },
-    
+
             HWCompositing: true,
             useTransition: true,
             useTransform: true,
             bindToWrapper: typeof window.onmousedown === "undefined"
         };
-    
-        for ( var i in options ) {
+
+        for (var i in options) {
             this.options[i] = options[i];
         }
-    
+
         // Normalize options
         this.translateZ = this.options.HWCompositing && utils.hasPerspective ? ' translateZ(0)' : '';
-    
+
         this.options.useTransition = utils.hasTransition && this.options.useTransition;
         this.options.useTransform = utils.hasTransform && this.options.useTransform;
-    
+
         this.options.eventPassthrough = this.options.eventPassthrough === true ? 'vertical' : this.options.eventPassthrough;
         this.options.preventDefault = !this.options.eventPassthrough && this.options.preventDefault;
-    
+
         // If you want eventPassthrough I have to lock one of the axes
         this.options.scrollY = this.options.eventPassthrough == 'vertical' ? false : this.options.scrollY;
         this.options.scrollX = this.options.eventPassthrough == 'horizontal' ? false : this.options.scrollX;
-    
+
         // With eventPassthrough we also need lockDirection mechanism
         this.options.freeScroll = this.options.freeScroll && !this.options.eventPassthrough;
         this.options.directionLockThreshold = this.options.eventPassthrough ? 0 : this.options.directionLockThreshold;
-    
+
         this.options.bounceEasing = typeof this.options.bounceEasing == 'string' ? utils.ease[this.options.bounceEasing] || utils.ease.circular : this.options.bounceEasing;
-    
+
         this.options.resizePolling = this.options.resizePolling === undefined ? 60 : this.options.resizePolling;
-    
-        if ( this.options.tap === true ) {
+
+        if (this.options.tap === true) {
             this.options.tap = 'tap';
         }
-    
+
         // https://github.com/cubiq/iscroll/issues/1029
         if (!this.options.useTransition && !this.options.useTransform) {
-            if(!(/relative|absolute/i).test(this.scrollerStyle.position)) {
+            if (!(/relative|absolute/i).test(this.scrollerStyle.position)) {
                 this.scrollerStyle.position = "relative";
             }
         }
-    
-        if ( this.options.shrinkScrollbars == 'scale' ) {
+
+        if (this.options.shrinkScrollbars == 'scale') {
             this.options.useTransition = false;
         }
-    
+
         this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
-    
-    // INSERT POINT: NORMALIZATION
-    
+
+        // INSERT POINT: NORMALIZATION
+
         // Some defaults
         this.x = 0;
         this.y = 0;
         this.directionX = 0;
         this.directionY = 0;
         this._events = {};
-    
-    // INSERT POINT: DEFAULTS
-    
+
+        // INSERT POINT: DEFAULTS
+
         this._init();
         this.refresh();
-    
+
         this.scrollTo(this.options.startX, this.options.startY);
         this.enable();
     }
-    
+
     IScroll.prototype = {
         version: '5.2.0',
-    
+
         _init: function () {
             this._initEvents();
-    
-            if ( this.options.scrollbars || this.options.indicators ) {
+
+            if (this.options.scrollbars || this.options.indicators) {
                 this._initIndicators();
             }
-    
-            if ( this.options.mouseWheel ) {
+
+            if (this.options.mouseWheel) {
                 this._initWheel();
             }
-    
-            if ( this.options.snap ) {
+
+            if (this.options.snap) {
                 this._initSnap();
             }
-    
-            if ( this.options.keyBindings ) {
+
+            if (this.options.keyBindings) {
                 this._initKeys();
             }
-    
-    // INSERT POINT: _init
-    
+
+            // INSERT POINT: _init
+
         },
-    
+
         destroy: function () {
             this._initEvents(true);
             clearTimeout(this.resizeTimeout);
             this.resizeTimeout = null;
             this._execEvent('destroy');
         },
-    
+
         _transitionEnd: function (e) {
-            if ( e.target != this.scroller || !this.isInTransition ) {
+            if (e.target != this.scroller || !this.isInTransition) {
                 return;
             }
-    
+
             this._transitionTime();
-            if ( !this.resetPosition(this.options.bounceTime) ) {
+            if (!this.resetPosition(this.options.bounceTime)) {
                 this.isInTransition = false;
                 this._execEvent('scrollEnd');
             }
         },
-    
+
         _start: function (e) {
             // React to left mouse button only
-            if ( utils.eventType[e.type] != 1 ) {
-              // for button property
-              // http://unixpapa.com/js/mouse.html
-              var button;
-            if (!e.which) {
-              /* IE case */
-              button = (e.button < 2) ? 0 :
-                       ((e.button == 4) ? 1 : 2);
-            } else {
-              /* All others */
-              button = e.button;
-            }
-                if ( button !== 0 ) {
+            if (utils.eventType[e.type] != 1) {
+                // for button property
+                // http://unixpapa.com/js/mouse.html
+                var button;
+                if (!e.which) {
+                    /* IE case */
+                    button = (e.button < 2) ? 0 :
+                        ((e.button == 4) ? 1 : 2);
+                } else {
+                    /* All others */
+                    button = e.button;
+                }
+                if (button !== 0) {
                     return;
                 }
             }
-    
-            if ( !this.enabled || (this.initiated && utils.eventType[e.type] !== this.initiated) ) {
+
+            if (!this.enabled || (this.initiated && utils.eventType[e.type] !== this.initiated)) {
                 return;
             }
-    
-            if ( this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+
+            if (this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
                 e.preventDefault();
             }
-    
+
             var point = e.touches ? e.touches[0] : e,
                 pos;
-    
-            this.initiated  = utils.eventType[e.type];
-            this.moved      = false;
-            this.distX      = 0;
-            this.distY      = 0;
+
+            this.initiated = utils.eventType[e.type];
+            this.moved = false;
+            this.distX = 0;
+            this.distY = 0;
             this.directionX = 0;
             this.directionY = 0;
             this.directionLocked = 0;
-    
+
             this.startTime = utils.getTime();
-    
-            if ( this.options.useTransition && this.isInTransition ) {
+
+            if (this.options.useTransition && this.isInTransition) {
                 this._transitionTime();
                 this.isInTransition = false;
                 pos = this.getComputedPosition();
                 this._translate(Math.round(pos.x), Math.round(pos.y));
                 this._execEvent('scrollEnd');
-            } else if ( !this.options.useTransition && this.isAnimating ) {
+            } else if (!this.options.useTransition && this.isAnimating) {
                 this.isAnimating = false;
                 this._execEvent('scrollEnd');
             }
-    
-            this.startX    = this.x;
-            this.startY    = this.y;
+
+            this.startX = this.x;
+            this.startY = this.y;
             this.absStartX = this.x;
             this.absStartY = this.y;
-            this.pointX    = point.pageX;
-            this.pointY    = point.pageY;
-    
+            this.pointX = point.pageX;
+            this.pointY = point.pageY;
+
             this._execEvent('beforeScrollStart');
         },
-    
+
         _move: function (e) {
-            if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
+            if (!this.enabled || utils.eventType[e.type] !== this.initiated) {
                 return;
             }
-    
-            if ( this.options.preventDefault ) {    // increases performance on Android? TODO: check!
+
+            if (this.options.preventDefault) {    // increases performance on Android? TODO: check!
                 e.preventDefault();
             }
-    
-            var point       = e.touches ? e.touches[0] : e,
-                deltaX      = point.pageX - this.pointX,
-                deltaY      = point.pageY - this.pointY,
-                timestamp   = utils.getTime(),
+
+            var point = e.touches ? e.touches[0] : e,
+                deltaX = point.pageX - this.pointX,
+                deltaY = point.pageY - this.pointY,
+                timestamp = utils.getTime(),
                 newX, newY,
                 absDistX, absDistY;
-    
-            this.pointX     = point.pageX;
-            this.pointY     = point.pageY;
-    
-            this.distX      += deltaX;
-            this.distY      += deltaY;
-            absDistX        = Math.abs(this.distX);
-            absDistY        = Math.abs(this.distY);
-    
+
+            this.pointX = point.pageX;
+            this.pointY = point.pageY;
+
+            this.distX += deltaX;
+            this.distY += deltaY;
+            absDistX = Math.abs(this.distX);
+            absDistY = Math.abs(this.distY);
+
             // We need to move at least 10 pixels for the scrolling to initiate
-            if ( timestamp - this.endTime > 300 && (absDistX < 10 && absDistY < 10) ) {
+            if (timestamp - this.endTime > 300 && (absDistX < 10 && absDistY < 10)) {
                 return;
             }
-    
+
             // If you are scrolling in one direction lock the other
-            if ( !this.directionLocked && !this.options.freeScroll ) {
-                if ( absDistX > absDistY + this.options.directionLockThreshold ) {
+            if (!this.directionLocked && !this.options.freeScroll) {
+                if (absDistX > absDistY + this.options.directionLockThreshold) {
                     this.directionLocked = 'h';     // lock horizontally
-                } else if ( absDistY >= absDistX + this.options.directionLockThreshold ) {
+                } else if (absDistY >= absDistX + this.options.directionLockThreshold) {
                     this.directionLocked = 'v';     // lock vertically
                 } else {
                     this.directionLocked = 'n';     // no lock
                 }
             }
-    
-            if ( this.directionLocked == 'h' ) {
-                if ( this.options.eventPassthrough == 'vertical' ) {
+
+            if (this.directionLocked == 'h') {
+                if (this.options.eventPassthrough == 'vertical') {
                     e.preventDefault();
-                } else if ( this.options.eventPassthrough == 'horizontal' ) {
+                } else if (this.options.eventPassthrough == 'horizontal') {
                     this.initiated = false;
                     return;
                 }
-    
+
                 deltaY = 0;
-            } else if ( this.directionLocked == 'v' ) {
-                if ( this.options.eventPassthrough == 'horizontal' ) {
+            } else if (this.directionLocked == 'v') {
+                if (this.options.eventPassthrough == 'horizontal') {
                     e.preventDefault();
-                } else if ( this.options.eventPassthrough == 'vertical' ) {
+                } else if (this.options.eventPassthrough == 'vertical') {
                     this.initiated = false;
                     return;
                 }
-    
+
                 deltaX = 0;
             }
-    
+
             deltaX = this.hasHorizontalScroll ? deltaX : 0;
             deltaY = this.hasVerticalScroll ? deltaY : 0;
-    
+
             newX = this.x + deltaX;
             newY = this.y + deltaY;
-    
+
             // Slow down if outside of the boundaries
-            if ( newX > 0 || newX < this.maxScrollX ) {
+            if (newX > 0 || newX < this.maxScrollX) {
                 newX = this.options.bounce ? this.x + deltaX / 3 : newX > 0 ? 0 : this.maxScrollX;
             }
-            if ( newY > 0 || newY < this.maxScrollY ) {
+            if (newY > 0 || newY < this.maxScrollY) {
                 newY = this.options.bounce ? this.y + deltaY / 3 : newY > 0 ? 0 : this.maxScrollY;
             }
-    
+
             this.directionX = deltaX > 0 ? -1 : deltaX < 0 ? 1 : 0;
             this.directionY = deltaY > 0 ? -1 : deltaY < 0 ? 1 : 0;
-    
-            if ( !this.moved ) {
+
+            if (!this.moved) {
                 this._execEvent('scrollStart');
             }
-    
+
             this.moved = true;
-    
+
             this._translate(newX, newY);
-    
-    /* REPLACE START: _move */
-    
-            if ( timestamp - this.startTime > 300 ) {
+
+            /* REPLACE START: _move */
+
+            if (timestamp - this.startTime > 300) {
                 this.startTime = timestamp;
                 this.startX = this.x;
                 this.startY = this.y;
             }
-    
-    /* REPLACE END: _move */
-    
+
+            /* REPLACE END: _move */
+
         },
-    
+
         _end: function (e) {
-            if ( !this.enabled || utils.eventType[e.type] !== this.initiated ) {
+            if (!this.enabled || utils.eventType[e.type] !== this.initiated) {
                 return;
             }
-    
-            if ( this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException) ) {
+
+            if (this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
                 e.preventDefault();
             }
-    
+
             var point = e.changedTouches ? e.changedTouches[0] : e,
                 momentumX,
                 momentumY,
@@ -4840,39 +4839,39 @@ if(window.jQuery && window.fullpage){
                 distanceY = Math.abs(newY - this.startY),
                 time = 0,
                 easing = '';
-    
+
             this.isInTransition = 0;
             this.initiated = 0;
             this.endTime = utils.getTime();
-    
+
             // reset if we are outside of the boundaries
-            if ( this.resetPosition(this.options.bounceTime) ) {
+            if (this.resetPosition(this.options.bounceTime)) {
                 return;
             }
-    
+
             this.scrollTo(newX, newY);  // ensures that the last position is rounded
-    
+
             // we scrolled less than 10 pixels
-            if ( !this.moved ) {
-                if ( this.options.tap ) {
+            if (!this.moved) {
+                if (this.options.tap) {
                     utils.tap(e, this.options.tap);
                 }
-    
-                if ( this.options.click ) {
+
+                if (this.options.click) {
                     utils.click(e);
                 }
-    
+
                 this._execEvent('scrollCancel');
                 return;
             }
-    
-            if ( this._events.flick && duration < 200 && distanceX < 100 && distanceY < 100 ) {
+
+            if (this._events.flick && duration < 200 && distanceX < 100 && distanceY < 100) {
                 this._execEvent('flick');
                 return;
             }
-    
+
             // start momentum animation if needed
-            if ( this.options.momentum && duration < 300 ) {
+            if (this.options.momentum && duration < 300) {
                 momentumX = this.hasHorizontalScroll ? utils.momentum(this.x, this.startX, duration, this.maxScrollX, this.options.bounce ? this.wrapperWidth : 0, this.options.deceleration) : { destination: newX, duration: 0 };
                 momentumY = this.hasVerticalScroll ? utils.momentum(this.y, this.startY, duration, this.maxScrollY, this.options.bounce ? this.wrapperHeight : 0, this.options.deceleration) : { destination: newY, duration: 0 };
                 newX = momentumX.destination;
@@ -4880,343 +4879,343 @@ if(window.jQuery && window.fullpage){
                 time = Math.max(momentumX.duration, momentumY.duration);
                 this.isInTransition = 1;
             }
-    
-    
-            if ( this.options.snap ) {
+
+
+            if (this.options.snap) {
                 var snap = this._nearestSnap(newX, newY);
                 this.currentPage = snap;
                 time = this.options.snapSpeed || Math.max(
-                        Math.max(
-                            Math.min(Math.abs(newX - snap.x), 1000),
-                            Math.min(Math.abs(newY - snap.y), 1000)
-                        ), 300);
+                    Math.max(
+                        Math.min(Math.abs(newX - snap.x), 1000),
+                        Math.min(Math.abs(newY - snap.y), 1000)
+                    ), 300);
                 newX = snap.x;
                 newY = snap.y;
-    
+
                 this.directionX = 0;
                 this.directionY = 0;
                 easing = this.options.bounceEasing;
             }
-    
-    // INSERT POINT: _end
-    
-            if ( newX != this.x || newY != this.y ) {
+
+            // INSERT POINT: _end
+
+            if (newX != this.x || newY != this.y) {
                 // change easing function when scroller goes out of the boundaries
-                if ( newX > 0 || newX < this.maxScrollX || newY > 0 || newY < this.maxScrollY ) {
+                if (newX > 0 || newX < this.maxScrollX || newY > 0 || newY < this.maxScrollY) {
                     easing = utils.ease.quadratic;
                 }
-    
+
                 this.scrollTo(newX, newY, time, easing);
                 return;
             }
-    
+
             this._execEvent('scrollEnd');
         },
-    
+
         _resize: function () {
             var that = this;
-    
+
             clearTimeout(this.resizeTimeout);
-    
+
             this.resizeTimeout = setTimeout(function () {
                 that.refresh();
             }, this.options.resizePolling);
         },
-    
+
         resetPosition: function (time) {
             var x = this.x,
                 y = this.y;
-    
+
             time = time || 0;
-    
-            if ( !this.hasHorizontalScroll || this.x > 0 ) {
+
+            if (!this.hasHorizontalScroll || this.x > 0) {
                 x = 0;
-            } else if ( this.x < this.maxScrollX ) {
+            } else if (this.x < this.maxScrollX) {
                 x = this.maxScrollX;
             }
-    
-            if ( !this.hasVerticalScroll || this.y > 0 ) {
+
+            if (!this.hasVerticalScroll || this.y > 0) {
                 y = 0;
-            } else if ( this.y < this.maxScrollY ) {
+            } else if (this.y < this.maxScrollY) {
                 y = this.maxScrollY;
             }
-    
-            if ( x == this.x && y == this.y ) {
+
+            if (x == this.x && y == this.y) {
                 return false;
             }
-    
+
             this.scrollTo(x, y, time, this.options.bounceEasing);
-    
+
             return true;
         },
-    
+
         disable: function () {
             this.enabled = false;
         },
-    
+
         enable: function () {
             this.enabled = true;
         },
-    
+
         refresh: function () {
             var rf = this.wrapper.offsetHeight;     // Force reflow
-    
-            this.wrapperWidth   = this.wrapper.clientWidth;
-            this.wrapperHeight  = this.wrapper.clientHeight;
-    
-    /* REPLACE START: refresh */
-    
-            this.scrollerWidth  = this.scroller.offsetWidth;
+
+            this.wrapperWidth = this.wrapper.clientWidth;
+            this.wrapperHeight = this.wrapper.clientHeight;
+
+            /* REPLACE START: refresh */
+
+            this.scrollerWidth = this.scroller.offsetWidth;
             this.scrollerHeight = this.scroller.offsetHeight;
-    
-            this.maxScrollX     = this.wrapperWidth - this.scrollerWidth;
-            this.maxScrollY     = this.wrapperHeight - this.scrollerHeight;
-    
-    /* REPLACE END: refresh */
-    
-            this.hasHorizontalScroll    = this.options.scrollX && this.maxScrollX < 0;
-            this.hasVerticalScroll      = this.options.scrollY && this.maxScrollY < 0;
-    
-            if ( !this.hasHorizontalScroll ) {
+
+            this.maxScrollX = this.wrapperWidth - this.scrollerWidth;
+            this.maxScrollY = this.wrapperHeight - this.scrollerHeight;
+
+            /* REPLACE END: refresh */
+
+            this.hasHorizontalScroll = this.options.scrollX && this.maxScrollX < 0;
+            this.hasVerticalScroll = this.options.scrollY && this.maxScrollY < 0;
+
+            if (!this.hasHorizontalScroll) {
                 this.maxScrollX = 0;
                 this.scrollerWidth = this.wrapperWidth;
             }
-    
-            if ( !this.hasVerticalScroll ) {
+
+            if (!this.hasVerticalScroll) {
                 this.maxScrollY = 0;
                 this.scrollerHeight = this.wrapperHeight;
             }
-    
+
             this.endTime = 0;
             this.directionX = 0;
             this.directionY = 0;
-    
+
             this.wrapperOffset = utils.offset(this.wrapper);
-    
+
             this._execEvent('refresh');
-    
+
             this.resetPosition();
-    
-    // INSERT POINT: _refresh
-    
+
+            // INSERT POINT: _refresh
+
         },
-    
+
         on: function (type, fn) {
-            if ( !this._events[type] ) {
+            if (!this._events[type]) {
                 this._events[type] = [];
             }
-    
+
             this._events[type].push(fn);
         },
-    
+
         off: function (type, fn) {
-            if ( !this._events[type] ) {
+            if (!this._events[type]) {
                 return;
             }
-    
+
             var index = this._events[type].indexOf(fn);
-    
-            if ( index > -1 ) {
+
+            if (index > -1) {
                 this._events[type].splice(index, 1);
             }
         },
-    
+
         _execEvent: function (type) {
-            if ( !this._events[type] ) {
+            if (!this._events[type]) {
                 return;
             }
-    
+
             var i = 0,
                 l = this._events[type].length;
-    
-            if ( !l ) {
+
+            if (!l) {
                 return;
             }
-    
-            for ( ; i < l; i++ ) {
+
+            for (; i < l; i++) {
                 this._events[type][i].apply(this, [].slice.call(arguments, 1));
             }
         },
-    
+
         scrollBy: function (x, y, time, easing) {
             x = this.x + x;
             y = this.y + y;
             time = time || 0;
-    
+
             this.scrollTo(x, y, time, easing);
         },
-    
+
         scrollTo: function (x, y, time, easing) {
             easing = easing || utils.ease.circular;
-    
+
             this.isInTransition = this.options.useTransition && time > 0;
             var transitionType = this.options.useTransition && easing.style;
-            if ( !time || transitionType ) {
-                    if(transitionType) {
-                        this._transitionTimingFunction(easing.style);
-                        this._transitionTime(time);
-                    }
+            if (!time || transitionType) {
+                if (transitionType) {
+                    this._transitionTimingFunction(easing.style);
+                    this._transitionTime(time);
+                }
                 this._translate(x, y);
             } else {
                 this._animate(x, y, time, easing.fn);
             }
         },
-    
+
         scrollToElement: function (el, time, offsetX, offsetY, easing) {
             el = el.nodeType ? el : this.scroller.querySelector(el);
-    
-            if ( !el ) {
+
+            if (!el) {
                 return;
             }
-    
+
             var pos = utils.offset(el);
-    
+
             pos.left -= this.wrapperOffset.left;
-            pos.top  -= this.wrapperOffset.top;
-    
+            pos.top -= this.wrapperOffset.top;
+
             // if offsetX/Y are true we center the element to the screen
-            if ( offsetX === true ) {
+            if (offsetX === true) {
                 offsetX = Math.round(el.offsetWidth / 2 - this.wrapper.offsetWidth / 2);
             }
-            if ( offsetY === true ) {
+            if (offsetY === true) {
                 offsetY = Math.round(el.offsetHeight / 2 - this.wrapper.offsetHeight / 2);
             }
-    
+
             pos.left -= offsetX || 0;
-            pos.top  -= offsetY || 0;
-    
+            pos.top -= offsetY || 0;
+
             pos.left = pos.left > 0 ? 0 : pos.left < this.maxScrollX ? this.maxScrollX : pos.left;
-            pos.top  = pos.top  > 0 ? 0 : pos.top  < this.maxScrollY ? this.maxScrollY : pos.top;
-    
-            time = time === undefined || time === null || time === 'auto' ? Math.max(Math.abs(this.x-pos.left), Math.abs(this.y-pos.top)) : time;
-    
+            pos.top = pos.top > 0 ? 0 : pos.top < this.maxScrollY ? this.maxScrollY : pos.top;
+
+            time = time === undefined || time === null || time === 'auto' ? Math.max(Math.abs(this.x - pos.left), Math.abs(this.y - pos.top)) : time;
+
             this.scrollTo(pos.left, pos.top, time, easing);
         },
-    
+
         _transitionTime: function (time) {
             if (!this.options.useTransition) {
                 return;
             }
             time = time || 0;
             var durationProp = utils.style.transitionDuration;
-            if(!durationProp) {
+            if (!durationProp) {
                 return;
             }
-    
+
             this.scrollerStyle[durationProp] = time + 'ms';
-    
-            if ( !time && utils.isBadAndroid ) {
+
+            if (!time && utils.isBadAndroid) {
                 this.scrollerStyle[durationProp] = '0.0001ms';
                 // remove 0.0001ms
                 var self = this;
-                rAF(function() {
-                    if(self.scrollerStyle[durationProp] === '0.0001ms') {
+                rAF(function () {
+                    if (self.scrollerStyle[durationProp] === '0.0001ms') {
                         self.scrollerStyle[durationProp] = '0s';
                     }
                 });
             }
-    
-    
-            if ( this.indicators ) {
-                for ( var i = this.indicators.length; i--; ) {
+
+
+            if (this.indicators) {
+                for (var i = this.indicators.length; i--;) {
                     this.indicators[i].transitionTime(time);
                 }
             }
-    
-    
-    // INSERT POINT: _transitionTime
-    
+
+
+            // INSERT POINT: _transitionTime
+
         },
-    
+
         _transitionTimingFunction: function (easing) {
             this.scrollerStyle[utils.style.transitionTimingFunction] = easing;
-    
-    
-            if ( this.indicators ) {
-                for ( var i = this.indicators.length; i--; ) {
+
+
+            if (this.indicators) {
+                for (var i = this.indicators.length; i--;) {
                     this.indicators[i].transitionTimingFunction(easing);
                 }
             }
-    
-    
-    // INSERT POINT: _transitionTimingFunction
-    
+
+
+            // INSERT POINT: _transitionTimingFunction
+
         },
-    
+
         _translate: function (x, y) {
-            if ( this.options.useTransform ) {
-    
-    /* REPLACE START: _translate */
-    
+            if (this.options.useTransform) {
+
+                /* REPLACE START: _translate */
+
                 this.scrollerStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.translateZ;
-    
-    /* REPLACE END: _translate */
-    
+
+                /* REPLACE END: _translate */
+
             } else {
                 x = Math.round(x);
                 y = Math.round(y);
                 this.scrollerStyle.left = x + 'px';
                 this.scrollerStyle.top = y + 'px';
             }
-    
+
             this.x = x;
             this.y = y;
-    
-    
-        if ( this.indicators ) {
-            for ( var i = this.indicators.length; i--; ) {
-                this.indicators[i].updatePosition();
+
+
+            if (this.indicators) {
+                for (var i = this.indicators.length; i--;) {
+                    this.indicators[i].updatePosition();
+                }
             }
-        }
-    
-    
-    // INSERT POINT: _translate
-    
+
+
+            // INSERT POINT: _translate
+
         },
-    
+
         _initEvents: function (remove) {
             var eventType = remove ? utils.removeEvent : utils.addEvent,
                 target = this.options.bindToWrapper ? this.wrapper : window;
-    
+
             eventType(window, 'orientationchange', this);
             eventType(window, 'resize', this);
-    
-            if ( this.options.click ) {
+
+            if (this.options.click) {
                 eventType(this.wrapper, 'click', this, true);
             }
-    
-            if ( !this.options.disableMouse ) {
+
+            if (!this.options.disableMouse) {
                 eventType(this.wrapper, 'mousedown', this);
                 eventType(target, 'mousemove', this);
                 eventType(target, 'mousecancel', this);
                 eventType(target, 'mouseup', this);
             }
-    
-            if ( utils.hasPointer && !this.options.disablePointer ) {
+
+            if (utils.hasPointer && !this.options.disablePointer) {
                 eventType(this.wrapper, utils.prefixPointerEvent('pointerdown'), this);
                 eventType(target, utils.prefixPointerEvent('pointermove'), this);
                 eventType(target, utils.prefixPointerEvent('pointercancel'), this);
                 eventType(target, utils.prefixPointerEvent('pointerup'), this);
             }
-    
-            if ( utils.hasTouch && !this.options.disableTouch ) {
+
+            if (utils.hasTouch && !this.options.disableTouch) {
                 eventType(this.wrapper, 'touchstart', this);
                 eventType(target, 'touchmove', this);
                 eventType(target, 'touchcancel', this);
                 eventType(target, 'touchend', this);
             }
-    
+
             eventType(this.scroller, 'transitionend', this);
             eventType(this.scroller, 'webkitTransitionEnd', this);
             eventType(this.scroller, 'oTransitionEnd', this);
             eventType(this.scroller, 'MSTransitionEnd', this);
         },
-    
+
         getComputedPosition: function () {
             var matrix = window.getComputedStyle(this.scroller, null),
                 x, y;
-    
-            if ( this.options.useTransform ) {
+
+            if (this.options.useTransform) {
                 matrix = matrix[utils.style.transform].split(')')[0].split(', ');
                 x = +(matrix[12] || matrix[4]);
                 y = +(matrix[13] || matrix[5]);
@@ -5224,7 +5223,7 @@ if(window.jQuery && window.fullpage){
                 x = +matrix.left.replace(/[^-\d.]/g, '');
                 y = +matrix.top.replace(/[^-\d.]/g, '');
             }
-    
+
             return { x: x, y: y };
         },
         _initIndicators: function () {
@@ -5232,14 +5231,14 @@ if(window.jQuery && window.fullpage){
                 customStyle = typeof this.options.scrollbars != 'string',
                 indicators = [],
                 indicator;
-    
+
             var that = this;
-    
+
             this.indicators = [];
-    
-            if ( this.options.scrollbars ) {
+
+            if (this.options.scrollbars) {
                 // Vertical scrollbar
-                if ( this.options.scrollY ) {
+                if (this.options.scrollY) {
                     indicator = {
                         el: createDefaultScrollbar('v', interactive, this.options.scrollbars),
                         interactive: interactive,
@@ -5250,13 +5249,13 @@ if(window.jQuery && window.fullpage){
                         fade: this.options.fadeScrollbars,
                         listenX: false
                     };
-    
+
                     this.wrapper.appendChild(indicator.el);
                     indicators.push(indicator);
                 }
-    
+
                 // Horizontal scrollbar
-                if ( this.options.scrollX ) {
+                if (this.options.scrollX) {
                     indicator = {
                         el: createDefaultScrollbar('h', interactive, this.options.scrollbars),
                         interactive: interactive,
@@ -5267,77 +5266,77 @@ if(window.jQuery && window.fullpage){
                         fade: this.options.fadeScrollbars,
                         listenY: false
                     };
-    
+
                     this.wrapper.appendChild(indicator.el);
                     indicators.push(indicator);
                 }
             }
-    
-            if ( this.options.indicators ) {
+
+            if (this.options.indicators) {
                 // TODO: check concat compatibility
                 indicators = indicators.concat(this.options.indicators);
             }
-    
-            for ( var i = indicators.length; i--; ) {
-                this.indicators.push( new Indicator(this, indicators[i]) );
+
+            for (var i = indicators.length; i--;) {
+                this.indicators.push(new Indicator(this, indicators[i]));
             }
-    
+
             // TODO: check if we can use array.map (wide compatibility and performance issues)
-            function _indicatorsMap (fn) {
+            function _indicatorsMap(fn) {
                 if (that.indicators) {
-                    for ( var i = that.indicators.length; i--; ) {
+                    for (var i = that.indicators.length; i--;) {
                         fn.call(that.indicators[i]);
                     }
                 }
             }
-    
-            if ( this.options.fadeScrollbars ) {
+
+            if (this.options.fadeScrollbars) {
                 this.on('scrollEnd', function () {
                     _indicatorsMap(function () {
                         this.fade();
                     });
                 });
-    
+
                 this.on('scrollCancel', function () {
                     _indicatorsMap(function () {
                         this.fade();
                     });
                 });
-    
+
                 this.on('scrollStart', function () {
                     _indicatorsMap(function () {
                         this.fade(1);
                     });
                 });
-    
+
                 this.on('beforeScrollStart', function () {
                     _indicatorsMap(function () {
                         this.fade(1, true);
                     });
                 });
             }
-    
-    
+
+
             this.on('refresh', function () {
                 _indicatorsMap(function () {
                     this.refresh();
                 });
             });
-    
+
             this.on('destroy', function () {
                 _indicatorsMap(function () {
                     this.destroy();
                 });
-    
+
                 delete this.indicators;
             });
         },
-    
+
         _initWheel: function () {
             utils.addEvent(this.wrapper, 'wheel', this);
             utils.addEvent(this.wrapper, 'mousewheel', this);
             utils.addEvent(this.wrapper, 'DOMMouseScroll', this);
-    
+
             this.on('destroy', function () {
                 clearTimeout(this.wheelTimeout);
                 this.wheelTimeout = null;
@@ -5346,38 +5345,38 @@ if(window.jQuery && window.fullpage){
                 utils.removeEvent(this.wrapper, 'DOMMouseScroll', this);
             });
         },
-    
+
         _wheel: function (e) {
-            if ( !this.enabled ) {
+            if (!this.enabled) {
                 return;
             }
-    
+
             // in IE we can not preventDefault() or otherwise it won't scroll to the prev/next section.
             // I commented on it here back then: https://github.com/cubiq/iscroll/issues/980
             // isIE taken from: https://stackoverflow.com/a/49986758/1081396
             var isIE = window.navigator.userAgent.match(/(MSIE|Trident)/);
-            if(!isIE){
+            if (!isIE) {
                 e.preventDefault();
             }
-    
+
             var wheelDeltaX, wheelDeltaY,
                 newX, newY,
                 that = this;
-    
-            if ( this.wheelTimeout === undefined ) {
+
+            if (this.wheelTimeout === undefined) {
                 that._execEvent('scrollStart');
             }
-    
+
             // Execute the scrollEnd event after 400ms the wheel stopped scrolling
             clearTimeout(this.wheelTimeout);
             this.wheelTimeout = setTimeout(function () {
-                if(!that.options.snap) {
+                if (!that.options.snap) {
                     that._execEvent('scrollEnd');
                 }
                 that.wheelTimeout = undefined;
             }, 400);
-    
-            if ( 'deltaX' in e ) {
+
+            if ('deltaX' in e) {
                 if (e.deltaMode === 1) {
                     wheelDeltaX = -e.deltaX * this.options.mouseWheelSpeed;
                     wheelDeltaY = -e.deltaY * this.options.mouseWheelSpeed;
@@ -5385,76 +5384,76 @@ if(window.jQuery && window.fullpage){
                     wheelDeltaX = -e.deltaX;
                     wheelDeltaY = -e.deltaY;
                 }
-            } else if ( 'wheelDeltaX' in e ) {
+            } else if ('wheelDeltaX' in e) {
                 wheelDeltaX = e.wheelDeltaX / 120 * this.options.mouseWheelSpeed;
                 wheelDeltaY = e.wheelDeltaY / 120 * this.options.mouseWheelSpeed;
-            } else if ( 'wheelDelta' in e ) {
+            } else if ('wheelDelta' in e) {
                 wheelDeltaX = wheelDeltaY = e.wheelDelta / 120 * this.options.mouseWheelSpeed;
-            } else if ( 'detail' in e ) {
+            } else if ('detail' in e) {
                 wheelDeltaX = wheelDeltaY = -e.detail / 3 * this.options.mouseWheelSpeed;
             } else {
                 return;
             }
-    
+
             wheelDeltaX *= this.options.invertWheelDirection;
             wheelDeltaY *= this.options.invertWheelDirection;
-    
-            if ( !this.hasVerticalScroll ) {
+
+            if (!this.hasVerticalScroll) {
                 wheelDeltaX = wheelDeltaY;
                 wheelDeltaY = 0;
             }
-    
-            if ( this.options.snap ) {
+
+            if (this.options.snap) {
                 newX = this.currentPage.pageX;
                 newY = this.currentPage.pageY;
-    
-                if ( wheelDeltaX > 0 ) {
+
+                if (wheelDeltaX > 0) {
                     newX--;
-                } else if ( wheelDeltaX < 0 ) {
+                } else if (wheelDeltaX < 0) {
                     newX++;
                 }
-    
-                if ( wheelDeltaY > 0 ) {
+
+                if (wheelDeltaY > 0) {
                     newY--;
-                } else if ( wheelDeltaY < 0 ) {
+                } else if (wheelDeltaY < 0) {
                     newY++;
                 }
-    
+
                 this.goToPage(newX, newY);
-    
+
                 return;
             }
-    
+
             newX = this.x + Math.round(this.hasHorizontalScroll ? wheelDeltaX : 0);
             newY = this.y + Math.round(this.hasVerticalScroll ? wheelDeltaY : 0);
-    
+
             this.directionX = wheelDeltaX > 0 ? -1 : wheelDeltaX < 0 ? 1 : 0;
             this.directionY = wheelDeltaY > 0 ? -1 : wheelDeltaY < 0 ? 1 : 0;
-    
-            if ( newX > 0 ) {
+
+            if (newX > 0) {
                 newX = 0;
-            } else if ( newX < this.maxScrollX ) {
+            } else if (newX < this.maxScrollX) {
                 newX = this.maxScrollX;
             }
-    
-            if ( newY > 0 ) {
+
+            if (newY > 0) {
                 newY = 0;
-            } else if ( newY < this.maxScrollY ) {
+            } else if (newY < this.maxScrollY) {
                 newY = this.maxScrollY;
             }
-    
+
             this.scrollTo(newX, newY, 0);
-    
-    // INSERT POINT: _wheel
+
+            // INSERT POINT: _wheel
         },
-    
+
         _initSnap: function () {
             this.currentPage = {};
-    
-            if ( typeof this.options.snap == 'string' ) {
+
+            if (typeof this.options.snap == 'string') {
                 this.options.snap = this.scroller.querySelectorAll(this.options.snap);
             }
-    
+
             this.on('refresh', function () {
                 var i = 0, l,
                     m = 0, n,
@@ -5463,23 +5462,23 @@ if(window.jQuery && window.fullpage){
                     stepX = this.options.snapStepX || this.wrapperWidth,
                     stepY = this.options.snapStepY || this.wrapperHeight,
                     el;
-    
+
                 this.pages = [];
-    
-                if ( !this.wrapperWidth || !this.wrapperHeight || !this.scrollerWidth || !this.scrollerHeight ) {
+
+                if (!this.wrapperWidth || !this.wrapperHeight || !this.scrollerWidth || !this.scrollerHeight) {
                     return;
                 }
-    
-                if ( this.options.snap === true ) {
-                    cx = Math.round( stepX / 2 );
-                    cy = Math.round( stepY / 2 );
-    
-                    while ( x > -this.scrollerWidth ) {
+
+                if (this.options.snap === true) {
+                    cx = Math.round(stepX / 2);
+                    cy = Math.round(stepY / 2);
+
+                    while (x > -this.scrollerWidth) {
                         this.pages[i] = [];
                         l = 0;
                         y = 0;
-    
-                        while ( y > -this.scrollerHeight ) {
+
+                        while (y > -this.scrollerHeight) {
                             this.pages[i][l] = {
                                 x: Math.max(x, this.maxScrollX),
                                 y: Math.max(y, this.maxScrollY),
@@ -5488,11 +5487,11 @@ if(window.jQuery && window.fullpage){
                                 cx: x - cx,
                                 cy: y - cy
                             };
-    
+
                             y -= stepY;
                             l++;
                         }
-    
+
                         x -= stepX;
                         i++;
                     }
@@ -5500,22 +5499,22 @@ if(window.jQuery && window.fullpage){
                     el = this.options.snap;
                     l = el.length;
                     n = -1;
-    
-                    for ( ; i < l; i++ ) {
-                        if ( i === 0 || el[i].offsetLeft <= el[i-1].offsetLeft ) {
+
+                    for (; i < l; i++) {
+                        if (i === 0 || el[i].offsetLeft <= el[i - 1].offsetLeft) {
                             m = 0;
                             n++;
                         }
-    
-                        if ( !this.pages[m] ) {
+
+                        if (!this.pages[m]) {
                             this.pages[m] = [];
                         }
-    
+
                         x = Math.max(-el[i].offsetLeft, this.maxScrollX);
                         y = Math.max(-el[i].offsetTop, this.maxScrollY);
                         cx = x - Math.round(el[i].offsetWidth / 2);
                         cy = y - Math.round(el[i].offsetHeight / 2);
-    
+
                         this.pages[m][n] = {
                             x: x,
                             y: y,
@@ -5524,17 +5523,17 @@ if(window.jQuery && window.fullpage){
                             cx: cx,
                             cy: cy
                         };
-    
-                        if ( x > this.maxScrollX ) {
+
+                        if (x > this.maxScrollX) {
                             m++;
                         }
                     }
                 }
-    
+
                 this.goToPage(this.currentPage.pageX || 0, this.currentPage.pageY || 0, 0);
-    
+
                 // Update snap threshold if needed
-                if ( this.options.snapThreshold % 1 === 0 ) {
+                if (this.options.snapThreshold % 1 === 0) {
                     this.snapThresholdX = this.options.snapThreshold;
                     this.snapThresholdY = this.options.snapThreshold;
                 } else {
@@ -5542,14 +5541,14 @@ if(window.jQuery && window.fullpage){
                     this.snapThresholdY = Math.round(this.pages[this.currentPage.pageX][this.currentPage.pageY].height * this.options.snapThreshold);
                 }
             });
-    
+
             this.on('flick', function () {
                 var time = this.options.snapSpeed || Math.max(
-                        Math.max(
-                            Math.min(Math.abs(this.x - this.startX), 1000),
-                            Math.min(Math.abs(this.y - this.startY), 1000)
-                        ), 300);
-    
+                    Math.max(
+                        Math.min(Math.abs(this.x - this.startX), 1000),
+                        Math.min(Math.abs(this.y - this.startY), 1000)
+                    ), 300);
+
                 this.goToPage(
                     this.currentPage.pageX + this.directionX,
                     this.currentPage.pageY + this.directionY,
@@ -5557,74 +5556,74 @@ if(window.jQuery && window.fullpage){
                 );
             });
         },
-    
+
         _nearestSnap: function (x, y) {
-            if ( !this.pages.length ) {
+            if (!this.pages.length) {
                 return { x: 0, y: 0, pageX: 0, pageY: 0 };
             }
-    
+
             var i = 0,
                 l = this.pages.length,
                 m = 0;
-    
+
             // Check if we exceeded the snap threshold
-            if ( Math.abs(x - this.absStartX) < this.snapThresholdX &&
-                Math.abs(y - this.absStartY) < this.snapThresholdY ) {
+            if (Math.abs(x - this.absStartX) < this.snapThresholdX &&
+                Math.abs(y - this.absStartY) < this.snapThresholdY) {
                 return this.currentPage;
             }
-    
-            if ( x > 0 ) {
+
+            if (x > 0) {
                 x = 0;
-            } else if ( x < this.maxScrollX ) {
+            } else if (x < this.maxScrollX) {
                 x = this.maxScrollX;
             }
-    
-            if ( y > 0 ) {
+
+            if (y > 0) {
                 y = 0;
-            } else if ( y < this.maxScrollY ) {
+            } else if (y < this.maxScrollY) {
                 y = this.maxScrollY;
             }
-    
-            for ( ; i < l; i++ ) {
-                if ( x >= this.pages[i][0].cx ) {
+
+            for (; i < l; i++) {
+                if (x >= this.pages[i][0].cx) {
                     x = this.pages[i][0].x;
                     break;
                 }
             }
-    
+
             l = this.pages[i].length;
-    
-            for ( ; m < l; m++ ) {
-                if ( y >= this.pages[0][m].cy ) {
+
+            for (; m < l; m++) {
+                if (y >= this.pages[0][m].cy) {
                     y = this.pages[0][m].y;
                     break;
                 }
             }
-    
-            if ( i == this.currentPage.pageX ) {
+
+            if (i == this.currentPage.pageX) {
                 i += this.directionX;
-    
-                if ( i < 0 ) {
+
+                if (i < 0) {
                     i = 0;
-                } else if ( i >= this.pages.length ) {
+                } else if (i >= this.pages.length) {
                     i = this.pages.length - 1;
                 }
-    
+
                 x = this.pages[i][0].x;
             }
-    
-            if ( m == this.currentPage.pageY ) {
+
+            if (m == this.currentPage.pageY) {
                 m += this.directionY;
-    
-                if ( m < 0 ) {
+
+                if (m < 0) {
                     m = 0;
-                } else if ( m >= this.pages[0].length ) {
+                } else if (m >= this.pages[0].length) {
                     m = this.pages[0].length - 1;
                 }
-    
+
                 y = this.pages[0][m].y;
             }
-    
+
             return {
                 x: x,
                 y: y,
@@ -5632,69 +5631,69 @@ if(window.jQuery && window.fullpage){
                 pageY: m
             };
         },
-    
+
         goToPage: function (x, y, time, easing) {
             easing = easing || this.options.bounceEasing;
-    
-            if ( x >= this.pages.length ) {
+
+            if (x >= this.pages.length) {
                 x = this.pages.length - 1;
-            } else if ( x < 0 ) {
+            } else if (x < 0) {
                 x = 0;
             }
-    
-            if ( y >= this.pages[x].length ) {
+
+            if (y >= this.pages[x].length) {
                 y = this.pages[x].length - 1;
-            } else if ( y < 0 ) {
+            } else if (y < 0) {
                 y = 0;
             }
-    
+
             var posX = this.pages[x][y].x,
                 posY = this.pages[x][y].y;
-    
+
             time = time === undefined ? this.options.snapSpeed || Math.max(
                 Math.max(
                     Math.min(Math.abs(posX - this.x), 1000),
                     Math.min(Math.abs(posY - this.y), 1000)
                 ), 300) : time;
-    
+
             this.currentPage = {
                 x: posX,
                 y: posY,
                 pageX: x,
                 pageY: y
             };
-    
+
             this.scrollTo(posX, posY, time, easing);
         },
-    
+
         next: function (time, easing) {
             var x = this.currentPage.pageX,
                 y = this.currentPage.pageY;
-    
+
             x++;
-    
-            if ( x >= this.pages.length && this.hasVerticalScroll ) {
+
+            if (x >= this.pages.length && this.hasVerticalScroll) {
                 x = 0;
                 y++;
             }
-    
+
             this.goToPage(x, y, time, easing);
         },
-    
+
         prev: function (time, easing) {
             var x = this.currentPage.pageX,
                 y = this.currentPage.pageY;
-    
+
             x--;
-    
-            if ( x < 0 && this.hasVerticalScroll ) {
+
+            if (x < 0 && this.hasVerticalScroll) {
                 x = 0;
                 y--;
             }
-    
+
             this.goToPage(x, y, time, easing);
         },
-    
+
         _initKeys: function (e) {
             // default key bindings
             var keys = {
@@ -5708,34 +5707,34 @@ if(window.jQuery && window.fullpage){
                 down: 40
             };
             var i;
-    
+
             // if you give me characters I give you keycode
-            if ( typeof this.options.keyBindings == 'object' ) {
-                for ( i in this.options.keyBindings ) {
-                    if ( typeof this.options.keyBindings[i] == 'string' ) {
+            if (typeof this.options.keyBindings == 'object') {
+                for (i in this.options.keyBindings) {
+                    if (typeof this.options.keyBindings[i] == 'string') {
                         this.options.keyBindings[i] = this.options.keyBindings[i].toUpperCase().charCodeAt(0);
                     }
                 }
             } else {
                 this.options.keyBindings = {};
             }
-    
-            for ( i in keys ) {
+
+            for (i in keys) {
                 this.options.keyBindings[i] = this.options.keyBindings[i] || keys[i];
             }
-    
+
             utils.addEvent(window, 'keydown', this);
-    
+
             this.on('destroy', function () {
                 utils.removeEvent(window, 'keydown', this);
             });
         },
-    
+
         _key: function (e) {
-            if ( !this.enabled ) {
+            if (!this.enabled) {
                 return;
             }
-    
+
             var snap = this.options.snap,   // we are using this alot, better to cache it
                 newX = snap ? this.currentPage.pageX : this.x,
                 newY = snap ? this.currentPage.pageY : this.y,
@@ -5743,120 +5742,120 @@ if(window.jQuery && window.fullpage){
                 prevTime = this.keyTime || 0,
                 acceleration = 0.250,
                 pos;
-    
-            if ( this.options.useTransition && this.isInTransition ) {
+
+            if (this.options.useTransition && this.isInTransition) {
                 pos = this.getComputedPosition();
-    
+
                 this._translate(Math.round(pos.x), Math.round(pos.y));
                 this.isInTransition = false;
             }
-    
+
             this.keyAcceleration = now - prevTime < 200 ? Math.min(this.keyAcceleration + acceleration, 50) : 0;
-    
-            switch ( e.keyCode ) {
+
+            switch (e.keyCode) {
                 case this.options.keyBindings.pageUp:
-                    if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
+                    if (this.hasHorizontalScroll && !this.hasVerticalScroll) {
                         newX += snap ? 1 : this.wrapperWidth;
                     } else {
                         newY += snap ? 1 : this.wrapperHeight;
                     }
                     break;
                 case this.options.keyBindings.pageDown:
-                    if ( this.hasHorizontalScroll && !this.hasVerticalScroll ) {
+                    if (this.hasHorizontalScroll && !this.hasVerticalScroll) {
                         newX -= snap ? 1 : this.wrapperWidth;
                     } else {
                         newY -= snap ? 1 : this.wrapperHeight;
                     }
                     break;
                 case this.options.keyBindings.end:
-                    newX = snap ? this.pages.length-1 : this.maxScrollX;
-                    newY = snap ? this.pages[0].length-1 : this.maxScrollY;
+                    newX = snap ? this.pages.length - 1 : this.maxScrollX;
+                    newY = snap ? this.pages[0].length - 1 : this.maxScrollY;
                     break;
                 case this.options.keyBindings.home:
                     newX = 0;
                     newY = 0;
                     break;
                 case this.options.keyBindings.left:
-                    newX += snap ? -1 : 5 + this.keyAcceleration>>0;
+                    newX += snap ? -1 : 5 + this.keyAcceleration >> 0;
                     break;
                 case this.options.keyBindings.up:
-                    newY += snap ? 1 : 5 + this.keyAcceleration>>0;
+                    newY += snap ? 1 : 5 + this.keyAcceleration >> 0;
                     break;
                 case this.options.keyBindings.right:
-                    newX -= snap ? -1 : 5 + this.keyAcceleration>>0;
+                    newX -= snap ? -1 : 5 + this.keyAcceleration >> 0;
                     break;
                 case this.options.keyBindings.down:
-                    newY -= snap ? 1 : 5 + this.keyAcceleration>>0;
+                    newY -= snap ? 1 : 5 + this.keyAcceleration >> 0;
                     break;
                 default:
                     return;
             }
-    
-            if ( snap ) {
+
+            if (snap) {
                 this.goToPage(newX, newY);
                 return;
             }
-    
-            if ( newX > 0 ) {
+
+            if (newX > 0) {
                 newX = 0;
                 this.keyAcceleration = 0;
-            } else if ( newX < this.maxScrollX ) {
+            } else if (newX < this.maxScrollX) {
                 newX = this.maxScrollX;
                 this.keyAcceleration = 0;
             }
-    
-            if ( newY > 0 ) {
+
+            if (newY > 0) {
                 newY = 0;
                 this.keyAcceleration = 0;
-            } else if ( newY < this.maxScrollY ) {
+            } else if (newY < this.maxScrollY) {
                 newY = this.maxScrollY;
                 this.keyAcceleration = 0;
             }
-    
+
             this.scrollTo(newX, newY, 0);
-    
+
             this.keyTime = now;
         },
-    
+
         _animate: function (destX, destY, duration, easingFn) {
             var that = this,
                 startX = this.x,
                 startY = this.y,
                 startTime = utils.getTime(),
                 destTime = startTime + duration;
-    
-            function step () {
+
+            function step() {
                 var now = utils.getTime(),
                     newX, newY,
                     easing;
-    
-                if ( now >= destTime ) {
+
+                if (now >= destTime) {
                     that.isAnimating = false;
                     that._translate(destX, destY);
-    
-                    if ( !that.resetPosition(that.options.bounceTime) ) {
+
+                    if (!that.resetPosition(that.options.bounceTime)) {
                         that._execEvent('scrollEnd');
                     }
-    
+
                     return;
                 }
-    
-                now = ( now - startTime ) / duration;
+
+                now = (now - startTime) / duration;
                 easing = easingFn(now);
-                newX = ( destX - startX ) * easing + startX;
-                newY = ( destY - startY ) * easing + startY;
+                newX = (destX - startX) * easing + startX;
+                newY = (destY - startY) * easing + startY;
                 that._translate(newX, newY);
-    
-                if ( that.isAnimating ) {
+
+                if (that.isAnimating) {
                     rAF(step);
                 }
             }
-    
+
             this.isAnimating = true;
             step();
         },
         handleEvent: function (e) {
-            switch ( e.type ) {
+            switch (e.type) {
                 case 'touchstart':
                 case 'pointerdown':
                 case 'MSPointerDown':
@@ -5898,7 +5897,7 @@ if(window.jQuery && window.fullpage){
                     this._key(e);
                     break;
                 case 'click':
-                    if ( this.enabled && !e._constructed ) {
+                    if (this.enabled && !e._constructed) {
                         e.preventDefault();
                         e.stopPropagation();
                     }
@@ -5906,49 +5905,49 @@ if(window.jQuery && window.fullpage){
             }
         }
     };
-    function createDefaultScrollbar (direction, interactive, type) {
+    function createDefaultScrollbar(direction, interactive, type) {
         var scrollbar = document.createElement('div'),
             indicator = document.createElement('div');
-    
-        if ( type === true ) {
+
+        if (type === true) {
             scrollbar.style.cssText = 'position:absolute;z-index:9999';
             indicator.style.cssText = '-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:absolute;background:rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.9);border-radius:3px';
         }
-    
+
         indicator.className = 'iScrollIndicator';
-    
-        if ( direction == 'h' ) {
-            if ( type === true ) {
+
+        if (direction == 'h') {
+            if (type === true) {
                 scrollbar.style.cssText += ';height:7px;left:2px;right:2px;bottom:0';
                 indicator.style.height = '100%';
             }
             scrollbar.className = 'iScrollHorizontalScrollbar';
         } else {
-            if ( type === true ) {
+            if (type === true) {
                 scrollbar.style.cssText += ';width:7px;bottom:2px;top:2px;right:1px';
                 indicator.style.width = '100%';
             }
             scrollbar.className = 'iScrollVerticalScrollbar';
         }
-    
+
         scrollbar.style.cssText += ';overflow:hidden';
-    
-        if ( !interactive ) {
+
+        if (!interactive) {
             scrollbar.style.pointerEvents = 'none';
         }
-    
+
         scrollbar.appendChild(indicator);
-    
+
         return scrollbar;
     }
-    
-    function Indicator (scroller, options) {
+
+    function Indicator(scroller, options) {
         this.wrapper = typeof options.el == 'string' ? document.querySelector(options.el) : options.el;
         this.wrapperStyle = this.wrapper.style;
         this.indicator = this.wrapper.children[0];
         this.indicatorStyle = this.indicator.style;
         this.scroller = scroller;
-    
+
         this.options = {
             listenX: true,
             listenY: true,
@@ -5960,43 +5959,43 @@ if(window.jQuery && window.fullpage){
             speedRatioX: 0,
             speedRatioY: 0
         };
-    
-        for ( var i in options ) {
+
+        for (var i in options) {
             this.options[i] = options[i];
         }
-    
+
         this.sizeRatioX = 1;
         this.sizeRatioY = 1;
         this.maxPosX = 0;
         this.maxPosY = 0;
-    
-        if ( this.options.interactive ) {
-            if ( !this.options.disableTouch ) {
+
+        if (this.options.interactive) {
+            if (!this.options.disableTouch) {
                 utils.addEvent(this.indicator, 'touchstart', this);
                 utils.addEvent(window, 'touchend', this);
             }
-            if ( !this.options.disablePointer ) {
+            if (!this.options.disablePointer) {
                 utils.addEvent(this.indicator, utils.prefixPointerEvent('pointerdown'), this);
                 utils.addEvent(window, utils.prefixPointerEvent('pointerup'), this);
             }
-            if ( !this.options.disableMouse ) {
+            if (!this.options.disableMouse) {
                 utils.addEvent(this.indicator, 'mousedown', this);
                 utils.addEvent(window, 'mouseup', this);
             }
         }
-    
-        if ( this.options.fade ) {
+
+        if (this.options.fade) {
             this.wrapperStyle[utils.style.transform] = this.scroller.translateZ;
             var durationProp = utils.style.transitionDuration;
-            if(!durationProp) {
+            if (!durationProp) {
                 return;
             }
             this.wrapperStyle[durationProp] = utils.isBadAndroid ? '0.0001ms' : '0ms';
             // remove 0.0001ms
             var self = this;
-            if(utils.isBadAndroid) {
-                rAF(function() {
-                    if(self.wrapperStyle[durationProp] === '0.0001ms') {
+            if (utils.isBadAndroid) {
+                rAF(function () {
+                    if (self.wrapperStyle[durationProp] === '0.0001ms') {
                         self.wrapperStyle[durationProp] = '0s';
                     }
                 });
@@ -6004,10 +6003,10 @@ if(window.jQuery && window.fullpage){
             this.wrapperStyle.opacity = '0';
         }
     }
-    
+
     Indicator.prototype = {
         handleEvent: function (e) {
-            switch ( e.type ) {
+            switch (e.type) {
                 case 'touchstart':
                 case 'pointerdown':
                 case 'MSPointerDown':
@@ -6032,166 +6031,166 @@ if(window.jQuery && window.fullpage){
                     break;
             }
         },
-    
+
         destroy: function () {
-            if ( this.options.fadeScrollbars ) {
+            if (this.options.fadeScrollbars) {
                 clearTimeout(this.fadeTimeout);
                 this.fadeTimeout = null;
             }
-            if ( this.options.interactive ) {
+            if (this.options.interactive) {
                 utils.removeEvent(this.indicator, 'touchstart', this);
                 utils.removeEvent(this.indicator, utils.prefixPointerEvent('pointerdown'), this);
                 utils.removeEvent(this.indicator, 'mousedown', this);
-    
+
                 utils.removeEvent(window, 'touchmove', this);
                 utils.removeEvent(window, utils.prefixPointerEvent('pointermove'), this);
                 utils.removeEvent(window, 'mousemove', this);
-    
+
                 utils.removeEvent(window, 'touchend', this);
                 utils.removeEvent(window, utils.prefixPointerEvent('pointerup'), this);
                 utils.removeEvent(window, 'mouseup', this);
             }
-    
-            if ( this.options.defaultScrollbars ) {
+
+            if (this.options.defaultScrollbars) {
                 this.wrapper.parentNode.removeChild(this.wrapper);
             }
         },
-    
+
         _start: function (e) {
             var point = e.touches ? e.touches[0] : e;
-    
+
             e.preventDefault();
             e.stopPropagation();
-    
+
             this.transitionTime();
-    
+
             this.initiated = true;
             this.moved = false;
             this.lastPointX = point.pageX;
             this.lastPointY = point.pageY;
-    
-            this.startTime  = utils.getTime();
-    
-            if ( !this.options.disableTouch ) {
+
+            this.startTime = utils.getTime();
+
+            if (!this.options.disableTouch) {
                 utils.addEvent(window, 'touchmove', this);
             }
-            if ( !this.options.disablePointer ) {
+            if (!this.options.disablePointer) {
                 utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
             }
-            if ( !this.options.disableMouse ) {
+            if (!this.options.disableMouse) {
                 utils.addEvent(window, 'mousemove', this);
             }
-    
+
             this.scroller._execEvent('beforeScrollStart');
         },
-    
+
         _move: function (e) {
             var point = e.touches ? e.touches[0] : e,
                 deltaX, deltaY,
                 newX, newY,
                 timestamp = utils.getTime();
-    
-            if ( !this.moved ) {
+
+            if (!this.moved) {
                 this.scroller._execEvent('scrollStart');
             }
-    
+
             this.moved = true;
-    
+
             deltaX = point.pageX - this.lastPointX;
             this.lastPointX = point.pageX;
-    
+
             deltaY = point.pageY - this.lastPointY;
             this.lastPointY = point.pageY;
-    
+
             newX = this.x + deltaX;
             newY = this.y + deltaY;
-    
+
             this._pos(newX, newY);
-    
-    // INSERT POINT: indicator._move
-    
+
+            // INSERT POINT: indicator._move
+
             e.preventDefault();
             e.stopPropagation();
         },
-    
+
         _end: function (e) {
-            if ( !this.initiated ) {
+            if (!this.initiated) {
                 return;
             }
-    
+
             this.initiated = false;
-    
+
             e.preventDefault();
             e.stopPropagation();
-    
+
             utils.removeEvent(window, 'touchmove', this);
             utils.removeEvent(window, utils.prefixPointerEvent('pointermove'), this);
             utils.removeEvent(window, 'mousemove', this);
-    
-            if ( this.scroller.options.snap ) {
+
+            if (this.scroller.options.snap) {
                 var snap = this.scroller._nearestSnap(this.scroller.x, this.scroller.y);
-    
+
                 var time = this.options.snapSpeed || Math.max(
-                        Math.max(
-                            Math.min(Math.abs(this.scroller.x - snap.x), 1000),
-                            Math.min(Math.abs(this.scroller.y - snap.y), 1000)
-                        ), 300);
-    
-                if ( this.scroller.x != snap.x || this.scroller.y != snap.y ) {
+                    Math.max(
+                        Math.min(Math.abs(this.scroller.x - snap.x), 1000),
+                        Math.min(Math.abs(this.scroller.y - snap.y), 1000)
+                    ), 300);
+
+                if (this.scroller.x != snap.x || this.scroller.y != snap.y) {
                     this.scroller.directionX = 0;
                     this.scroller.directionY = 0;
                     this.scroller.currentPage = snap;
                     this.scroller.scrollTo(snap.x, snap.y, time, this.scroller.options.bounceEasing);
                 }
             }
-    
-            if ( this.moved ) {
+
+            if (this.moved) {
                 this.scroller._execEvent('scrollEnd');
             }
         },
-    
+
         transitionTime: function (time) {
             time = time || 0;
             var durationProp = utils.style.transitionDuration;
-            if(!durationProp) {
+            if (!durationProp) {
                 return;
             }
-    
+
             this.indicatorStyle[durationProp] = time + 'ms';
-    
-            if ( !time && utils.isBadAndroid ) {
+
+            if (!time && utils.isBadAndroid) {
                 this.indicatorStyle[durationProp] = '0.0001ms';
                 // remove 0.0001ms
                 var self = this;
-                rAF(function() {
-                    if(self.indicatorStyle[durationProp] === '0.0001ms') {
+                rAF(function () {
+                    if (self.indicatorStyle[durationProp] === '0.0001ms') {
                         self.indicatorStyle[durationProp] = '0s';
                     }
                 });
             }
         },
-    
+
         transitionTimingFunction: function (easing) {
             this.indicatorStyle[utils.style.transitionTimingFunction] = easing;
         },
-    
+
         refresh: function () {
             this.transitionTime();
-    
-            if ( this.options.listenX && !this.options.listenY ) {
+
+            if (this.options.listenX && !this.options.listenY) {
                 this.indicatorStyle.display = this.scroller.hasHorizontalScroll ? 'block' : 'none';
-            } else if ( this.options.listenY && !this.options.listenX ) {
+            } else if (this.options.listenY && !this.options.listenX) {
                 this.indicatorStyle.display = this.scroller.hasVerticalScroll ? 'block' : 'none';
             } else {
                 this.indicatorStyle.display = this.scroller.hasHorizontalScroll || this.scroller.hasVerticalScroll ? 'block' : 'none';
             }
-    
-            if ( this.scroller.hasHorizontalScroll && this.scroller.hasVerticalScroll ) {
+
+            if (this.scroller.hasHorizontalScroll && this.scroller.hasVerticalScroll) {
                 utils.addClass(this.wrapper, 'iScrollBothScrollbars');
                 utils.removeClass(this.wrapper, 'iScrollLoneScrollbar');
-    
-                if ( this.options.defaultScrollbars && this.options.customStyle ) {
-                    if ( this.options.listenX ) {
+
+                if (this.options.defaultScrollbars && this.options.customStyle) {
+                    if (this.options.listenX) {
                         this.wrapper.style.right = '8px';
                     } else {
                         this.wrapper.style.bottom = '8px';
@@ -6200,636 +6199,636 @@ if(window.jQuery && window.fullpage){
             } else {
                 utils.removeClass(this.wrapper, 'iScrollBothScrollbars');
                 utils.addClass(this.wrapper, 'iScrollLoneScrollbar');
-    
-                if ( this.options.defaultScrollbars && this.options.customStyle ) {
-                    if ( this.options.listenX ) {
+
+                if (this.options.defaultScrollbars && this.options.customStyle) {
+                    if (this.options.listenX) {
                         this.wrapper.style.right = '2px';
                     } else {
                         this.wrapper.style.bottom = '2px';
                     }
                 }
             }
-    
+
             var r = this.wrapper.offsetHeight;  // force refresh
-    
-            if ( this.options.listenX ) {
+
+            if (this.options.listenX) {
                 this.wrapperWidth = this.wrapper.clientWidth;
-                if ( this.options.resize ) {
+                if (this.options.resize) {
                     this.indicatorWidth = Math.max(Math.round(this.wrapperWidth * this.wrapperWidth / (this.scroller.scrollerWidth || this.wrapperWidth || 1)), 8);
                     this.indicatorStyle.width = this.indicatorWidth + 'px';
                 } else {
                     this.indicatorWidth = this.indicator.clientWidth;
                 }
-    
+
                 this.maxPosX = this.wrapperWidth - this.indicatorWidth;
-    
-                if ( this.options.shrink == 'clip' ) {
+
+                if (this.options.shrink == 'clip') {
                     this.minBoundaryX = -this.indicatorWidth + 8;
                     this.maxBoundaryX = this.wrapperWidth - 8;
                 } else {
                     this.minBoundaryX = 0;
                     this.maxBoundaryX = this.maxPosX;
                 }
-    
+
                 this.sizeRatioX = this.options.speedRatioX || (this.scroller.maxScrollX && (this.maxPosX / this.scroller.maxScrollX));
             }
-    
-            if ( this.options.listenY ) {
+
+            if (this.options.listenY) {
                 this.wrapperHeight = this.wrapper.clientHeight;
-                if ( this.options.resize ) {
+                if (this.options.resize) {
                     this.indicatorHeight = Math.max(Math.round(this.wrapperHeight * this.wrapperHeight / (this.scroller.scrollerHeight || this.wrapperHeight || 1)), 8);
                     this.indicatorStyle.height = this.indicatorHeight + 'px';
                 } else {
                     this.indicatorHeight = this.indicator.clientHeight;
                 }
-    
+
                 this.maxPosY = this.wrapperHeight - this.indicatorHeight;
-    
-                if ( this.options.shrink == 'clip' ) {
+
+                if (this.options.shrink == 'clip') {
                     this.minBoundaryY = -this.indicatorHeight + 8;
                     this.maxBoundaryY = this.wrapperHeight - 8;
                 } else {
                     this.minBoundaryY = 0;
                     this.maxBoundaryY = this.maxPosY;
                 }
-    
+
                 this.maxPosY = this.wrapperHeight - this.indicatorHeight;
                 this.sizeRatioY = this.options.speedRatioY || (this.scroller.maxScrollY && (this.maxPosY / this.scroller.maxScrollY));
             }
-    
+
             this.updatePosition();
         },
-    
+
         updatePosition: function () {
             var x = this.options.listenX && Math.round(this.sizeRatioX * this.scroller.x) || 0,
                 y = this.options.listenY && Math.round(this.sizeRatioY * this.scroller.y) || 0;
-    
-            if ( !this.options.ignoreBoundaries ) {
-                if ( x < this.minBoundaryX ) {
-                    if ( this.options.shrink == 'scale' ) {
+
+            if (!this.options.ignoreBoundaries) {
+                if (x < this.minBoundaryX) {
+                    if (this.options.shrink == 'scale') {
                         this.width = Math.max(this.indicatorWidth + x, 8);
                         this.indicatorStyle.width = this.width + 'px';
                     }
                     x = this.minBoundaryX;
-                } else if ( x > this.maxBoundaryX ) {
-                    if ( this.options.shrink == 'scale' ) {
+                } else if (x > this.maxBoundaryX) {
+                    if (this.options.shrink == 'scale') {
                         this.width = Math.max(this.indicatorWidth - (x - this.maxPosX), 8);
                         this.indicatorStyle.width = this.width + 'px';
                         x = this.maxPosX + this.indicatorWidth - this.width;
                     } else {
                         x = this.maxBoundaryX;
                     }
-                } else if ( this.options.shrink == 'scale' && this.width != this.indicatorWidth ) {
+                } else if (this.options.shrink == 'scale' && this.width != this.indicatorWidth) {
                     this.width = this.indicatorWidth;
                     this.indicatorStyle.width = this.width + 'px';
                 }
-    
-                if ( y < this.minBoundaryY ) {
-                    if ( this.options.shrink == 'scale' ) {
+
+                if (y < this.minBoundaryY) {
+                    if (this.options.shrink == 'scale') {
                         this.height = Math.max(this.indicatorHeight + y * 3, 8);
                         this.indicatorStyle.height = this.height + 'px';
                     }
                     y = this.minBoundaryY;
-                } else if ( y > this.maxBoundaryY ) {
-                    if ( this.options.shrink == 'scale' ) {
+                } else if (y > this.maxBoundaryY) {
+                    if (this.options.shrink == 'scale') {
                         this.height = Math.max(this.indicatorHeight - (y - this.maxPosY) * 3, 8);
                         this.indicatorStyle.height = this.height + 'px';
                         y = this.maxPosY + this.indicatorHeight - this.height;
                     } else {
                         y = this.maxBoundaryY;
                     }
-                } else if ( this.options.shrink == 'scale' && this.height != this.indicatorHeight ) {
+                } else if (this.options.shrink == 'scale' && this.height != this.indicatorHeight) {
                     this.height = this.indicatorHeight;
                     this.indicatorStyle.height = this.height + 'px';
                 }
             }
-    
+
             this.x = x;
             this.y = y;
-    
-            if ( this.scroller.options.useTransform ) {
+
+            if (this.scroller.options.useTransform) {
                 this.indicatorStyle[utils.style.transform] = 'translate(' + x + 'px,' + y + 'px)' + this.scroller.translateZ;
             } else {
                 this.indicatorStyle.left = x + 'px';
                 this.indicatorStyle.top = y + 'px';
             }
         },
-    
+
         _pos: function (x, y) {
-            if ( x < 0 ) {
+            if (x < 0) {
                 x = 0;
-            } else if ( x > this.maxPosX ) {
+            } else if (x > this.maxPosX) {
                 x = this.maxPosX;
             }
-    
-            if ( y < 0 ) {
+
+            if (y < 0) {
                 y = 0;
-            } else if ( y > this.maxPosY ) {
+            } else if (y > this.maxPosY) {
                 y = this.maxPosY;
             }
-    
+
             x = this.options.listenX ? Math.round(x / this.sizeRatioX) : this.scroller.x;
             y = this.options.listenY ? Math.round(y / this.sizeRatioY) : this.scroller.y;
-    
+
             this.scroller.scrollTo(x, y);
         },
-    
+
         fade: function (val, hold) {
-            if ( hold && !this.visible ) {
+            if (hold && !this.visible) {
                 return;
             }
-    
+
             clearTimeout(this.fadeTimeout);
             this.fadeTimeout = null;
-    
+
             var time = val ? 250 : 500,
                 delay = val ? 0 : 300;
-    
+
             val = val ? '1' : '0';
-    
+
             this.wrapperStyle[utils.style.transitionDuration] = time + 'ms';
-    
+
             this.fadeTimeout = setTimeout((function (val) {
                 this.wrapperStyle.opacity = val;
                 this.visible = +val;
             }).bind(this, val), delay);
         }
     };
-    
+
     IScroll.utils = utils;
-    
-    if ( typeof module != 'undefined' && module.exports ) {
+
+    if (typeof module != 'undefined' && module.exports) {
         module.exports = IScroll;
-    } else if ( typeof define == 'function' && define.amd ) {
-        define( function () { return IScroll; } );
-    
+    } else if (typeof define == 'function' && define.amd) {
+        define(function () { return IScroll; });
+
         //making sure scrollOverflow works when using Require.js
         //in the browser
-        if(typeof window !== 'undefined'){
+        if (typeof window !== 'undefined') {
             window.IScroll = IScroll;
         }
     } else {
         window.IScroll = IScroll;
     }
-    
-    })(window, document, Math);
-    
-    
-    /*!
-    * Scrolloverflow 2.0.5 module for fullPage.js >= 3
-    * https://github.com/alvarotrigo/fullPage.js
-    * @license MIT licensed
-    *
-    * Copyright (C) 2015 alvarotrigo.com - A project by Alvaro Trigo
-    */
-    (function (window, document) {
-        window.fp_scrolloverflow = (function() {
-    
-            // check if IScroll is available in global scope
-            if (!window.IScroll) {
-                // otherwise create local one from module.exports
-                window.IScroll = module.exports;
+
+})(window, document, Math);
+
+
+/*!
+* Scrolloverflow 2.0.5 module for fullPage.js >= 3
+* https://github.com/alvarotrigo/fullPage.js
+* @license MIT licensed
+*
+* Copyright (C) 2015 alvarotrigo.com - A project by Alvaro Trigo
+*/
+(function (window, document) {
+    window.fp_scrolloverflow = (function () {
+
+        // check if IScroll is available in global scope
+        if (!window.IScroll) {
+            // otherwise create local one from module.exports
+            window.IScroll = module.exports;
+        }
+
+        // keeping central set of classnames and selectors
+        var SCROLLABLE = 'fp-scrollable';
+        var SCROLLABLE_SEL = '.' + SCROLLABLE;
+
+        var ACTIVE = 'active';
+        var ACTIVE_SEL = '.' + ACTIVE;
+
+        var SECTION = 'fp-section';
+        var SECTION_SEL = '.' + SECTION;
+        var SECTION_ACTIVE_SEL = SECTION_SEL + ACTIVE_SEL;
+
+        var SLIDE = 'fp-slide';
+        var SLIDE_SEL = '.' + SLIDE;
+        var SLIDE_ACTIVE_SEL = SLIDE_SEL + ACTIVE_SEL;
+
+        var SLIDES_WRAPPER = 'fp-slides';
+        var SLIDES_WRAPPER_SEL = '.' + SLIDES_WRAPPER;
+
+        var TABLE_CELL = 'fp-tableCell';
+        var TABLE_CELL_SEL = '.' + TABLE_CELL;
+
+        var RESPONSIVE = 'fp-responsive';
+        var AUTO_HEIGHT_RESPONSIVE = 'fp-auto-height-responsive';
+
+        /*
+        * Turns iScroll `mousewheel` option off dynamically
+        * https://github.com/cubiq/iscroll/issues/1036
+        */
+        IScroll.prototype.wheelOn = function () {
+            this.wrapper.addEventListener('wheel', this);
+            this.wrapper.addEventListener('mousewheel', this);
+            this.wrapper.addEventListener('DOMMouseScroll', this);
+        };
+
+        /*
+        * Turns iScroll `mousewheel` option on dynamically
+        * https://github.com/cubiq/iscroll/issues/1036
+        */
+        IScroll.prototype.wheelOff = function () {
+            this.wrapper.removeEventListener('wheel', this);
+            this.wrapper.removeEventListener('mousewheel', this);
+            this.wrapper.removeEventListener('DOMMouseScroll', this);
+        };
+
+        /**
+        * Returns an integer representing the padding dimensions in px.
+        */
+        function getPaddings(element) {
+            var section = fp_utils.closest(element, SECTION_SEL);
+            if (section != null) {
+                return parseInt(getComputedStyle(section)['padding-bottom']) + parseInt(getComputedStyle(section)['padding-top']);
             }
-    
-            // keeping central set of classnames and selectors
-            var SCROLLABLE =            'fp-scrollable';
-            var SCROLLABLE_SEL =        '.' + SCROLLABLE;
-    
-            var ACTIVE =                'active';
-            var ACTIVE_SEL =            '.' + ACTIVE;
-    
-            var SECTION =               'fp-section';
-            var SECTION_SEL =           '.' + SECTION;
-            var SECTION_ACTIVE_SEL =    SECTION_SEL + ACTIVE_SEL;
-    
-            var SLIDE =                 'fp-slide';
-            var SLIDE_SEL =             '.' + SLIDE;
-            var SLIDE_ACTIVE_SEL =      SLIDE_SEL + ACTIVE_SEL;
-    
-            var SLIDES_WRAPPER =        'fp-slides';
-            var SLIDES_WRAPPER_SEL =    '.' + SLIDES_WRAPPER;
-    
-            var TABLE_CELL =            'fp-tableCell';
-            var TABLE_CELL_SEL =        '.' + TABLE_CELL;
-    
-            var RESPONSIVE =            'fp-responsive';
-            var AUTO_HEIGHT_RESPONSIVE= 'fp-auto-height-responsive';
-    
-            /*
-            * Turns iScroll `mousewheel` option off dynamically
-            * https://github.com/cubiq/iscroll/issues/1036
-            */
-            IScroll.prototype.wheelOn = function () {
-                this.wrapper.addEventListener('wheel', this);
-                this.wrapper.addEventListener('mousewheel', this);
-                this.wrapper.addEventListener('DOMMouseScroll', this);
+            return 0;
+        }
+
+        function scrollBarHandler() {
+            var self = this;
+            self.options = null;
+
+            self.init = function (options, iscrollOptions) {
+                self.options = options;
+                self.iscrollOptions = iscrollOptions;
+
+                if (document.readyState === 'complete') {
+                    createScrollBarForAll();
+                    fullpage_api.shared.afterRenderActions();
+                }
+                //after DOM and images are loaded
+                window.addEventListener('load', function () {
+                    createScrollBarForAll();
+                    fullpage_api.shared.afterRenderActions();
+                });
+
+                return self;
             };
-    
-            /*
-            * Turns iScroll `mousewheel` option on dynamically
-            * https://github.com/cubiq/iscroll/issues/1036
-            */
-            IScroll.prototype.wheelOff = function () {
-                this.wrapper.removeEventListener('wheel', this);
-                this.wrapper.removeEventListener('mousewheel', this);
-                this.wrapper.removeEventListener('DOMMouseScroll', this);
-            };
-    
+
             /**
-            * Returns an integer representing the padding dimensions in px.
+            * Creates the scrollbar for the sections and slides in the site
             */
-            function getPaddings(element){
-                var section = fp_utils.closest(element, SECTION_SEL);
-                if(section != null){
-                    return parseInt(getComputedStyle(section)['padding-bottom']) + parseInt(getComputedStyle(section)['padding-top']);
+            function createScrollBarForAll() {
+                if (fp_utils.hasClass(document.body, RESPONSIVE)) {
+                    removeResponsiveScrollOverflows();
                 }
-                return 0;
+                else {
+                    forEachSectionAndSlide(createScrollBar);
+                }
             }
-    
-            function scrollBarHandler(){
-                var self = this;
-                self.options = null;
-    
-                self.init = function(options, iscrollOptions){
-                    self.options = options;
-                    self.iscrollOptions = iscrollOptions;
-    
-                    if(document.readyState === 'complete'){
-                        createScrollBarForAll();
-                        fullpage_api.shared.afterRenderActions();
-                    }
-                    //after DOM and images are loaded
-                    window.addEventListener('load', function(){
-                        createScrollBarForAll();
-                        fullpage_api.shared.afterRenderActions();
-                    });
-    
-                    return self;
-                };
-    
-                /**
-                * Creates the scrollbar for the sections and slides in the site
-                */
-                function createScrollBarForAll(){
-                    if(fp_utils.hasClass(document.body, RESPONSIVE)){
-                        removeResponsiveScrollOverflows();
-                    }
-                    else{
-                        forEachSectionAndSlide(createScrollBar);
+
+            /**
+            * Checks if the element needs scrollbar and if the user wants to apply it.
+            * If so it creates it.
+            *
+            * @param {Object} element   jQuery object of the section or slide
+            */
+            function createScrollBar(element) {
+                //User doesn't want scrollbar here? Sayonara baby!
+                if (fp_utils.hasClass(element, 'fp-noscroll')) return;
+
+                //necessary to make `scrollHeight` work under Opera 12
+                fp_utils.css(element, { 'overflow': 'hidden' });
+
+                var scrollOverflowHandler = self.options.scrollOverflowHandler;
+                var wrap = scrollOverflowHandler.wrapContent();
+                var section = fp_utils.closest(element, SECTION_SEL); //in case element is a slide
+                var scrollable = scrollOverflowHandler.scrollable(element);
+                var contentHeight;
+                var paddings = getPaddings(section);
+
+                //if there was scroll, the contentHeight will be the one in the scrollable section
+                if (scrollable != null) {
+                    contentHeight = scrollOverflowHandler.scrollHeight(element);
+                }
+                else {
+                    contentHeight = element.scrollHeight;
+                    if (self.options.verticalCentered) {
+                        contentHeight = $(TABLE_CELL_SEL, element)[0].scrollHeight;
                     }
                 }
-    
-                /**
-                * Checks if the element needs scrollbar and if the user wants to apply it.
-                * If so it creates it.
-                *
-                * @param {Object} element   jQuery object of the section or slide
-                */
-                function createScrollBar(element){
-                    //User doesn't want scrollbar here? Sayonara baby!
-                    if(fp_utils.hasClass(element, 'fp-noscroll')) return;
-    
-                    //necessary to make `scrollHeight` work under Opera 12
-                    fp_utils.css(element, {'overflow': 'hidden'});
-    
-                    var scrollOverflowHandler = self.options.scrollOverflowHandler;
-                    var wrap = scrollOverflowHandler.wrapContent();
-                    var section = fp_utils.closest(element, SECTION_SEL); //in case element is a slide
-                    var scrollable = scrollOverflowHandler.scrollable(element);
-                    var contentHeight;
-                    var paddings = getPaddings(section);
-    
-                    //if there was scroll, the contentHeight will be the one in the scrollable section
-                    if(scrollable != null){
-                        contentHeight = scrollOverflowHandler.scrollHeight(element);
+
+                var scrollHeight = fp_utils.getWindowHeight();
+                var contentHeightWidthPaddings = contentHeight + paddings;
+                var scrollHeightWidthoutPaddings = scrollHeight - paddings;
+
+                //needs scroll?
+                if (contentHeightWidthPaddings > scrollHeight) {
+                    //did we already have an scrollbar ? Updating it
+                    if (scrollable != null) {
+                        scrollOverflowHandler.update(element, scrollHeightWidthoutPaddings);
                     }
-                    else{
-                        contentHeight = element.scrollHeight;
-                        if(self.options.verticalCentered){
-                            contentHeight = $(TABLE_CELL_SEL, element)[0].scrollHeight;
+                    //creating the scrolling
+                    else {
+                        if (self.options.verticalCentered) {
+                            fp_utils.wrapInner($(TABLE_CELL_SEL, element)[0], wrap.scroller);
+                            fp_utils.wrapInner($(TABLE_CELL_SEL, element)[0], wrap.scrollable);
+                        } else {
+                            fp_utils.wrapInner(element, wrap.scroller);
+                            fp_utils.wrapInner(element, wrap.scrollable);
                         }
+                        scrollOverflowHandler.create(element, scrollHeightWidthoutPaddings, self.iscrollOptions);
                     }
-    
-                    var scrollHeight = fp_utils.getWindowHeight();
-                    var contentHeightWidthPaddings = contentHeight + paddings;
-                    var scrollHeightWidthoutPaddings = scrollHeight - paddings;
-                    
-                    //needs scroll?
-                    if ( contentHeightWidthPaddings > scrollHeight) {
-                        //did we already have an scrollbar ? Updating it
-                        if(scrollable != null){
-                            scrollOverflowHandler.update(element, scrollHeightWidthoutPaddings);
-                        }
-                         //creating the scrolling
-                        else{
-                            if(self.options.verticalCentered){
-                                fp_utils.wrapInner($(TABLE_CELL_SEL, element)[0], wrap.scroller);
-                                fp_utils.wrapInner($(TABLE_CELL_SEL, element)[0], wrap.scrollable);
-                            }else{
-                                fp_utils.wrapInner(element, wrap.scroller);
-                                fp_utils.wrapInner(element, wrap.scrollable);
-                            }
-                            scrollOverflowHandler.create(element, scrollHeightWidthoutPaddings, self.iscrollOptions);
-                        }
+                }
+
+                //removing the scrolling when it is not necessary anymore
+                else {
+                    scrollOverflowHandler.remove(element);
+                }
+
+                //undo
+                fp_utils.css(element, { 'overflow': '' });
+            }
+
+            /**
+            * Applies a callback function to each section in the site
+            * or the slides within them
+            */
+            function forEachSectionAndSlide(callback) {
+                $(SECTION_SEL).forEach(function (section) {
+                    var slides = $(SLIDE_SEL, section);
+
+                    if (slides.length) {
+                        slides.forEach(function (slide) {
+                            callback(slide);
+                        });
+                    } else {
+                        callback(section);
                     }
-    
-                    //removing the scrolling when it is not necessary anymore
-                    else{
+                });
+            }
+
+            /**
+            * Removes scrollOverflow for sections using the class `fp-auto-height-responsive`
+            */
+            function removeResponsiveScrollOverflows() {
+                var scrollOverflowHandler = self.options.scrollOverflowHandler;
+                forEachSectionAndSlide(function (element) {
+                    if (fp_utils.hasClass(fp_utils.closest(element, SECTION_SEL), AUTO_HEIGHT_RESPONSIVE)) {
                         scrollOverflowHandler.remove(element);
                     }
-    
-                    //undo
-                    fp_utils.css(element, {'overflow': ''});
-                }
-    
-                /**
-                * Applies a callback function to each section in the site
-                * or the slides within them
-                */
-                function forEachSectionAndSlide(callback){
-                    $(SECTION_SEL).forEach(function(section){
-                        var slides = $(SLIDE_SEL, section);
-    
-                        if(slides.length){
-                            slides.forEach(function(slide){
-                                callback(slide);
-                            });
-                        }else{
-                            callback(section);
-                        }
-                    });
-                }
-    
-                /**
-                * Removes scrollOverflow for sections using the class `fp-auto-height-responsive`
-                */
-                function removeResponsiveScrollOverflows(){
-                    var scrollOverflowHandler = self.options.scrollOverflowHandler;
-                    forEachSectionAndSlide(function(element){
-                        if(fp_utils.hasClass( fp_utils.closest(element, SECTION_SEL), AUTO_HEIGHT_RESPONSIVE)){
-                            scrollOverflowHandler.remove(element);
-                        }
-                    });
-                }
-    
-                //public functions
-                self.createScrollBarForAll = createScrollBarForAll;
-                self.createScrollBar = createScrollBar;
+                });
             }
-    
-            /**
-             * An object to handle overflow scrolling.
-             * This uses jquery.slimScroll to accomplish overflow scrolling.
-             * It is possible to pass in an alternate scrollOverflowHandler
-             * to the fullpage.js option that implements the same functions
-             * as this handler.
-             *
-             * @type {Object}
-             */
-            var $ = null;
-            var g_fullpageOptions = null;
-            var iscrollHandler = {
-                refreshId: null,
-                iScrollInstances: [],
-                lastScrollY: null,
-                hasBeenInit: false,
-    
-                // Default options for iScroll.js used when using scrollOverflow
-                iscrollOptions: {
-                    scrollbars: true,
-                    mouseWheel: true,
-                    hideScrollbars: false,
-                    fadeScrollbars: false,
-                    disableMouse: true,
-                    interactiveScrollbars: true
-                },
-    
-                init: function(options){
-                    $ = fp_utils.$;
-                    g_fullpageOptions = options;
-    
-                    var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints));
-    
-                    //fixing bug in iScroll with links: https://github.com/cubiq/iscroll/issues/783
-                    iscrollHandler.iscrollOptions.click = isTouch; // see #2035
-    
-                    iscrollHandler.hasBeenInit = true;
-    
-                    //extending iScroll options with the user custom ones
-                    iscrollHandler.iscrollOptions = fp_utils.deepExtend(iscrollHandler.iscrollOptions, options.scrollOverflowOptions);
-    
-                    return new scrollBarHandler().init(options, iscrollHandler.iscrollOptions);
-                },
-    
-                // Enables or disables the mouse wheel for the active section or all slides in it
-                toggleWheel: function(value){
-                    var scrollable = $(SCROLLABLE_SEL, $(SECTION_ACTIVE_SEL)[0]);
-                    scrollable.forEach(function(item){
-                        var iScrollInstance = item.fp_iscrollInstance;
-                        if(iScrollInstance != null){
-                            if(value){
-                                iScrollInstance.wheelOn();
-                            }
-                            else{
-                                iScrollInstance.wheelOff();
-                            }
+
+            //public functions
+            self.createScrollBarForAll = createScrollBarForAll;
+            self.createScrollBar = createScrollBar;
+        }
+
+        /**
+         * An object to handle overflow scrolling.
+         * This uses jquery.slimScroll to accomplish overflow scrolling.
+         * It is possible to pass in an alternate scrollOverflowHandler
+         * to the fullpage.js option that implements the same functions
+         * as this handler.
+         *
+         * @type {Object}
+         */
+        var $ = null;
+        var g_fullpageOptions = null;
+        var iscrollHandler = {
+            refreshId: null,
+            iScrollInstances: [],
+            lastScrollY: null,
+            hasBeenInit: false,
+
+            // Default options for iScroll.js used when using scrollOverflow
+            iscrollOptions: {
+                scrollbars: true,
+                mouseWheel: true,
+                hideScrollbars: false,
+                fadeScrollbars: false,
+                disableMouse: true,
+                interactiveScrollbars: true
+            },
+
+            init: function (options) {
+                $ = fp_utils.$;
+                g_fullpageOptions = options;
+
+                var isTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints));
+
+                //fixing bug in iScroll with links: https://github.com/cubiq/iscroll/issues/783
+                iscrollHandler.iscrollOptions.click = isTouch; // see #2035
+
+                iscrollHandler.hasBeenInit = true;
+
+                //extending iScroll options with the user custom ones
+                iscrollHandler.iscrollOptions = fp_utils.deepExtend(iscrollHandler.iscrollOptions, options.scrollOverflowOptions);
+
+                return new scrollBarHandler().init(options, iscrollHandler.iscrollOptions);
+            },
+
+            // Enables or disables the mouse wheel for the active section or all slides in it
+            toggleWheel: function (value) {
+                var scrollable = $(SCROLLABLE_SEL, $(SECTION_ACTIVE_SEL)[0]);
+                scrollable.forEach(function (item) {
+                    var iScrollInstance = item.fp_iscrollInstance;
+                    if (iScrollInstance != null) {
+                        if (value) {
+                            iScrollInstance.wheelOn();
                         }
-                    });
-                },
-    
-                // Enables or disables the whole iScroll feature based on the given parameter.
-                setIscroll: function(target, enable){
-                    if(!iscrollHandler.hasBeenInit){
-                        return;
-                    }
-                    var scrollable = fp_utils.closest(target, SCROLLABLE_SEL) || $(SCROLLABLE_SEL, target)[0];
-                    var action = enable ? 'enable' : 'disable';
-                    
-                    if(scrollable){
-                        scrollable.fp_iscrollInstance[action]();
-                    }
-                },
-    
-                /**
-                * Turns off iScroll for the destination section.
-                * When scrolling very fast on some trackpads (and Apple laptops) the inertial scrolling would
-                * scroll the destination section/slide before the sections animations ends.
-                */
-                onLeave: function(){
-                    iscrollHandler.toggleWheel(false);
-                },
-    
-                // Turns off iScroll for the leaving section
-                beforeLeave: function(){
-                    iscrollHandler.onLeave()
-                },
-    
-                // Turns on iScroll on section load
-                afterLoad: function(){
-                    iscrollHandler.toggleWheel(true);
-                },
-    
-                /**
-                 * Called when overflow scrolling is needed for a section.
-                 *
-                 * @param  {Object} element      jQuery object containing current section
-                 * @param  {Number} scrollHeight Current window height in pixels
-                 */
-                create: function(element, scrollHeight, iscrollOptions) {
-                    var scrollable = $(SCROLLABLE_SEL, element);
-    
-                    scrollable.forEach(function(item) {
-                        fp_utils.css(item, {'height': scrollHeight + 'px'});
-    
-                        var iScrollInstance = item.fp_iscrollInstance;
-                        if (iScrollInstance != null) {
-                            iscrollHandler.iScrollInstances.forEach(function(instance){
-                                instance.destroy();
-                            });
-                        }
-    
-                        iScrollInstance = new IScroll(item, iscrollOptions);
-                        iscrollHandler.iScrollInstances.push(iScrollInstance);
-    
-                        if(!fp_utils.hasClass(fp_utils.closest(element, SECTION_SEL), ACTIVE)){
-                            //off by default until the section gets active
+                        else {
                             iScrollInstance.wheelOff();
                         }
-    
-                        item.fp_iscrollInstance = iScrollInstance;
-                    });
-                },
-    
-                /**
-                 * Return a boolean depending on whether the scrollable element is a
-                 * the end or at the start of the scrolling depending on the given type.
-                 *
-                 * @param  {String}  type       Either 'top' or 'bottom'
-                 * @param  {Object}  scrollable jQuery object for the scrollable element
-                 * @return {Boolean}
-                 */
-                isScrolled: function(type, scrollable) {
-                    var scroller = scrollable.fp_iscrollInstance;
-    
-                    //no scroller?
-                    if (!scroller) {
-                        return true;
                     }
-    
-                    // two times reporting the same Y position ? 
-                    // that means we are on the top or on the bottom of the scroller
-                    
-                    if (type === 'top'){
-                        return scroller.y >= 0 && !fp_utils.getScrollTop(scrollable);
-                    } else if (type === 'bottom') {
-                        return (0 - scroller.y) + fp_utils.getScrollTop(scrollable) + scrollable.offsetHeight >= scrollable.scrollHeight;
-                    }
-                },
-    
-                /**
-                 * Returns the scrollable element for the given section.
-                 * If there are landscape slides, will only return a scrollable element
-                 * if it is in the active slide.
-                 *
-                 * @param  {Object}  activeSection jQuery object containing current section
-                 * @return {Boolean}
-                 */
-                scrollable: function(activeSection){
-                    // if there are landscape slides, we check if the scrolling bar is in the current one or not
-                    if ($(SLIDES_WRAPPER_SEL, activeSection).length) {
-                        return $(SCROLLABLE_SEL, $(SLIDE_ACTIVE_SEL, activeSection)[0] )[0];
-                    }
-                    return $(SCROLLABLE_SEL, activeSection)[0];
-                },
-    
-                /**
-                 * Returns the scroll height of the wrapped content.
-                 * If this is larger than the window height minus section padding,
-                 * overflow scrolling is needed.
-                 *
-                 * @param  {Object} element jQuery object containing current section
-                 * @return {Number}
-                 */
-                scrollHeight: function(element) {
-                    return $('.fp-scroller', $(SCROLLABLE_SEL, element)[0] )[0].scrollHeight;
-                },
-    
-                /**
-                 * Called when overflow scrolling is no longer needed for a section.
-                 *
-                 * @param  {Object} element      jQuery object containing current section
-                 */
-                remove: function(element) {
-                    if(element == null) return;
-    
-                    var scrollable = $(SCROLLABLE_SEL, element)[0];
-                    if (scrollable != null) {
-                        var iScrollInstance = scrollable.fp_iscrollInstance;
-                        if(iScrollInstance != null){
-                            iScrollInstance.destroy();
-                        }
-    
-                        scrollable.fp_iscrollInstance = null;
-    
-                        //unwrapping...
-                        fp_utils.unwrap($('.fp-scroller', element)[0]);
-                        fp_utils.unwrap($(SCROLLABLE_SEL, element)[0]);
-                    }
-                },
-    
-                /**
-                 * Called when overflow scrolling has already been setup but the
-                 * window height has potentially changed.
-                 *
-                 * @param  {Object} element      jQuery object containing current section
-                 * @param  {Number} scrollHeight Current window height in pixels
-                 */
-                update: function(element, scrollHeight) {
-                    //using a timeout in order to execute the refresh function only once when `update` is called multiple times in a
-                    //short period of time.
-                    //it also comes on handy because iScroll requires the use of timeout when using `refresh`.
-                    clearTimeout(iscrollHandler.refreshId);
-                    iscrollHandler.refreshId = setTimeout(function(){
-                        iscrollHandler.iScrollInstances.forEach(function(instance){
-                            instance.refresh();
-    
-                            //ugly hack that we are forced to use due to the timeout delay
-                            //otherwise done on the fullpage.js reBuild function
-                            fullpage_api.silentMoveTo(fp_utils.index($(SECTION_ACTIVE_SEL)[0]) + 1);
-                        });
-                    }, 150);
-    
-                    //updating the wrappers height
-                    fp_utils.css($(SCROLLABLE_SEL, element)[0], {'height': scrollHeight + 'px'});
-    
-                    if(g_fullpageOptions.verticalCentered){
-                        fp_utils.css($(SCROLLABLE_SEL, element)[0].parentNode, {'height': scrollHeight + 'px'});
-                    }
-                },
-    
-                /**
-                 * Called to get any additional elements needed to wrap the section
-                 * content in order to facilitate overflow scrolling.
-                 *
-                 * @return {String|Object} Can be a string containing HTML,
-                 *                         a DOM element, or jQuery object.
-                 */
-                wrapContent: function() {
-                    var scrollable = document.createElement('div');
-                    scrollable.className = SCROLLABLE;
-    
-                    var scroller = document.createElement('div');
-                    scroller.className = 'fp-scroller';
-    
-                    return {
-                        scrollable: scrollable,
-                        scroller: scroller
-                    };
+                });
+            },
+
+            // Enables or disables the whole iScroll feature based on the given parameter.
+            setIscroll: function (target, enable) {
+                if (!iscrollHandler.hasBeenInit) {
+                    return;
                 }
-            };
-    
-            return {
-                iscrollHandler: iscrollHandler
-            };
-        })();
-    })(window, document);
+                var scrollable = fp_utils.closest(target, SCROLLABLE_SEL) || $(SCROLLABLE_SEL, target)[0];
+                var action = enable ? 'enable' : 'disable';
+
+                if (scrollable) {
+                    scrollable.fp_iscrollInstance[action]();
+                }
+            },
+
+            /**
+            * Turns off iScroll for the destination section.
+            * When scrolling very fast on some trackpads (and Apple laptops) the inertial scrolling would
+            * scroll the destination section/slide before the sections animations ends.
+            */
+            onLeave: function () {
+                iscrollHandler.toggleWheel(false);
+            },
+
+            // Turns off iScroll for the leaving section
+            beforeLeave: function () {
+                iscrollHandler.onLeave()
+            },
+
+            // Turns on iScroll on section load
+            afterLoad: function () {
+                iscrollHandler.toggleWheel(true);
+            },
+
+            /**
+             * Called when overflow scrolling is needed for a section.
+             *
+             * @param  {Object} element      jQuery object containing current section
+             * @param  {Number} scrollHeight Current window height in pixels
+             */
+            create: function (element, scrollHeight, iscrollOptions) {
+                var scrollable = $(SCROLLABLE_SEL, element);
+
+                scrollable.forEach(function (item) {
+                    fp_utils.css(item, { 'height': scrollHeight + 'px' });
+
+                    var iScrollInstance = item.fp_iscrollInstance;
+                    if (iScrollInstance != null) {
+                        iscrollHandler.iScrollInstances.forEach(function (instance) {
+                            instance.destroy();
+                        });
+                    }
+
+                    iScrollInstance = new IScroll(item, iscrollOptions);
+                    iscrollHandler.iScrollInstances.push(iScrollInstance);
+
+                    if (!fp_utils.hasClass(fp_utils.closest(element, SECTION_SEL), ACTIVE)) {
+                        //off by default until the section gets active
+                        iScrollInstance.wheelOff();
+                    }
+
+                    item.fp_iscrollInstance = iScrollInstance;
+                });
+            },
+
+            /**
+             * Return a boolean depending on whether the scrollable element is a
+             * the end or at the start of the scrolling depending on the given type.
+             *
+             * @param  {String}  type       Either 'top' or 'bottom'
+             * @param  {Object}  scrollable jQuery object for the scrollable element
+             * @return {Boolean}
+             */
+            isScrolled: function (type, scrollable) {
+                var scroller = scrollable.fp_iscrollInstance;
+
+                //no scroller?
+                if (!scroller) {
+                    return true;
+                }
+
+                // two times reporting the same Y position ? 
+                // that means we are on the top or on the bottom of the scroller
+
+                if (type === 'top') {
+                    return scroller.y >= 0 && !fp_utils.getScrollTop(scrollable);
+                } else if (type === 'bottom') {
+                    return (0 - scroller.y) + fp_utils.getScrollTop(scrollable) + scrollable.offsetHeight >= scrollable.scrollHeight;
+                }
+            },
+
+            /**
+             * Returns the scrollable element for the given section.
+             * If there are landscape slides, will only return a scrollable element
+             * if it is in the active slide.
+             *
+             * @param  {Object}  activeSection jQuery object containing current section
+             * @return {Boolean}
+             */
+            scrollable: function (activeSection) {
+                // if there are landscape slides, we check if the scrolling bar is in the current one or not
+                if ($(SLIDES_WRAPPER_SEL, activeSection).length) {
+                    return $(SCROLLABLE_SEL, $(SLIDE_ACTIVE_SEL, activeSection)[0])[0];
+                }
+                return $(SCROLLABLE_SEL, activeSection)[0];
+            },
+
+            /**
+             * Returns the scroll height of the wrapped content.
+             * If this is larger than the window height minus section padding,
+             * overflow scrolling is needed.
+             *
+             * @param  {Object} element jQuery object containing current section
+             * @return {Number}
+             */
+            scrollHeight: function (element) {
+                return $('.fp-scroller', $(SCROLLABLE_SEL, element)[0])[0].scrollHeight;
+            },
+
+            /**
+             * Called when overflow scrolling is no longer needed for a section.
+             *
+             * @param  {Object} element      jQuery object containing current section
+             */
+            remove: function (element) {
+                if (element == null) return;
+
+                var scrollable = $(SCROLLABLE_SEL, element)[0];
+                if (scrollable != null) {
+                    var iScrollInstance = scrollable.fp_iscrollInstance;
+                    if (iScrollInstance != null) {
+                        iScrollInstance.destroy();
+                    }
+
+                    scrollable.fp_iscrollInstance = null;
+
+                    //unwrapping...
+                    fp_utils.unwrap($('.fp-scroller', element)[0]);
+                    fp_utils.unwrap($(SCROLLABLE_SEL, element)[0]);
+                }
+            },
+
+            /**
+             * Called when overflow scrolling has already been setup but the
+             * window height has potentially changed.
+             *
+             * @param  {Object} element      jQuery object containing current section
+             * @param  {Number} scrollHeight Current window height in pixels
+             */
+            update: function (element, scrollHeight) {
+                //using a timeout in order to execute the refresh function only once when `update` is called multiple times in a
+                //short period of time.
+                //it also comes on handy because iScroll requires the use of timeout when using `refresh`.
+                clearTimeout(iscrollHandler.refreshId);
+                iscrollHandler.refreshId = setTimeout(function () {
+                    iscrollHandler.iScrollInstances.forEach(function (instance) {
+                        instance.refresh();
+
+                        //ugly hack that we are forced to use due to the timeout delay
+                        //otherwise done on the fullpage.js reBuild function
+                        fullpage_api.silentMoveTo(fp_utils.index($(SECTION_ACTIVE_SEL)[0]) + 1);
+                    });
+                }, 150);
+
+                //updating the wrappers height
+                fp_utils.css($(SCROLLABLE_SEL, element)[0], { 'height': scrollHeight + 'px' });
+
+                if (g_fullpageOptions.verticalCentered) {
+                    fp_utils.css($(SCROLLABLE_SEL, element)[0].parentNode, { 'height': scrollHeight + 'px' });
+                }
+            },
+
+            /**
+             * Called to get any additional elements needed to wrap the section
+             * content in order to facilitate overflow scrolling.
+             *
+             * @return {String|Object} Can be a string containing HTML,
+             *                         a DOM element, or jQuery object.
+             */
+            wrapContent: function () {
+                var scrollable = document.createElement('div');
+                scrollable.className = SCROLLABLE;
+
+                var scroller = document.createElement('div');
+                scroller.className = 'fp-scroller';
+
+                return {
+                    scrollable: scrollable,
+                    scroller: scroller
+                };
+            }
+        };
+
+        return {
+            iscrollHandler: iscrollHandler
+        };
+    })();
+})(window, document);
