@@ -2,19 +2,19 @@
 var prevEventsTextsIndex = 0
 // var prevEventsTexts = []     moved to index.html
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     $('.nav-item-home').addClass('active')
 
     $('#prev-events-carousel').carousel('pause')
 
-    $('.upcoming-event-card').hover(function() {
+    $('.upcoming-event-card').hover(function () {
         $('.card-front').css('margin-top', '-300px')
-    }, function() {
+    }, function () {
         $('.card-front').css('margin-top', '20px')
     })
 
-    setInterval(function() {
+    setInterval(function () {
         prevEventsTextsIndex = (prevEventsTextsIndex + 1) % prevEventsTexts.length
         $('#prev-events-carousel').carousel('next')
         $('#prev-events-text, #show-more-text').fadeOut(300, 'swing', () => {
@@ -37,7 +37,7 @@ async function getQuotes() {
 
     json = json[Math.floor(Math.random() * (json.length + 1))];
 
-    let quote =  {
+    let quote = {
         text: json["en"] + "\n",
         author: json["author"]
     };
