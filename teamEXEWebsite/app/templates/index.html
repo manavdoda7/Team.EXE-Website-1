@@ -4,6 +4,10 @@
 {% block head_block %}
 
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 <title>Team .EXE</title>
 
 {% endblock %}
@@ -75,76 +79,21 @@ return <code style="color:#b8e994 ;">0</code>;
 <div id="upcoming-events-section" class="section">
     <h1 class="upcoming-heading">Upcoming Events</h1>
 
-    <div class="container">
-        <div class="row">
+    <div class="container my-5">
+        <div class="owl-carousel owl-theme">
 
-            <div class="col-lg-4 mt-4 event-card">
-                <div class=" face face1">
-                    <div class="card-content">
-                        <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
-                    </div>
-                </div>
-
-                <div class="face face2">
-                    <div class="card-content">
-                        <h4 class="card-title"> Event Name </h4>
-
-                        <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
-
-                        <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mt-4 event-card">
-                <div class=" face face1">
-                    <div class="card-content">
-                        <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
-                    </div>
-                </div>
-
-                <div class="face face2">
-                    <div class="card-content">
-                        <h4 class="card-title"> Event Name </h4>
-
-                        <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
-
-                        <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mt-4 event-card">
-                <div class=" face face1">
-                    <div class="card-content">
-                        <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
-                    </div>
-                </div>
-
-                <div class="face face2">
-                    <div class="card-content">
-                        <h4 class="card-title"> Event Name </h4>
-
-                        <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
-
-                        <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- <div class="col-lg-4 card mt-4 event-card">
+            <div class="item">
+                <div class="card event-card">
                     <div class=" face face1">
                         <div class="card-content">
-                            <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test"
+                                class="card-img-top  ">
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="card-content">
-                            <h4 class="card-title"> Event Name </h4>
+                            <h4 class="card-title"> Event Name 1</h4>
 
                             <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
 
@@ -153,17 +102,19 @@ return <code style="color:#b8e994 ;">0</code>;
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4 card mt-4 event-card">
+            <div class="item">
+                <div class="card event-card">
                     <div class=" face face1">
                         <div class="card-content">
-                            <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
+                            <img data-src="{% static 'images/event_2.png' %}" alt="Test" class="card-img-top  ">
                         </div>
                     </div>
 
                     <div class="face face2">
                         <div class="card-content">
-                            <h4 class="card-title"> Event Name </h4>
+                            <h4 class="card-title"> Event Name 1</h4>
 
                             <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
 
@@ -171,60 +122,101 @@ return <code style="color:#b8e994 ;">0</code>;
 
                         </div>
                     </div>
-                </div> -->
+                </div>
+            </div>
 
-            <!-- <div class="col-lg-4">
-                    <div class="card mt-4 event-card">
-
-                        <div class=" face face1">
-                            <div class="card-content">
-                                <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
-                            </div>
+            <div class="item">
+                <div class="card event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img data-src="https://via.placeholder.com/300/0000FF/808080 ?Text=Digital.com" alt="Test" class="card-img-top  ">
                         </div>
+                    </div>
 
-                        <div class="face face2">
-                            <div class="card-content">
-                                <h5 class="card-title"> Event Name </h5>
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name 3</h4>
 
-                                <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
 
-                                <a href="" class="btn btn-light btn-sm">Know More</a>
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
 
-                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4">
-                    <div class="card mt-4 event-card">
-
-                        <div class=" face face1">
-                            <div class="card-content">
-                                <img src="https://via.placeholder.com/200" alt="Test" class="card-img-top">
-                            </div>
-                        </div>
-
-                        <div class="face face2">
-                            <div class="card-content">
-                                <h5 class="card-title"> Event Name </h5>
-
-                                <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
-
-                                <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                            </div>
+            <div class="item">
+                <div class="card event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test" class="card-img-top">
                         </div>
                     </div>
-                </div> -->
+
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name 1</h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
+            <div class="item">
+                <div class="card event-card">
+                    <div class=" face face1">
+                        <div class="card-content">
+                            <img data-src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
+                        </div>
+                    </div>
 
+                    <div class="face face2">
+                        <div class="card-content">
+                            <h4 class="card-title"> Event Name 4</h4>
+
+                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                            <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
-        <!-- Row End -->
-
-
     </div>
+
+
+    <!-- <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-4 mt-4 event-card">
+                <div class=" face face1">
+                    <div class="card-content">
+                        <img src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
+                    </div>
+                </div>
+
+                <div class="face face2">
+                    <div class="card-content">
+                        <h4 class="card-title"> Event Name </h4>
+
+                        <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+
+                        <a href="" class="btn btn-light btn-sm">Know More</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 
 </div>
 
@@ -278,7 +270,11 @@ return <code style="color:#b8e994 ;">0</code>;
 
 {% block scripts %}
 
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
 <script src="{% static 'js/index.js' %}"></script>
+
+
 
 <script>
     var prevEventsTexts = []

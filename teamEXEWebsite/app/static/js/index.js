@@ -8,11 +8,11 @@ $(document).ready(function () {
 
     $('#prev-events-carousel').carousel('pause')
 
-    $('.upcoming-event-card').hover(function () {
-        $('.card-front').css('margin-top', '-300px')
-    }, function () {
-        $('.card-front').css('margin-top', '20px')
-    })
+    // $('.upcoming-event-card').hover(function () {
+    //     $('.card-front').css('margin-top', '-300px')
+    // }, function () {
+    //     $('.card-front').css('margin-top', '20px')
+    // })
 
     setInterval(function () {
         prevEventsTextsIndex = (prevEventsTextsIndex + 1) % prevEventsTexts.length
@@ -59,3 +59,49 @@ async function getQuotes() {
 // getQuotes();
 
 // setInterval(getQuotes, 66000);
+
+
+// ################# Dynamic Crousal ###############
+
+$('.owl-carousel').owlCarousel({
+    // items: 3,
+    nav: true,
+    // dots: true,
+    loop: true,
+    // autoHeight: true,
+
+    // lazyLoad: true,
+    margin: 50,
+    stagePadding: 20,
+    responsive: {
+        0: {
+            items: 1,
+            dots: true,
+            nav: false
+        },
+        485: {
+            items: 1,
+            dots: true,
+            nav: false
+        },
+        728: {
+            items: 2,
+            dots: true,
+            nav: true
+        },
+        992: {
+            items: 3
+        }
+    }
+});
+
+// $('.card-content').matchHeight();
+
+$('.owl-carousel').on('mousewheel', '.owl-stage', function (e) {
+    if (e.deltaY>0) {
+        owl.trigger('next.owl');
+    } else {
+        owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+})
