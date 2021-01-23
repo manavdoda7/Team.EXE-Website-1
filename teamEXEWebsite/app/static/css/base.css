@@ -68,13 +68,9 @@ h1 {
 .navbar{
     position: absolute;
     width: 100%;
-    z-index: 100;
+    z-index: 2000;
     animation-name: navbar-anim;
     animation-duration: 1.5s;
-}
-.dropdown-menu{
-    position: relative;
-    z-index: 1000000;
 }
 
 .dropdown:hover>.dropdown-menu {
