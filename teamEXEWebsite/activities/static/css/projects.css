@@ -13,6 +13,7 @@
 
 .projects{
     margin-top: 30px;
+    margin-bottom:30px;
     background: linear-gradient(rgba(11, 13, 19, 0.76) , rgba(0, 0, 0, 0.616));
     padding: 20px;
 }
@@ -38,4 +39,22 @@
 .description{
     color: #858585;
     width: 700px;
+}
+.flex{
+    display: flex;
+    flex-direction:row;
+    margin-top: 15px;
+}
+
+.icon{
+    font-size: 30px;
+}
+
+.icon1{
+    margin-right: 15px;
+    color: #2ecc71;
+}
+
+.icon2{
+    color: #95a5a6;
 }

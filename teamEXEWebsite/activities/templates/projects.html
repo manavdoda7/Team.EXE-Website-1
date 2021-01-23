@@ -20,7 +20,11 @@
     <div class="projects">
         <div class="row">
             {% for project in projects %}
-                <div class="col-md-4 mx-auto">
+                <div class="col-md-4 mx-auto
+                    {% if forloop.counter|divisibleby:2 %}
+                    order-last
+                    {% endif %}
+                ">
                     <div class="image">
                         <img src="{{project.image}}" class="project-img" />
                     </div>
@@ -30,13 +34,16 @@
                     <div class="contributors">By: {{project.contributors}}</div>
                     <div class="description">{{project.description}}</div>
                     <div class="flex">
-                        <!-- <div class="github">{{project.github}}</div> -->
                         <a href="{{project.github}}" target="_blank">
-                            <div class="flex icon icon1" id="icon-5">
+                            <div class="icon icon1" id="icon-1">
                               <i class="mdi mdi-github"></i>
                             </div>
                         </a>
-                        <div class="project_link">{{project.link}}</div>
+                        <a href="{{project.link}}" target="_blank">
+                            <div class="icon icon2" id="icon-2">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                        </a>
                     </div>
                 </div>
             {% endfor %}
@@ -46,10 +53,7 @@
 
 {% endblock %}
 
-{% block other_sections %}
-<!-- All other sections are here -->
 
-{% endblock %}
 
 {% block scripts %}
 <!-- Add all javascript code specific to this page here -->
