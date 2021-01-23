@@ -41,8 +41,7 @@ body{
 
 .navbar{
     position: absolute;
-    background-color: #040710;
-    opacity: 0.6;
+    background: linear-gradient(rgba(11, 13, 19, 0.76) , rgba(0, 0, 0, 0.616));
     width: 100%;
     z-index: 100;
     animation-name: navbar-anim;
@@ -76,10 +75,6 @@ body{
     font-size: 18px;
     color: #ffffff;
 }
-
-/* .nav-link:hover, .nav-link:active, .nav-link:focus{
-    color: #00b4d8;
-} */
 
 li{
     position: relative;
