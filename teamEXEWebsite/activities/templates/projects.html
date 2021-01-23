@@ -11,11 +11,36 @@
 {% block main_section %}
 <div class="container">
     <div class="row">
-        <!-- <div class="col-12 mx-auto"> -->
+        <div class="col-12 mx-auto">
             <div class="head-div mx-auto">
                 <h1 class="header">Projects</h1>
             </div>
-        <!-- </div> -->
+        </div>
+    </div>
+    <div class="projects">
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-4 mx-auto">
+                    <div class="image">
+                        <img src="{{project.image}}" class="project-img" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <span class="title">{{project.title}}</span>
+                    <div class="contributors">By: {{project.contributors}}</div>
+                    <div class="description">{{project.description}}</div>
+                    <div class="flex">
+                        <!-- <div class="github">{{project.github}}</div> -->
+                        <a href="{{project.github}}" target="_blank">
+                            <div class="flex icon icon1" id="icon-5">
+                              <i class="mdi mdi-github"></i>
+                            </div>
+                        </a>
+                        <div class="project_link">{{project.link}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
