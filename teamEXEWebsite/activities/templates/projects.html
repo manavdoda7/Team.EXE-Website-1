@@ -30,7 +30,12 @@
                     <div class="contributors">By: {{project.contributors}}</div>
                     <div class="description">{{project.description}}</div>
                     <div class="flex">
-                        <div class="github">{{project.github}}</div>
+                        <!-- <div class="github">{{project.github}}</div> -->
+                        <a href="{{project.github}}" target="_blank">
+                            <div class="flex icon icon1" id="icon-5">
+                              <i class="mdi mdi-github"></i>
+                            </div>
+                        </a>
                         <div class="project_link">{{project.link}}</div>
                     </div>
                 </div>
