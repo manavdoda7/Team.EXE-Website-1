@@ -10,6 +10,7 @@ html, body {
 }
 
 body{
+    background-color: #000;
     margin:0;
     overflow-x: hidden;
     font-family: 'Ubuntu', sans-serif !important;
@@ -47,15 +48,9 @@ body{
     animation-name: navbar-anim;
     animation-duration: 1.5s;
 }
-.navbar-toggler{
-    background-color: #000000;
-}
+
 .navbar-toggler:focus, .navbar-toggler:active{
     outline: 0;
-}
-
-.navbar-toggler {
-  background-color: aliceblue;
 }
 
 .logo{

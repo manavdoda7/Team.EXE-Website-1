@@ -8,7 +8,7 @@
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
-    text-shadow: 0 2px rgb(134, 207, 255), 0 3px rgb(95, 92, 92);
+    text-shadow: 0 4px rgb(134, 207, 255), 0 4px rgb(95, 92, 92);
 }
 
 .projects{
@@ -17,44 +17,57 @@
     background: linear-gradient(rgba(11, 13, 19, 0.76) , rgba(0, 0, 0, 0.616));
     padding: 20px;
 }
+
+.project {
+    margin: 20px 0;
+}
+
 .project-img{
-    width: 300px;
-    height: 310px;
+    display: block;
     border-radius: 20px;
     position: relative;
     top: 50px;
 }
+
+.image{
+    margin-bottom: 60px;
+}
+
 .title{
-    font-size: 50px;
-    font-weight: 400;
+    font-size: 40px;
+    font-weight: 600;
     color: #00b4d8;
     font-weight: 400;
 }
 
 .contributors{
+    margin-top: 5px;
     color: #ffffff;
     margin-bottom: 20px;
     font-size: 26px;
 }
 .description{
     color: #858585;
-    width: 700px;
-}
-.flex{
-    display: flex;
-    flex-direction:row;
-    margin-top: 15px;
 }
 
-.icon{
-    font-size: 30px;
-}
 
 .icon1{
     margin-right: 15px;
+    font-size: 30px;
+    color: #95a5a6;
+}
+
+.icon1:hover, .icon1:focus, .icon1:active{
     color: #2ecc71;
+    text-decoration: none;
+    outline: 0;
 }
 
 .icon2{
     color: #95a5a6;
+    font-size: 25px;
+}
+
+.icon2:hover{
+    color: #00b4d8;
 }
