@@ -48,6 +48,12 @@ body{
     animation-name: navbar-anim;
     animation-duration: 1.5s;
 }
+.navbar-toggler{
+    background-color: #000000;
+}
+.navbar-toggler:focus, .navbar-toggler:active{
+    outline: 0;
+}
 
 .logo{
     width: 150px;
@@ -66,6 +72,10 @@ body{
     font-size: 18px;
     color: #ffffff;
 }
+
+/* .nav-link:hover, .nav-link:active, .nav-link:focus{
+    color: #00b4d8;
+} */
 
 li{
     position: relative;
@@ -93,9 +103,10 @@ li{
 width: 100%;
 left: 0;
 background: #00b4d8;
+/* color: #00b4d8; */
 }
   
-.link:hover{
+.link:hover, .link:focus, .link:active{
     color: #00b4d8;
 }
 
