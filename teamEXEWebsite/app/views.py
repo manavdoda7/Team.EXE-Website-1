@@ -30,6 +30,3 @@ def alumni(request):
         'alumni' : Member.objects.filter(position='Alumnus')
     }
     return render(request, 'alumni.html', context)
-
-def activities(request):
-    return render(request, 'activities.html')

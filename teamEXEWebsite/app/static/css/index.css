@@ -344,7 +344,7 @@
     position: absolute;
     top: 25%;
     /* right: 0; */
-    z-index: 10000000;
+    z-index: 1000;
     /* transform: rotate3d(.5,-.866,0,15deg) rotate(0deg); */
     /* display: flex; */
     animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
