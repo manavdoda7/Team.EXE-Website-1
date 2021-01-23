@@ -72,10 +72,14 @@ h1 {
     animation-name: navbar-anim;
     animation-duration: 1.5s;
 }
+.dropdown-menu{
+    position: relative;
+    z-index: 1000000;
+}
 
 .dropdown:hover>.dropdown-menu {
     display: block;
-    background-color: #00000088;
+    background-color: #00000088;                                                                                                    
     /* opacity: 0.5; */
     color: #ffffff;
 }
@@ -89,6 +93,8 @@ h1 {
     background-color: transparent;
     color: #fff;
     opacity: 0.3;
+    /* position: relative;
+    z-index: 100000; */
 }
 
 .dropdown-item:hover{
