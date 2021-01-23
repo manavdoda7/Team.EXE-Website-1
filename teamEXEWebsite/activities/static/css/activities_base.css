@@ -49,6 +49,10 @@ body{
     animation-duration: 1.5s;
 }
 
+.navbar-toggler {
+  background-color: aliceblue;
+}
+
 .logo{
     width: 150px;
     transition: .2s;
