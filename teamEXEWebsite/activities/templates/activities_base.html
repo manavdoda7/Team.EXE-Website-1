@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,300italic,400italic,300,700italic,800italic,800"
+    rel="stylesheet" type="text/css" />
+  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" media="all"
+    rel="stylesheet" />
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
+    integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
+    crossorigin="anonymous" />
+  <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/png">
+  <link rel="stylesheet" href="{% static 'css/activities_base.css' %}">
+
+
+  {% block head_block %}
+
+  {% endblock %}
+
+</head>
+
+<body>
+  <!-- <canvas id="canvas"></canvas> -->
+
+  <div id="fullpage">
+    <div id="main-section" class="section">
+      <div class="main">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" class="logo" /></a>
+
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item nav-item-home">
+                <a class="nav-link link" href="events">Events</a>
+              </li>
+              <li class="nav-item nav-item-home">
+                <a class="nav-link link" href="workshops">Workshops</a>
+              </li>
+              <li class="nav-item nav-item-home">
+                <a class="nav-link link" href="projects">Projects</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        {% block main_section %}
+
+        {% endblock %}
+      </div>
+
+    </div>
+
+    {% block other_sections %}
+
+    {% endblock %}
+
+    <div class="section fp-auto-height">
+      <footer>
+        <div class="col-lg-12 f-logo">
+          <img src="../static/images/logo.png" alt="logo" width="200px">
+        </div>
+
+        <!-- <i class="mdi mdi-chevron-double-up page-link" dest="home" title="Back To Top"></i> -->
+
+        <div class="icon-wrap flex row">
+          <a href="https://www.linkedin.com/company/exe-nith/" target="_blank">
+            <div class="flex icon icon1" id="icon-1">
+              <i class="mdi mdi-linkedin"></i>
+            </div>
+          </a>
+
+          <a href="https://www.instagram.com/teamexenith" target="_blank">
+            <div class="flex icon icon2" id="icon-2">
+              <span class="mdi mdi-instagram"></span>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/teamexe/" class="hide" target="_blank">
+            <div class="flex icon icon3" id="icon-3">
+              <i class="mdi mdi-facebook"></i>
+            </div>
+          </a>
+          <a href="mailto: teamexenith@gmail.com" target="_blank">
+            <div class="flex icon icon4" id="icon-4">
+              <i class="mdi mdi-gmail"></i>
+            </div>
+          </a>
+          <a href="https://github.com/Teamexe" target="_blank">
+            <div class="flex icon icon5" id="icon-5">
+              <i class="mdi mdi-github"></i>
+            </div>
+          </a>
+
+        </div>
+        <div class="info-box">
+          <div class="footnote">
+            Copyright &copy; <span class="highlight">
+              <script>document.write(new Date().getFullYear())</script>
+            </span> Team.EXE </span>
+            <br>
+            All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js"
+    integrity="sha512-pYyQWhzi2lV+RM4GmaUA56VPL48oLVvsHmP9tuQ8MaZMDHomVEDjXXnfSVKXayy+wLclKPte0KbsuVoFImtE7w=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/easings.min.js"
+    integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w=="
+    crossorigin="anonymous"></script>
+
+  <script src="{% static 'js/fullpage.js' %}"></script>
+
+  <script>
+    new fullpage('#fullpage', {
+      //options here
+      autoScrolling: true,
+      scrollOverflow: true,
+      // scrollBar: true,
+    });
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+  VANTA.NET({
+    el: "body",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.00,
+    scaleMobile: 1.00,
+    color: 0x8c7b9,
+    backgroundColor: 0x30318,
+    points: 11.00,
+    maxDistance: 29.00,
+    spacing: 20.00
+  })
+  </script> 
+
+  {% block scripts %}
+
+  {% endblock %}
+
+</body>
+
+</html>
