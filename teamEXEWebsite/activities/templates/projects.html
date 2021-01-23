@@ -19,7 +19,25 @@
     </div>
     <div class="projects">
         <div class="row">
-            {% for %}
+            {% for project in projects %}
+                <div class="col-md-4 mx-auto">
+                    <div class="image">
+                        <img src="{{project.image}}" class="project-img" />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="sNo.">
+                        <span class="no"><strong>1</strong></span>
+                        <span class="title">{{project.title}}</span>
+                    </div>
+                    <div class="contributors">By: {{project.contributors}}</div>
+                    <div class="description">{{project.description}}</div>
+                    <div class="flex">
+                        <div class="github">{{project.github}}</div>
+                        <div class="project_link">{{project.link}}</div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>
