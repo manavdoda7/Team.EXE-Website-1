@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     
     #Apps
     'app',
+    'activities',
+
 ]
 
 MIDDLEWARE = [
