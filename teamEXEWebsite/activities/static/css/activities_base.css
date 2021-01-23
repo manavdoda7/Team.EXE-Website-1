@@ -55,6 +55,10 @@ body{
     outline: 0;
 }
 
+.navbar-toggler {
+  background-color: aliceblue;
+}
+
 .logo{
     width: 150px;
     transition: .2s;
