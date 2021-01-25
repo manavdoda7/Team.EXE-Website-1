@@ -4,21 +4,55 @@
 
 {% block head_block %}
 <link rel="stylesheet" href="{% static 'css/workshops.css' %}" />
-<title>Workshops</title>
+<title>Events</title>
 
 {% endblock %}
 
 {% block main_section %}
-<!-- Content of the First section -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 mx-auto">
+            <div class="head-div mx-auto">
+                <h1 class="header">Workshops</h1>
+            </div>
+        </div>
+    </div>
+    <div class="workshops">
+        {% for workshop in workshops %}
+            <div class="workshop">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mx-auto
+                        {% if forloop.counter|divisibleby:2 %}
+                        order-last
+                        {% endif %}
+                    ">
+                        <div class="image">
+                            <img src="{{workshop.image}}" class="img-fluid workshop-img mx-auto" />
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12">
+                        <p class="title"><strong>{{workshop.title}}</strong></p>
+                        <div class="description">{{workshop.description}}</div>
+                        <a class="btn
+                            {% if forloop.counter0|divisibleby:2 %}
+                            float-right
+                            {% endif %}
+                        " href="{{workshop.link}}">
+                            REGISTER
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
 
 {% endblock %}
 
-{% block other_sections %}
-<!-- All other sections are here -->
 
-{% endblock %}
 
 {% block scripts %}
 <!-- Add all javascript code specific to this page here -->
-
+<script src="{% static 'js/workshops.js' %}"></script>
 {% endblock %}
