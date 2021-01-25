@@ -1,5 +1,5 @@
-<div class="member-card">
-    <div class="img-container mx-auto">
+<div class="member-card px-2 px-sm-1 px-md-3 ">
+    <div class="img-container">
         <img class="member-image img-fluid" src="{{member.imageURL}}">
         <div class="member-overlay mx-auto">
             <p class="tagline">{{member.tagline}}</p>
@@ -18,5 +18,7 @@
         </div>
     </div>
     <p class="member-name">{{member.name}}</p>
-    <p class="member-position">{{member.position}}</p>
+    {% if member.position != "." %}
+        <p class="member-position">{{member.position}}</p>
+    {% endif %}
 </div>

@@ -11,57 +11,77 @@
 {% block main_section %}
 <div class="container">
     <div class="members">
-        <div class="row">
+        <!-- <div class="row"> -->
             <div class="col-12 mx-auto">
                 <h2 class="heading mx-auto">Final Year</h2>
             </div>
-            {% for member in coordinators %}
-                <div class="col-md-4 text-center">
-                    {% include 'member_card.html' %}
+            <div class="final_year">
+                <div class="row">
+                    {% for i in '0123456789'|make_list %}
+                    {% for member in finalYear %}
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            {% include 'member_card.html' %}
+                        </div>
+                    {% endfor %}
+                    {% endfor %}
                 </div>
-            {% endfor %}
-        </div>
-        <!-- <div class="coordinator_section">
-            <div class="row">
-                <div class="col-md-2"></div>
-                
-                {% for member in coordinators %}
-                <div class="col-md-4 text-center">
-                    {% include 'member_card.html' %}
-                </div>
-                {% endfor %}
-                <div class="col-md-2"></div>
             </div>
-        </div> -->
-        <div class="row">
             <div class="col-12 mx-auto">
-                <h2 class="heading mx-auto">Executive Members</h2>
+                <h2 class="heading mx-auto">Third Year</h2>
             </div>
-        </div>
-        <div class="executive_section">
-            <div class="row">
-                {% for member in executiveMembers %}
-                <div class="col-md-3 text-center">
-                    {% include 'member_card.html' %}
-                </div>
-                {% endfor %}
-                {% for member in executiveMembers %}
-                <div class="col-md-3 text-center">
-                    {% include 'member_card.html' %}
-                </div>
-                {% endfor %}
-                {% for member in executiveMembers %}
-                <div class="col-md-3 text-center">
-                    {% include 'member_card.html' %}
-                </div>
-                {% endfor %}
-                {% for member in executiveMembers %}
-                <div class="col-md-3 text-center">
-                    {% include 'member_card.html' %}
-                </div>
-                {% endfor %}
+            <div class="coordinator_section">
+                <div class="row">
+                    <div class="col-12 col-sm-8 col-md-8 col-lg-6 mx-auto">
+                        <div class="row">
+                        {% for member in coordinators %}
+                        <div class="col-6 text-center">
+                            {% include 'member_card.html' %}
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>    
             </div>
-        </div>
+            <div class="third_year">
+                <div class="row">
+                    {% for i in '0123456789'|make_list %}
+                    {% for member in thirdYear %}
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                        {% include 'member_card.html' %}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>    
+            </div>
+            <div class="col-12 mx-auto">
+                <h2 class="heading mx-auto">Second Year</h2>
+            </div>
+            <div class="second_year">
+                <div class="row">
+                    {% for i in '0123456789'|make_list %}
+                    {% for member in secondYear %}
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            {% include 'member_card.html' %}
+                        </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12 mx-auto">
+                <h2 class="heading mx-auto">First Year</h2>
+            </div>
+            <div class="first_year">
+                <div class="row">
+                    {% for i in '0123456789'|make_list %}
+                    {% for member in firstYear %}
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-3 text-center">
+                            {% include 'member_card.html' %}
+                        </div>
+                    {% endfor %}
+                    {% endfor %}
+                </div>    
+            </div>
+        <!-- </div> -->
     </div>
 </div>
 
