@@ -1,5 +1,5 @@
 <!-- Inheriting from base.html template -->
-{% extends 'base.html' %}
+{% extends 'members_base.html' %}
 {% load static %}
 
 {% block head_block %}
@@ -15,15 +15,16 @@
             <div class="col-12 mx-auto">
                 <h2 class="heading mx-auto">Final Year</h2>
             </div>
-        </div>
-        <div class="coordinator_section">
-            <div class="row">
-                <div class="col-md-2"></div>
-                {% for member in coordinators %}
+            {% for member in coordinators %}
                 <div class="col-md-4 text-center">
                     {% include 'member_card.html' %}
                 </div>
-                {% endfor %}
+            {% endfor %}
+        </div>
+        <!-- <div class="coordinator_section">
+            <div class="row">
+                <div class="col-md-2"></div>
+                
                 {% for member in coordinators %}
                 <div class="col-md-4 text-center">
                     {% include 'member_card.html' %}
@@ -31,7 +32,7 @@
                 {% endfor %}
                 <div class="col-md-2"></div>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-12 mx-auto">
                 <h2 class="heading mx-auto">Executive Members</h2>
