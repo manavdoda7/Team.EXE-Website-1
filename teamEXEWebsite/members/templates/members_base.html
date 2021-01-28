@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
   <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/png">
-  <link rel="stylesheet" href="{% static 'css/activities_base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/members_base.css' %}">
 
 
   {% block head_block %}
@@ -37,11 +37,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item nav-item-members">
-              <a class="nav-link link" href="/members">Members</a>
+            <li class="nav-item nav-item-home">
+                <a class="nav-link link" href="/">Home</a>
+            </li>
+            <li class="nav-item nav-item-members">
+                <a class="nav-link link" href="/members">Members</a>
             </li>
             <li class="nav-item nav-item-alumni">
-              <a class="nav-link link" href="/alumni">Alumni</a>
+                <a class="nav-link link" href="/alumni">Alumni</a>
             </li>
         </ul>
       </div>
@@ -56,8 +59,6 @@
   <div class="col-lg-12 f-logo">
     <img src="../static/images/logo.png" alt="logo" width="200px">
   </div>
-
-  <!-- <i class="mdi mdi-chevron-double-up page-link" dest="home" title="Back To Top"></i> -->
 
   <div class="icon-wrap flex row">
     <a href="https://www.linkedin.com/company/exe-nith/" target="_blank">
