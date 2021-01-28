@@ -4,7 +4,7 @@
 
 .heading{
     margin: 20px 0;
-    font-size: 48px;
+    font-size: 60px;
     font-weight: 600;
     color: #7ed6df;
     text-align: center;
@@ -51,23 +51,24 @@
     transition: all 0.5s;
     outline: 1.5px solid white;
     outline-offset: 15px;
+    text-align: center;
+    
 }
 
 .tagline{
     padding: 0 10px ;
     font-size: 13px;
-    position: absolute;
+    position: relative;
     top: 30%;
     color: #7ed6df;
     text-shadow : 0 0 10px #000;
+    text-align: center;
 }
 
 .social-links{
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    top: 63%;
-    left: 27%;
+    position: relative;
+    top: 43%;
+    margin: auto;
 }
 
 
@@ -78,6 +79,7 @@
     height: 45px;
     border-radius: 50%;
     text-align: center;
+    display: inline-block;
 }
 
 .icon:hover {
@@ -86,7 +88,7 @@
 }
 
 .icon1{
-    margin-right: 10%;
+    margin-right: 5%;
 }
 
 .mdi{
@@ -130,4 +132,18 @@
 .js-slidein-visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .heading{
+        font-size: 45px;
+    }
+    .social-links{
+        position: relative;
+        top: 23%;
+        margin: auto;
+    }
+    .icon1{
+        margin-right: 2%;
+    }
 }

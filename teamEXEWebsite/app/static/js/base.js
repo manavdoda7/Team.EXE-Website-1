@@ -6,20 +6,22 @@ $(document).ready(function () {
 
 })
 
-$.when($.ready)
-    .then(function () {
+$.when($.ready).then(function () {
+    setTimeout(function(){
+        $("#load-screen").animate({
+            top: '-100%',
+            opacity: '0.5',
+            
+            });
+    }, 3000)
+})
 
-    })
-
-// document.onreadystatechange = function () {
-//     var state = document.readyState
-//     if (state == 'interactive') {
-//     } else if (state == 'complete') {
-//         // setTimeout(function(){
-//           document.getElementById("loading").classList.remove("animated");
-//           document.getElementById("loading").classList.remove("fadeOut");
-//           document.getElementById("loading").style.display = "none";
-//   }}
+document.onreadystatechange = function () {
+    var state = document.readyState
+    if (state == 'interactive') {
+    } else if (state == 'complete') {
+        
+  }}
 
 
 // Background Animation
