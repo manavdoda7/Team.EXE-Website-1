@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
 
 <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
 <title>Team .EXE</title>
 
 {% endblock %}
@@ -79,7 +80,7 @@ return <code style="color:#b8e994 ;">0</code>;
 <div id="upcoming-events-section" class="section">
     <h1 class="upcoming-heading">Upcoming Events</h1>
 
-    <div class="container my-5">
+    <div class="container my-5 main-content">
         <div class="owl-carousel owl-theme">
 
             <div class="item">
@@ -95,7 +96,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         <div class="card-content">
                             <h4 class="card-title"> Event Name 1</h4>
 
-                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
 
                             <a href="" class="btn btn-light btn-sm">Know More</a>
 
@@ -116,28 +117,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         <div class="card-content">
                             <h4 class="card-title"> Event Name 1</h4>
 
-                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="https://via.placeholder.com/300/0000FF/808080 ?Text=Digital.com" alt="Test" class="card-img-top  ">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 3</h4>
-
-                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
 
                             <a href="" class="btn btn-light btn-sm">Know More</a>
 
@@ -158,7 +138,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         <div class="card-content">
                             <h4 class="card-title"> Event Name 1</h4>
 
-                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
 
                             <a href="" class="btn btn-light btn-sm">Know More</a>
 
@@ -167,28 +147,35 @@ return <code style="color:#b8e994 ;">0</code>;
                 </div>
             </div>
 
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="https://via.placeholder.com/300" alt="Test" class="card-img-top">
+            {% for event in upcommingEvents %}
+                <div class="item">
+                    <div class="card event-card">
+                        <div class=" face face1">
+                            <div class="card-content">
+                                <img data-src={{ event.image }} alt="Test" class="card-img-top">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 4</h4>
+                        <div class="face face2">
+                            <div class="card-content">
+                                <h4 class="card-title">{{ event.title }}</h4>
 
-                            <p class="card-text"> <Span>Event Date: </Span> Test-date </p>
+                                <p class="card-text"> <span class='heading-date'>Event Date: </span> {{ event.time }} </p>
 
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
+                                <a href={{ event.link }} class="btn btn-light btn-sm">Know More</a>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
 
+        </div>
+
+        <div class="owl-theme">
+            <div class="owl-controls">
+                <div class="custom-nav owl-nav"></div>
+            </div>
         </div>
     </div>
 
