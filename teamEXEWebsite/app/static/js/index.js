@@ -64,30 +64,37 @@ async function getQuotes() {
 // ################# Dynamic Crousal ###############
 
 $('.owl-carousel').owlCarousel({
-    // items: 3,
-    nav: true,
-    // dots: true,
+    nav: false,
     loop: true,
-    // autoHeight: true,
+    dots: false,
 
+    // autoHeight: true,
     // lazyLoad: true,
+    mouseDrag: true,
+    touchDrag: true,
     margin: 50,
+
     stagePadding: 20,
+    navContainer: '.main-content .custom-nav',
+    navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
     responsive: {
         0: {
             items: 1,
-            dots: true,
+            // dots: true,
             nav: false
         },
         485: {
             items: 1,
-            dots: true,
+            // dots: true,
             nav: false
         },
         728: {
             items: 2,
-            dots: true,
-            nav: true
+            // dots: true,
+            // nav: true
         },
         992: {
             items: 3
@@ -105,3 +112,32 @@ $('.owl-carousel').on('mousewheel', '.owl-stage', function (e) {
     }
     e.preventDefault();
 })
+
+
+
+    // Setting the nav postion carousal.......
+
+function set_nav_postion(sizing) {
+    prev = document.querySelector('.owl-prev');
+    next = document.querySelector('.owl-next');
+
+    prev.style.left = (sizing.left - 30) + 'px';
+    next.style.left = (sizing.left + sizing.width - 20) + 'px';
+
+}
+
+$(document).ready(function () {
+    let carousel = document.querySelector('.owl-stage-outer')
+    const sizing = carousel.getBoundingClientRect();
+    // console.log(sizing);
+    set_nav_postion(sizing);
+});
+
+$(window).resize(function() {
+
+    let carousel = document.querySelector('.owl-stage-outer')
+    const sizing = carousel.getBoundingClientRect();
+    // console.log(sizing);
+    set_nav_postion(sizing);
+
+});

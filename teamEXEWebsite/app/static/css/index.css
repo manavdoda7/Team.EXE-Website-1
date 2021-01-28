@@ -122,29 +122,51 @@
 
 /* Upcoming Events Section */
 
-
-.owl-carousel .owl-stage {
-    display: flex;
-}
-.owl-carousel .owl-stage .owl-item {
-    display: flex;
-    flex: 1 0 auto;
-}
-
-.owl-nav {
-    font-size: 40px;
-    color: aqua;
-}
-
-
-
 .upcoming-heading{
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
     text-align: center;
+    margin-bottom: 3rem;
 }
 
+.owl-carousel .owl-stage {
+    display: flex;
+}
+
+/* .owl-carousel .owl-stage .owl-item {
+    display: flex;
+    flex: 1 0 auto;
+} */
+
+.owl-theme .custom-nav {
+    position: absolute;
+    top: 35%;
+    left: 0%;
+    right: 0%;
+}
+
+.owl-theme .custom-nav .owl-prev, .owl-theme .custom-nav .owl-next {
+    position: absolute;
+    height: 100px;
+    color: inherit;
+    background-color: transparent !important;
+    border: none;
+    z-index: 100000;
+    font-size: 2.5rem;
+    outline: none;
+}
+
+.owl-theme .custom-nav .owl-prev i, .owl-theme .custom-nav .owl-next i {
+    font-size: 3rem;
+    color: #3ad0e4;
+}
+
+.owl-nav {
+    font-size: 40px;
+    color: #2ccee4d2;
+    margin-top: 0% !important;
+}
 
 .event-card {
   /* overflow: hidden; */
@@ -177,7 +199,7 @@
 }
 
 .container .event-card:hover .face.face2{
-  transform: translateY(-150%);
+  transform: translateY(-160%);
   opacity: 1;
 }
 
@@ -190,6 +212,13 @@
 .card-text{
   color: #dcdde1;
   /* font-size: 18px !important; */
+  font-size: 1.3rem;
+
+}
+
+.heading-date{
+    font-weight: bold;
+  color: #3ed9ee;
 
 }
 
@@ -241,10 +270,12 @@
         transition: 1s;
         transform: translateY(-200%);
         opacity: 0;
+        align-items: center;
+        justify-content: center;
     }
 
     .container .event-card:hover .face.face2{
-        transform: translateY(-150%);
+        transform: translateY(-170%);
         opacity: 1;
     }
 
@@ -295,10 +326,12 @@
         transition: 1s;
         transform: translateY(-200%);
         opacity: 0;
+        align-items: center;
+        justify-content: center;
     }
 
     .container .event-card:hover .face.face2{
-        transform: translateY(-130%);
+        transform: translateY(-170%);
         opacity: 1;
     }
 }
