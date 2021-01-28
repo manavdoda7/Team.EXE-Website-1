@@ -12,13 +12,13 @@
     rel="stylesheet" type="text/css" />
   <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" media="all"
     rel="stylesheet" />
-  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+  <!-- <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
     crossorigin="anonymous" />
-  <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script> -->
   <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/png">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
@@ -32,16 +32,17 @@
 <body>
   <canvas id="canvas"></canvas>
   <div id="load-screen">
-    <div id="loading-inner">
-      <img src="{% static 'images/logo.webp' %}" alt="Loading...">
-    </div>
+    
+  </div>
+  <div id="loading-inner">
+    <img src="{% static 'images/logo.webp' %}" alt="Loading...">
   </div>
 
   <div id="fullpage">
     <div id="main-section" class="section">
       <div class="main">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-md navbar-dark">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

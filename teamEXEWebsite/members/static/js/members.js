@@ -11,12 +11,16 @@ $(document).ready(function () {
     }
   
     // Check which of the elements with this class is visible on the page
+    let delay = 0
     $('.js-slidein').each(function (i) {
         var bottomObject = $(this).offset().top
         var bottomWindow = $(window).scrollTop() + $(window).height()
     
         if (bottomWindow > bottomObject) {
-            $(this).addClass('js-slidein-visible')
+            setTimeout(() => {
+                $(this).addClass('js-slidein-visible')
+            }, delay)
+            delay += 100
         }
     })
   

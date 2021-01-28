@@ -11,17 +11,22 @@ $.when($.ready).then(function () {
         $("#load-screen").animate({
             top: '-100%',
             opacity: '0.5',
-            
-            });
+            }, 1000);
+        setTimeout(function(){
+            $('#loading-inner').addClass('loading-inner-animate')
+            setTimeout(function(){
+                $('#loading-inner').addClass('loading-inner-hide').css('display', 'none')
+            }, 1000)
+        }, 1000)
     }, 3000)
 })
 
-document.onreadystatechange = function () {
-    var state = document.readyState
-    if (state == 'interactive') {
-    } else if (state == 'complete') {
+// document.onreadystatechange = function () {
+//     var state = document.readyState
+//     if (state == 'interactive') {
+//     } else if (state == 'complete') {
         
-  }}
+//   }}
 
 
 // Background Animation
