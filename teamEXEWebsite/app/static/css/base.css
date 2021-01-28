@@ -461,3 +461,9 @@ footer {
         background-color: transparent;
     }
 }
+
+@media only screen and (max-width: 768px){
+    footer .icon-wrap .icon {
+        margin: 0 5px;
+    }
+}
