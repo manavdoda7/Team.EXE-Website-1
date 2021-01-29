@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load to_class_name %}
 
 {% block head_block %}
 
@@ -161,7 +162,7 @@ return <code style="color:#b8e994 ;">0</code>;
 
                                 <p class="card-text"> <span class='heading-date'>Event Date: </span> {{ event.time }} </p>
 
-                                <a href={{ event.link }} class="btn btn-light btn-sm">Know More</a>
+                                <a href="/activities/{{event|to_class_name|lower}}s#card{{ event.id }}" class="btn btn-light btn-sm">Know More</a>
 
                             </div>
                         </div>
