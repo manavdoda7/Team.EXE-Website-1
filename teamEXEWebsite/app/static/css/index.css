@@ -5,6 +5,10 @@
     .main-top{
         height: 35% !important;
     }
+    .prev-eve-head{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }
 
 /* Main Section */
@@ -122,7 +126,12 @@
 
 /* Upcoming Events Section */
 
+/* .section-up .fp-tableCell{
+    height: auto !important;
+} */
+
 .upcoming-heading{
+    padding-top: 60px;
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
@@ -187,6 +196,7 @@
 .container .event-card:hover .face.face1{
   transform: translateY(-100%);
   opacity: 0;
+  
 }
 
 .container .event-card .face.face2{
@@ -196,11 +206,13 @@
   transition: 1s;
   transform: translateY(0%);
   opacity: 0;
+  /* height: 0; */
 }
 
 .container .event-card:hover .face.face2{
   transform: translateY(-160%);
   opacity: 1;
+  /* height: unset; */
 }
 
 .card-title{
