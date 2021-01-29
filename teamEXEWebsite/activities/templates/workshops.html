@@ -19,7 +19,7 @@
     </div>
     <div class="workshops">
         {% for workshop in workshops %}
-            <div class="workshop js-slidein">
+            <div id="card{{workshop.id}}" class="workshop js-slidein">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mx-auto
                         {% if forloop.counter|divisibleby:2 %}
