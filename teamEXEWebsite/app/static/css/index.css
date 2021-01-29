@@ -347,24 +347,25 @@
 .event-heading{
     font-size: 36px;
     font-weight: 600 !important;
-    text-align: left;
+    text-align: center;
     color: #7ed6df;
-    margin-bottom: 30px;
+    margin-bottom: 10%;
 }
 
-.content{
-    margin-top: 5%;
-}
+/* .content{
+    margin-top: 2%;
+} */
 
 .prev-eve-head{
-    color: #7ed6df;
+    color: #ffffff;
     font-size: 25px;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .text{
     font-size: 16px;
-    color: #dcdde1;
+    color: #b7b7bb;
     font-weight: 100;
 }
 
