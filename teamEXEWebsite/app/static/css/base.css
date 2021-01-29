@@ -237,7 +237,7 @@ h1 {
 }
 
 * {
-    animation-delay: 1.5s;
+    animation-delay: 0.5s;
 }
 
 #loading-inner {
@@ -251,11 +251,9 @@ h1 {
 }
 
 .loading-inner-animate {
-    left: 16px !important;
-    top: 13px !important;
-    transform: translate(0, 0) !important;
-    width: 150px !important;
-    transition: all 1s ease-in-out;
+    width: 0 !important;
+    opacity: 0;
+    transition: all 500ms ease-in-out;
 }
 
 .loading-inner-hide {
@@ -286,12 +284,6 @@ h1 {
 @media only screen and (max-width: 768px){
     #loading-inner {
         width: 70%;
-    }
-
-    .loading-inner-animate {
-        left: auto !important;
-        right: 32px !important;
-        width: 120px !important;
     }
 }
 
