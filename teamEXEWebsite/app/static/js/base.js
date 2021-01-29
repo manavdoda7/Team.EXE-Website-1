@@ -9,16 +9,17 @@ $(document).ready(function () {
 $.when($.ready).then(function () {
     setTimeout(function(){
         $("#load-screen").animate({
-            top: '-100%',
-            opacity: '0.5',
-            }, 1000);
+            // left: '100%',
+            opacity: '0',
+            }, 500);
         setTimeout(function(){
             $('#loading-inner').addClass('loading-inner-animate')
+            $('#load-screen').hide()
             setTimeout(function(){
                 $('#loading-inner').addClass('loading-inner-hide').css('display', 'none')
             }, 1000)
-        }, 1000)
-    }, 3000)
+        }, 500)
+    }, 1000)
 })
 
 // document.onreadystatechange = function () {

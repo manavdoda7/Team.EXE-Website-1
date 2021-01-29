@@ -22,7 +22,6 @@ body{
 }
 ::-webkit-scrollbar-thumb{
     background: linear-gradient( rgb(9, 86, 131),rgb(95, 196, 255) );
-    /* background-color: #ffffffcb; */
     border-radius: 10px;
 }
 
@@ -30,10 +29,6 @@ body{
     background: rgb(0, 0, 0);
     border-radius: 10px;
 }
-
-/* body::-webkit-scrollbar {
-    display: none;
-} */
 
 h1 {
     color: #7ed6df;
@@ -73,12 +68,16 @@ h1 {
     animation-duration: 1.5s;
 }
 
+.navbar-toggler:active, .navbar-toggler:active, .navbar-toggler:hover {
+    outline: 0;
+}
+
 .dropdown:hover>.dropdown-menu {
     display: block;
-    background-color: #00000088;                                                                                                    
-    /* opacity: 0.5; */
+    background-color: #00000088;  
     color: #ffffff;
 }
+
 
 .dropdown>.dropdown-toggle:active {
 /*Without this, clicking will make it sticky*/
@@ -89,8 +88,6 @@ h1 {
     background-color: transparent;
     color: #fff;
     opacity: 0.3;
-    /* position: relative;
-    z-index: 100000; */
 }
 
 .dropdown-item:hover{
@@ -101,7 +98,6 @@ h1 {
 
 .team-btn{
     color: #ffffff80;
-    /* font-weight: 600; */
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif !important;
     padding: 8px;
@@ -212,13 +208,6 @@ h1 {
 
 }
 
-.main-description-text {
-    margin-bottom: 100px;
-    animation: move-down-anim 2s;
-    font-size: 16px;
-    color: #dcdde1;
-}
-
 .down-arrow {
     font-size: 36px;
     font-weight: 500;
@@ -229,12 +218,6 @@ h1 {
 
 .down-text{
     color : #f5f6fa;
-}
-
-@keyframes move-down-anim {
-    0% {opacity: 0;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
 }
 
 #move-down {
@@ -254,7 +237,7 @@ h1 {
 }
 
 * {
-    animation-delay: 3.5s;
+    animation-delay: 1.5s;
 }
 
 #loading-inner {
@@ -515,5 +498,8 @@ footer {
 @media only screen and (max-width: 768px){
     footer .icon-wrap .icon {
         margin: 0 5px;
+    }
+    .navbar-collapse{
+        background-color:#000;
     }
 }
