@@ -193,6 +193,7 @@
         text-align: left;
         padding-right: 5%;
         font-size: 15px;
+        height: 90vh;
     }
 
     .row{
@@ -224,7 +225,11 @@
     }
     .section2-img{
         width: 75%;
+        height: 40vh;
         border-radius: 25px;
+    }
+    .carousel-text{
+        padding-top: 5%;
     }
     .carousel-inner1{
         padding-top: 0%;
@@ -233,7 +238,7 @@
         top: 10%;
     }
     .carousel-inner1{
-        top: 0%;
+        top: 20%;
     }
     .carousel-text{
         color: #b7b7bb;
@@ -477,13 +482,13 @@
             /* position:absolute; */
         }
 
-        .mob-set li {
+        /* .mob-set li {
             display: inline-block !important;
         }
 
         .mob-set{
             text-align: center !important;
-        }
+        } */
      
         .heading-top{
             font-size: 50px;
@@ -579,10 +584,10 @@
         .mottos1{
             display: block;
         }
-        /* .block{
-            text-align: center;
-            margin-bottom: 5rem;
-        } */
+        .block{
+            margin-left: 10%;
+            width: 80%;
+        }
         .carousel{
             margin-top: 2%;
         }
