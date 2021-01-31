@@ -16,7 +16,7 @@ body{
     font-family: 'Ubuntu', sans-serif !important;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
 }
 
@@ -27,13 +27,13 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(0, 0, 0);
+  background: rgb(206, 206, 206);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(0, 0, 0);
-} */
+  background: rgb(255, 255, 255);
+} 
 
 /************************************ Main Section ******************************/
 
@@ -298,4 +298,53 @@ footer {
     footer .icon-wrap .icon {
         margin: 0 5px;
     }
+}
+
+@media only screen and (max-width: 768px){
+  .container{
+      max-width: 98%;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 100px;
+  }
+
+  .img_c , .p{
+      padding: 0 5px; 
+      margin: 0;       
+  }
+  .project{
+      margin: 0;
+  }
+  .project-img{
+      top : 0;
+  }
+  .image{
+  margin-bottom: 10px;
+  }
+
+  .title{
+      font-size: 28px;
+  }
+
+  .contributors{
+      font-size: 17px;
+  }
+
+  .order-last{
+      all: unset;
+  }
+
+  .project_con{
+      margin-bottom: 40px;
+  }
+
+  .description{
+      text-align: justify;
+      font-size: 15px;
+  }
+
+  .header{
+      font-size: 50px;
+  }
+
 }

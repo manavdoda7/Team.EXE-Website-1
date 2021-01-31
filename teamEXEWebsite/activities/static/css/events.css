@@ -59,4 +59,63 @@
     color: #fff;
 }
 
+@media only screen and (max-width: 768px){
+    .container{
+        max-width: 98%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 100px;
+    }
 
+    .img_c , .p{
+        padding: 0 5px; 
+        margin: 0;       
+    }
+    .project{
+        margin: 0;
+    }
+    .event-img{
+        top : 0;
+    }
+    .image{
+    margin-bottom: 10px;
+    }
+
+    .title{
+        font-size: 28px;
+    }
+
+    .contributors{
+        font-size: 17px;
+    }
+
+    .order-last{
+        all: unset;
+    }
+
+    .event{
+        margin: 0;
+    }
+
+    .events{
+        padding: 0 10px;
+    }
+
+    .btn{
+        margin-top: 15px;
+    }
+
+    .project_con{
+        margin-bottom: 40px;
+    }
+
+    .description{
+        text-align: justify;
+        font-size: 15px;
+    }
+
+    .header{
+        font-size: 50px;
+    }
+
+}

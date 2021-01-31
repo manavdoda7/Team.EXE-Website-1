@@ -20,8 +20,8 @@
     <div class="projects">
         {% for project in projects %}
             <div id="card{{project.id}}" class="project js-slidein">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mx-auto
+                <div class="row project_con">
+                    <div class="col-lg-4 col-md-6 mx-auto img_c
                         {% if forloop.counter|divisibleby:2 %}
                         order-last
                         {% endif %}
@@ -30,7 +30,7 @@
                             <img src="{{project.image}}" class="img-fluid project-img mx-auto" />
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-8 col-md-12 p">
                         <span class="title"><strong>{{project.title}}</strong></span>
                         <div class="contributors">By: {{project.contributors}}</div>
                         <div class="description">{{project.description}}</div>

@@ -16,6 +16,26 @@ body{
     font-family: 'Ubuntu', sans-serif !important;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(206, 206, 206);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 255, 255);
+  } 
+
+
 /************************************ Main Section ******************************/
 
 .main{
