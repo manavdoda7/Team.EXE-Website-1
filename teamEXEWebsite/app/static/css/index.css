@@ -417,7 +417,7 @@
     z-index: 1000;
     /* transform: rotate3d(.5,-.866,0,15deg) rotate(0deg); */
     /* display: flex; */
-    animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
+    animation: abc 1s linear forwards , flicker 15s linear 5s infinite;
 }
 
 @keyframes abc{
