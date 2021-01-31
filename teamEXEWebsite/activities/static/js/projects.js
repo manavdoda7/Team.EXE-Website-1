@@ -36,4 +36,4 @@ $(document).ready(function () {
 })
 
 
-document.querySelector('video').playbackRate = .5;
+// document.querySelector('video').playbackRate = .5;
