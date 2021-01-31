@@ -57,7 +57,7 @@
     .heading2{
         display: block;
         text-align: center;
-        margin-top: 5%;
+        margin-bottom: 3%;
         color: #ffffff;
         font-size: 40px;
         font-weight: 600;
@@ -77,7 +77,7 @@
         padding: 0;
         width: 100%;
         max-width: 1300;
-        height: 33vh;
+        height: 30vh;
         display: none;
     }
 
@@ -134,6 +134,7 @@
     .mottos1 #upper{
         font-size: 25px;
         height: 8vh;
+        text-align: left;
     }
 
     #upper{
@@ -188,7 +189,7 @@
   
   /*Section 2*/
     .section2{
-        padding-top: 2%;
+        /* padding-top: 2%; */
         color: #fff;
         text-align: left;
         padding-right: 5%;
@@ -204,6 +205,9 @@
     .no-padding{
         padding-left: 0;
         padding-right: 0;
+        height: 350px;
+        display: flex;
+        align-items: center;
     }
     .col-12{
         text-align: justify;
@@ -214,14 +218,15 @@
     .sec2heading{
         display: block;
         text-align: center;
-        font-size: 36px !important;
+        font-size: 45px !important;
         font-weight: 600;
         text-shadow : 0 0 10px #000;
         color: #7ed6df;
-        margin-bottom: 30px;
+        margin-top: 5%;
     }
     .img-positioning{
         text-align: center;
+        width: 100%;
     }
     .section2-img{
         width: 75%;
@@ -229,7 +234,7 @@
         border-radius: 25px;
     }
     .carousel-text{
-        padding-top: 5%;
+        padding-top: 2%;
     }
     .carousel-inner1{
         padding-top: 0%;
@@ -508,18 +513,42 @@
             width: 90%;
         } 
 
+        .p1{
+            font-size: 15.5px;
+            text-align: justify;
+            padding: 0 15px;
+        }
+
+        .no-padding{
+            height: unset;
+        }
+
         .sec2heading{
             margin-top: 25px;
-            font-size: 30px;
+            font-size: 30px !important;
         }
+
+        .section2-img{
+            height: 32vh;
+            border-radius: 6px;
+        }
+
+        .section2{
+            height: 95vh;
+        }
+
         .section1{
-            padding-top: 20%;
+            padding-top: 30%;
+        }
+        br{
+            display: none;
         }
         .heading2{
-            font-size: 35px;
+            font-size: 33px;
         }
         .heading-top{
             margin-top: 50px;
+            font-size: 45px;
         }
         .about-feature-1{
             animation: none;
@@ -550,6 +579,10 @@
             margin: auto;
         } */
 
+        .img-positioning{
+            padding-top: 15px;
+        }
+
         .p-4{
             padding: 0 !important;
         }
@@ -575,18 +608,19 @@
         }
     
         .carousel-text{
-            font-size: unset;
-            line-height: 1.5rem;
+            font-size: 13px;
+            line-height: 1.3rem;
         }
         .mottos{
             display: none;
         }
         .mottos1{
             display: block;
+            /* bottom: 15px; */
         }
         .block{
-            margin-left: 10%;
-            width: 80%;
+            width: 95%;
+            margin: auto;
         }
         .carousel{
             margin-top: 2%;

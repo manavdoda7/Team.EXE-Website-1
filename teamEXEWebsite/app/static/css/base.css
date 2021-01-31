@@ -68,8 +68,17 @@ h1 {
     animation-duration: 1.5s;
 }
 
+.navbar-toggler{
+    /* border: 0 !important; */
+}
+
 .navbar-toggler:active, .navbar-toggler:active, .navbar-toggler:hover {
     outline: 0;
+    border: 0;
+}
+
+.navbar-toggler-icon{
+    filter: drop-shadow(0px 0px 6px white);
 }
 
 .dropdown:hover>.dropdown-menu {
@@ -203,8 +212,9 @@ h1 {
 
 .main-description {
     position: absolute;
-    bottom: 150px;
-    bottom: 20px;
+    /* bottom: 150px;
+    bottom: 20px; */
+    top: 90px;
 
 }
 
