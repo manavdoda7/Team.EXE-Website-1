@@ -13,6 +13,7 @@ body{
 
 .container{
     padding-top: 100px;
+    max-width: 1050px !important;
 }
 
 .heading{
