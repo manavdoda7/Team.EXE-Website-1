@@ -34,3 +34,6 @@ $(document).ready(function () {
       })
     })
 })
+
+
+document.querySelector('video').playbackRate = .5;
