@@ -35,5 +35,6 @@ $(document).ready(function () {
     })
 })
 
-
+// $('.project :has(ul.child)').addClass('has_child');
+$( ".project:has(.order-last)" ).addClass( "test" );
 // document.querySelector('video').playbackRate = .5;

@@ -52,15 +52,15 @@
     /* text-shadow: 0 0 12px #0082af; */
     bottom: 0;
     position: absolute;
-    animation: glow 1.5s linear infinite; ;
+    animation: glow 2.5s linear infinite; ;
 }
 
 @keyframes glow{
     0%{
         text-shadow: 0 0 12px #0082af;   
     }
-    50%{
-        text-shadow: 0 0 12px #0083af00;
+    80%{
+        text-shadow: 0 0 0px #0083af00;
     }
 }
 
@@ -495,6 +495,10 @@
         flex: 0 0 100% !important;
         max-width: 100%;
       }
+
+    .text{
+        font-size: 13px;
+    }
 }
 
 
