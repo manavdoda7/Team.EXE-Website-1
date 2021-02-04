@@ -16,6 +16,12 @@ body{
     font-family: 'Ubuntu', sans-serif !important;
 }
 
+::selection {
+    color: #fff;
+    background: transparent;
+}
+  
+
 ::-webkit-scrollbar {
     width: 5px;
   }
