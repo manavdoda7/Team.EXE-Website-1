@@ -121,8 +121,8 @@
 
             //scrolling
             css3: true,
-            scrollingSpeed: 700,
-            autoScrolling: true,
+            scrollingSpeed: 500,
+            // autoScrolling: true,
             fitToSection: true,
             fitToSectionDelay: 1000,
             easing: 'easeInOutCubic',
@@ -291,7 +291,7 @@
             if (options.autoScrolling && !options.scrollBar) {
                 css($htmlBody, {
                     'overflow': 'hidden',
-                    'height': '100%'
+                    'height': '100vh'
                 });
 
                 setRecordHistory(originals.recordHistory, 'internal');
