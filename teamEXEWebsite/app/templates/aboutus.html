@@ -42,7 +42,7 @@
             <div class="col-lg-4 col-md-6 col-12 ">
                 <div class="block about-feature-2">
                     <div id="wow"></div>
-                    <div id="upper" class="u2"><span>What You Get</span></div>
+                    <div id="upper" class="u2">What You Get</div>
                     <div class="info" >
                         <ul id="mob-set">
                             <li>Experience of working on Creative Projects.</li>
@@ -87,7 +87,7 @@
                 <div class="carousel-item text-justify p-4">
                     <div class="block about-feature-2">
                         <div id="wow"></div>
-                        <div id="upper" class="u2"><span>What You Get</span></div>
+                        <div id="upper" class="u2">What You Get</div>
                         <div class="info">
                             <ul class="mob-set">
                                 <li>Experience of working on Creative Projects.</li>
@@ -130,7 +130,7 @@
 <!-- All other sections are here -->
 
 <!-- 2nd Section -->
-<div class="section">
+<div class="section fp-auto-height">
     <div class="section2">
         <h1 class="slide-bottom sec2heading">Why We are Different</h1>
         <div class="row mb-5" style="padding-top: 5%; padding-bottom: 3%;">
@@ -225,7 +225,7 @@
 </div>
 
 <!-- 3rd Section -->
-<div class="section section-3">
+<div class="section section-3 fp-auto-height">
     <div class="container">
         <h1 class="form-heading">Contact Us</h1>
 
@@ -288,8 +288,19 @@
 
 {% endblock %}
 
-{% block scripts %}
+<!-- {% block scripts %} -->
 <!-- Add all javascript code specific to this page here -->
 <script src="{% static 'js/aboutus.js' %}"></script>
+<script>
+    new fullpage('#fullpage', {
+      //options here
+      autoScrolling: true,
+      // scrollOverflow: true,
+      slideSelector: '.fullpage-slide',
+      fitToSection:false,
+      scrollBar: true,
+    });
+
+  </script>
 
 {% endblock %}
