@@ -21,6 +21,8 @@ $(document).ready(function () {
 
 // ################# Dynamic Crousal ###############
 
+let owl = $('.owl-carousel')
+
 $('.owl-carousel').owlCarousel({
     nav: false,
     loop: true,
@@ -60,16 +62,22 @@ $('.owl-carousel').owlCarousel({
     }
 });
 
+setInterval(() => {
+    if(owl.is(':hover') == false){
+        owl.trigger('next.owl.carousel');
+    }
+}, 3000)
+
 // $('.card-content').matchHeight();
 
-$('.owl-carousel').on('mousewheel', '.owl-stage', function (e) {
-    if (e.deltaY>0) {
-        owl.trigger('next.owl');
-    } else {
-        owl.trigger('prev.owl');
-    }
-    e.preventDefault();
-})
+// $('.owl-carousel').on('mousewheel', '.owl-stage', function (e) {
+//     if (e.deltaY>0) {
+//         owl.trigger('next.owl');
+//     } else {
+//         owl.trigger('prev.owl');
+//     }
+//     e.preventDefault();
+// })
 
 
 
