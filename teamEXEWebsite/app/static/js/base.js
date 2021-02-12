@@ -7,44 +7,20 @@ $(document).ready(function () {
 })
 
 $.when($.ready).then(function () {
-    // setTimeout(function(){
-    //     $("#load-screen").animate({
-    //         // left: '100%',
-    //         opacity: '0',
-    //         }, 500);
-    //     setTimeout(function(){
-    //         $('#loading-inner').addClass('loading-inner-animate')
-    //         $('#load-screen').hide()
-    //         setTimeout(function(){
-    //             $('#loading-inner').addClass('loading-inner-hide').css('display', 'none')
-    //         }, 1000)
-    //     }, 500)
-    // }, 1000)
     setTimeout(function(){
         $('#load-screen').animate({
             opacity: '0'
         }, 500)
-        // $('#loading-inner').addClass('loading-inner-animate')
         $('#loading-inner').animate({
-            width: '0'
+            width: '0',
+            opacity: 0
         }, 500)
-        $('#loading-inner').animate({
-            opacity: '0'
-        }, 200)
         setTimeout(function(){
             $('#load-screen').hide()
             $('#loading-inner').hide()
-        }, 500)
+        }, 1000)
     }, 500)
 })
-
-// document.onreadystatechange = function () {
-//     var state = document.readyState
-//     if (state == 'interactive') {
-//     } else if (state == 'complete') {
-        
-//   }}
-
 
 // Background Animation
 

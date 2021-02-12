@@ -84,70 +84,6 @@ return <code style="color:#b8e994 ;">0</code>;
     <div class="container my-5 main-content">
         <div class="owl-carousel owl-theme">
 
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test"
-                                class="card-img-top  ">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_2.png' %}" alt="Test" class="card-img-top  ">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test" class="card-img-top">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             {% for event in upcommingEvents %}
                 <div class="item">
                     <div class="card event-card">
@@ -232,7 +168,7 @@ return <code style="color:#b8e994 ;">0</code>;
 {% block scripts %}
 
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
+<!-- <script src="{% static 'js/jquery.mousewheel.min.js' %}"></script> -->
 <script src="{% static 'js/index.js' %}"></script>
 
 
