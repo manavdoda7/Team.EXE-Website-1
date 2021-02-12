@@ -41,6 +41,10 @@
     z-index: 0;
 }
 
+.main-content{
+    margin-bottom: 0 !important;
+}
+
 .container-height-full {
     height: 100%;
     position: relative;
@@ -217,7 +221,7 @@
 
 .container .event-card .face.face2{
   position: relative;
-  display: flex;
+  display: none;
   padding: 20px;
   transition: 1s;
   transform: translateY(0%);
@@ -228,6 +232,7 @@
 .container .event-card:hover .face.face2{
   transform: translateY(-160%);
   opacity: 1;
+  display: flex;
   /* height: unset; */
 }
 
