@@ -20,8 +20,8 @@
     <div class="events">
         {% for event in events %}
             <div id="card{{event.id}}" class="event js-slidein">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mx-auto
+                <div class="row event_con">
+                    <div class="col-lg-4 col-md-6 mx-auto img_c
                         {% if forloop.counter|divisibleby:2 %}
                         order-last
                         {% endif %}
@@ -30,7 +30,7 @@
                             <img src="{{event.image}}" class="img-fluid event-img mx-auto" />
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-8 col-md-12 p">
                         <p class="title"><strong>{{event.title}}</strong></p>
                         <div class="description">{{event.description}}</div>
                         <a class="btn

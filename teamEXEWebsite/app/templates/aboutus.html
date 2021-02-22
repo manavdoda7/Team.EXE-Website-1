@@ -14,6 +14,7 @@
 <div class="rel_block">
     <div class="section1 mx-auto">
         <h1 class="heading-top">Team .EXE</h1>
+        <img class="img_about show" src="{% static 'images/home_2.jpg' %}" alt="">
         <p class="p1 mb-5">
             We are the departmental team of Computer Science & Engineering Department for Techfest NIMBUS. <br>
             We are passionate about technology & our curiousity drives us towards the development of new things and
@@ -21,8 +22,9 @@
         </p>
     </div>
     <!--Cards Section-->
-    <h1 class=" slide-bottom heading2">More About Us</h1>
+    
     <div class="mottos">
+        <h1 class=" slide-bottom heading2">More About Us</h1>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-12 ">
                 <div class="block about-feature-1">
@@ -40,7 +42,7 @@
             <div class="col-lg-4 col-md-6 col-12 ">
                 <div class="block about-feature-2">
                     <div id="wow"></div>
-                    <div id="upper" class="u2"><span>What You Get</span></div>
+                    <div id="upper" class="u2">What You Get</div>
                     <div class="info" >
                         <ul id="mob-set">
                             <li>Experience of working on Creative Projects.</li>
@@ -65,7 +67,8 @@
         </div>
 
     </div>
-    <div class="mottos1">
+    <div class="mottos1 hide">
+        <h1 class=" slide-bottom heading2">More About Us</h1>
         <div id="carouselContent" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner carousel-inner1" role="listbox">
                 <div class="carousel-item active text-justify p-4">
@@ -84,11 +87,11 @@
                 <div class="carousel-item text-justify p-4">
                     <div class="block about-feature-2">
                         <div id="wow"></div>
-                        <div id="upper" class="u2"><span>What You Get</span></div>
+                        <div id="upper" class="u2">What You Get</div>
                         <div class="info">
                             <ul class="mob-set">
                                 <li>Experience of working on Creative Projects.</li>
-                                <li>Ability to cope with real life problems using programing.</li>
+                                <li>Ability to cope with real life problems</li>
                             </ul>
                         </div>
                     </div>
@@ -127,21 +130,22 @@
 <!-- All other sections are here -->
 
 <!-- 2nd Section -->
-<div class="section">
+<div class="section fp-auto-height">
     <div class="section2">
+        <h1 class="slide-bottom sec2heading">Why We are Different</h1>
         <div class="row mb-5" style="padding-top: 5%; padding-bottom: 3%;">
             <div class="col-lg-6 col-md-6 col-12 no-padding">
                 <div class="img-positioning">
-                    <img src="../static/images/home_2.jpg" class="img-fluid section2-img" alt="">
+                    <iframe width="420" height="315"
+                    src="https://www.youtube.com/embed/liCWk1HLnl8?autoplay=1&mute=1" class="section2-img">
+                    </iframe> 
                 </div>
             </div>
 
 
-            <div class="col-lg-6 col-md-6 col-12 why-diff">
+            <div class="col-lg-6 col-md-6 col-12why-diff">
                 <div class="rel">
-                    <h1 class="slide-bottom sec2heading">Why We are Different</h1>
-
-                    <div id="carouselContent" class="carousel slide" data-ride="carousel">
+                    <div id="carouselContent" class="carousel slide carousel-text" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active text-justify p-4">
                                 <p class="carousel-text">Each year we strive to raise the bar for technical advancement
@@ -283,8 +287,19 @@
 
 {% endblock %}
 
-{% block scripts %}
+<!-- {% block scripts %} -->
 <!-- Add all javascript code specific to this page here -->
 <script src="{% static 'js/aboutus.js' %}"></script>
+<script>
+    new fullpage('#fullpage', {
+      //options here
+      autoScrolling: true,
+      // scrollOverflow: true,
+      slideSelector: '.fullpage-slide',
+      fitToSection:false,
+      scrollBar: true,
+    });
+
+  </script>
 
 {% endblock %}

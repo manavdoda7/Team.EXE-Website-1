@@ -20,8 +20,8 @@
     <div class="workshops">
         {% for workshop in workshops %}
             <div id="card{{workshop.id}}" class="workshop js-slidein">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mx-auto
+                <div class="row w_con">
+                    <div class="col-lg-4 col-md-6 mx-auto img_c
                         {% if forloop.counter|divisibleby:2 %}
                         order-last
                         {% endif %}
@@ -30,7 +30,7 @@
                             <img src="{{workshop.image}}" class="img-fluid workshop-img mx-auto" />
                         </div>
                     </div>
-                    <div class="col-lg-8 col-md-12">
+                    <div class="col-lg-8 col-md-12 p">
                         <p class="title"><strong>{{workshop.title}}</strong></p>
                         <div class="description">{{workshop.description}}</div>
                         <a class="btn

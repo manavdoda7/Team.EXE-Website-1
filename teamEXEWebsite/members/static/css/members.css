@@ -1,10 +1,25 @@
+body{
+    background-attachment: fixed;
+    background: radial-gradient(ellipse at bottom, #1f3146 0%, #000000 100%);
+}
+
+#canvas{
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+
 .container{
     padding-top: 100px;
+    max-width: 1050px !important;
 }
 
 .heading{
-    margin: 20px 0;
-    font-size: 60px;
+    margin: 10px 0;
+    margin-top: 60px;
+    font-size: 50px;
     font-weight: 600;
     color: #7ed6df;
     text-align: center;
@@ -33,11 +48,36 @@
     color: #1abc9c;
 }
 
+.mem_pos{
+    font-size: 29px;
+    color: #0ab694;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
 .img-container{
     position: relative;
     border-radius: 50%;
     transition: .5s all;
     overflow: hidden;
+}
+
+.img-wrapper {
+    width: 100%;
+    position: relative;
+    background-color: rgb(66, 66, 66);
+}
+.img-wrapper:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+  
+.member-image {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .member-overlay{
@@ -136,7 +176,7 @@
 
 @media only screen and (max-width: 768px) {
     .heading{
-        font-size: 45px;
+        font-size: 35px;
     }
     .social-links{
         position: relative;
@@ -146,4 +186,22 @@
     .icon1{
         margin-right: 2%;
     }
+    .member-name{
+        font-size: 16px;
+    }
+    .member-position{
+        font-size: 17px;
+    }
+    .mem_pos{
+        font-size: 25px;
+    }
+}
+
+
+.message{
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-size: 23px;
+    margin-bottom: 35px;
 }

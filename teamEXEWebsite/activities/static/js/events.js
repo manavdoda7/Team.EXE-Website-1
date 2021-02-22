@@ -34,3 +34,6 @@ $(document).ready(function () {
       })
     })
 })
+
+$( ".event:has(.order-last)" ).addClass( "test" );
+document.querySelector('video').playbackRate = .8;

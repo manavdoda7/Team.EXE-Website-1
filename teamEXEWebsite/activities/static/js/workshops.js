@@ -34,3 +34,7 @@ $(document).ready(function () {
       })
     })
 })
+
+
+$( ".workshop:has(.order-last)" ).addClass( "test" );
+document.querySelector('video').playbackRate = .8;

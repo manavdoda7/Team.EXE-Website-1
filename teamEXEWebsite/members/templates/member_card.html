@@ -1,15 +1,19 @@
 <div class="member-card js-slidein px-2 px-sm-1 px-md-3 ">
     <div class="img-container">
-        <img class="member-image img-fluid" src="{{member.imageURL}}">
+        <div class="img-wrapper">
+        <img class="member-image" src="{{member.imageURL}}">
+        </div>
         <div class="member-overlay">
-            <p class="tagline">{{member.tagline}}</p>
+            {% if member.tagline != "." %}
+                <p class="tagline">{{member.tagline}}</p>
+            {% endif %}
             <div class="social-links    ">
-                <a href="{{member.linkedin}}">
+                <a target="_blank" href="{{member.linkedin}}">
                     <div class="flex icon icon1" id="icon-1">
                         <i class="mdi mdi-linkedin"></i>
                     </div>
                 </a>
-                <a href="{{member.github}}">
+                <a target="_blank" href="{{member.github}}">
                     <div class="flex icon icon2" id="icon-2">
                         <i class="mdi mdi-github"></i>
                     </div>

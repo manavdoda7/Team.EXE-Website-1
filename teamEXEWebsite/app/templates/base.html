@@ -6,21 +6,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- CSS -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,300italic,400italic,300,700italic,800italic,800"
-    rel="stylesheet" type="text/css" />
-  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" media="all"
-    rel="stylesheet" />
-  <!-- <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> -->
+  <script>
+    loadScreenImage = new Image();
+    loadScreenImage.src = "{% static 'images/logo.webp' %}";
+  </script>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
     integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
     crossorigin="anonymous" />
-  <!-- <script src="https://kit.fontawesome.com/b68197f8e1.js" crossorigin="anonymous"></script> -->
-  <link rel="shortcut icon" href="{% static 'images/icon.png' %}" type="image/png">
+  <link rel="shortcut icon" href="{% static 'images/icon.webp' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" />
+  <link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,600italic,300italic,400italic,300,700italic,800italic,800"
+  rel="stylesheet" type="text/css" />
+  <link href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css" media="all"
+  rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
   {% block head_block %}
@@ -47,7 +54,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" class="logo" /></a>
+          <a class="navbar-brand" href="/"><img src="{% static 'images/logo.webp' %}" class="logo" /></a>
 
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -81,9 +88,9 @@
                   Activities
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="activities/events">Events</a>
-                  <a class="dropdown-item" href="activities/workshops">Workshops</a>
                   <a class="dropdown-item" href="activities/projects">Projects</a>
+                  <a class="dropdown-item" href="activities/workshops">Workshops</a>
+                  <a class="dropdown-item" href="activities/events">Events</a>
                 </div>
               </div>
             </ul>
@@ -104,7 +111,7 @@
     <div class="section fp-auto-height">
       <footer>
         <div class="col-lg-12 f-logo">
-          <img src="../static/images/logo.png" alt="logo" width="200px">
+          <img style="cursor: pointer;" src="{% static 'images/icon.webp' %}" alt="logo" width="200px">
         </div>
 
         <!-- <i class="mdi mdi-chevron-double-up page-link" dest="home" title="Back To Top"></i> -->
@@ -153,7 +160,6 @@
   </div>
 
   <!-- JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js"
     integrity="sha512-pYyQWhzi2lV+RM4GmaUA56VPL48oLVvsHmP9tuQ8MaZMDHomVEDjXXnfSVKXayy+wLclKPte0KbsuVoFImtE7w=="
@@ -171,6 +177,7 @@
       autoScrolling: true,
       scrollOverflow: true,
       slideSelector: '.fullpage-slide',
+      fitToSection:false,
       // scrollBar: true,
     });
 

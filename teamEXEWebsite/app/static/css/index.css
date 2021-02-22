@@ -5,6 +5,10 @@
     .main-top{
         height: 35% !important;
     }
+    .prev-eve-head{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
 }
 
 /* Main Section */
@@ -37,6 +41,10 @@
     z-index: 0;
 }
 
+.main-content{
+    margin-bottom: 0 !important;
+}
+
 .container-height-full {
     height: 100%;
     position: relative;
@@ -45,9 +53,19 @@
 .heading-main-top {
     color : #ffffff;
     font-size: 75px;
-    text-shadow: 0 0 12px #0082af;
+    /* text-shadow: 0 0 12px #0082af; */
     bottom: 0;
     position: absolute;
+    animation: glow 2.5s linear infinite; ;
+}
+
+@keyframes glow{
+    0%{
+        text-shadow: 0 0 12px #0082af;   
+    }
+    80%{
+        text-shadow: 0 0 0px #0083af00;
+    }
 }
 
 @keyframes heading-top-hider {
@@ -74,7 +92,7 @@
 
 .heading-light {
     color: #7ed6df;
-    font-size: 70px;
+    font-size: 65px;
     top: 0px;
     text-shadow : 0 0 10px #000;
     position: absolute;
@@ -85,9 +103,14 @@
 
 .main-description {
     position: absolute;
-    bottom: 150px;
-    bottom: 20px;
+    /* bottom: 150px; */
+    /* bottom: 20px; */
 
+}
+
+.scroll_down{
+    position: absolute;
+    bottom: 25px;
 }
 
 .main-description-text {
@@ -122,12 +145,18 @@
 
 /* Upcoming Events Section */
 
+/* .section-up .fp-tableCell{
+    height: auto !important;
+} */
+
 .upcoming-heading{
+    padding-top: 30px;
     color: #7ed6df;
     font-size: 36px;
     font-weight: 600 !important;
     text-align: center;
     margin-bottom: 3rem;
+    /* margin-top: 40px; */
 }
 
 .owl-carousel .owl-stage {
@@ -187,20 +216,24 @@
 .container .event-card:hover .face.face1{
   transform: translateY(-100%);
   opacity: 0;
+  
 }
 
 .container .event-card .face.face2{
   position: relative;
-  display: flex;
+  display: none;
   padding: 20px;
   transition: 1s;
   transform: translateY(0%);
   opacity: 0;
+  /* height: 0; */
 }
 
 .container .event-card:hover .face.face2{
   transform: translateY(-160%);
   opacity: 1;
+  display: flex;
+  /* height: unset; */
 }
 
 .card-title{
@@ -236,19 +269,6 @@
 
 @media only screen and (max-width: 992px) {
 
-    /* .upcoming-heading{
-        margin-top: 5%;
-        margin-bottom: 3%;
-    } */
-
-    /* .event-card{
-        width: 60%;
-        height: 50%;
-        margin:auto;
-        margin-bottom: 1%;
-        overflow: visible;
-    } */
-
     .container .event-card .face.face1{
         position: relative;
         display: flex;
@@ -279,31 +299,14 @@
         opacity: 1;
     }
 
-    /* .card-content {
-        width: 100%;
-        height: 30%;
+    .scroll_down{
+        bottom: 0px;
     }
-
-    .card-content img {
-        max-width: 100%;
-        max-height: 100%;
-        width: auto;
-        height: auto;
-    } */
 
 }
 
 
 @media only screen and (max-width: 576px) {
-
-    /* .event-card{
-        max-width: 70vw;
-        width: 60%;
-        max-height: 33vh;
-        height: 50%;
-        margin:auto;
-        margin-bottom: 1%;
-    } */
 
     .container .event-card .face.face1{
         position: relative;
@@ -385,7 +388,7 @@
     z-index: 1000;
     /* transform: rotate3d(.5,-.866,0,15deg) rotate(0deg); */
     /* display: flex; */
-    animation: abc 1s linear forwards , flicker 5s linear 5s infinite;
+    animation: abc 1s linear forwards , flicker 15s linear 5s infinite;
 }
 
 @keyframes abc{
@@ -438,16 +441,6 @@
     /* padding-left: 40px; */
 }
 
-/* .compiled div{
-  background-color: #1f1f1f;
-  padding: 5px;
-}
-
-.output div{
-  background-color: #4285F4;
-  padding: 5px;
-} */
-
 @media only screen and (max-width: 1050px) {
   .random {
     display: none;
@@ -458,30 +451,26 @@
   }
 }
 
-@media (max-width: 900px){
+@media (max-width: 800px){
+    .res-class{
+        flex: 0 0 100% !important;
+        max-width: 100%;
+      }
 
+    .text{
+        font-size: 13px;
+    }
 }
 
 
 .dynamic-text{
     animation: pulse 15s infinite;
 }
-/* .input{
-    color: #D7BA7D;
-} */
 
 .output-code{
     /* padding-top: 5%; */
     padding-bottom: 5%;
 }
-
-/* .dynamic-quote{
-    animation: pulse 15s infinite;
-}
-
-.dynamic-author{
-    animation: pulse 15s infinite;
-} */
 
 @keyframes pulse {
 	0% {

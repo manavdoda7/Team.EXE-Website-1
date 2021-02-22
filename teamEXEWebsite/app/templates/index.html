@@ -60,13 +60,14 @@ return <code style="color:#b8e994 ;">0</code>;
                 </div>
                 <div class="col-md-6"></div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <a id="move-down" href="#">
-                        <span class="down-arrow">&#8595;</span>
-                        <span class="down-text">Scroll Down</span>
-                    </a>
-                </div>
+            
+        </div>
+        <div class="row scroll_down">
+            <div class="col-12">
+                <a id="move-down" href="#">
+                    <span class="down-arrow">&#8595;</span>
+                    <span class="down-text">Scroll Down</span>
+                </a>
             </div>
         </div>
     </div>
@@ -77,77 +78,13 @@ return <code style="color:#b8e994 ;">0</code>;
 {% block other_sections %}
 
 <!-- Upcoming events section -->
-<div id="upcoming-events-section" class="section">
+<div id="upcoming-events-section" class="section section-up">
     <h1 class="upcoming-heading">Upcoming Events</h1>
 
     <div class="container my-5 main-content">
         <div class="owl-carousel owl-theme">
 
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test"
-                                class="card-img-top  ">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_2.png' %}" alt="Test" class="card-img-top  ">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="card event-card">
-                    <div class=" face face1">
-                        <div class="card-content">
-                            <img data-src="{% static 'images/event_1.jpg' %}" alt="Test" class="card-img-top">
-                        </div>
-                    </div>
-
-                    <div class="face face2">
-                        <div class="card-content">
-                            <h4 class="card-title"> Event Name 1</h4>
-
-                            <p class="card-text"> <span class='heading-date'>Event Date: </span> Test-date </p>
-
-                            <a href="" class="btn btn-light btn-sm">Know More</a>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {% for event in upcommingEvents %}
+            <!-- {% for event in upcommingEvents %} -->
                 <div class="item">
                     <div class="card event-card">
                         <div class=" face face1">
@@ -168,7 +105,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         </div>
                     </div>
                 </div>
-            {% endfor %}
+            <!-- {% endfor %} -->
 
         </div>
 
@@ -185,7 +122,7 @@ return <code style="color:#b8e994 ;">0</code>;
         <div class="container">
             <h4 class="event-heading">Previously conducted events</h4>
             <div class="row">
-                <div class=" col-md-6">
+                <div class=" col-md-8">
                     <div class="content">
 
                         <h5 class="prev-eve-head">lorem ipsum</h5>
@@ -204,7 +141,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6 order-first order-md-last">
+                <div class="col-md-4 order-first order-md-last">
                     <div class="carouel">
                         <div id="prev-events-carousel" class=" carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
@@ -231,7 +168,7 @@ return <code style="color:#b8e994 ;">0</code>;
 {% block scripts %}
 
 <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/jquery.mousewheel.min.js' %}"></script>
+<!-- <script src="{% static 'js/jquery.mousewheel.min.js' %}"></script> -->
 <script src="{% static 'js/index.js' %}"></script>
 
 
