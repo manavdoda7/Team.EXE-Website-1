@@ -1,8 +1,12 @@
 <div class="member-card js-slidein px-2 px-sm-1 px-md-3 ">
     <div class="img-container">
-        <img class="member-image img-fluid" src="{{member.imageURL}}">
+        <div class="img-wrapper">
+        <img class="member-image" src="{{member.imageURL}}">
+        </div>
         <div class="member-overlay">
-            <p class="tagline">{{member.tagline}}</p>
+            {% if member.tagline != "." %}
+                <p class="tagline">{{member.tagline}}</p>
+            {% endif %}
             <div class="social-links    ">
                 <a target="_blank" href="{{member.linkedin}}">
                     <div class="flex icon icon1" id="icon-1">
