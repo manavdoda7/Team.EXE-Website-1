@@ -35,7 +35,6 @@ $(document).ready(function () {
                 if($(this).hasClass('js-slidein-visible') == false && $(this).hasClass('js-slidein-delay') == false){
                     $(this).addClass('js-slidein-delay')
                         setTimeout(() => {
-                        console.log(delay)
                         $(this).addClass('js-slidein-visible')
                         $(this).removeClass('js-slidein-delay')
                     }, delay)
