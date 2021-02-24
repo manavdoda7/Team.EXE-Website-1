@@ -9,9 +9,9 @@
 
 Task | Deadline | Status
 ------------ | ------------- | ----------
-Home page of Website | 5-Jan-2021 | Almost Completed
-About us page  | 20-Jan-2021 | Ongoing
-Members page  | 20-Jan-2021 | Ongoing
+Home page of Website | 5-Jan-2021 | Completed
+About us page  | 20-Jan-2021 | Completed
+Members page  | 20-Jan-2021 | Completed
 
 
 
