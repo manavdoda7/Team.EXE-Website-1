@@ -64,7 +64,7 @@ return <code style="color:#b8e994 ;">0</code>;
         </div>
         <div class="row scroll_down">
             <div class="col-12">
-                <a id="move-down" href="#">
+                <a id="move-down" href="#upcoming-events-section">
                     <span class="down-arrow">&#8595;</span>
                     <span class="down-text">Scroll Down</span>
                 </a>
@@ -84,12 +84,12 @@ return <code style="color:#b8e994 ;">0</code>;
     <div class="container my-5 main-content">
         <div class="owl-carousel owl-theme">
 
-            <!-- {% for event in upcommingEvents %} -->
+            {% for event in upcommingEvents %}
                 <div class="item">
                     <div class="card event-card">
                         <div class=" face face1">
                             <div class="card-content">
-                                <img data-src={{ event.image }} alt="Test" class="card-img-top">
+                                <img src="{{ event.image }}" alt="Test" class="card-img-top">
                             </div>
                         </div>
 
@@ -105,7 +105,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         </div>
                     </div>
                 </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
 
         </div>
 
@@ -122,7 +122,7 @@ return <code style="color:#b8e994 ;">0</code>;
         <div class="container">
             <h4 class="event-heading">Previously conducted events</h4>
             <div class="row">
-                <div class=" col-md-8">
+                <div class=" col-lg-6">
                     <div class="content">
 
                         <h5 class="prev-eve-head">lorem ipsum</h5>
@@ -141,7 +141,7 @@ return <code style="color:#b8e994 ;">0</code>;
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 order-first order-md-last">
+                <div class="col-lg order-first order-lg-last">
                     <div class="carouel">
                         <div id="prev-events-carousel" class=" carousel slide" data-ride="carousel">
                             <div class="carousel-inner">

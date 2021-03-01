@@ -19,7 +19,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'demo_template.html')
 
 def aboutus(request):
     return render(request, 'aboutus.html')
