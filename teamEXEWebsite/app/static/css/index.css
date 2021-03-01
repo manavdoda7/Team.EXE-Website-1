@@ -53,7 +53,7 @@
 .heading-main-top {
     color : #ffffff;
     font-size: 75px;
-    /* text-shadow: 0 0 12px #0082af; */
+    text-shadow: 0 0 12px #0082af;
     bottom: 0;
     position: absolute;
     animation: glow 2.5s linear infinite; ;
@@ -105,7 +105,7 @@
     position: absolute;
     /* bottom: 150px; */
     /* bottom: 20px; */
-
+    top: 90px;
 }
 
 .scroll_down{
@@ -145,9 +145,10 @@
 
 /* Upcoming Events Section */
 
-/* .section-up .fp-tableCell{
-    height: auto !important;
-} */
+#upcoming-events-section {
+    height: 100vh;
+    padding: 50px;
+}
 
 .upcoming-heading{
     padding-top: 30px;
@@ -168,12 +169,12 @@
     flex: 1 0 auto;
 } */
 
-.owl-theme .custom-nav {
+/* .owl-theme .custom-nav {
     position: absolute;
     top: 35%;
     left: 0%;
     right: 0%;
-}
+} */
 
 .owl-theme .custom-nav .owl-prev, .owl-theme .custom-nav .owl-next {
     position: absolute;
@@ -342,6 +343,10 @@
 
 /* Previous Conducted Events */
 
+#previous-events-section {
+    margin: 100px;
+}
+
 .section-3{
     height: 100%;
     padding-top: 5%;
@@ -364,6 +369,7 @@
     font-size: 25px;
     font-weight: 600;
     margin-bottom: 20px;
+    margin-top: 30px;
 }
 
 .text{
