@@ -14,9 +14,6 @@
   </script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css"
-    integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w=="
-    crossorigin="anonymous" />
   <link rel="shortcut icon" href="{% static 'images/icon.webp' %}">
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
@@ -45,8 +42,8 @@
     <img src="{% static 'images/logo.webp' %}" alt="Loading...">
   </div>
 
-  <div id="fullpage">
-    <div id="main-section" class="section">
+  <!-- <div id="fullpage"> -->
+    <!-- <div id="main-section" class="section"> -->
       <div class="main">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-md navbar-dark">
@@ -102,13 +99,13 @@
         {% endblock %}
       </div>
 
-    </div>
+    <!-- </div> -->
 
     {% block other_sections %}
 
     {% endblock %}
 
-    <div class="section fp-auto-height">
+    <!-- <div class="section fp-auto-height"> -->
       <footer>
         <div class="col-lg-12 f-logo">
           <img style="cursor: pointer;" src="{% static 'images/icon.webp' %}" alt="logo" width="200px">
@@ -155,33 +152,14 @@
           </div>
         </div>
       </footer>
-    </div>
+    <!-- </div> -->
 
-  </div>
+  <!-- </div> -->
 
   <!-- JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/scrolloverflow.min.js"
-    integrity="sha512-pYyQWhzi2lV+RM4GmaUA56VPL48oLVvsHmP9tuQ8MaZMDHomVEDjXXnfSVKXayy+wLclKPte0KbsuVoFImtE7w=="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/vendors/easings.min.js"
-    integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w=="
-    crossorigin="anonymous"></script>
 
-  <script src="{% static 'js/fullpage.js' %}"></script>
   <script src="{% static 'js/base.js' %}"></script>
-
-  <script>
-    new fullpage('#fullpage', {
-      //options here
-      autoScrolling: true,
-      scrollOverflow: true,
-      slideSelector: '.fullpage-slide',
-      fitToSection:false,
-      // scrollBar: true,
-    });
-
-  </script>
 
   {% block scripts %}
 

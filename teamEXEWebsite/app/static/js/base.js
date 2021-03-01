@@ -1,11 +1,4 @@
 
-$(document).ready(function () {
-    $("#move-down").click(function () {
-        fullpage_api.moveTo(2);
-    })
-
-})
-
 $.when($.ready).then(function () {
     setTimeout(function(){
         $('#load-screen').animate({

@@ -11,9 +11,10 @@
 }
   
 
-html, body {
+html {
     max-width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -22,20 +23,24 @@ body{
     font-family: 'Ubuntu', sans-serif !important;
 }
 
-::-webkit-scrollbar{
-    height: 4px;
-    width: 4px;
-    background: rgb(0, 0, 0);
-}
-::-webkit-scrollbar-thumb{
-    background: linear-gradient( rgb(9, 86, 131),rgb(95, 196, 255) );
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:horizontal{
-    background: rgb(0, 0, 0);
-    border-radius: 10px;
-}
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(206, 206, 206);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(255, 255, 255);
+  } 
 
 h1 {
     color: #7ed6df;
@@ -56,10 +61,18 @@ h1 {
     } */
 }
 
+/* .section {
+    height: 100vh;
+} */
+
 /* Main Section */
 
+/* #main-section {
+    height: 500px;
+} */
+
 .main{
-    height: 100%;
+    height: 100vh;
 }
 
 @keyframes navbar-anim {
@@ -312,7 +325,7 @@ html{
 body{
     margin: 0;
     padding: 0;
-    height: 100%;
+    /* height: 100%; */
     overflow: hidden;
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     background-attachment: fixed;
